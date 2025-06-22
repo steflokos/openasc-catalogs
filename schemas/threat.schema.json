@@ -20,7 +20,7 @@
             "type": "string",
             "enum": [
                 "STRIDE",
-                "MITRE ATT&CK©"
+                "MITRE ATT&CK®"
             ],
             "description": "The threat classification model this threat belongs to"
         },
