@@ -1,0 +1,174 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ControlSchema",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "pattern": "^[C]\\.\\d{3}$",
+            "description": "Unique identifier for the control, e.g., 'C.001'"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the control, e.g., 'Asymmetric Encryption'"
+        },
+        "description": {
+            "type": "string",
+            "description": "Detailed description of the control"
+        },
+        "source": {
+            "type": "object",
+            "description": "Source reference for the control definition",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the source"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to the source",
+                    "format": "uri"
+                }
+            }
+        },
+        "notes": {
+            "type": "string",
+            "description": "Optional notes or comments for the control. e.g. rationale on protected cybersecurity properties"
+        },
+        "unitedNationsRegulation155": {
+            "type": "array",
+            "description": "List of applicable UN Regulation No. 155 mitigation categories (from Annex 5, Tables B1-B8, C1-C3)",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "M1",
+                    "M2",
+                    "M3",
+                    "M4",
+                    "M5",
+                    "M6",
+                    "M7",
+                    "M8",
+                    "M9",
+                    "M10",
+                    "M11",
+                    "M12",
+                    "M13",
+                    "M14",
+                    "M15",
+                    "M16",
+                    "M18",
+                    "M19",
+                    "M20",
+                    "M21",
+                    "M22",
+                    "M23",
+                    "M24"
+                ]
+            }
+        },
+        "attackFeasibilityReduction": {
+            "type": "object",
+            "properties": {
+                "attackPotentialReduction": {
+                    "type": "object",
+                    "properties": {
+                        "elapsedTime": {
+                            "$ref": "#/$defs/FeasibilityComponent"
+                        },
+                        "specialistExpertise": {
+                            "$ref": "#/$defs/FeasibilityComponent"
+                        },
+                        "knowledgeOfTheItemOrComponent": {
+                            "$ref": "#/$defs/FeasibilityComponent"
+                        },
+                        "windowOfOpportunity": {
+                            "$ref": "#/$defs/FeasibilityComponent"
+                        },
+                        "equipment": {
+                            "$ref": "#/$defs/FeasibilityComponent"
+                        }
+                    },
+                    "required": [
+                        "elapsedTime",
+                        "specialistExpertise",
+                        "knowledgeOfTheItemOrComponent",
+                        "windowOfOpportunity",
+                        "equipment"
+                    ]
+                }
+            },
+            "required": [
+                "attackPotentialReduction"
+            ]
+        },
+        "refines": {
+            "type": "string",
+            "pattern": "^[C]\\.\\d{3}$",
+            "description": "Reference to a more general control that this one refines, if any"
+        },
+        "protects": {
+            "type": "array",
+            "description": "List of security properties this control protects",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Confidentiality",
+                    "Integrity",
+                    "Availability",
+                    "Authenticity",
+                    "Non-Repudiation"
+                ]
+            }
+        },
+        "actsOn": {
+            "type": "array",
+            "description": "System aspects the control applies to",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Component",
+                    "Data",
+                    "Channel",
+                    "Data Flow"
+                ]
+            }
+        },
+        "mitigates": {
+            "type": "array",
+            "description": "List of threat IDs this control mitigates",
+            "items": {
+                "type": "string",
+                "pattern": "^T\\.\\d{3}$"
+            }
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "description",
+        "attackFeasibilityReduction",
+        "protects",
+        "actsOn"
+    ],
+    "$defs": {
+        "FeasibilityComponent": {
+            "type": "object",
+            "properties": {
+                "feasibility": {
+                    "type": "string",
+                    "description": "Feasibility rating code",
+                    "pattern": "^(ET[0-4]|SE[0-3]|KoIC[0-3]|WoO[0-3]|Eq[0-3])$"
+                },
+                "rationale": {
+                    "type": "string",
+                    "description": "Optional rationale explaining the rating",
+                    "default": ""
+                }
+            },
+            "required": [
+                "feasibility"
+            ]
+        }
+    }
+}

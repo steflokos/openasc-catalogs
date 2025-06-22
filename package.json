@@ -1,0 +1,26 @@
+{
+    "name": "openasc-catalogs",
+    "version": "0.1.0",
+    "description": "Open-source automotive security catalogs assissting in Threat Analysis & Risk Assessment processes",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "validate:threats": "node scripts/validate.js threats",
+        "validate:controls": "node scripts/validate.js controls",
+        "validate:all": "node scripts/validate.js all"
+    },
+    "keywords": [
+        "automotive",
+        "security",
+        "threats",
+        "controls",
+        "json-schema",
+        "catalog"
+    ],
+    "author": "Stefanos Flokos",
+    "license": "MIT",
+    "devDependencies": {
+        "ajv": "^8.17.1",
+        "ajv-formats": "^2.1.1"
+    }
+}

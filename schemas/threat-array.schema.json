@@ -1,0 +1,246 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ThreatArraySchema",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "threats": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "pattern": "^[T]\\.\\d{3}$",
+                        "description": "Unique identifier for the threat, e.g., 'T.001'"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Short name or label of the threat, e.g., 'Spoofing'"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Detailed description of the threat"
+                    },
+                    "classificationModel": {
+                        "type": "string",
+                        "enum": [
+                            "STRIDE",
+                            "MITRE ATT&CK©"
+                        ],
+                        "description": "The threat classification model this threat belongs to"
+                    },
+                    "source": {
+                        "type": "object",
+                        "description": "Source reference for the threat definition",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the source"
+                            },
+                            "url": {
+                                "type": "string",
+                                "description": "URL to the source",
+                                "format": "uri"
+                            }
+                        }
+                    },
+                    "notes": {
+                        "type": "string",
+                        "description": "Optional notes or comments for the threat. e.g. rationale on compromised cybersecurity properties"
+                    },
+                    "unitedNationsRegulation155": {
+                        "type": "array",
+                        "description": "List of applicable UN Regulation No. 155 threat categories (from Annex 5, Table A1)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "1.1",
+                                "1.2",
+                                "1.3",
+                                "2.1",
+                                "3.1",
+                                "3.2",
+                                "3.3",
+                                "3.4",
+                                "3.5",
+                                "4.1",
+                                "4.2",
+                                "5.1",
+                                "5.2",
+                                "5.3",
+                                "5.4",
+                                "5.5",
+                                "6.1",
+                                "6.2",
+                                "6.3",
+                                "7.1",
+                                "7.2",
+                                "8.1",
+                                "8.2",
+                                "9.1",
+                                "10.1",
+                                "11.1",
+                                "11.2",
+                                "11.3",
+                                "11.4",
+                                "12.1",
+                                "12.2",
+                                "12.3",
+                                "12.4",
+                                "13.1",
+                                "15.1",
+                                "15.2",
+                                "16.1",
+                                "16.2",
+                                "16.3",
+                                "17.1",
+                                "18.1",
+                                "18.2",
+                                "18.3",
+                                "19.1",
+                                "19.2",
+                                "19.3",
+                                "20.1",
+                                "20.2",
+                                "20.3",
+                                "20.4",
+                                "20.5",
+                                "21.1",
+                                "22.2",
+                                "23.1",
+                                "24.1",
+                                "25.1",
+                                "25.2",
+                                "26.1",
+                                "26.2",
+                                "26.3",
+                                "27.1",
+                                "28.1",
+                                "28.2",
+                                "29.1",
+                                "29.2",
+                                "30.1",
+                                "30.2",
+                                "30.3",
+                                "31.1",
+                                "32.1"
+                            ]
+                        }
+                    },
+                    "attackFeasibility": {
+                        "type": "object",
+                        "properties": {
+                            "attackPotential": {
+                                "type": "object",
+                                "properties": {
+                                    "elapsedTime": {
+                                        "$ref": "#/$defs/FeasibilityComponent"
+                                    },
+                                    "specialistExpertise": {
+                                        "$ref": "#/$defs/FeasibilityComponent"
+                                    },
+                                    "knowledgeOfTheItemOrComponent": {
+                                        "$ref": "#/$defs/FeasibilityComponent"
+                                    },
+                                    "windowOfOpportunity": {
+                                        "$ref": "#/$defs/FeasibilityComponent"
+                                    },
+                                    "equipment": {
+                                        "$ref": "#/$defs/FeasibilityComponent"
+                                    }
+                                },
+                                "required": [
+                                    "elapsedTime",
+                                    "specialistExpertise",
+                                    "knowledgeOfTheItemOrComponent",
+                                    "windowOfOpportunity",
+                                    "equipment"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "attackPotential"
+                        ]
+                    },
+                    "refines": {
+                        "type": "string",
+                        "pattern": "^[T]\\.\\d{3}$",
+                        "description": "Reference to a parent threat unique identifier if this is a refinement (optional)"
+                    },
+                    "compromises": {
+                        "type": "array",
+                        "description": "List of security properties this threat compromises",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "Confidentiality",
+                                "Integrity",
+                                "Availability",
+                                "Authenticity",
+                                "Non-Repudiation"
+                            ]
+                        }
+                    },
+                    "actsOn": {
+                        "type": "array",
+                        "description": "List of target entities the threat acts on",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "Component",
+                                "Data",
+                                "Channel",
+                                "Data Flow"
+                            ]
+                        }
+                    },
+                    "threatens": {
+                        "type": "array",
+                        "description": "List of control IDs this control threatens",
+                        "items": {
+                            "type": "string",
+                            "pattern": "^C\\.\\d{3}$"
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "classificationModel",
+                    "attackFeasibility",
+                    "compromises",
+                    "actsOn"
+                ]
+            }
+        }
+    },
+    "required": [
+        "version",
+        "threats"
+    ],
+    "$defs": {
+        "FeasibilityComponent": {
+            "type": "object",
+            "properties": {
+                "feasibility": {
+                    "type": "string",
+                    "description": "Feasibility level code",
+                    "pattern": "^(ET[0-4]|SE[0-3]|KoIC[0-3]|WoO[0-3]|Eq[0-3])$"
+                },
+                "rationale": {
+                    "type": "string",
+                    "description": "Optional explanation for the feasibility rating",
+                    "default": ""
+                }
+            },
+            "required": [
+                "feasibility"
+            ]
+        }
+    }
+}

@@ -1,0 +1,2179 @@
+{
+    "version": "0.1.0",
+    "$schema": "../schemas/threat-array.schema.json",
+    "threats": [
+        {
+            "id": "T.001",
+            "name": "Spoofing",
+            "description": "Spoofing is an attack where an adversary pretends to be a trusted entity to gain unauthorized access or privileges. In automotive systems, this can involve impersonating ECUs, users, or external services to inject false data, gain access to restricted functions, or bypass authentication. Spoofing can compromise confidentiality and authenticity, leading to unauthorized actions or data leaks. Effective countermeasures include strong authentication, cryptographic protections, and monitoring for abnormal communication patterns.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.002",
+            "name": "Man-in-the-Middle Attack",
+            "description": "A Man-in-the-Middle (MitM) attack occurs when an attacker intercepts and potentially alters communications between two parties without their knowledge. In automotive systems, MitM can compromise data integrity, confidentiality, and authenticity. Using strong encryption and mutual authentication helps prevent MitM attacks.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.003",
+            "name": "Identity Spoofing When Logging In With A Password",
+            "description": "This threat involves an attacker impersonating a legitimate user or component by guessing, stealing, or otherwise obtaining valid login credentials. In automotive environments, this could allow unauthorized access to vehicle systems, sensitive data, or remote services. Attackers may exploit weak passwords, credential reuse, or insecure storage to perform identity spoofing. Strong password policies, multi-factor authentication, and secure credential management help mitigate this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Require Knowledge about the security behaviour of the product or system type."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Requires knowledge about the asset to perform the attack that might be restricted to the product owner"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "Always available without any time limitation"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Equipment is readily available. May need only a laptop"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data Flow",
+                "Channel"
+            ]
+        },
+        {
+            "id": "T.004",
+            "name": "Software Packages Originating From An Unauthorized Source",
+            "description": "Attackers may attempt to install or distribute software packages that do not originate from trusted or authorized sources. In automotive systems, this can lead to the execution of malicious code, unauthorized modifications, or the introduction of vulnerabilities. Ensuring software authenticity through digital signatures, secure update mechanisms, and strict supply chain controls is essential to prevent this threat.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.005",
+            "name": "Hardware Components Originating From An Unauthorized Source",
+            "description": "This threat involves the use of counterfeit, tampered, or unauthorized hardware components within the vehicle. Such components may introduce vulnerabilities, backdoors, or fail to meet safety and security standards. Attackers may exploit supply chain weaknesses to insert malicious hardware. Rigorous supplier vetting, component authentication, and supply chain monitoring are key defenses.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Requires an individual who is an experienced engineer and can understand architecture hardware components and complex systems"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.006",
+            "name": "Spoofing Of External Communication",
+            "description": "An attacker forges or manipulates information originating from external sources, such as cloud services, mobile apps, or external devices, to deceive the vehicle or its systems. This can result in unauthorized actions, data manipulation, or security bypasses. Validating the authenticity and integrity of all externally sourced data is critical to mitigate this threat.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Data Flow",
+                "Channel"
+            ]
+        },
+        {
+            "id": "T.007",
+            "name": "Spoofing Of Internal Communication",
+            "description": "This threat involves an attacker within the vehicle network generating or modifying messages to impersonate legitimate ECUs or sensors. By injecting false data or commands, attackers can disrupt vehicle functions, mislead safety systems, or bypass security controls. Message authentication and network segmentation help defend against internal spoofing.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Data Flow",
+                "Channel"
+            ]
+        },
+        {
+            "id": "T.008",
+            "name": "Location Spoofing",
+            "description": "Location spoofing occurs when an attacker manipulates or falsifies the vehicle's reported location, typically by interfering with GPS or other positioning systems. This can mislead navigation, enable theft, or bypass location-based restrictions. Defenses include multi-source location verification, anomaly detection, and secure GPS modules.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Need to be experienced with the security behavioral of the system"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "It will require confidential information about the item that may be available within the developer teams and shared with other teams"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "May need access to the system hardware or software component"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Tools are easily available online such as a VPN connection"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Data",
+                "Data Flow",
+                "Channel"
+            ]
+        },
+        {
+            "id": "T.009",
+            "name": "Exploitation Of Spoofing Weaknesses",
+            "description": "Attackers exploit known or unknown weaknesses in authentication or identity verification mechanisms to successfully perform spoofing attacks. This can lead to unauthorized access, data manipulation, or control over vehicle functions. Regular security assessments, patching, and robust authentication protocols are necessary to reduce this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.001",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.010",
+            "name": "Tampering",
+            "description": "Tampering refers to the unauthorized modification of data, code, or hardware within the vehicle system. Attackers may alter firmware, configuration files, or physical components to disrupt operations, introduce vulnerabilities, or bypass security controls. Integrity checks, secure boot, and physical protections are key countermeasures.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Data Flow",
+                "Channel"
+            ]
+        },
+        {
+            "id": "T.011",
+            "name": "Manipulation Of Transferred Data In External Communication",
+            "description": "This threat involves an attacker altering data as it is transferred from external sources to the vehicle, such as over wireless or wired channels. Manipulation can lead to incorrect system behavior, unauthorized actions, or the introduction of malicious code. In automotive systems, this could affect firmware updates, telematics, or infotainment data. Ensuring data integrity and authenticity during transfer is essential to mitigate this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.012",
+            "name": "Manipulation Of Transferred Data In Internal Communication",
+            "description": "Attackers may intercept and modify data as it moves between internal vehicle components, such as ECUs or sensors. This can disrupt normal operations, cause safety issues, or enable further attacks. Automotive systems must use message authentication and integrity checks to detect and prevent unauthorized internal data manipulation.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.013",
+            "name": "Manipulation Of Data During Computation",
+            "description": "Manipulation during computation refers to altering data or processes while they are being processed by the vehicle's systems. Attackers may exploit software vulnerabilities or inject malicious code to change outcomes, bypass controls, or cause malfunctions. Protecting computation integrity is vital for reliable and safe vehicle operation.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.014",
+            "name": "Manipulation Of Data Residing In Memory",
+            "description": "This threat targets the unauthorized modification of memory contents within automotive systems. Attackers may exploit vulnerabilities to alter variables, firmware, or configuration data stored in memory, potentially leading to system instability or security breaches. Memory protection mechanisms and regular integrity checks help mitigate this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.015",
+            "name": "Manipulation Of Code",
+            "description": "Manipulation of code involves unauthorized changes to software or firmware running on vehicle systems. Attackers may inject, modify, or replace code to introduce vulnerabilities, gain control, or disrupt operations. Secure boot, code signing, and regular software validation are essential defenses against this threat.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.016",
+            "name": "Parameter Injection",
+            "description": "Parameter injection occurs when an attacker supplies malicious input to vehicle systems, causing them to behave unexpectedly or execute unauthorized commands. This can exploit weaknesses in input validation, leading to security bypasses or system compromise. Strong input validation and sanitization are key countermeasures.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.017",
+            "name": "Code Injection",
+            "description": "Code injection is a technique where attackers introduce malicious code into a vehicle's software environment, often exploiting vulnerabilities in input handling or communication protocols. This can result in unauthorized actions, data theft, or system compromise. Preventing code injection requires secure coding practices and input validation.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.018",
+            "name": "Command Injection",
+            "description": "Command injection involves an attacker inserting unauthorized commands into a system interface, causing the vehicle to execute unintended actions. This can lead to privilege escalation, data manipulation, or system disruption. Proper input validation and command parsing are essential to prevent this threat.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO3"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.019",
+            "name": "Fault Injection",
+            "description": "Fault injection is a technique where attackers deliberately introduce faults or errors into hardware or software to disrupt normal operation, bypass security controls, or reveal vulnerabilities. In automotive systems, this can include voltage glitches, clock manipulation, or electromagnetic interference to alter system behavior or extract sensitive data. Countermeasures include fault detection, redundancy, and robust error handling.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.020",
+            "name": "Replay Attack",
+            "description": "A replay attack occurs when an attacker captures valid data transmissions and retransmits them to trick the system into performing unauthorized actions. In automotive systems, this can affect authentication, remote control, or data integrity. Using nonces, timestamps, and message authentication codes helps defend against replay attacks.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.021",
+            "name": "Manipulation Of Configuration And Settings",
+            "description": "Attackers may attempt to alter configuration files or system settings to weaken security, enable unauthorized features, or disrupt normal operation. In automotive systems, this can impact safety, privacy, or system reliability. Protecting configuration data with access controls and integrity checks is critical.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.022",
+            "name": "Protocol Manipulation",
+            "description": "Protocol manipulation in automotive systems involves unauthorized changes or exploitation of in-vehicle communication protocols such as CAN, LIN, or automotive Ethernet. Attackers may alter protocol messages, exploit weaknesses in protocol design, or force ECUs to operate outside intended parameters. This can result in data corruption, unauthorized control of vehicle functions, or system malfunctions. Defenses include strict protocol validation, secure protocol design, and monitoring for abnormal protocol activity on vehicle networks.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.023",
+            "name": "Exploitation Of Tampering Weaknesses",
+            "description": "Attackers exploit known or unknown weaknesses in software, hardware, or physical protections to successfully perform tampering attacks. This can result in unauthorized modification of data, code, or components, potentially leading to system instability, safety risks, or bypassing security controls. Regular security assessments, patching, physical protections, and robust integrity verification mechanisms are necessary to reduce this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.010",
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.024",
+            "name": "Physical Data Tampering",
+            "description": "Physical data tampering involves attackers gaining physical access to a vehicle or its components to directly modify or corrupt data stored on storage devices, memory chips, or communication interfaces. This can result in the alteration of critical information, injection of malicious code, or disruption of normal system operation. Countermeasures include tamper-evident seals, encrypted storage, and disabling unnecessary physical interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.010"
+        },
+        {
+            "id": "T.025",
+            "name": "BGA Data Tampering",
+            "description": "This threat involves tampering with data on integrated circuits using physical access techniques specific to BGA (Ball Grid Array) packages. Attackers may use advanced chip-off, microprobing, or decapsulation methods to modify internal memory or firmware, potentially injecting malicious code or corrupting data. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.024"
+        },
+        {
+            "id": "T.026",
+            "name": "LGA Data Tampering",
+            "description": "This threat involves tampering with data on integrated circuits using physical access techniques specific to LGA (Land Grid Array) packages. Attackers may use chip-off, microprobing, or decapsulation to modify internal memory or firmware, potentially altering system behavior or injecting malicious code. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.024"
+        },
+        {
+            "id": "T.027",
+            "name": "QFP Data Tampering",
+            "description": "This threat involves tampering with data on integrated circuits using physical access techniques specific to QFP (Quad Flat Package) chips. Attackers may decapsulate the chip and probe internal connections or memory to modify firmware or critical data, potentially disrupting system operation. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.024"
+        },
+        {
+            "id": "T.028",
+            "name": "TSOP Data Tampering",
+            "description": "This threat involves tampering with data on integrated circuits using physical access techniques specific to TSOP (Thin Small Outline Package) chips. Attackers may target exposed pins or decapsulate the chip to modify internal memory, risking corruption of firmware or critical data. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.024"
+        },
+        {
+            "id": "T.029",
+            "name": "WSON Data Tampering",
+            "description": "This threat involves tampering with data on integrated circuits using physical access techniques specific to WSON (Very-very-thin Small Outline No-lead) packages. Attackers may use advanced techniques to modify internal memory or firmware, risking corruption of sensitive data or injection of malicious code. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.024"
+        },
+        {
+            "id": "T.030",
+            "name": "Repudiation",
+            "description": "Repudiation occurs when an entity denies having performed an action, such as sending a message or making a change, making it difficult to prove responsibility. In automotive systems, this can hinder forensic investigations or accountability for unauthorized actions. Implementing strong logging, digital signatures, and audit trails helps prevent repudiation and ensures actions can be traced to their source.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.031",
+            "name": "Non-Repudiation Software Mechanism Bypass ",
+            "description": "This threat involves bypassing software mechanisms designed to ensure non-repudiation, such as digital signatures or audit logs. Attackers may alter or disable these controls to hide their actions. Ensuring robust, tamper-evident non-repudiation mechanisms is critical for accountability.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.030",
+            "compromises": [
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.032",
+            "name": "Exploitation Of Repudiation Weaknesses",
+            "description": "This threat involves attackers exploiting insufficient logging or weak authentication to deny their actions or make it difficult to trace malicious activities. In automotive environments, this can prevent detection of unauthorized changes or misuse. Robust audit mechanisms and tamper-evident logs are essential to counter repudiation exploitation.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.030",
+            "compromises": [
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.033",
+            "name": "Information Disclosure",
+            "description": "Information disclosure refers to the unauthorized exposure of sensitive data, such as personal information, cryptographic keys, or system details. In automotive systems, this can occur through insecure communications, weak access controls, or software vulnerabilities. Protecting data confidentiality is critical to prevent privacy breaches and further attacks.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Data"
+            ]
+        },
+        {
+            "id": "T.034",
+            "name": "Interception",
+            "description": "Interception is the unauthorized capture of data as it is transmitted between components or systems. Attackers may eavesdrop on network traffic to obtain sensitive information, such as credentials or commands. In automotive networks, encryption and secure communication protocols are vital to prevent interception.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.033",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.035",
+            "name": "Interception Of Internal Data",
+            "description": "This threat involves capturing data exchanged within the vehicle, such as between ECUs or sensors. Attackers may exploit unencrypted internal communications to access sensitive information or manipulate system behavior. Implementing internal network segmentation and encryption helps mitigate this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.034",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.036",
+            "name": "Interception Of External Data",
+            "description": "Attackers may intercept data transmitted between the vehicle and external entities, such as backend servers or mobile devices. This can lead to the exposure of personal data, credentials, or operational commands. Secure external communications using encryption and authentication are essential defenses.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.034",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.037",
+            "name": "Unintended Disclosure Of PII Data",
+            "description": "Unintended disclosure of personally identifiable information (PII) occurs when sensitive user data is exposed due to misconfiguration, software flaws, insecure interfaces or undesired logging. In automotive systems, this can compromise user privacy and regulatory compliance. Strong data protection and privacy controls are necessary to prevent such leaks.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.033",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.038",
+            "name": "Software Or Firmware Disclosure",
+            "description": "This threat involves unauthorized access to or exposure of proprietary software or firmware. Attackers may reverse engineer or extract code to find vulnerabilities or intellectual property. Protecting firmware with encryption and access controls helps prevent disclosure and subsequent exploitation.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.033",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.039",
+            "name": "Functional Observation",
+            "description": "Functional observation refers to monitoring or analyzing the behavior of vehicle systems to gather information about their operation. Attackers may use this data to identify vulnerabilities or plan further attacks. Limiting debug interfaces and monitoring for unauthorized access can reduce this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.033",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.040",
+            "name": "Side Channel Attacks",
+            "description": "Side channel attacks exploit indirect information leaked by a system's physical implementation, such as timing, power consumption, electromagnetic emissions, or acoustic signals, to extract sensitive data or cryptographic keys. In automotive systems, attackers may use side channels to bypass security controls or gain unauthorized access to confidential information. Countermeasures include shielding, noise generation, and designing hardware and software to minimize information leakage.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.039",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.041",
+            "name": "Reverse Engineering",
+            "description": "Reverse engineering is the process of analyzing hardware or software to understand its design, functionality, or vulnerabilities. In automotive systems, attackers may reverse engineer ECUs, firmware, or communication protocols to find weaknesses. Obfuscation, encryption, and anti-tamper measures help deter reverse engineering.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.033",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.042",
+            "name": "Physical Data Extraction",
+            "description": "Physical data extraction involves attackers gaining physical access to a vehicle or its components to directly extract data from storage devices, memory chips, or communication interfaces. This can lead to the exposure of sensitive information, intellectual property, or cryptographic keys. Countermeasures include tamper-evident seals, encrypted storage, and disabling unnecessary physical interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.033",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.043",
+            "name": "BGA Data Extraction",
+            "description": "This threat involves extracting data from integrated circuits using physical access techniques specific to BGA (Ball Grid Array) packages. BGA chips have solder balls on the underside, making direct probing difficult, but attackers may use advanced chip-off, microprobing, or decapsulation methods to access internal memory or firmware. These techniques can expose sensitive data or intellectual property stored within the chip. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.042"
+        },
+        {
+            "id": "T.044",
+            "name": "LGA Data Extraction",
+            "description": "This threat involves extracting data from integrated circuits using physical access techniques specific to LGA (Land Grid Array) packages. LGA chips have flat contact pads on the underside, which can be accessed by attackers using chip-off, microprobing, or decapsulation to reach internal memory or firmware. The flat pad design may allow for easier rework or probing compared to BGA, but still requires specialized equipment. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.042"
+        },
+        {
+            "id": "T.045",
+            "name": "QFP Data Extraction",
+            "description": "This threat involves extracting data from integrated circuits using physical access techniques specific to QFP (Quad Flat Package) chips. QFP chips have leads extending from all four sides, making them more accessible for chip-off or microprobing attacks. Attackers may decapsulate the chip and probe internal connections or memory to extract firmware or sensitive data. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.042"
+        },
+        {
+            "id": "T.046",
+            "name": "TSOP Data Extraction",
+            "description": "This threat involves extracting data from integrated circuits using physical access techniques specific to TSOP (Thin Small Outline Package) chips. TSOP chips have thin, flat leads on two sides, making them relatively accessible for chip-off, microprobing, or decapsulation. Attackers may target exposed pins or decapsulate the chip to access internal memory, risking exposure of sensitive data or firmware. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.042"
+        },
+        {
+            "id": "T.047",
+            "name": "WSON Data Extraction",
+            "description": "This threat involves extracting data from integrated circuits using physical access techniques specific to WSON (Very-very-thin Small Outline No-lead) packages. WSON chips have no leads and a flat, exposed pad on the underside, making them challenging to probe but still vulnerable to chip-off, microprobing, or decapsulation. Attackers may use advanced techniques to access internal memory or firmware, risking exposure of sensitive data. Countermeasures include epoxy encapsulation, encrypted storage, and disabling debug/test interfaces.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ],
+            "refines": "T.042"
+        },
+        {
+            "id": "T.048",
+            "name": "Denial Of Service",
+            "description": "Denial of Service (DoS) attacks aim to disrupt the normal operation of vehicle systems by overwhelming resources, blocking communications, or causing system crashes. In automotive environments, DoS can affect safety-critical functions. Rate limiting, redundancy, and robust error handling are key defenses.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.049",
+            "name": "Disrupt Wireless Data Transmission",
+            "description": "This threat involves interfering with or blocking wireless communications, such as Wi-Fi, Bluetooth, or cellular signals. Attackers may use jamming or flooding techniques to prevent data exchange, impacting vehicle connectivity and safety. Using robust wireless protocols and interference detection can help mitigate this risk.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.050",
+            "name": "Disrupt Wired Data Transmission",
+            "description": "Attackers may disrupt wired communications within the vehicle, such as CAN, LIN, or Ethernet networks, by injecting noise, disconnecting cables, or sending malformed messages. This can lead to loss of functionality or safety risks. Physical protections and message validation are important countermeasures.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.051",
+            "name": "Disrupt Computation",
+            "description": "Disrupting computation involves interfering with the processing capabilities of ECUs or other vehicle systems, potentially causing malfunctions or degraded performance. Attackers may exploit software bugs or resource exhaustion. Monitoring system health and implementing fail-safes can reduce the impact.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.052",
+            "name": "Flooding",
+            "description": "Flooding attacks overwhelm vehicle networks or systems with excessive traffic or requests, leading to degraded performance or denial of service. In automotive environments, this can disrupt critical communications or functions. Rate limiting and anomaly detection are effective defenses.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.053",
+            "name": "Jamming",
+            "description": "Jamming is the deliberate interference with wireless signals to block or degrade communications. In automotive systems, jamming can affect GPS, Wi-Fi, or cellular connectivity, impacting navigation and remote services. Detection mechanisms and frequency hopping can help counter jamming.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.054",
+            "name": "GPS Jamming",
+            "description": "GPS jamming targets the vehicle's positioning system by emitting signals that interfere with GPS reception. This can cause navigation errors, disable location-based services, or enable theft. Using multi-source positioning and jamming detection can help maintain reliable navigation.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.053",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.055",
+            "name": "Excessive Allocation Of Resources",
+            "description": "This threat involves intentionally consuming excessive system resources, such as memory, CPU, or bandwidth, to degrade performance or cause failures. In automotive systems, resource exhaustion can impact safety and reliability. Resource management and monitoring are essential to prevent abuse.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.056",
+            "name": "Resource Leak Exposure And Depletion",
+            "description": "Resource leaks occur when system resources are not properly released, leading to gradual depletion and potential system failure. Attackers may exploit software bugs to trigger leaks and cause denial of service. Regular code reviews and resource monitoring help mitigate this threat.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.057",
+            "name": "Denial Of Wallet",
+            "description": "Denial of Wallet (DoW) is a cyberattack that targets an organization's financial resources by generating excessive costs for their cloud computing or serverless platforms. Attackers overload the system with requests, causing increased resource consumption and high operational expenses, as the cloud instances are autoscaling up in order to respond. Countermeasures include usage monitoring, proper autoscaling configurations defining minimum and maximum instances, spending limits, and strong authentication for resource-intensive operations.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.048",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.058",
+            "name": "Elevation Of Privilege",
+            "description": "Elevation of privilege occurs when an attacker gains higher access rights than intended, allowing them to perform unauthorized actions. In automotive systems, this can lead to control over critical functions or data. Implementing strict access controls and privilege separation is crucial.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Availability",
+                "Non-Repudiation",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.059",
+            "name": "Gaining Access Via Privilege Escalation",
+            "description": "Access via privilege escalation refers to exploiting vulnerabilities or misconfigurations to gain unauthorized access to restricted areas or functions. In automotive environments, this can compromise system integrity and safety. Regular security assessments and least-privilege principles help prevent escalation.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.058",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.060",
+            "name": "Gaining Processing Capabilities Via Privilege Escalation",
+            "description": "This threat involves gaining unauthorized processing capabilities, such as executing privileged code or accessing protected memory. Attackers may exploit software flaws or weak isolation. Strong process isolation and secure coding practices are key defenses.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.058",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.061",
+            "name": "Privilege Abuse",
+            "description": "Privilege abuse occurs when authorized users or components misuse their access rights to perform malicious or unintended actions. In automotive systems, this can result in data leaks, system changes, or safety risks. Monitoring and auditing privileged actions help detect and prevent abuse.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.058",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.062",
+            "name": "Open Development Or Debug Channels",
+            "description": "Leaving development or debug channels open in production systems can expose sensitive interfaces to attackers. In automotive environments, this may allow unauthorized access, data extraction, or system manipulation. Disabling or securing development channels before deployment is essential.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.058",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Data",
+                "Data Flow",
+                "Channel"
+            ]
+        },
+        {
+            "id": "T.063",
+            "name": "Exploitation Of Software Weakness",
+            "description": "Attackers exploit vulnerabilities or flaws in software, such as bugs, insecure coding practices, or outdated libraries, to compromise automotive systems. This can lead to elevation of privilege and in sequence unauthorized access, data manipulation, or system disruption. Regular software updates, secure coding, and vulnerability management are essential countermeasures.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Availability",
+                "Authenticity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ],
+            "refines": "T.058"
+        },
+        {
+            "id": "T.064",
+            "name": "Exploitation Of Misconfiguration",
+            "description": "Attackers take advantage of insecure or incorrect system configurations, such as default passwords, open ports, or excessive privileges, to gain unauthorized access or control. Proper configuration management, regular audits, and adherence to security best practices help mitigate this threat.",
+            "classificationModel": "STRIDE",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Availability",
+                "Authenticity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ],
+            "refines": "T.058"
+        }
+    ]
+}

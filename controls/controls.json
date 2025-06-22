@@ -1,0 +1,2165 @@
+{
+  "version": "0.1.0",
+  "$schema": "../schemas/control-array.schema.json",
+  "controls": [
+    {
+      "id": "C.001",
+      "name": "Symmetric Encryption",
+      "description": "Symmetric encryption secures in-vehicle communications and data storage using the same secret key for both encryption and decryption. It is widely used for real-time protection of CAN, LIN, and automotive Ethernet traffic, as well as for protecting sensitive data at rest. Robust key management is essential to prevent unauthorized access. This control is often implemented using algorithms such as AES or ChaCha20.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Data",
+        "Channel",
+        "Data Flow"
+      ]
+    },
+    {
+      "id": "C.002",
+      "name": "AES (Advanced Encryption Standard)",
+      "description": "AES is a widely adopted symmetric encryption algorithm used for securing automotive communications, firmware, and data at rest. It is often hardware-accelerated in ECUs to meet real-time performance requirements. AES supports multiple key lengths (128, 192, 256 bits) and is considered highly secure when implemented correctly. In automotive, it is used for encrypting diagnostic data, protecting OTA updates, and securing internal bus communications.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET4"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Data",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.001"
+    },
+    {
+      "id": "C.003",
+      "name": "ChaCha20",
+      "description": "ChaCha20 is a modern symmetric stream cipher designed for high performance and security, even on resource-constrained automotive ECUs. It is used for encrypting in-vehicle communications, firmware, and data at rest, providing an alternative to AES, especially where hardware acceleration is unavailable. ChaCha20 is resistant to timing attacks and is suitable for real-time automotive applications.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET4"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Data",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.001"
+    },
+    {
+      "id": "C.004",
+      "name": "Asymmetric Encryption",
+      "description": "Asymmetric encryption uses public/private key pairs for secure key exchange, authentication, and digital signatures in automotive systems. It is essential for secure OTA updates, V2X communications, and establishing trust between ECUs and backend servers. Algorithms such as RSA and ECC are commonly used. Asymmetric encryption complements symmetric encryption by enabling secure key distribution and non-repudiation.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Data",
+        "Channel",
+        "Data Flow"
+      ]
+    },
+    {
+      "id": "C.005",
+      "name": "RSA (Rivest-Shamir-Adleman)",
+      "description": "RSA is a foundational asymmetric cryptographic algorithm used for secure data transmission, digital signatures, and secure boot in automotive ECUs. It enables secure key exchange and authentication between vehicle components and backend services. RSA is often used in conjunction with other protocols such as TLS and for verifying OTA update packages.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET4"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Data",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.004"
+    },
+    {
+      "id": "C.006",
+      "name": "ECC (Elliptic Curve Cryptography)",
+      "description": "ECC is an efficient asymmetric cryptography method used for secure key exchange and digital signatures in resource-constrained automotive ECUs. ECC provides equivalent security to RSA with smaller key sizes, making it ideal for embedded systems. It is widely used in V2X, secure diagnostics, and OTA update authentication. ECC is often used with ECDSA for signatures.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET4"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Data",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.004"
+    },
+    {
+      "id": "C.007",
+      "name": "Network Security",
+      "description": "Network Security encompasses a set of foundational controls designed to protect automotive and cloud-connected systems from network-based threats. It includes measures such as network segmentation, traffic monitoring and filtering, and TLS defending against unauthorized access, data leakage, denial-of-service attacks, and lateral movement within vehicle or cloud networks. These baseline protections serve as the groundwork for implementing more advanced network security mechanisms tailored to specific threats and environments.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow",
+        "Component"
+      ]
+    },
+    {
+      "id": "C.008",
+      "name": "Diffie-Hellman Key Exchange",
+      "description": "Diffie-Hellman is a protocol for securely exchanging cryptographic keys over insecure automotive networks, enabling secure session establishment between ECUs and backend servers. It is often used as part of TLS handshakes and for establishing session keys in V2X.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.009",
+      "name": "TLS (Transport Layer Security)",
+      "description": "TLS (Transport Layer Security) is a cryptographic protocol for securing data in transit over automotive networks, including backend communications, OTA updates, and telematics. It provides confidentiality, integrity, and authentication for vehicle-to-cloud and vehicle-to-infrastructure communications. TLS 1.2 and TLS 1.3 are the primary versions used in automotive systems, with TLS 1.3 offering stronger security and faster handshakes by eliminating outdated cryptographic primitives and providing forward secrecy by default. TLS 1.3 is recommended for all new designs, while older versions (prior to 1.2) are deprecated and should not be used. This control refines secure communication and channel protection controls.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.010",
+      "name": "Firewall",
+      "description": "A firewall monitors and controls incoming and outgoing network traffic based on predetermined security rules. In automotive and cloud-connected systems, firewalls are used to segment networks, block unauthorized access, and prevent attacks from propagating between domains or to the backend. Depending on the kind of firewall, web application attacks like SQL injections and Cross-site scripting can also be mitigated.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Availability"
+      ],
+      "actsOn": [
+        "Component",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.011",
+      "name": "Load Balancer",
+      "description": "A load balancer distributes incoming network traffic across multiple servers or services to ensure high availability, reliability, and optimal resource utilization. In automotive and cloud-connected systems, load balancers help prevent single points of failure, mitigate denial-of-service attacks, and support autoscaling by dynamically routing requests.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Availability"
+      ],
+      "actsOn": [
+        "Component",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.012",
+      "name": "Intrusion Detection System (IDS)",
+      "description": "An IDS monitors network or system activities for malicious actions or policy violations, including possible data leakage. In automotive and cloud environments, IDS solutions detect anomalies, unauthorized access, and known attack patterns, providing alerts for further investigation. It must be noted that IDSs do not take immediate actions to mitigate the presented threat, only alert the SOC and log the event.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET0"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE0"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC0"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO0"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Non-Repudiation"
+      ],
+      "actsOn": [
+        "Data",
+        "Component",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.013",
+      "name": "Intrusion Prevention System (IPS)",
+      "description": "An IPS actively analyzes and takes automated actions to block or prevent detected threats in network traffic. In automotive and cloud systems, IPS can drop malicious packets, block suspicious IPs, prevent leakage of confidential data or quarantine compromised node.,",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "actsOn": [
+        "Data",
+        "Component",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.014",
+      "name": "Rate Limiting",
+      "description": "Rate limiting restricts the number of requests or messages allowed over a network or interface within a given time period. In automotive and cloud systems, it prevents denial-of-service attacks, brute-force attempts, and resource exhaustion.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Availability"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.015",
+      "name": "Autoscaling",
+      "description": "Autoscaling automatically adjusts the number of active resources (such as servers or containers) in cloud or containerized environments based on demand. This ensures service availability and resilience against traffic spikes, including those caused by attacks.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Availability"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.016",
+      "name": "Network Segmentation",
+      "description": "Network segmentation divides automotive or cloud-connected networks into isolated segments or zones, limiting the spread of attacks and restricting lateral movement. By separating critical systems from less trusted domains, segmentation reduces the attack surface and enables enforcement of tailored security policies for each segment. Techniques include VLANs, subnetting, and physical separation.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Availability"
+      ],
+      "actsOn": [
+        "Component",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.017",
+      "name": "Certificate Management and Revocation",
+      "description": "Certificate management ensures that digital certificates used for authentication, encryption, and signing in automotive systems are properly issued, renewed, and revoked. Revocation mechanisms such as CRLs or OCSP are used to invalidate compromised or expired certificates. This control is essential for maintaining trust in V2X, OTA updates, and secure communications.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Authenticity",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data",
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.018",
+      "name": "MACsec (Media Access Control Security)",
+      "description": "MACsec provides encryption and integrity protection at the data link layer for automotive Ethernet networks, securing high-speed in-vehicle communications. It prevents eavesdropping, replay, and tampering attacks on Ethernet segments, and is essential for protecting backbone and zonal architectures.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.007"
+    },
+    {
+      "id": "C.019",
+      "name": "Hashing",
+      "description": "Hashing is the process of transforming data into a fixed-size string of characters, which is typically a digest that uniquely represents the input data. In automotive systems, hashing is used for verifying firmware integrity, authenticating diagnostic messages, protecting secure boot processes, and ensuring that critical data has not been tampered with. Hash functions must be collision-resistant and efficient, and are foundational for many cryptographic protocols and controls in vehicles.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Data",
+        "Component"
+      ]
+    },
+    {
+      "id": "C.020",
+      "name": "SHA-2 Family",
+      "description": "The SHA-2 family consists of cryptographic hash functions including SHA-224, SHA-256, SHA-384, and SHA-512, which are based on the Merkle-Damg\u00e5rd construction and use a one-way compression function. These algorithms are widely used for verifying firmware, generating digital signatures, and ensuring data integrity in automotive systems. SHA-2 algorithms are adopted for secure boot, OTA update validation, and message authentication. SHA-256 is the most commonly used variant in automotive cybersecurity, providing strong collision resistance and serving as a standard for secure automotive applications.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.019"
+    },
+    {
+      "id": "C.021",
+      "name": "SHA-3 Family",
+      "description": "SHA-3 is a modern cryptographic hash function based on the Keccak algorithm, providing strong collision resistance and security for firmware validation and automotive data processing. Unlike SHA-2, SHA-3 uses a sponge construction, making it resistant to length extension attacks and offering flexibility in output length. SHA-3 is recommended for new designs due to its different cryptographic basis and improved resistance to certain attack vectors.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET4"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.019"
+    },
+    {
+      "id": "C.022",
+      "name": "MD5",
+      "description": "MD5 is a legacy hash function sometimes found in older automotive systems for integrity checks. Due to known vulnerabilities, it should be replaced by stronger algorithms like SHA-2 or SHA-3. MD5 may still be encountered in legacy ECUs or diagnostic tools, but its use is discouraged for new designs.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET1"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.019"
+    },
+    {
+      "id": "C.023",
+      "name": "Digital Signature",
+      "description": "Digital signatures provide a cryptographic means to verify the authenticity and integrity of messages, firmware, or software in automotive systems. They ensure that data originates from a trusted source and has not been tampered with. Digital signatures are foundational for secure boot, OTA updates, and authenticated diagnostics.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity",
+        "Non-Repudiation"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ]
+    },
+    {
+      "id": "C.024",
+      "name": "DSA (Digital Signature Algorithm)",
+      "description": "DSA is a standard for generating and verifying digital signatures, used to authenticate firmware, software, and messages in automotive ECUs. It provides non-repudiation and ensures that only authorized code and data are accepted by the system. DSA is often used in secure boot and OTA update processes.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity",
+        "Non-Repudiation"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.023"
+    },
+    {
+      "id": "C.025",
+      "name": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+      "description": "ECDSA is a digital signature algorithm based on elliptic curve cryptography, providing strong security with smaller key sizes. It is widely used in automotive V2X, secure diagnostics, and OTA update authentication. ECDSA enables efficient signature generation and verification, making it suitable for resource-constrained ECUs.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity",
+        "Non-Repudiation"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.023"
+    },
+    {
+      "id": "C.026",
+      "name": "EdDSA (Edwards-curve Digital Signature Algorithm)",
+      "description": "EdDSA is a modern digital signature algorithm designed for high performance and security, based on twisted Edwards curves. It is suitable for automotive applications requiring fast signature generation and verification, such as V2X and secure diagnostics. EdDSA offers resistance to side-channel attacks and is recommended for new automotive designs.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity",
+        "Non-Repudiation"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.023"
+    },
+    {
+      "id": "C.027",
+      "name": "Message Authentication Codes",
+      "description": "A Message Authentication Code (MAC) is a short piece of information used to authenticate a message and ensure its integrity and authenticity. In automotive and cloud-connected systems, MACs are generated using a secret key and a cryptographic algorithm, allowing the receiver to verify that the message has not been altered and originates from a trusted source.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow",
+        "Data"
+      ]
+    },
+    {
+      "id": "C.028",
+      "name": "HMAC (Hash-Based Message Authentication Code)",
+      "description": "HMAC is a mechanism for verifying the integrity and authenticity of messages exchanged between ECUs using a cryptographic hash function and a secret key. It is widely used in automotive protocols for message authentication, protecting against spoofing and tampering. HMAC can be based on hash functions like SHA-256 or SHA-3.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow",
+        "Data"
+      ],
+      "refines": "C.027"
+    },
+    {
+      "id": "C.029",
+      "name": "CMAC (Cipher-based Message Authentication Code)",
+      "description": "CMAC is a symmetric-key algorithm based on block ciphers like AES, used for message authentication and integrity verification in automotive networks. It is particularly suitable for environments where hardware acceleration of AES is available. CMAC is used in secure CAN protocols and for authenticating diagnostic messages.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow",
+        "Data"
+      ],
+      "refines": "C.027"
+    },
+    {
+      "id": "C.030",
+      "name": "Trusted Execution Environment",
+      "description": "A Trusted Execution Environment (TEE) is a secure area of a processor that ensures sensitive code and data are isolated from the main operating system. In automotive systems, TEEs protect cryptographic operations, key storage, and security-critical applications from compromise, even if the main OS is attacked.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ]
+    },
+    {
+      "id": "C.031",
+      "name": "TEE OS",
+      "description": "A Trusted Execution Environment OS is a lightweight, secure operating system that runs within a hardware-backed enclave such as Arm TrustZone's Secure World. It provides isolation for security-critical applications, cryptographic operations, and sensitive resources, shielding them from the main OS. In automotive systems, TEE OSes enforce strict separation between trusted and untrusted code, manage secure memory and peripherals, and offer APIs for key storage, attestation, and system integrity. Common implementations like OP-TEE and QSEE enable secure services essential for protecting digital keys, firmware, and vehicle communication.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.030"
+    },
+    {
+      "id": "C.032",
+      "name": "Arm TrustZone",
+      "description": "Arm TrustZone is a hardware-based security extension in Arm processors that creates two isolated execution environments: the Secure World for trusted code and the Normal World for general-purpose tasks. It enables secure execution of critical functions such as cryptographic processing, key storage, and secure boot by isolating them from untrusted software. In automotive ECUs, TrustZone is used to protect high-value assets and enforce strict system partitioning. It provides the foundation for TEE OSes to run securely, ensuring hardware-enforced separation of secure services from potentially compromised code.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.030"
+    },
+    {
+      "id": "C.033",
+      "name": "Secure RAM",
+      "description": "Secure RAM is a protected memory region within an ECU or security module that is isolated from the main system and accessible only to trusted processes or hardware. It is used to store sensitive data such as cryptographic keys, session information, or authentication tokens during runtime. Secure RAM helps prevent unauthorized access, memory dumping, and side-channel attacks.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.030"
+    },
+    {
+      "id": "C.034",
+      "name": "Trusted Key Management",
+      "description": "Trusted Key Management encompasses the secure generation, distribution, storage, rotation, and destruction of cryptographic keys in automotive systems. It ensures that keys are only accessible to authorized entities and are protected against unauthorized access, leakage, or misuse. Trusted key management is foundational for maintaining the confidentiality and integrity of cryptographic operations, supporting secure communications, firmware updates, and authentication protocols.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ]
+    },
+    {
+      "id": "C.035",
+      "name": "Secure Key Storage",
+      "description": "Secure key storage ensures that cryptographic keys and other sensitive credentials are stored in a protected environment within the vehicle, such as a dedicated secure memory or hardware security module. This prevents unauthorized access, extraction, or tampering with keys, even if an attacker gains physical access to the ECU. Secure key storage is fundamental for maintaining the confidentiality and integrity of cryptographic operations and refines key management and hardware security controls.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.034"
+    },
+    {
+      "id": "C.036",
+      "name": "Hardware Security Module (HSM)",
+      "description": "A Hardware Security Module (HSM) is a dedicated hardware component designed to securely generate, store, and manage cryptographic keys and perform sensitive operations such as encryption, decryption, and digital signatures. In automotive ECUs, HSMs provide a hardware root of trust and protect against both logical and physical attacks. HSMs are essential for secure boot, secure diagnostics, and secure communications, refining secure key storage and cryptographic controls.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.034"
+    },
+    {
+      "id": "C.037",
+      "name": "Trusted Platform Module (TPM)",
+      "description": "A Trusted Platform Module (TPM) is a specialized chip that provides hardware-based security functions, including secure key storage, platform integrity measurement, and attestation. In automotive systems, TPMs are used to ensure the authenticity of ECUs, protect cryptographic keys, and support secure boot and remote attestation. TPMs refine secure key storage and hardware root of trust controls.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.034"
+    },
+    {
+      "id": "C.038",
+      "name": "Secure Element",
+      "description": "A secure element is a tamper-resistant hardware component dedicated to storing cryptographic keys and executing sensitive operations. In automotive, secure elements are used for secure authentication, payment, and V2X credentials. They provide a high level of physical and logical protection, refining secure key storage and hardware security controls.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.034"
+    },
+    {
+      "id": "C.039",
+      "name": "One-Time Programmable (OTP) Memory",
+      "description": "One-Time Programmable (OTP) memory is a type of non-volatile storage that can be programmed only once. In automotive systems, OTP memory is used to securely store immutable data such as cryptographic keys, device identifiers, or configuration settings. Once programmed, the data cannot be altered or erased, providing strong protection against tampering and unauthorized modification. OTP memory is commonly used for hardware root of trust, secure boot, and anti-rollback mechanisms.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.034"
+    },
+    {
+      "id": "C.040",
+      "name": "eFuses",
+      "description": "eFuses are hardware-based, programmable fuses used to permanently store security-critical information such as cryptographic keys, configuration settings, or device identity. In automotive ECUs, eFuses provide tamper-resistant storage that cannot be altered or read without physical access, supporting secure boot, anti-rollback, and device authentication.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.039"
+    },
+    {
+      "id": "C.041",
+      "name": "Access Control",
+      "description": "Access Control encompasses mechanisms that restrict access to resources and operations based on policies, user roles, or system attributes. In automotive and cloud systems, access control ensures that only authorized users, processes, or devices can perform sensitive actions, protecting against unauthorized access and privilege escalation.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ]
+    },
+    {
+      "id": "C.042",
+      "name": "Role-Based Access Control (RBAC)",
+      "description": "RBAC restricts system access based on the roles assigned to users or processes. In automotive and cloud systems, RBAC ensures that only authorized personnel or components can perform sensitive operations. Roles are defined according to job functions or system requirements, and permissions are granted to roles rather than individuals, simplifying management and reducing the risk of privilege escalation. RBAC is commonly used for managing access to diagnostic tools, firmware updates, and cloud resources, and supports compliance with security policies by enforcing least privilege.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.040"
+    },
+    {
+      "id": "C.043",
+      "name": "Discretionary Access Control (DAC)",
+      "description": "DAC allows the owner of a resource to determine who can access it. In automotive and IT systems, DAC is used to manage permissions for files, processes, and services. Permissions can be granted or revoked by the resource owner, typically using access control lists (ACLs) or permission bits. While DAC offers flexibility, it can be less secure than mandatory access control because users may inadvertently grant excessive permissions. In automotive systems, DAC is often used for managing access to diagnostic data, logs, and application resources, and should be combined with other controls for robust security.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.040"
+    },
+    {
+      "id": "C.044",
+      "name": "Mandatory Access Control (MAC)",
+      "description": "MAC enforces access policies determined by the system, not by individual owners. In automotive and secure IT environments, MAC is used to enforce strict separation between processes and data, refining access control and system hardening controls. MAC systems, such as SELinux or AppArmor, assign security labels to resources and subjects, and access decisions are based on these labels and predefined policies. This prevents users or applications from overriding security rules, making MAC suitable for high-assurance environments where strong isolation and least privilege are required. In automotive systems, MAC helps prevent privilege escalation, unauthorized data access, and containment of compromised components.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.040"
+    },
+    {
+      "id": "C.045",
+      "name": "Whitelisting",
+      "description": "Whitelisting allows only explicitly approved entities (such as IP addresses, applications, or commands) to access or execute on a system. In automotive and network security, whitelisting is used to prevent unauthorized code execution and restrict network access to trusted sources.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.040"
+    },
+    {
+      "id": "C.046",
+      "name": "Blacklisting",
+      "description": "Blacklisting blocks known malicious or unauthorized entities (such as IP addresses, applications, or commands) from accessing or executing on a system. In automotive and network security, blacklisting helps prevent known threats but should be combined with other controls for comprehensive protection.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.040"
+    },
+    {
+      "id": "C.047",
+      "name": "Secure Boot",
+      "description": "Secure Boot ensures that only firmware and software images with valid digital signatures from trusted authorities are allowed to execute during system startup. This prevents unauthorized or malicious code from running on automotive ECUs, protecting against persistent threats and rootkits. Secure Boot is foundational for automotive cybersecurity, as it establishes a chain of trust from the hardware root to the application layer. It is especially critical for over-the-air (OTA) updates.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET4"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ]
+    },
+    {
+      "id": "C.048",
+      "name": "Filesystem Integrity",
+      "description": "Filesystem integrity mechanisms ensure that the files and directories on automotive and cloud-connected systems have not been tampered with or corrupted. Techniques such as cryptographic checksums, hash trees, and integrity verification tools (e.g., DM-verity, IMA, AIDE) are used to detect unauthorized modifications, accidental corruption, or malware. Filesystem integrity is critical for protecting system binaries, configuration files, and logs, and supports secure boot, secure firmware update, and incident response.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ]
+    },
+    {
+      "id": "C.049",
+      "name": "DM-verity (Device Mapper Verity)",
+      "description": "DM-verity is a kernel feature that provides transparent integrity checking of block devices using cryptographic hash trees (Merkle trees). In automotive systems, it ensures that the root filesystem and other critical, usually read-only, partitions have not been tampered with, even if an attacker gains physical access. DM-verity is especially valuable for protecting against persistent malware and rootkits, and is often used in conjunction with secure boot and trusted execution environments.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.048"
+    },
+    {
+      "id": "C.050",
+      "name": "DM-integrity (Device Mapper Integrity)",
+      "description": "DM-integrity is a Linux kernel feature that provides transparent integrity protection for block devices by storing and verifying checksums for each data block. In automotive systems, DM-integrity ensures that data stored on flash or disk devices has not been tampered with or corrupted, even in the presence of hardware faults or attacks. It can be used alongside DM-crypt or DM-verity to provide both encryption and integrity for critical partitions",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.048"
+    },
+    {
+      "id": "C.051",
+      "name": "Filesystem Encryption",
+      "description": "Filesystem encryption protects the confidentiality and integrity of files and directories by encrypting data at the filesystem level. In automotive systems, it ensures that sensitive data stored on ECUs, telematics units, or removable media cannot be accessed or tampered with, even if physical access to the storage device is obtained. Filesystem encryption can be implemented using solutions such as eCryptfs, fscrypt, or LUKS, and is often combined with secure key management and integrity verification mechanisms.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ]
+    },
+    {
+      "id": "C.052",
+      "name": "DM-crypt",
+      "description": "DM-crypt is a transparent disk encryption subsystem in the Linux kernel, providing block-level encryption for storage devices. In automotive systems, DM-crypt is used to protect sensitive data at rest on ECUs, telematics units, and other storage media. It supports various encryption algorithms (such as AES and ChaCha20) and can be combined with integrity protection mechanisms like DM-integrity. DM-crypt is commonly used with LUKS for key management and is essential for ensuring confidentiality of stored data, even if physical access to the device is obtained.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.051"
+    },
+    {
+      "id": "C.053",
+      "name": "Authenticated Diagnostics",
+      "description": "Authenticated diagnostics require that access to diagnostic functions and services on automotive ECUs is restricted to authorized users or tools. This is typically enforced using cryptographic authentication, challenge-response protocols, and role-based access control. Authenticated diagnostics prevent unauthorized reprogramming, parameter changes, or data extraction.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ]
+    },
+    {
+      "id": "C.054",
+      "name": "Secure Debug Interface",
+      "description": "Secure debug interfaces ensure that access to hardware debug ports such as JTAG or SWD is restricted or disabled in production vehicles. Techniques include password protection, cryptographic authentication, or physically disabling debug pins. This prevents attackers from extracting firmware, modifying memory, or bypassing security controls.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq1"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ]
+    },
+    {
+      "id": "C.055",
+      "name": "Logging and Audit",
+      "description": "Logging and audit mechanisms ensure that all security-relevant events, such as firmware updates, authentication attempts, and configuration changes, are recorded in a tamper-evident manner. Logs should be cryptographically protected and, if possible, stored in secure memory or transmitted to a backend server.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Non-Repudiation"
+      ],
+      "actsOn": [
+        "Component",
+        "Channel",
+        "Data Flow"
+      ]
+    },
+    {
+      "id": "C.056",
+      "name": "Secure Software Lifecycle Management",
+      "description": "Secure Software Lifecycle Management ensures that security is integrated into every phase of the software development lifecycle (SDLC) for automotive and cloud-connected systems. This includes secure design, coding, testing, deployment, maintenance, and decommissioning. Practices such as threat modeling, secure code reviews, vulnerability scanning, patch management, and incident response are implemented to reduce the risk of introducing vulnerabilities and to maintain the security posture of deployed software.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity",
+        "Availability"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ]
+    },
+    {
+      "id": "C.057",
+      "name": "Software Testing",
+      "description": "Software testing encompasses systematic processes and tools to identify defects, vulnerabilities, and weaknesses in automotive and cloud-connected systems before deployment. This includes unit testing, integration testing, fuzz testing, static and dynamic analysis, and penetration testing. Comprehensive software testing reduces the risk of exploitable vulnerabilities and supports compliance with safety and security standards.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity",
+        "Availability"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.056"
+    },
+    {
+      "id": "C.058",
+      "name": "Vulnerability Management",
+      "description": "Vulnerability management is the ongoing process of identifying, evaluating, prioritizing, and remediating security vulnerabilities in automotive and cloud-connected systems. This includes vulnerability scanning, patch management, threat intelligence integration, and timely deployment of security updates. Effective vulnerability management reduces exposure to known threats and supports regulatory compliance.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity",
+        "Availability"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ],
+      "refines": "C.056"
+    },
+    {
+      "id": "C.059",
+      "name": "Secure Firmware Update",
+      "description": "Secure firmware/software update mechanisms ensure that only authenticated, integrity-checked, and authorized firmware or software images are installed on automotive ECUs and related systems. This process typically involves digital signatures, encryption, anti-rollback protection, and secure delivery channels to prevent unauthorized, malicious, or outdated updates.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.056"
+    },
+    {
+      "id": "C.060",
+      "name": "Anti-Rollback Protection",
+      "description": "Anti-rollback protection prevents the installation of outdated or vulnerable firmware versions on automotive ECUs. By maintaining a secure version counter or using cryptographic versioning, the system ensures that only firmware with a version equal to or higher than the current one can be installed. This control is critical for preventing attackers from exploiting known vulnerabilities.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.056"
+    },
+    {
+      "id": "C.061",
+      "name": "Cryptographically Secure Pseudo-Random Number Generator (CSPRNG)",
+      "description": "A CSPRNG generates random numbers that are suitable for cryptographic use, ensuring unpredictability for keys, nonces, and other security parameters. In automotive systems, a robust CSPRNG is essential for secure key generation, authentication protocols, and cryptographic operations.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Confidentiality",
+        "Integrity"
+      ],
+      "actsOn": [
+        "Component",
+        "Data"
+      ]
+    },
+    {
+      "id": "C.062",
+      "name": "Resource Management",
+      "description": "Resource management encompasses the allocation, monitoring, and control of system resources such as CPU, memory, storage, and network bandwidth in automotive and cloud-connected systems. Effective resource management ensures that critical functions have sufficient resources, prevents resource exhaustion, and supports system stability and availability.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Availability"
+      ],
+      "actsOn": [
+        "Component"
+      ]
+    },
+    {
+      "id": "C.063",
+      "name": "Scheduling",
+      "description": "Scheduling ensures that critical tasks and processes in automotive and cloud systems are executed according to defined priorities and timing constraints. By managing CPU and resource allocation, scheduling prevents denial-of-service conditions, ensures real-time performance, and supports system reliability.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Availability"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.062"
+    },
+    {
+      "id": "C.064",
+      "name": "Resource Limiting",
+      "description": "Resource limiting enforces quotas or maximum usage thresholds for system resources such as CPU, memory, storage, or network bandwidth. In automotive and cloud environments, this prevents individual processes or users from exhausting shared resources, protecting against denial-of-service attacks and ensuring fair allocation.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET2"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE1"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC1"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO1"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Availability"
+      ],
+      "actsOn": [
+        "Component"
+      ],
+      "refines": "C.062"
+    },
+    {
+      "id": "C.065",
+      "name": "Replay Protection",
+      "description": "Replay protection prevents attackers from retransmitting previously captured valid messages or commands to automotive ECUs or cloud systems. This is typically achieved using mechanisms such as sequence numbers, timestamps, or monotonic counters to ensure each message is unique and only accepted once. Replay protection is essential for maintaining the integrity and authenticity of communications, especially in safety-critical and remote update scenarios.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow"
+      ]
+    },
+    {
+      "id": "C.066",
+      "name": "Monotonic Counters",
+      "description": "Monotonic counters are non-decreasing numeric values used to track the order of events or messages in automotive and cloud systems. They are commonly used to implement replay protection by ensuring that each message or transaction has a unique, incrementing identifier. Monotonic counters are typically stored in secure hardware or protected memory to prevent tampering or rollback, supporting secure firmware updates, authenticated diagnostics, and secure communications.",
+      "attackFeasibilityReduction": {
+        "attackPotentialReduction": {
+          "elapsedTime": {
+            "feasibility": "ET3"
+          },
+          "specialistExpertise": {
+            "feasibility": "SE2"
+          },
+          "knowledgeOfTheItemOrComponent": {
+            "feasibility": "KoIC2"
+          },
+          "windowOfOpportunity": {
+            "feasibility": "WoO2"
+          },
+          "equipment": {
+            "feasibility": "Eq0"
+          }
+        }
+      },
+      "protects": [
+        "Integrity",
+        "Authenticity"
+      ],
+      "actsOn": [
+        "Channel",
+        "Data Flow"
+      ],
+      "refines": "C.065"
+    }
+  ]
+}
