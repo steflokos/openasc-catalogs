@@ -2655,6 +2655,389 @@
                 "Channel",
                 "Data Flow"
             ]
+        },
+        {
+            "id": "T.077",
+            "name": "Initial Access",
+            "description": "Adapted from MITRE ATT&CK: The adversary is trying to get into the vehicle network. The initial access tactic represents the vectors adversaries use to gain an initial foothold onto a vehicle.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0002"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.078",
+            "name": "Aftermarket, Customer, or Dealer Equipment",
+            "description": "Adversaries may take use aftermarket, customer, or dealer equipment as an initial access point into the vehicle. Paired devices, such as a customer's smart phone, often possess valid credentials for the vehicle's Bluetooth and Wi-Fi networks, access to phone projection technologies, and may be connected to USB ports. Dealer test and diagnostic tools are typically connected to a vehicle's OBD-II port, which may provide direct access to a vehicle network; these tools may also have access to credentials for running diagnostic procedures. Third-party OBD-II accessories, such as insurance dongles and fleet management dongles, may introduce a wireless ingress points to the vehicle through its OBD-II port. These devices may also be used as a post-exploitation command-and-control mechanism, and to exfiltrate data from a vehicle.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0010"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.079",
+            "name": "Browser Compromise",
+            "description": "A browser compromise is when an adversary gains access to a system through a user visiting a website over the normal course of browsing. With this technique, the user's web browser is targeted for exploitation. For example, a website may contain malicious media content intended to exploit vulnerabilities in media parsers as demonstrated by the Android Stagefright vulnerability. Based on MITRE ATT&CK's ‘Drive-by Compromise' technique.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0011"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Existing browser exploits would function; but they would need some modifications to access certain parts of the vehicle architecture "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Basic knowledge of browser exploits and information exchange protocols is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "The attacker would need some knowledge of the information protocols within the vehicle to access the information they target; but otherwise everything is fairly public domain or otherwise easily accessible"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Possible anytime the vehicle browser is in use; which could vary from user to user"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A simple computer is the only requirement"
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.080",
+            "name": "Exploit Via Radio Interface",
+            "description": "The vehicle may be targeted for exploitation through its interface to cellular networks or other radio interfaces. Baseband Vulnerability Exploitation: A message sent over a radio interface such as cellular, Bluetooth, GPS, NFC, Wi-Fi, TPMS, DAB, or others to the vehicle could exploit a vulnerability. Malicious SMS Message: An SMS message could contain content designed to exploit vulnerabilities in the SMS parser on the receiving device. An SMS message could also contain a link to a web site containing malicious content designed to exploit the device web browser. Vulnerable SIM cards may be remotely exploited and reprogrammed via SMS messages. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0012"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Some research time for known exploits and certain aspects of the vehicle architecture is required "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of basic radio interfaces and potential controls is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Most of the knowledge for these interfaces are public facing, however certain aspects that an attacker may want to access may be proprietary or otherwise hidden"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "Unlimited as the surfaces are essentially always in use by the end-user"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Depending on the desired affect, either specialized or standard equipment would be required"
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.081",
+            "name": "Exploit Via Removable Media",
+            "description": "Adversaries may gain initial access to an automotive environment by copying malware to removable media and taking advantage of Autorun features or automatic parsing of file (e.g., MP3s) when the device is inserted into a system and executes. This may occur through manual manipulation of the media, modification of systems used to initially format the media, or modification to the media's firmware itself. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0013"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Creating the removable media exploit is quite quick, having it function as intended within the vehicle requires more research"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of removable media device exploits is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "The attacker would need to understand if there are any controls in place to prevent this type of attack for it to work"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO3",
+                        "rationale": "Depending on the attackers relation to the vehicle owner, it may be quite difficult to gain access to the car and insert the removable media"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer and removable media device are all that is needed and is quite readily available "
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.082",
+            "name": "Malicious App",
+            "description": "Malicious applications could be used by adversaries to gain a presence on a vehicle. Some vehicles are configured to allow application installation only from an authorized app store, and an adversary may seek to place a malicious application in an authorized app store, enabling the application to be installed onto targeted devices. App stores typically require developer registration and use vetting techniques to identify malicious applications, which adversaries may seek to circumvent by downloading new code at runtime or by using obfuscation techniques. Adversaries may also seek to evade vetting by placing code in a malicious application to detect whether it is running in an app analysis environment and, if so, avoid performing malicious actions while under analysis. Adversaries may also use fake identities, payment cards, etc., to create developer accounts to publish malicious applications to app stores. Adversaries may also use control of a target's Google account to use the Google Play Store's remote installation capability to install apps onto the Android devices associated with the Google account. Only applications that are available for download through the Google Play Store can be remotely installed using this technique. This ‘Malicious app' technique also includes installing a malicious application on targeted mobile devices without involving an authorized app store (e.g., Google Play Store or the OEM's app store). Adversaries may wish to avoid placing malicious applications in an authorized app store due to increased potential risk of detection or other reasons. However, mobile devices often are configured to allow application installation only from an authorized app store which would prevent this technique from working. Delivery methods for the malicious application include spearphishing attachments, spearphishing links, and third party app stores (as opposed to an authorized app store that the device implicitly trusts as part of its default behavior), which may not apply the same level of scrutiny to apps as applied by an authorized app store. Some Android malware comes with functionality to install additional applications, either automatically or when the adversary instructs it to. Finally, this technique also includes situations where an adversary develops and distributes malware that masquerades as as a legitimate application. This can be done in two different ways: by embedding the malware in a legitimate application, or by pretending to be a legitimate application. Embedding the malware in a legitimate application is done by downloading the application, disassembling it, adding the malicious code, and then re-assembling it.The app would appear to be the original app, but would contain additional malicious functionality. The adversary could then publish the malicious application to app stores or use another delivery method. Pretending to be a legitimate application relies heavily on lack of scrutinization by the user. Typically, a malicious app pretending to be a legitimate one will have many similar details as the legitimate one, such as name, icon, and description. Malicious applications may also masquerade as legitimate applications when requesting access to the accessibility service in order to appear as legitimate to the user, increasing the likelihood that the access will be granted. This technique is a combination of three techniques described in the MITRE ATT&CK matrix for mobile devices: Deliver Malicious App via Authorized App Store, Deliver Malicious App via Other Means, and Masquerade as Legitimate Application.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0014"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Getting the application approved for the storefront is a major hurdle that will take a long time to overcome; it will then quickly be taken down after user reports as well "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of software engineering, automotive architecture, and validation spoofing for the storefront is required for this attack to function"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "In-depth knowledge of a variety of vehicle eco-systems is required for this attack to function"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "Unlimited as the user only needs to download and execute the application"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required to create the application"
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.083",
+            "name": "Phishing",
+            "description": "Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering. Phishing can be targeted, known as spearphishing. In spearphishing, a specific individual, company, or industry will be targeted by the adversary. More generally, adversaries can conduct non-targeted phishing, such as in mass malware spam campaigns. Adversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems. Phishing may also be conducted via third-party services, like social media platforms. Phishing may also involve social engineering techniques, such as posing as a trusted source. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0015"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET0",
+                        "rationale": "These types of attacks can happen within the span of an hour"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Some knowledge is required in order to pass as a legitimate source; but nothing intensive"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "specific knowledge surrounding the vehicle is not required for this type of attack"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.084",
+            "name": "Physical Modification",
+            "description": "The adversary can make physical modifications to the vehicle's ECUs, wiring harnesses, and can replace ECUs. Some ECUs possess physical debug interfaces that are not exposed outside their enclosures. With sufficient time, an adversary can partially disassemble the vehicle to obtain physical access to these ECUs, remove their enclosures, and connect or solder cables to access these debug interfaces. Direct physical access can also be used by an adversary to attempt different types of glitching attacks, side channel attacks, memory removal, reprogramming, and replacement, as well as others. To gain access to a vehicle an adversary could replace an ECU with one they have modified ahead of time (e.g., a modified service or junkyard part).",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0016"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Malicious parts would need to be created and tested before this attack could be performed"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Depending on the installation of the part; it could be quite simple or require a bit more experience to perform correctly "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about internal protocols is required for this type of attack to function "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Physical access to the vehicle is required; and depending on the context that time window could be incredibly short"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.085",
+            "name": "Supply Chain Compromise",
+            "description": "Adversaries may manipulate products or product delivery mechanisms prior to receipt by a final consumer for the purpose of data or system compromise. Supply chain compromise can take place at any stage of the supply chain including:  - Manipulation of development tools, - Manipulation of a development environment, - Manipulation of source code repositories (public or private), - Manipulation of source code in open-source dependencies, - Manipulation of software update/distribution mechanisms, - Compromised/infected system images (multiple cases of removable media infected at the factory), - Replacement of legitimate software with modified versions, - Sales of modified/counterfeit products to legitimate distributors, - Shipment interdiction. While supply chain compromise can impact any component of hardware or software, attackers looking to gain execution have often focused on malicious additions to legitimate software in software distribution or update channels.  Targeting may be specific to a desired victim set  or malicious software may be distributed to a broad set of consumers but only move on to additional tactics on specific victims.  Popular open source projects that are used as dependencies in many applications may also be targeted as a means to add malicious code to users of the dependency. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0002/ATM-T0017"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "The attacker would need to contribute to the project and then ensure that it went to market "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "This should be a non-factor as the attacker would not need to gain access to this information; as the attack dictates they would already have it "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO3",
+                        "rationale": "The attacker would need to know when certain parts are being designed and become a part of that design team"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Equipment needs would be handled by the vendor; so the attacker does not need to make an investment here"
+                    }
+                }
+            },
+            "refines": "T.077",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
         }
     ]
 }
