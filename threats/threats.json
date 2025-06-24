@@ -2174,6 +2174,487 @@
                 "Data Flow"
             ],
             "refines": "T.058"
+        },
+        {
+            "id": "T.065",
+            "name": "Reconnaisance",
+            "description": "The adversary is trying to gather information they can use to plan future operations. Reconnaissance consists of techniques that involve adversaries actively or passively gathering information that can be used to support an attack on the vehicle. These techniques focus on sources the adversary can target to obtain information, rather than specific information found. These information can be leveraged by the adversary to aid in other phases of the adversary lifecycle, such as using gathered information to plan and execute Initial Access, to scope and prioritize post-compromise objectives, or to drive and lead further Reconnaissance efforts. This tactic was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0000"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Data"
+            ]
+        },
+        {
+            "id": "T.066",
+            "name": "Gather Target Information - from Other",
+            "description": "The adversary gathers information by directly targeting sources that do not involve the vehicle and its services. Targeting organizations are included, such OEMs, suppliers, service providers, and dealerships. This may involve physically breaching an organization's premises, infiltrating networks, or exploiting personnel with privileged access. Other accessible sources include anything in the surface web and dark web. Specific information might include manuals, breach reports, engineering data (e.g., architecture, design, and schematics), and technical data sheets related to vehicles.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0000/ATM-T0076"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.065",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Data"
+            ]
+        },
+        {
+            "id": "T.067",
+            "name": "Gather Target Information - from Vehicle",
+            "description": "The adversary gathers information by targeting a vehicle's hardware and/or communication environment. Hardware includes physical components, such as Electronic Control Units (ECUs), sensors, FPGAs, microcontrollers, or SoCs. The communication environment involves any physical communication and wireless communication involving the vehicle. Examples include CAN, LIN, Bluetooth, RF, Cellular, etc. Communications with external infrastructure are included, such as Over-The-Air (OTA), cloud services, back-end infrastructure, charging stations, fleet management systems, and telematics platforms. Specific information might include hardware details such as firmware details, communication interfaces, and hardware vulnerabilities. communication details such as network details, protocols used, internal vehicle services, communication to external services interacting with the vehicle, and vulnerabilities within services.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0000/ATM-T0077"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.065",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.068",
+            "name": "Manipulate Environment",
+            "description": "The adversary is attempting to intercept or manipulate network traffic to or from a vehicle, or manipulate the vehicle's natural environment to achieve their goal without physically manipulating the vehicle itself. This category refers to network-based techniques that an adversary may utilize to achieve their objectives or create conditions conducive to employing techniques from the 'initial access' tactic. These techniques involve intercepting or manipulating network traffic to and from the vehicle's mobile device.Additionally, this category covers techniques that involve manipulating the physical environment surrounding a vehicle to confuse its sensors or artificial intelligence processing systems, without directly altering the vehicle's mechanics or components.This tactic was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0001"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Availability",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.069",
+            "name": "Adversarial Machine Learning",
+            "description": "As per Wikipedia, adversarial machine learning can be defined as a machine learning technique that attempts to fool models by supplying deceptive input. In the context of automotive cybersecurity, the adversary could try to use adversarial machine learning techniques to cause vehicle perception systems to misclassify objects, fail to detect obstacles, misinterpret road signs, respond inappropriately to road conditions, and others.For example, it may be possible to create an image that appears as a stop sign to a human but is interpreted by a vehicle's vision system as a speed limit sign. It has been shown that some adversarial machine learning techniques could be used to attack multi-sensor fusion systems and possibly affect the behavior of driver assist or autonomous driving features.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0005"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "A deep understanding of machine learning modules from a theoretical and practical perspective is required to even begin planning such an attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "A good understanding of the internal model, what protections are in place, and the models used to train the current model are required in order to successfully break the machine learning system"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.070",
+            "name": "Analog Sensor Attacks",
+            "description": "The adversary may use analog sensor attacks to disrupt the availability of vehicle's analog sensors, and possibly control their output. Examples of these techniques include shining a laser into a Lidar receiver, transmitting an interfering radar signal that causes a vehicle to perceive a vehicle or obstacle where there isn't one, or transmitting inaudible voice commands to a vehicle's voice assistant.One survey paper found that a vehicle's Lidar, camera, radar, ultrasonic, and magnetic sensors could be jammed, and in some cases their outputs controlled, using analog sensor attack techniques.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0004"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of general vehicle components and systems is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "As long as general car systems are understood and there are no unique controls in place; public knowledge or some simple tinkering under the hood  would provide the information required for this type of attack"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.071",
+            "name": "Downgrade to Insecure Protocols",
+            "description": "An adversary could cause the vehicle's wireless interfaces to use less secure protocols, for example by jamming frequencies used by newer protocols such as LTE and only allowing older protocols such as GSM to communicate. Use of less secure protocols may make communication easier to eavesdrop upon or manipulate. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0001"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Discovering a way to downgrade to insecure protocols can take time; more so if updates are continuously pushed "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Depending on the system, specific equipment is going to be a necessity "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge of the previous protocols and current ones are required in order to make a downgrade possible"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.072",
+            "name": "Jamming or Denial of Service",
+            "description": "An attacker could jam radio signals (e.g. Wi-Fi, cellular, GPS, key fobs) to prevent the mobile device from communicating. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0002"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "This particular ratings it the most contentious. Depending on the system that the attacker wants to jam it could very easily be public knowledge such as standard WIFI protocols; or it could be a system that is proprietary and requires much more knowledge about the specific item to accomplish"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.073",
+            "name": "Manipulate Communication",
+            "description": "If network traffic between the vehicle and a remote server or mobile device is not securely protected, then an attacker positioned on the network may be able to manipulate network communication without being detected. For example, FireEye researchers found in 2014 that 68% of the top 1,000 free applications in the Google Play Store had at least one Transport Layer Security (TLS) implementation vulnerability potentially opening the applications' network traffic to man-in-the-middle attacks. V2X spoofing, GPS spoofing, etc., can also be considered as another form of manipulate communication. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0003"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Once again depends on the encryption methodology used to protect the information"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "The attacker will need to know what type of controls are put into place in order to have a chance at breaking the encryption"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Depends on the type of encryption used to protect as some are mathematically superior to others "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.074",
+            "name": "Relay Communications",
+            "description": "The adversary may be able to relay communications to make a device that the vehicle trusts appear closer to the vehicle than it really is. An example of this technique is the use of a key fob relay attack, which a car thief could use to unlock, start, and drive away with a vehicle.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0007"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "The attackers will need to first discover the methodology for the wireless communication and any controls put into place before they can begin to attempt attacks"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of wireless transmission protocols is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge of internal controls is needed in order for the attack to be successful "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.075",
+            "name": "Rogue Cellular Base Station",
+            "description": "An adversary could set up a rogue cellular base station and then use it to eavesdrop on or manipulate the vehicle cellular interface's communication. A compromised cellular femtocell could be used to carry out this technique.This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0008"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of the vehicle system, how to create a system, and then how to have the vehicle recognize the fraudulent system as legitimate is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge of the internal systems and controls are required in order to exploit them"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Specialized equipment is required for the attacker to pass off a non-legitimate device as acceptable to the system"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.076",
+            "name": "Rogue Wi-Fi Access Point",
+            "description": "An adversary could set up unauthorized Wi-Fi access points or compromise existing access points and, if the device connects to them, carry out network-based attacks such as eavesdropping on or modifying network communication Adapted from MITRE ATT&CK for Mobile.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0001/ATM-T0009"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of the WIFI system used by the product, the protocols involved, and how to mask a WIFI network is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge of the internal WIFI protocols of the product is required for this attack to work"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "The WIFI of automotive products is used quite frequently, so the attacker has the opportunity to place their network as legitimate so long as the car is in use/service"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.068",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
         }
     ]
 }
