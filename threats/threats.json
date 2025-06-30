@@ -3038,6 +3038,440 @@
                 "Component",
                 "Data"
             ]
+        },
+        {
+            "id": "T.086",
+            "name": "Execution",
+            "description": "The adversary is trying to run malicious code. Execution of the malicious code involves infiltrating an ECU's memory space, where it can manipulate data and instructions to carry out unauthorized operations. This process often involves exploiting vulnerabilities in the component's firmware or software. Techniques that run malicious code are often paired with techniques from all other tactics to achieve broader goals, like moving laterally in a vehicle network or affecting vehicle functions. Adapted from MITRE ATT&CK for mobile.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0003"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality",
+                "Availability",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.087",
+            "name": "Command and Scripting Interpreter",
+            "description": "Adversaries may abuse command and script interpreters to execute commands, scripts, or binaries. These interfaces and languages provide ways of interacting with computer systems and are a common feature across many different platforms. Most systems come with some built-in command-line interface and scripting capabilities. There are also cross-platform interpreters such as Python, as well as those commonly associated with client applications such as JavaScript and Visual Basic. Adversaries may abuse these technologies in various ways as a means of executing arbitrary commands. Commands and scripts can be embedded in Initial Access payloads delivered to victims as lure documents or as secondary payloads downloaded from an existing C2. Adversaries may also execute commands through interactive terminals/shells. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0003/ATM-T0018"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Research into the controls surrounding the command line interface must be done before this type of attack can succeed "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of basic scripting and knowledge of how to gain access to the command-line for a vehicle is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "The attacker must know some of the controls and coding vulnerabilities of the vehicle for the attack to work"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A simple computer is required for this attack"
+                    }
+                }
+            },
+            "refines": "T.086",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.087",
+            "name": "Native API",
+            "description": "Adversaries may directly interact with the native OS application programming interface (API) to execute behaviors. Native APIs provide a controlled means of calling low-level OS services within the kernel, such as those involving hardware/devices, memory, and processes. These native APIs are leveraged by the OS during system boot (when other system components are not yet initialized) as well as carrying out tasks and requests during routine operations. Functionality provided by native APIs are often also exposed to user-mode applications via interfaces and libraries. For example, functions such as the Windows API CreateProcess() or GNU fork() will allow programs and scripts to start other processes. This may allow API callers to execute a binary, run a CLI command, load modules, etc. as thousands of similar API functions exist for various system operations. Higher level software frameworks, such as Microsoft .NET and macOS Cocoa, are also available to interact with native APIs. These frameworks typically provide language wrappers/abstractions to API functionalities and are designed for ease-of-use/portability of code. Adversaries may abuse these native API functions as a means of executing behaviors. Similar to Command and Scripting Interpreter, the native API and its hierarchy of interfaces, provide mechanisms to interact with and utilize various components of a victimized system. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0003/ATM-T0019"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Spoofing the API authentication is required for this attack to work and that would take time to find vulnerabilities and implement them. This category is largely dependent on if secure coding practices were used during its creation"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "General programming knowledge and how to access confidential APIs is required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "The attacker must have knowledge of the API itself, and how to access it and bypass the authentication and logs in order to be successful "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "The native API is an attack surface that is always available"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required for this attack "
+                    }
+                }
+            },
+            "refines": "T.086",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.088",
+            "name": "Abuse Standard Diagnostic Protocol to Temporarily Modify Execution",
+            "description": "Standard diagnostic protocols can be used to write directly to RAM such as the UDS service, WriteMemoryByAddress (in contrast to RequestDownload, which usually targets writing to persistent flash). This can be used to modify sensitive data (for example verification keys) or change execution through writing to stack memory, or direct execution (if the device offers execution from RAM).",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0003/ATM-T0074"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required for this attack"
+                    }
+                }
+            },
+            "refines": "T.086",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.089",
+            "name": "Persistence",
+            "description": "The adversary is trying to maintain their foothold. Persistence consists of techniques that adversaries use to keep access to vehicle systems across restarts, changed credentials, and other interruptions that could cut off their access. Techniques used for persistence include any access, action, or configuration changes that let them maintain their foothold on vehicle systems, such as replacing or hijacking legitimate code or adding startup code. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0004"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.089",
+            "name": "Abuse Standard Diagnostic Protocol for Persistence",
+            "description": "The adversary can attempt to use standard diagnostic protocols to persist their presence on an ECU. For example, UDS' capabilities for firmware updates and 'download-and-execute' can be abused by an adversary to achieve persistence. ",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0004/ATM-T0020"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "While UDS is a standardized protocol, knowing how to use it as an exploit point requires greater expertise"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some elements of the vehicle that the attacker may want access to could be proprietary"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Access to the vehicles UDS access point is required "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "UDS reader/writers are quite easy and affordable "
+                    }
+                }
+            },
+            "refines": "T.089",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.090",
+            "name": "Disable Software Update",
+            "description": "The adversary may disable or modify an ECU's software update mechanism so that it cannot be used to restore the device to an uncompromised state.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0004/ATM-T0021"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET0",
+                        "rationale": "Simly preventing the connection is all that is required for this attack to function"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of how to prevent the vehicle from communicating with its software update server is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "Simply understanding how to prevent wireless communication is required for this attack"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some fairly minor specialized equipment would be required for this attack "
+                    }
+                }
+            },
+            "refines": "T.089",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.091",
+            "name": "Modify OS Kernel, Boot Partition, or System Partition",
+            "description": "If an adversary can escalate privileges, he or she may be able to use those privileges to place malicious code in the system partition, operating system kernel or other boot partition components, where the code may evade detection, may persist after device resets, and may not be removable by the device user. In some cases (e.g., the Samsung Knox warranty bit), the attack may be detected but could result in the device being placed in a state that no longer allows certain functionality.Many Android devices provide the ability to unlock the bootloader for development purposes, but doing so introduces the potential ability for others to maliciously update the kernel or other boot partition code.If the bootloader is not unlocked, it may still be possible to exploit device vulnerabilities to update the code or escalate privileges and then modify the system partition.This technique was adapted from MITRE ATT&CK techniques Modify System Partition and Modify OS Kernel or Boot Partition.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0004/ATM-T0022"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Finding an exploit for this could take quite sometime, particularly if the researcher has difficulty reverse engineering the OS"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "General knowledge of OS kernels, their operation, and how to gain access to them is required for this type of attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "The attackers need to know several aspects about the boot, os, and kernel layer of the OS in order to perform this type of attack "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "All surfaces of this attack are used upon vehicle startup, but if physical access to the vehicle is required this step becomes more difficult "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer and something to physically modify the kernel is required for this attack "
+                    }
+                }
+            },
+            "refines": "T.089",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.092",
+            "name": "Modify Isolated Execution Environment",
+            "description": "If an adversary can escalate privileges, he or she may be able to use those privileges to place malicious code in the ECU's isolated execution environment (TrustZone, SMU, CAAM, SE, TPM, EVITA HSM, SHE, SGX, TEE etc.) where the code can evade detection, may persist after device resets, and may not be removable by the device user. Running code within the isolated execution environment may provide an adversary with the ability to monitor or tamper with overall device behavior. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0004/ATM-T0023"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "A deep understanding of the vehicle architecture, controls, and various cryptography methods used must be understood before this attack can work"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "The attacker must be able to identify what is within the TEE, how to break into it, and then how to gain access to the information that they are seeking"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of internal systems is required for this attack "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "the TEE surface is available every time the vehicle is used"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.089",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.092",
+            "name": "Compromise Cryptographic Security",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0004/ATM-T0075"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "A deep understanding of the vehicle architecture, controls, and various cryptography methods used must be understood before this attack can work"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of internal systems is required for this attack "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.089",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         }
     ]
 }
