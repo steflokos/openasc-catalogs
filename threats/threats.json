@@ -3843,7 +3843,7 @@
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
-                "url": "https://atm.automotiveisac.com/technique/ATM-TA0004/ATM-T0075"
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0075"
             },
             "attackFeasibility": {
                 "attackPotential": {
@@ -3867,6 +3867,269 @@
                 }
             },
             "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.102",
+            "name": "Defense Evasion",
+            "description": "The adversary is attempting to bypass or manipulate security controls. This can include bypassing networking filtering, intrusion detection systems (IDS), and code integrity checks to undermine the protection measures in place. Defense Evasion consists of techniques that adversaries use to advance their objectives despite the presence of defensive measures. This tactic is different from MITRE ATT&CK's 'defense evasion', which is squarely focused on avoiding detection.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0006"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Authenticity",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.103",
+            "name": "Bypass Code Integrity Protections",
+            "description": "Adversaries may seek to circumvent various code integrity protections to install unauthorized firmware or software on the device.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Time researching the signing mechanism s of the vehicle are required for this type of attack"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of arbitrary code execution, and the current signing mechanisms of the vehicle is required for this type of attack "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Knowledge of the internal signing mechanisms and their weaknesses are required for this type of attack to work "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Depending on when the signing mechanisms are called, the attack surface may be less available "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Only a standard computer to generate the code is required for this type of attack to function"
+                    }
+                }
+            },
+            "refines": "T.102",
+            "compromises": [
+                "Authenticity",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.104",
+            "name": "Bypass Network Filtering",
+            "description": "Adversaries may disable or modify network filters in order to bypass controls limiting vehicle network usage. Changes could be disabling the entire mechanism as well as adding, deleting, or modifying particular rules. This can be done numerous ways depending on the operating system, including via command-line. Modifying or disabling a system filter may enable adversary C2 communications, lateral movement, and/or data exfiltration that would otherwise not be allowed. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0032"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Depending on the type of firewall used, it may take more or less time to find beneficial exploits for the attacker "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of firewall protocols and ways to circumvent them are required for this type of attack to function"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "General information on firewalls is readily available, but the exact implementation may require some insider knowledge that could be discovered through trial and error on the end of the attacker "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Generally, this attack surface is readily available for the attacker"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Only a standard computer is required for this type of attack "
+                    }
+                }
+            },
+            "refines": "T.102",
+            "compromises": [
+                "Authenticity",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.105",
+            "name": "Bypass UDS Security Access",
+            "description": "Adversaries may find ways to bypass or defeat the Universal Diagnostic Services “Security Access / mode 0x27” security mechanism. Implementation details for this mechanism are not part of the standard and an adversary could seek to defeat mechanisms that use a common secret value on all devices of a given make and model, static challenge-response mechanisms, mechanisms that use short secrets susceptible to brute forcing, and other approaches including diagnostic session hijacking.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "information regarding the UDS protocol and potential exploits are readily available information"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of the UDS protocol and how to circumvent it is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "Information regarding UDS protocols are readily available "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Access to the UDS surface requires physical access to the vehicle, making the surface more difficult to access to the attacker "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Only a computer and a device designed to read/write to UDS is required for this attack "
+                    }
+                }
+            },
+            "refines": "T.102",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.106",
+            "name": "Bypass Mandatory Access Control",
+            "description": "Adversaries may find ways to defeat mandatory access control mechanisms such as SELinux or AppArmor. This could include finding a ‘hole’ in the policy, or exploiting a vulnerability in the operating system, kernel, or trusted execution environment that allows the adversary to disable mandatory access control.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0034"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Time spent researching the MAC protocols used by the vehicle are required for the attack to function"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of MAC policies and operating systems is required for this type of attack to function"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge regarding the MAC policies used by the vehicle is required for this attack to be successful "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The MAC protocols and operating systems are generally available to the attacker "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment is required to discover MAC vulnerabilities "
+                    }
+                }
+            },
+            "refines": "T.102",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.107",
+            "name": "Compromise Cryptographic Security",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0075"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "A deep understanding of the vehicle architecture, controls, and various cryptography methods used must be understood before this attack can work"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of internal systems is required for this attack "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.102",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
