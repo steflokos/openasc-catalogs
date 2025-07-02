@@ -3472,6 +3472,413 @@
                 "Channel",
                 "Data Flow"
             ]
+        },
+        {
+            "id": "T.093",
+            "name": "Privilege Escalation",
+            "description": "The adversary is trying to gain higher-level permissions. Privilege Escalation consists of techniques that adversaries use to gain higher-level permissions on an ECU. Adversaries can often gain initial access to an ECU with unprivileged access but require elevated permissions or capabilities to follow through on their objectives. Common approaches are to take advantage of system weaknesses, misconfigurations, and vulnerabilities. Examples of elevated access include root access and control of adjacent computing environments on the same ECU. These techniques can overlap with Persistence techniques, as OS features that let an adversary persist can execute in an elevated context. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0005"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.094",
+            "name": "Abuse Elevation Control Mechanism",
+            "description": "Adversaries may circumvent mechanisms designed to control elevate privileges to gain higher-level permissions. Many modern systems contain native elevation control mechanisms that are intended to limit privileges that a user can perform on an ECU. Authorization has to be granted to specific system users or system processes in order to perform tasks that can be considered of higher risk. An adversary can perform several methods to take advantage of built-in control mechanisms in order to escalate privileges on a system. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0024"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "General knowledge of access control systems and the ability to identify the protocols being used by the vehicle is required for this type of attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The access control systems of a vehicle are generally static, with only exploits being removed when found via patches. But the core framework generally remains the same"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.095",
+            "name": "Exploit Co-Located Computing Device for Privilege Escalation",
+            "description": "Adversaries may be able to leverage their access on one of an ECU's computing devices to gain control of another computing device on the same ECU. For example, it may be possible for a compromised USB controller or Wi-Fi/Bluetooth chip to gain control of the operating system running on a separate chip but still part of the same ECU.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0025"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Given exploits for pre-existing devices may already be known, the attacker will only need to research how to use the device to gain access to their intended effect"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of various types of devices that could be connected to a vehicle and how to exploit them is required for this attack to work"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "Knowledge about specific information exchange protocols within the vehicle may benefit the attacker, but are generally not required for this attack"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Generally these devices will always be connected to the vehicle when they are in operation; leaving a large window of time to be able to exploit them"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Typically, only a standard computer is required to perform this attack "
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.096",
+            "name": "Exploit OS Vulnerability",
+            "description": "A malicious app can exploit unpatched vulnerabilities in the operating system to obtain escalated privileges. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0026"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "A good amount of time is needed for the attacker to research the operating system and find potential exploits that they would benefit from "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "High-level knowledge of operating systems and potential ways to exploit them are required for this attack "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "This rating will change depending on the operating system that is used by the vehicle. If it is proprietary the attacker will need sensitive information in order to find exploits, but more public facing operating systems will require less insider information from the attacker "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "This rating depends on how often and well maintained the operating system is, but it is a surface that is always available for attack "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.097",
+            "name": "Exploit Isolated Execution Environment Vulnerability",
+            "description": "A malicious app or other attack vector could be used to exploit vulnerabilities in code running within a isolated execution environment (IEE), which could include ARM TrustZone, SEs, TPMs, EVITA HSMs, SHEs, SPUs, CAAMs, TEE, or similar. The adversary could then obtain privileges held by the IEE potentially including the ability to access cryptographic keys or other sensitive data. Escalated operating system privileges may be first required in order to have the ability to attack the IEE. If not, privileges within the IEE can potentially be used to exploit the operating system. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0027"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "The attacker will need to spend some time researching the TEE of the vehicle to find potential exploits and ways to benefit from them"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "General knowledge of trusted execution environments and their information flows is required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "The attacker would need some restricted information in order to achieve this attack, but this information could be found through trial and error/researching "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The TEE is generally static, but depending on where the exploit exists the window of opportunity can shift"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Specialized equipment will be required for performing this attack "
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.098",
+            "name": "Hardware Fault Injection",
+            "description": "The adversary may attempt fault injection attacks to elevate privileges by 'flipping' bits that control authentication states. For example, through voltage or clock glitching it may be possible to bypass password authentication on debug interfaces. Many different fault injection attacks exist, some require direct physical access to the target ECU and specialized tools (e.g., ChipSHOUTER), while others can be implemented in software (e.g., Row hammer).",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0028"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "The attacker will need time to research the components used within the vehicle to find these exploits "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Deep knowledge of vehicle components and how to exploit them is required for this attack to function"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Internal knowledge of the vehicles architecture is required for this attack to function "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The components will always be available as a surface"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "specialized equipment is required for this attack to function"
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.099",
+            "name": "Process Injection",
+            "description": "Adversaries may inject code into processes in order to evade process-based defenses as well as possibly elevate privileges. Process injection is a method of executing arbitrary code in the address space of a separate live process. Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via process injection may also evade detection from security products since the execution is masked under a legitimate process. There are many different ways to inject code into a process, many of which abuse legitimate functionalities. These implementations exist for every major OS but are typically platform specific. More sophisticated samples may perform multiple process injections to segment modules and further evade detection, utilizing named pipes or other inter-process communication (IPC) mechanisms as a communication channel. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0029"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Some time would be required for the attacker to understand the software/firmware of the vehicle, which is subject to change with updates"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of ways to perform arbitrary code execution, and automotive systems is required for this type of attack to work"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of the operating system and firmware is required for this type of attack to work "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "While the surface for this attaack is always available, updates would make the window of opportunity smaller "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "While developing the code for the attack only requires a standard computer, delivering the payload to the vehicle will require more specialized equipment "
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.100",
+            "name": "Reporgram Co-Located Computing Device for Privilege Escalation",
+            "description": "The adversary may attempt to elevate privileges by using their access on one of the ECU's computing devices to reprogram another computing device on the same ECU. For example, if an ECU that uses a system-on-chip for most tasks and a separate microcontroller for communication on the vehicle's CAN network, an adversary that can execute code on the SoC could attempt to reprogram the CAN microcontroller.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0005/ATM-T0030"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Depending on the device, the co-located computing device will require less research than others to find an exploit that benefits the attacker "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "The attacker will need to know how to exploit co-located computing devices "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some information regarding the vehicles internal protocols is required for the attacker to benefit from their work, the initial exploits will require less proprietary knowledge "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Depdning on the device, the attack surface for the co-located device will be available quite often"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Typically, only a standard computer is required for this type of attack to work "
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.101",
+            "name": "Compromise Cryptographic Security",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0004/ATM-T0075"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "A deep understanding of the vehicle architecture, controls, and various cryptography methods used must be understood before this attack can work"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of internal systems is required for this attack "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.093",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         }
     ]
 }
