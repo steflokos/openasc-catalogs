@@ -4142,6 +4142,410 @@
                 "Channel",
                 "Data Flow"
             ]
+        },
+        {
+            "id": "T.108",
+            "name": "Credential Access",
+            "description": "The adversary is trying to steal vehicle network credentials. Credential Access consists of techniques for stealing vehicle network credentials like cryptographic tokens, keys, and passwords. Techniques used to get credentials include credential dumping and collecting unsecured credentials stored on ECU file systems. Using legitimate credentials can give adversaries access to vehicle systems and make them harder to detect. Adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0007"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.109",
+            "name": "Exploit Isolated Execution Environment Vulnerability",
+            "description": "A malicious app or other attack vector could be used to exploit vulnerabilities in code running within a isolated execution environment (IEE), which could include ARM TrustZone, SEs, TPMs, EVITA HSMs, SHEs, SPUs, CAAMs, TEE, or similar. The adversary could then obtain privileges held by the IEE potentially including the ability to access cryptographic keys or other sensitive data. Escalated operating system privileges may be first required in order to have the ability to attack the IEE. If not, privileges within the IEE can potentially be used to exploit the operating system. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0027"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "The attacker will need to spend some time researching the TEE of the vehicle to find potential exploits and ways to benefit from them"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "General knowledge of trusted execution environments and their information flows is required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "The attacker would need some restricted information in order to achieve this attack, but this information could be found through trial and error/researching "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The TEE is generally static, but depending on where the exploit exists the window of opportunity can shift"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Specialized equipment will be required for performing this attack "
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Non-Repudiation",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.110",
+            "name": "Capture SMS Message",
+            "description": "A malicious application could capture sensitive data sent via SMS, including authentication credentials. SMS is frequently used to transmit codes used for multi-factor authentication. On Android, a malicious application must request and obtain permission (either at app install time or run time) in order to receive SMS messages. Alternatively, a malicious application could attempt to perform an operating system privilege escalation attack to bypass the permission requirement. This technique description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0035"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "SMS protocol information is readily available, but time researching the specific implementation within the vehicle is required for the attack to be successful "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of SMS exploits and ways to intercept the messages are required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the defenses surrounding the SMS implementation within the vehicle is required for the attack to work"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "The surface is only available when the service is being used "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Only a standard computer is required for this attack"
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.111",
+            "name": "Input Capture",
+            "description": "Adversaries may capture user input to obtain credentials or other information from the user through various methods. Malware may masquerade as a legitimate third-party keyboard to record user keystrokes. On Android, users must explicitly authorize the use of third-party keyboard apps. Users should be advised to use extreme caution before granting this authorization when it is requested. On Android, malware may abuse accessibility features to record keystrokes by registering an AccessibilityService class, overriding the onAccessibilityEvent method, and listening for the AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED event type. The event object passed into the function will contain the data that the user typed. Additional methods of keylogging may be possible if root access is available. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0036"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge on general man-in-the-middle attacks are required for this type of attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the input storage is required for this attack"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "While physicals access to the vehicle may not be required, it does require that the user be present and actively using the vehicle "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.112",
+            "name": "Input Prompt",
+            "description": "The operating system and installed applications often have legitimate needs to prompt the user for sensitive information such as account credentials, bank account information, or Personally Identifiable Information (PII). Adversaries may mimic this functionality to prompt users for sensitive information. Compared to traditional PCs, the constrained display size of vehicle screens may impair the ability to provide users with contextual information, making users more susceptible to this technique's use. Specific approaches to this technique include: - Impersonate the identity of a legitimate application: A malicious application could impersonate the identity of a legitimate application (e.g. use the same application name and/or icon) and get installed on the vehicle. The malicious app could then prompt the user for sensitive information. - Display a prompt on top of a running legitimate application: A malicious application could display a prompt on top of a running legitimate application to trick users into entering sensitive information into the malicious application rather than the legitimate application. Typically, the malicious application would need to know when the targeted application (and individual activity within the targeted application) is running in the foreground, so that the malicious application knows when to display its prompt. Android 5.0 and 5.1.1, respectively, increased the difficulty of determining the current foreground application through modifications to the ActivityManager API. A malicious application can still abuse Android's accessibility features to determine which application is currently in the foreground. Approaches to display a prompt include: 1) A malicious application could start a new activity on top of a running legitimate application. Android 10 places new restrictions on the ability for an application to start a new activity on top of another application, which may make it more difficult for adversaries to utilize this technique. 2) A malicious application could create an application overlay window on top of a running legitimate application. Applications must hold the SYSTEM_ALERT_WINDOW permission to create overlay windows. This permission is handled differently than typical Android permissions, and at least under certain conditions is automatically granted to applications installed from the Google Play Store. The SYSTEM_ALERT_WINDOW permission and its associated ability to create application overlay windows are expected to be deprecated in a future release of Android in favor of a new API. - Fake device notifications: A malicious application could send fake device notifications to the user. Clicking on the device notification could trigger the malicious application to display an input prompt. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0037"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Time must be spent researching how to provide a seemingly legitimate prompt to the end-user"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge on social engineering and how to present the prompt to the end-user is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicles workflow and stylings are required in order for the attack to appear legitimate and function"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "The user must be present within the vehicle "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "A computer is required, and depending on the intended prompt, some specialized equipment may be needed"
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.113",
+            "name": "Network Sniffing",
+            "description": "Adversaries may sniff vehicle network traffic to capture information about an environment, including authentication material passed over the vehicle network. Network sniffing refers to using the network interface on a system to monitor or capture information sent over a wired or wireless vehicle network connection. An adversary may place a network interface into promiscuous mode to passively access data in transit over the network, or use span ports to capture a larger amount of data. Data captured via this technique may include user credentials, especially those sent over an insecure, unencrypted protocol. Techniques for name service resolution poisoning can also be used to capture credentials to websites, proxies, and internal systems by redirecting traffic to an adversary. Network sniffing may also reveal configuration details, such as running services, version numbers, and other network characteristics (e.g. IP addresses, hostnames, VLAN IDs) necessary for subsequent Lateral Movement and/or Defense Evasion activities.Adversaries may also try to collect vehicle telemetry, including propulsion system status (e.g., hard acceleration or braking), whether vehicle enclosures are locked / unlocked, etc. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0038"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge about the vehicles communication protocols and how to intercept it is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the internal communication system is required for this attack to function "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Typically these communication protocols are available to the attacker "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required for this attack to work"
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.114",
+            "name": "ECU Credential Dumping",
+            "description": "Adversaries may attempt to dump credentials to obtain account login and credential material, normally in the form of a hash or a clear text password, from the operating system and software. Credentials can then be used to perform Lateral Movement and access restricted information. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Depending on the operating system, time spent researching the specific vulnerabilities that may be present is required before this attack can be attempted "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "General knowledge about operating systems, their storage methodologies, and penetration testing is required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Proprietary operating systems require a great amount of internal knowledge in order to find and utilize exploits "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Accessing the operating system may be difficult to perform remotely"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required for this attack"
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.115",
+            "name": "Unsecured Credentials",
+            "description": "Adversaries may search compromised systems to find and obtain insecurely stored credentials. These credentials can be stored and/or misplaced in many locations on a system, including plaintext files (e.g. bash history), operating system or application-specific repositories (e.g. credentials in registry), or other specialized files/artifacts (e.g. Private Keys). This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Some time may be needed to discover that the credentials are unsecured; but once that has been discovered it takes very little time to access them"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of operating systems and computational storage is required for this attack to work"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge that the credentials are unsecured is required, but this can be found through trial and error on the attackers end and will be quickly discovered if attempted "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "unsecured credentials are always considered to be available, but if physical access to the vehicle is required it my shorten the window of opportunity "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required "
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.114",
+            "name": "URI Hijacking",
+            "description": "Adversaries may register Uniform Resource Identifiers (URIs) to intercept sensitive data. Applications regularly register URIs with the operating system to act as a response handler for various actions, such as logging into an app using an external account via single sign-on. This allows redirections to that specific URI to be intercepted by the application. If a malicious application were to register for a URI that was already in use by a genuine application, the malicious application may be able to intercept data intended for the genuine application or perform a phishing attack against the genuine application. Intercepted data may include OAuth authorization codes or tokens that could be used by the malicious application to gain access to resources. This technique description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0041"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Researching and discovering exploits within the vehicles URI implementation will require a moderate amount of time "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of the URI and how to redirect it is required for this attack "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Knowledge of the specific URI implementation and potential controls put into place are required for the attack to be successful "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The URI is generally an available surface to the attacker "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required for this attack"
+                    }
+                }
+            },
+            "refines": "T.108",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         }
     ]
 }
