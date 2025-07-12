@@ -4055,7 +4055,7 @@
         {
             "id": "T.106",
             "name": "Bypass Mandatory Access Control",
-            "description": "Adversaries may find ways to defeat mandatory access control mechanisms such as SELinux or AppArmor. This could include finding a ‘hole’ in the policy, or exploiting a vulnerability in the operating system, kernel, or trusted execution environment that allows the adversary to disable mandatory access control.",
+            "description": "Adversaries may find ways to defeat mandatory access control mechanisms such as SELinux or AppArmor. This could include finding a ‘hole' in the policy, or exploiting a vulnerability in the operating system, kernel, or trusted execution environment that allows the adversary to disable mandatory access control.",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4539,6 +4539,388 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.115",
+            "name": "Discovery",
+            "description": "The adversary is trying to figure out the vehicle environment. Discovery consists of techniques an adversary may use to gain knowledge about a vehicle's systems and its internal network. These techniques help adversaries observe the environment and orient themselves before deciding how to act. They also allow adversaries to explore what they can control and what's around their entry point in order to discover how it could benefit their current objective. Native operating system tools are often used toward this post-compromise information-gathering objective. This tactic does not include techniques or other work that is performed during an offline / reverse engineering phase of an attack – this is currently out of scope of the auto threat matrix. In other words, the techniques are listed here if they are part of an active attack, but they are not listed if they only need to be used during a reverse engineering / exploit development phase. This tactic was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0008"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.116",
+            "name": "File and Directory Discovery",
+            "description": "Adversaries may enumerate files and directories or may search in specific locations of an ECU for certain information within a file system. Adversaries may use the information from this technique during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. Many command shell utilities can be used to obtain this information. Examples include dir, tree, ls, find, and locate. Custom tools may also be used to gather file and directory information and interact with the Native API. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0042"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Highly variable depending on the methodology used, but knowledge of the vehicles directory system is required and must be researched by the attacker first "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Depending on the strategy used, this rating is subject to change. A brute force attack is quite simple to perform, but the use of a web crawler requires more expertise"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "An understanding of the directory system used by the vehicle and potential controls is required by the attacker "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "Directory systems within vehicles typically do not change, with the only variable being the security surrounding those directories"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Depending on the attack, either a standard computer or more specialized equipment will be required "
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.117",
+            "name": "Location Tracking",
+            "description": "An adversary could use a malicious or exploited application to surreptitiously track the vehicle's physical location through use of standard operating system APIs. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0043"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Researching a methodology that allows for undetected tracking will require some time "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of both vehicle architecture and software vulnerabilities are required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of the specific internals of the vehicle is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "While the physical architecture is static, updates to the software will shift the window of opprotunity"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "While it is potentially possible to perform this using native navigation tools on the vehicle (GPS), it is possible that specialized equipment could be used to perform this action"
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.118",
+            "name": "Network Service Scanning",
+            "description": "Adversaries may attempt to get a listing of services running on a vehicle's ECUs, including those that may be vulnerable to remote software exploitation. Methods to acquire this information include port scans and vulnerability scans using tools that are brought onto a system. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0044"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET0",
+                        "rationale": "Scanning and probing a network is quite simple to do and takes very little time to perform"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of probing/scanning and pen testing is required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of the internal protocols of the vehicle are required for this attack to function. IE understanding how to bypass the firewall "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Scans/probes can be performed during the lifecycle of the car. Physical scans will require access to the vehicle "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "While it is possible to perform this attack with a standard computer, using ports to scan will require specialized equipment"
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.119",
+            "name": "Process Discovery",
+            "description": "Adversaries may attempt to get information about running processes on a system. Information obtained could be used to gain an understanding of common software/applications running on systems within the vehicle network. Adversaries may use the information from process discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0045"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Research time to find ways to read the processes and find a beneficial exploit requires some time"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Automotive and general computational knowledge is required to perform this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Additional knowledge about the vehicles control systems and cryptography is required for this attack "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "This can occur at any point during runtime "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.120",
+            "name": "Software Discovery",
+            "description": "Adversaries may attempt to get a listing of software and software versions that are installed on a vehicle. Adversaries may use the information from this technique during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. Adversaries may attempt to enumerate software for a variety of reasons, such as figuring out what security measures are present or if the compromised system has a version of software that is vulnerable to exploitation for privilege escalation. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0046"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Time is required to find the vulnerabilities with this type of attack "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of both automotive and computational systems are required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge about internal controls and how to bypass them is required to find the information that the attacker is looking for "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "This attack can typically be performed at anytime "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some information can be found with a computer, but other parts of the system require specialized equipment to find vulnerabilities "
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.121",
+            "name": "System Information Discovery",
+            "description": "An adversary may attempt to get detailed information about the ECU's operating system and hardware, including version, patches, hotfixes, service packs, and architecture. Adversaries may use the information from this technique during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0047"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Time is required to discover useful information in this type of attack "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of both automotive and computational systems are required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge of internal controls and how to bypass them is required for the attacker to get actionable information "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Window of opportunity is only limited by frequency of updates and their security"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "While some information can be found with  computer, other aspects will require more specialized equipment "
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.122",
+            "name": "System Network Configuration Discovery",
+            "description": "Adversaries may look for details about the network configuration and settings of systems they access or through information discovery of remote systems. Several operating system administration utilities exist that can be used to gather this information. Examples include Arp, ipconfig/ifconfig, nbtstat, and route. Adversaries may use the information from System Network Configuration Discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0048"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Some time is required to discover vulnerabilities within a network configuration"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of network protocols is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Knowledge of internal controls is required, but is something that an attacker could overcome with time"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Window of opportunity is only limited by updates and their security"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Only a computer is required for this attack"
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.123",
+            "name": "System Network Connections Discovery",
+            "description": "Adversaries may attempt to get a listing of network connections to or from the compromised system they are currently accessing or from remote systems by querying for information over the network. An adversary who gains access to a system that is part of a cloud-based environment may map out Virtual Private Clouds or Virtual Networks in order to determine what systems and services are connected. The actions performed are likely the same types of discovery techniques depending on the operating system, but the resulting information may include details about the networked cloud environment relevant to the adversary's goals. Cloud providers may have different ways in which their virtual networks operate. Utilities and commands that acquire this information include netstat, 'net use,' and 'net session' with Net. In Linux, netstat and lsof can be used to list current connections. who -a and w can be used to show which users are currently logged in, similar to 'net session'. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0008/ATM-T0049"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Some time is required to find vulnerabilities "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge about networking protocols is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of the internal controls is required, but an attacker can discover and overcome these "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Window of opportunity is only limited by frequency of updates"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Only a computer is required to perform this type of attack "
+                    }
+                }
+            },
+            "refines": "T.115",
+            "compromises": [
+                "Confidentiality"
             ],
             "actsOn": [
                 "Component",
