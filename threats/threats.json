@@ -4928,6 +4928,322 @@
                 "Channel",
                 "Data Flow"
             ]
+        },
+        {
+            "id": "T.124",
+            "name": "Lateral Movement",
+            "description": "The adversary is trying to move through the vehicle network. Lateral movement consists of techniques that enable an adversary to access and control remote systems on a vehicle network and could, but does not necessarily, include execution of tools on ECUs. The lateral movement techniques could allow an adversary to gather information from a system without needing additional tools, such as a remote access tool. This definition was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0009"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.125",
+            "name": "Abuse Standard Diagnostic Protocol for Lateral Movement",
+            "description": "The adversary could try to abuse standard diagnostic protocols (e.g., unified diagnostic services) to move laterally inside the vehicle network. For example, an adversary that can send diagnostic commands could attempt to use UDS 'download and execute' or 'write memory by address' capabilities to gain code execution on an ECU on the vehicle network.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0009/ATM-T0050"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "time is required to discover the vulnerabilities required for this attack"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of UDS, general automotive systems, and computational systems is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "In-depth knowledge of the vehicle components, their vulnerabilities, and software is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "only limited by the length of time between updates to software "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required for this attack"
+                    }
+                }
+            },
+            "refines": "T.124",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.126",
+            "name": "Bridge Vehicle Networks",
+            "description": "The adversary may seek to bridge vehicle vehicle networks to obtain their objectives. Some ECUs may possess multiple interfaces to the vehicle network, including interfaces that use different networking technologies, and an adversary could modify these ECUs to bridge networks that would otherwise be separated. For example, an adversary that has gained initial access on an ECU with a connection to a vehicle's Ethernet network may attempt to modify an ECU that is connected to the vehicle's Ethernet and CAN networks so that they can extend their reach to ECU on the vehicle's CAN network.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0009/ATM-T0051"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "A great deal of time is required for this type of attack assuming appropriate controls are in place"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Automotive, computational, and network knowledge is required for this attack "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC3",
+                        "rationale": "Highly in-depth information regarding the vehicle must be known"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "dependent on consistent vehicle versions, components, and software "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Specialized equipment is required "
+                    }
+                }
+            },
+            "refines": "T.124",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.127",
+            "name": "Exploit ECU for Lateral Movement",
+            "description": "Adversaries may exploit an ECU's services to gain unauthorized access to internal systems once inside of a vehicle network. Exploitation of a software vulnerability occurs when an adversary takes advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code. A common goal for post-compromise exploitation of remote services is for lateral movement to enable control of additional ECUs on the vehicle network. An adversary may need to determine if the remote system is in a vulnerable state, which may be done through network service scanning or other discovery methods looking for common, vulnerable software that may be deployed in the network, the lack of certain patches that may indicate vulnerabilities, or security software that may be used to detect or contain remote exploitation. Depending on the permissions level of the vulnerable remote service an adversary may achieve exploitation for privilege escalation as a result of lateral movement exploitation as well. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0009/ATM-T0052"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "An ecu with proper controls will take time for the attacker to find vulnerabilities "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Attacker must be knowledgeable about automotive and computational systems "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the internal systems of the vehicle must be known "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Window of opportunity depends on the frequency of updates to the firmware and software "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required to exploit the ECU"
+                    }
+                }
+            },
+            "refines": "T.124",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.128",
+            "name": "Remote Services",
+            "description": "Adversaries may attempt to log into a service specifically designed to accept remote connections, such as telnet, SSH, and VNC. The adversary may then perform actions as the logged-on user. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0009/ATM-T0053"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Some time is required to discover a way to be seen as an authentic service connected to the vehicle "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge about networking and computational systems is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of the internal systems and controls is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "window of opportunity varies depending on frequency of updates "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some versions of this attack may require specialized equipment to function "
+                    }
+                }
+            },
+            "refines": "T.124",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.129",
+            "name": "Reprogram ECU for Lateral Movement",
+            "description": "The adversary may attempt to move laterally in a vehicle's network by reprogramming an ECU via its software update mechanisms. This can be successful if an ECU on the vehicle network does not possess a mechanism to verify the authenticity of a software update. Flaws in the verification mechanism, including weak cryptography, coding errors, and the failure to address version rollback attacks, can result in Bypass code signing.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0009/ATM-T0054"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "A great deal of time is required to find a way to successfully complete this attack "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Highly in-depth knowledge about automotive and computational systems is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "In-depth knowledge about the automotive and computational systems of the vehicle is required."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Window of opportunity varies depending on frequency and quality of updates"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "While it may be possible to complete this type of attack with just a computer, some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.124",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.130",
+            "name": "Compromise Cryptographic Security",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0009/ATM-T0075"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "A deep understanding of the vehicle architecture, controls, and various cryptography methods used must be understood before this attack can work"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of internal systems is required for this attack "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.124",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         }
     ]
 }
