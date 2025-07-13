@@ -5671,309 +5671,650 @@
             ]
         },
         {
-    "id": "T.141",
-    "name": "Command and Control",
-    "description": "The adversary is trying to communicate with compromised systems to control them. Command and Control consists of techniques that adversaries may use to communicate with a compromised vehicle and its systems. Adversaries can attempt to mimic normal, expected traffic to avoid detection. There are many ways an adversary can establish command and control with various levels of stealth depending on the vehicle's connectivity features and its defenses. This tactic was adapted from MITRE ATT&CK.",
-    "classificationModel": "MITRE ATT&CK®",
-    "source": {
-      "name": "AutoISAC ATM",
-      "url": "https://atm.automotiveisac.com/tactic/ATM-TA0011"
-    },
-    "attackFeasibility": {
-      "attackPotential": {
-        "elapsedTime": {
-          "feasibility": "ET2"
+            "id": "T.141",
+            "name": "Command and Control",
+            "description": "The adversary is trying to communicate with compromised systems to control them. Command and Control consists of techniques that adversaries may use to communicate with a compromised vehicle and its systems. Adversaries can attempt to mimic normal, expected traffic to avoid detection. There are many ways an adversary can establish command and control with various levels of stealth depending on the vehicle's connectivity features and its defenses. This tactic was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0011"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         },
-        "specialistExpertise": {
-          "feasibility": "SE1"
+        {
+            "id": "T.142",
+            "name": "Aftermarket, Customer, or Dealer Equipment",
+            "description": "Adversaries may take use aftermarket, customer, or dealer equipment as an initial access point into the vehicle. Paired devices, such as a customer's smart phone, often possess valid credentials for the vehicle's Bluetooth and Wi-Fi networks, access to phone projection technologies, and may be connected to USB ports. Dealer test and diagnostic tools are typically connected to a vehicle's OBD-II port, which may provide direct access to a vehicle network; these tools may also have access to credentials for running diagnostic procedures. Third-party OBD-II accessories, such as insurance dongles and fleet management dongles, may introduce a wireless ingress points to the vehicle through its OBD-II port. These devices may also be used as a post-exploitation command-and-control mechanism, and to exfiltrate data from a vehicle.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0010"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.141",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
         },
-        "knowledgeOfTheItemOrComponent": {
-          "feasibility": "KoIC1"
+        {
+            "id": "T.143",
+            "name": "Cellular Communication",
+            "description": "If available, the adversary can use the vehicle's cellular communication system (e.g., SMS) in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0062"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Cellular systems typically follow standardized protocols with known exploits, but additional research time may be required for the specific implementation"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of cellular communication systems is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.141",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         },
-        "windowOfOpportunity": {
-          "feasibility": "WoO1"
+        {
+            "id": "T.144",
+            "name": "Internet Communication",
+            "description": "The adversary can use a compromised ECU's internet connection (if available) for command and control and to exfiltrate data.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0063"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Internet protocols and their exploits are documented, but the specific implementation may require additional research "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of traditional internet networking is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.141",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         },
-        "equipment": {
-          "feasibility": "Eq0"
+        {
+            "id": "T.145",
+            "name": "Receive Only Communication",
+            "description": "The adversary can use a receive-only communication channel, such as Radio Data System (RDS) or TPMS to send commands to the compromised vehicle.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0064"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Channel protocols and exploits are generally well documented "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge about communication channels and networking is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.141",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.146",
+            "name": "Short Range Wireless Communication",
+            "description": "If available, the adversary can use the vehicle's short range wireless communication capabilities, including Bluetooth and Wi-Fi, in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0065"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Short range wireless protocols are well documented; including their weaknesses and potential exploits "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge about automotive systems and short range protocols are required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.141",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.147",
+            "name": "Standard Cryptographic Protocol",
+            "description": "Adversaries may employ a known encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Despite the use of a secure algorithm, these implementations may be vulnerable to reverse engineering if secret keys are encoded and/or generated within malware samples/configuration files. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0066"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Research into the specific implementation of well documented cryptography standards is required. Then additional time must be spent to obtain the key"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of automotive, computational, and cryptographic systems is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Detailed knowledge about the vehicle's control systems is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.141",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.148",
+            "name": "Exfiltration",
+            "description": "The adversary is trying to steal data. Exfiltration consists of techniques that adversaries may use to steal data from the vehicle. Once they've collected data, adversaries often package it to avoid detection while removing it. This can include compression and encryption. Techniques for getting data out of a target network typically include transferring it over their command and control channel or an alternate channel and may also include putting size limits on the transmission. Depending on a vehicle's connectivity features, it may be possible to exfiltrate over channels that do not use internet communication, such as Bluetooth or Wi-Fi. This tactic was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0012"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.149",
+            "name": "Aftermarket, Customer, or Dealer Equipment",
+            "description": "Adversaries may take use aftermarket, customer, or dealer equipment as an initial access point into the vehicle. Paired devices, such as a customer's smart phone, often possess valid credentials for the vehicle's Bluetooth and Wi-Fi networks, access to phone projection technologies, and may be connected to USB ports. Dealer test and diagnostic tools are typically connected to a vehicle's OBD-II port, which may provide direct access to a vehicle network; these tools may also have access to credentials for running diagnostic procedures. Third-party OBD-II accessories, such as insurance dongles and fleet management dongles, may introduce a wireless ingress points to the vehicle through its OBD-II port. These devices may also be used as a post-exploitation command-and-control mechanism, and to exfiltrate data from a vehicle.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0010"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.148",
+            "compromises": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component"
+            ]
+        },
+        {
+            "id": "T.150",
+            "name": "Cellular Communication",
+            "description": "If available, the adversary can use the vehicle's cellular communication system (e.g., SMS) in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0062"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Cellular systems typically follow standardized protocols with known exploits, but additional research time may be required for the specific implementation"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of cellular communication systems is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.148",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.151",
+            "name": "Internet Communication",
+            "description": "The adversary can use a compromised ECU's internet connection (if available) for command and control and to exfiltrate data.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0063"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Internet protocols and their exploits are documented, but the specific implementation may require additional research "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of traditional internet networking is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.148",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.152",
+            "name": "Short Range Wireless Communication",
+            "description": "If available, the adversary can use the vehicle's short range wireless communication capabilities, including Bluetooth and Wi-Fi, in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0065"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Short range wireless protocols are well documented; including their weaknesses and potential exploits "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge about automotive systems and short range protocols are required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.148",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity",
+                "Non-Repudiation"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.153",
+            "name": "Standard Cryptographic Protocol",
+            "description": "Adversaries may employ a known encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Despite the use of a secure algorithm, these implementations may be vulnerable to reverse engineering if secret keys are encoded and/or generated within malware samples/configuration files. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0066"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Research into the specific implementation of well documented cryptography standards is required. Then additional time must be spent to obtain the key"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of automotive, computational, and cryptographic systems is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Detailed knowledge about the vehicle's control systems is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.148",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.154",
+            "name": "Removable Media",
+            "description": "Adversaries may attempt to exfiltrate data via a physical medium, such as a removable drive. Such media could be an external hard drive, USB drive, cellular phone, MP3 player, or other removable storage and processing device. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0006"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Removable media is typically non-proprietary. With documentation and known weaknesses and exploits easily researchable "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of different removable media devices and their exploits is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.148",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.155",
+            "name": "Physical Access",
+            "description": "Physical access via a JTAG / debug / serial interface could be used to exfiltrate data -- for example, a private key could be extracted using one of these techniques / cold boot attack / memory remanence attack some possible technique names - extract using physical medium / extract using developer interface.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0073"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.148",
+            "compromises": [
+                "Authenticity",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
         }
-      }
-    },
-    "compromises": [
-      "Authenticity",
-      "Confidentiality",
-      "Integrity",
-      "Non-Repudiation"
-    ],
-    "actsOn": [
-      "Component",
-      "Data",
-      "Channel",
-      "Data Flow"
-    ]
-  },
-  {
-    "id": "T.142",
-    "name": "Aftermarket, Customer, or Dealer Equipment",
-    "description": "Adversaries may take use aftermarket, customer, or dealer equipment as an initial access point into the vehicle. Paired devices, such as a customer's smart phone, often possess valid credentials for the vehicle's Bluetooth and Wi-Fi networks, access to phone projection technologies, and may be connected to USB ports. Dealer test and diagnostic tools are typically connected to a vehicle's OBD-II port, which may provide direct access to a vehicle network; these tools may also have access to credentials for running diagnostic procedures. Third-party OBD-II accessories, such as insurance dongles and fleet management dongles, may introduce a wireless ingress points to the vehicle through its OBD-II port. These devices may also be used as a post-exploitation command-and-control mechanism, and to exfiltrate data from a vehicle.",
-    "classificationModel": "MITRE ATT&CK®",
-    "source": {
-      "name": "AutoISAC ATM",
-      "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0010"
-    },
-    "attackFeasibility": {
-      "attackPotential": {
-        "elapsedTime": {
-          "feasibility": "ET2"
-        },
-        "specialistExpertise": {
-          "feasibility": "SE1"
-        },
-        "knowledgeOfTheItemOrComponent": {
-          "feasibility": "KoIC1"
-        },
-        "windowOfOpportunity": {
-          "feasibility": "WoO2"
-        },
-        "equipment": {
-          "feasibility": "Eq0"
-        }
-      }
-    },
-    "refines": "T.141",
-    "compromises": [
-      "Confidentiality",
-      "Integrity",
-      "Authenticity"
-    ],
-    "actsOn": [
-      "Component"
-    ]
-  },
-  {
-    "id": "T.143",
-    "name": "Cellular Communication",
-    "description": "If available, the adversary can use the vehicle's cellular communication system (e.g., SMS) in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
-    "classificationModel": "MITRE ATT&CK®",
-    "source": {
-      "name": "AutoISAC ATM",
-      "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0062"
-    },
-    "attackFeasibility": {
-      "attackPotential": {
-        "elapsedTime": {
-          "feasibility": "ET2",
-          "rationale": "Cellular systems typically follow standardized protocols with known exploits, but additional research time may be required for the specific implementation"
-        },
-        "specialistExpertise": {
-          "feasibility": "SE1",
-          "rationale": "Knowledge of cellular communication systems is required "
-        },
-        "knowledgeOfTheItemOrComponent": {
-          "feasibility": "KoIC1",
-          "rationale": "Some knowledge about the vehicle's controls may be required "
-        },
-        "windowOfOpportunity": {
-          "feasibility": "WoO1"
-        },
-        "equipment": {
-          "feasibility": "Eq1",
-          "rationale": "Some specialized equipment may be required "
-        }
-      }
-    },
-    "refines": "T.141",
-    "compromises": [
-      "Authenticity",
-      "Confidentiality",
-      "Integrity",
-      "Non-Repudiation"
-    ],
-    "actsOn": [
-         "Data",
-      "Channel",
-      "Data Flow"
-    ]
-  },
-  {
-    "id": "T.144",
-    "name": "Internet Communication",
-    "description": "The adversary can use a compromised ECU's internet connection (if available) for command and control and to exfiltrate data.",
-    "classificationModel": "MITRE ATT&CK®",
-    "source": {
-      "name": "AutoISAC ATM",
-      "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0063"
-    },
-    "attackFeasibility": {
-      "attackPotential": {
-        "elapsedTime": {
-          "feasibility": "ET2",
-          "rationale": "Internet protocols and their exploits are documented, but the specific implementation may require additional research "
-        },
-        "specialistExpertise": {
-          "feasibility": "SE1",
-          "rationale": "Knowledge of traditional internet networking is required "
-        },
-        "knowledgeOfTheItemOrComponent": {
-          "feasibility": "KoIC1",
-          "rationale": "some knowledge about the vehicle's controls may be required "
-        },
-        "windowOfOpportunity": {
-          "feasibility": "WoO1"
-        },
-        "equipment": {
-          "feasibility": "Eq1",
-          "rationale": "Some specialized equipment may be required "
-        }
-      }
-    },
-    "refines": "T.141",
-    "compromises": [
-      "Authenticity",
-      "Confidentiality",
-      "Integrity",
-      "Non-Repudiation"
-    ],
-    "actsOn": [
-      "Data",
-      "Channel",
-      "Data Flow"
-    ]
-  },
-  {
-    "id": "T.145",
-    "name": "Receive Only Communication",
-    "description": "The adversary can use a receive-only communication channel, such as Radio Data System (RDS) or TPMS to send commands to the compromised vehicle.",
-    "classificationModel": "MITRE ATT&CK®",
-    "source": {
-      "name": "AutoISAC ATM",
-      "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0064"
-    },
-    "attackFeasibility": {
-      "attackPotential": {
-        "elapsedTime": {
-          "feasibility": "ET2",
-          "rationale": "Channel protocols and exploits are generally well documented "
-        },
-        "specialistExpertise": {
-          "feasibility": "SE1",
-          "rationale": "Knowledge about communication channels and networking is required "
-        },
-        "knowledgeOfTheItemOrComponent": {
-          "feasibility": "KoIC1",
-          "rationale": "Some knowledge about the vehicle's controls may be required "
-        },
-        "windowOfOpportunity": {
-          "feasibility": "WoO1"
-        },
-        "equipment": {
-          "feasibility": "Eq1",
-          "rationale": "Some specialized equipment may be required "
-        }
-      }
-    },
-    "refines": "T.141",
-    "compromises": [
-      "Authenticity",
-      "Confidentiality",
-      "Integrity",
-      "Non-Repudiation"
-    ],
-    "actsOn": [
-      "Data",
-      "Channel",
-      "Data Flow"
-    ]
-  },
-  {
-    "id": "T.146",
-    "name": "Short Range Wireless Communication",
-    "description": "If available, the adversary can use the vehicle's short range wireless communication capabilities, including Bluetooth and Wi-Fi, in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
-    "classificationModel": "MITRE ATT&CK®",
-    "source": {
-      "name": "AutoISAC ATM",
-      "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0065"
-    },
-    "attackFeasibility": {
-      "attackPotential": {
-        "elapsedTime": {
-          "feasibility": "ET2",
-          "rationale": "Short range wireless protocols are well documented; including their weaknesses and potential exploits "
-        },
-        "specialistExpertise": {
-          "feasibility": "SE2",
-          "rationale": "Knowledge about automotive systems and short range protocols are required "
-        },
-        "knowledgeOfTheItemOrComponent": {
-          "feasibility": "KoIC1",
-          "rationale": "Some knowledge about the vehicle's controls may be required "
-        },
-        "windowOfOpportunity": {
-          "feasibility": "WoO1"
-        },
-        "equipment": {
-          "feasibility": "Eq1",
-          "rationale": "Some specialized equipment may be required "
-        }
-      }
-    },
-    "refines": "T.141",
-    "compromises": [
-      "Authenticity",
-      "Confidentiality",
-      "Integrity",
-      "Non-Repudiation"
-    ],
-    "actsOn": [
-      "Component",
-      "Data",
-      "Channel",
-      "Data Flow"
-    ]
-  },
-  {
-    "id": "T.147",
-    "name": "Standard Cryptographic Protocol",
-    "description": "Adversaries may employ a known encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Despite the use of a secure algorithm, these implementations may be vulnerable to reverse engineering if secret keys are encoded and/or generated within malware samples/configuration files. This technique's description was adapted from MITRE ATT&CK.",
-    "classificationModel": "MITRE ATT&CK®",
-    "source": {
-      "name": "AutoISAC ATM",
-      "url": "https://atm.automotiveisac.com/technique/ATM-TA0011/ATM-T0066"
-    },
-    "attackFeasibility": {
-      "attackPotential": {
-        "elapsedTime": {
-          "feasibility": "ET3",
-          "rationale": "Research into the specific implementation of well documented cryptography standards is required. Then additional time must be spent to obtain the key"
-        },
-        "specialistExpertise": {
-          "feasibility": "SE2",
-          "rationale": "Knowledge of automotive, computational, and cryptographic systems is required "
-        },
-        "knowledgeOfTheItemOrComponent": {
-          "feasibility": "KoIC2",
-          "rationale": "Detailed knowledge about the vehicle's control systems is required "
-        },
-        "windowOfOpportunity": {
-          "feasibility": "WoO1"
-        },
-        "equipment": {
-          "feasibility": "Eq1",
-          "rationale": "Some specialized equipment may be required "
-        }
-      }
-    },
-    "refines": "T.141",
-    "compromises": [
-      "Authenticity",
-      "Confidentiality",
-      "Integrity"
-    ],
-    "actsOn": [
-      "Component",
-      "Data",
-      "Channel",
-      "Data Flow"
-    ]
-  }
     ]
 }
