@@ -4398,13 +4398,9 @@
             },
             "refines": "T.108",
             "compromises": [
-                "Authenticity",
-                "Confidentiality",
-                "Integrity"
+                "Confidentiality"
             ],
             "actsOn": [
-                "Component",
-                "Data",
                 "Channel",
                 "Data Flow"
             ]
@@ -5237,6 +5233,435 @@
                 "Integrity",
                 "Authenticity",
                 "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.131",
+            "name": "Collection",
+            "description": "The adversary is trying to gather data of interest to their goal. Collection consists of techniques used to identify and gather information, such as sensitive files, location history, or recordings of in-vehicle audio from a target vehicle prior to exfiltration. This category also covers locations on a system or vehicle network where the adversary may look for information to exfiltrate. This tactic was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0010"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.132",
+            "name": "Capture SMS Message",
+            "description": "A malicious application could capture sensitive data sent via SMS, including authentication credentials. SMS is frequently used to transmit codes used for multi-factor authentication. On Android, a malicious application must request and obtain permission (either at app install time or run time) in order to receive SMS messages. Alternatively, a malicious application could attempt to perform an operating system privilege escalation attack to bypass the permission requirement. This technique description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0035"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "SMS is an established protocol with a variety of known exploits "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge about SMS protocols is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the specific controls used by the vehicle is required, but this information could be easily be found through trial and error by the attacker "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Can be performed anytime the vehicle sends or receives a message "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required "
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.133",
+            "name": "Input Capture",
+            "description": "Adversaries may capture user input to obtain credentials or other information from the user through various methods. Malware may masquerade as a legitimate third-party keyboard to record user keystrokes.[1] On Android, users must explicitly authorize the use of third-party keyboard apps. Users should be advised to use extreme caution before granting this authorization when it is requested. On Android, malware may abuse accessibility features to record keystrokes by registering an AccessibilityService class, overriding the onAccessibilityEvent method, and listening for the AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED event type. The event object passed into the function will contain the data that the user typed. Additional methods of keylogging may be possible if root access is available. This technique was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0036"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Research is required for this type of attack"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge about automotive and computational systems are required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Attack could occur whenever input is sent to the vehicle by the end-user"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.134",
+            "name": "Network Sniffing",
+            "description": "Adversaries may sniff vehicle network traffic to capture information about an environment, including authentication material passed over the vehicle network. Network sniffing refers to using the network interface on a system to monitor or capture information sent over a wired or wireless vehicle network connection. An adversary may place a network interface into promiscuous mode to passively access data in transit over the network, or use span ports to capture a larger amount of data. Data captured via this technique may include user credentials, especially those sent over an insecure, unencrypted protocol. Techniques for name service resolution poisoning can also be used to capture credentials to websites, proxies, and internal systems by redirecting traffic to an adversary. Network sniffing may also reveal configuration details, such as running services, version numbers, and other network characteristics (e.g. IP addresses, hostnames, VLAN IDs) necessary for subsequent Lateral Movement and/or Defense Evasion activities.Adversaries may also try to collect vehicle telemetry, including propulsion system status (e.g., hard acceleration or braking), whether vehicle enclosures are locked / unlocked, etc. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0038"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge about the vehicles communication protocols and how to intercept it is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the internal communication system is required for this attack to function "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Typically these communication protocols are available to the attacker "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A standard computer is required for this attack to work"
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.135",
+            "name": "Location Tracking",
+            "description": "An adversary could use a malicious or exploited application to surreptitiously track the vehicle's physical location through use of standard operating system APIs. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0043"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Researching a methodology that allows for undetected tracking will require some time "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of both vehicle architecture and software vulnerabilities are required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge of the specific internals of the vehicle is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "While the physical architecture is static, updates to the software will shift the window of opprotunity"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "While it is potentially possible to perform this using native navigation tools on the vehicle (GPS), it is possible that specialized equipment could be used to perform this action"
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.136",
+            "name": "Abuse Standard Diagnostic Protocol for Collection",
+            "description": "The adversary can attempt to abuse 'read' capabilities in standard diagnostic protocols, such as the UDS service 'read memory by address' to access customer information from an ECU's storage or memory. ",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0055"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "UDS is a standardized protocol and vulnerabilities are more well-known"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of UDS vulnerabilities is required for this attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "No sensitive internal knowledge about the vehicle is required"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Access to the UDS diagnostic port is required "
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "A simple UDS reader is required"
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.137",
+            "name": "Capture Camera or Audio",
+            "description": "Adversaries may utilize the vehicle's cameras and microphones to capture information about the user, their surroundings, or other physical identifiers. Adversaries may use the vehicle's camera and microphones on the vehicle to capture images, audio recordings, or video. This technique's description was adapted from two techniques in the MITRE ATT&CK for Mobile matrix: Capture Audio and Capture Camera.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0058"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Some time researching is required "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Knowledge of automotive and computational systems is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about internal controls is required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "window of opportunity is flexible depending on the attack surface chosen"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required "
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.138",
+            "name": "Data from Local System",
+            "description": "Adversaries may search local system sources, such as file systems, local databases, logs, or volatile storage via data dumps to find files of interest and sensitive data prior to exfiltration. Adversaries may do this using a command and scripting interpreter, such as cmd, which has functionality to interact with the file system to gather information. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0059"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Research is required for this type of attack"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge about computational systems is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about controls within the vehicle may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Physical access to the vehicle is required"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required to extract the targeted data"
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.139",
+            "name": "Network Information Discovery",
+            "description": "Adversaries may use device sensors to collect information about nearby networks, such as Wi-Fi and Bluetooth. This technique's description was adapted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0060"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Most vehicles use standardized networking systems, which have known vulnerabilities "
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge about networking systems is required "
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the internal controls of the vehicle may be required "
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Typically, only a standard computer is required"
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.140",
+            "name": "Screen Capture",
+            "description": "Adversaries may use screen captures to collect information about applications running in the foreground, capture user data, credentials, or other sensitive information. Screen capturing functionality may be included as a feature of a remote access tool used in post-compromise operations. Taking a screenshot is also typically possible through native utilities or API calls, such as CopyFromScreen, xwd, or screencapture. This technique's description was adapted from the 'Screen capture' technique in MITRE ATT&CK for Enterprise and MITRE ATT&CK for Mobile.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0010/ATM-T0061"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Research will be required to perform this attack"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge about computational systems is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Some knowledge about the vehicle's controls will be required"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Some specialized equipment may be required depending on the attack surface that is utilized as the access point "
+                    }
+                }
+            },
+            "refines": "T.131",
+            "compromises": [
+                "Confidentiality"
             ],
             "actsOn": [
                 "Component",
