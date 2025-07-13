@@ -6315,6 +6315,368 @@
                 "Component",
                 "Data"
             ]
+        },
+        {
+            "id": "T.156",
+            "name": "Affect Vehicle Function",
+            "description": "The adversary is trying to affect vehicle functions and systems, such as propulsion control, airbag deployment, audio, and displays.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/tactic/ATM-TA0013"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE0"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Availability",
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.157",
+            "name": "Adversarial Machine Learning",
+            "description": "As per Wikipedia, adversarial machine learning can be defined as a machine learning technique that attempts to fool models by supplying deceptive input. In the context of automotive cybersecurity, the adversary could try to use adversarial machine learning techniques to cause vehicle perception systems to misclassify objects, fail to detect obstacles, misinterpret road signs, respond inappropriately to road conditions, and others.For example, it may be possible to create an image that appears as a stop sign to a human but is interpreted by a vehicle's vision system as a speed limit sign. It has been shown that some adversarial machine learning techniques could be used to attack multi-sensor fusion systems and possibly affect the behavior of driver assist or autonomous driving features.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0005"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "A deep understanding of machine learning modules from a theoretical and practical perspective is required to even begin planning such an attack"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "A good understanding of the internal model, what protections are in place, and the models used to train the current model are required in order to successfully break the machine learning system"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "actsOn": [
+                "Component",
+                "Data"
+            ]
+        },
+        {
+            "id": "T.158",
+            "name": "Analog Sensor Attacks",
+            "description": "The adversary may use analog sensor attacks to disrupt the availability of vehicle's analog sensors, and possibly control their output. Examples of these techniques include shining a laser into a Lidar receiver, transmitting an interfering radar signal that causes a vehicle to perceive a vehicle or obstacle where there isn't one, or transmitting inaudible voice commands to a vehicle's voice assistant.One survey paper found that a vehicle's Lidar, camera, radar, ultrasonic, and magnetic sensors could be jammed, and in some cases their outputs controlled, using analog sensor attack techniques.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0004"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Knowledge of general vehicle components and systems is required"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0",
+                        "rationale": "As long as general car systems are understood and there are no unique controls in place; public knowledge or some simple tinkering under the hood  would provide the information required for this type of attack"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.159",
+            "name": "Abuse Standard Diagnostic Protocol for Affecting Vehicle Function",
+            "description": "The adversary could try to abuse standard diagnostic protocls to actuate vehicle functions. For example, if an adversary may try to send diagnostic commands to actuate the brakes or control headlamps. Some UDS functions, such as write memory by address, could be abused to modify an ECU's firmware and affect the functions it actuates.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0067"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Availability",
+                "Authenticity",
+                "Integrity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.160",
+            "name": "CAN Bus Denial of Service",
+            "description": "An adversary with access to one of the vehicle's CAN busses may be able to perform a denial-of-service attack by flooding the bus with high-priority messages, preventing other ECUs from being able to communicate.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0068"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.161",
+            "name": "Denial of Service on Vehicle Function",
+            "description": "Adversaries may perform Denial of Service (DoS) attacks to disrupt expected vehicle functionality. Examples of DoS attacks include overwhelming an ECU with a high volume of requests in a short time period and sending an ECU a request it does not know how to handle. Vulnerabilities that cause processes to crash can result in a denial of service.  In some cases, disrupting the availability of some vehicle functions may cause the vehicle to try to default to a known 'safe state' that could result in reduced or blocked vehicle propulsion, further impacting the road user. This technique was adopted from MITRE ATT&CK.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0072"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC0"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Availability"
+            ],
+            "actsOn": [
+                "Component",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.162",
+            "name": "Local Function",
+            "description": "Once the adversary has gained some level of access to an ECU they will have partial or complete control of the functions actuated by that device. For example, an adversary that can execute arbitrary code on a body controller ECU will likely be able to exercise door lock / unlock functions.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0069"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Availability",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Component",
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.163",
+            "name": "Modify Bus Message",
+            "description": "An adversary that has gained access to one of the vehicle's communication busses may try to modify or suppress messages sent by another ECU on that network. This technique is particularly applicable to CAN busses, but is not necessarily limited to that technology.",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0070"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Availability",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
+        },
+        {
+            "id": "T.164",
+            "name": "Unintended Vehicle Network Message",
+            "description": "The adversary may try to send unintended messages on the in-vehicle network. While this technique is not specific to CAN communications, it often follows a privilege escalation technique that grants the adversary control of an ECU's CAN communication system. Unintended message includes: - Messages that the host is not supposed to send, - Messages that the host is authorized to send, but at an incorrect time, at the wrong rate, or out of the intended sequence, - Messages that the host is authorized to send, but with unintended parameters, - Any messages sent by an unauthenticated host",
+            "classificationModel": "MITRE ATT&CK®",
+            "source": {
+                "name": "AutoISAC ATM",
+                "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0071"
+            },
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "refines": "T.156",
+            "compromises": [
+                "Availability",
+                "Integrity",
+                "Authenticity"
+            ],
+            "actsOn": [
+                "Data",
+                "Channel",
+                "Data Flow"
+            ]
         }
     ]
 }
