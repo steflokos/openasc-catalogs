@@ -2737,7 +2737,7 @@
         {
             "id": "T.079",
             "name": "Browser Compromise",
-            "description": "A browser compromise is when an adversary gains access to a system through a user visiting a website over the normal course of browsing. With this technique, the user's web browser is targeted for exploitation. For example, a website may contain malicious media content intended to exploit vulnerabilities in media parsers as demonstrated by the Android Stagefright vulnerability. Based on MITRE ATT&CK's ‘Drive-by Compromise' technique.",
+            "description": "A browser compromise is when an adversary gains access to a system through a user visiting a website over the normal course of browsing. With this technique, the user's web browser is targeted for exploitation. For example, a website may contain malicious media content intended to exploit vulnerabilities in media parsers as demonstrated by the Android Stagefright vulnerability. Based on MITRE ATT&CK's 'Drive-by Compromise' technique.",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2871,7 +2871,7 @@
         {
             "id": "T.082",
             "name": "Malicious App",
-            "description": "Malicious applications could be used by adversaries to gain a presence on a vehicle. Some vehicles are configured to allow application installation only from an authorized app store, and an adversary may seek to place a malicious application in an authorized app store, enabling the application to be installed onto targeted devices. App stores typically require developer registration and use vetting techniques to identify malicious applications, which adversaries may seek to circumvent by downloading new code at runtime or by using obfuscation techniques. Adversaries may also seek to evade vetting by placing code in a malicious application to detect whether it is running in an app analysis environment and, if so, avoid performing malicious actions while under analysis. Adversaries may also use fake identities, payment cards, etc., to create developer accounts to publish malicious applications to app stores. Adversaries may also use control of a target's Google account to use the Google Play Store's remote installation capability to install apps onto the Android devices associated with the Google account. Only applications that are available for download through the Google Play Store can be remotely installed using this technique. This ‘Malicious app' technique also includes installing a malicious application on targeted mobile devices without involving an authorized app store (e.g., Google Play Store or the OEM's app store). Adversaries may wish to avoid placing malicious applications in an authorized app store due to increased potential risk of detection or other reasons. However, mobile devices often are configured to allow application installation only from an authorized app store which would prevent this technique from working. Delivery methods for the malicious application include spearphishing attachments, spearphishing links, and third party app stores (as opposed to an authorized app store that the device implicitly trusts as part of its default behavior), which may not apply the same level of scrutiny to apps as applied by an authorized app store. Some Android malware comes with functionality to install additional applications, either automatically or when the adversary instructs it to. Finally, this technique also includes situations where an adversary develops and distributes malware that masquerades as as a legitimate application. This can be done in two different ways: by embedding the malware in a legitimate application, or by pretending to be a legitimate application. Embedding the malware in a legitimate application is done by downloading the application, disassembling it, adding the malicious code, and then re-assembling it.The app would appear to be the original app, but would contain additional malicious functionality. The adversary could then publish the malicious application to app stores or use another delivery method. Pretending to be a legitimate application relies heavily on lack of scrutinization by the user. Typically, a malicious app pretending to be a legitimate one will have many similar details as the legitimate one, such as name, icon, and description. Malicious applications may also masquerade as legitimate applications when requesting access to the accessibility service in order to appear as legitimate to the user, increasing the likelihood that the access will be granted. This technique is a combination of three techniques described in the MITRE ATT&CK matrix for mobile devices: Deliver Malicious App via Authorized App Store, Deliver Malicious App via Other Means, and Masquerade as Legitimate Application.",
+            "description": "Malicious applications could be used by adversaries to gain a presence on a vehicle. Some vehicles are configured to allow application installation only from an authorized app store, and an adversary may seek to place a malicious application in an authorized app store, enabling the application to be installed onto targeted devices. App stores typically require developer registration and use vetting techniques to identify malicious applications, which adversaries may seek to circumvent by downloading new code at runtime or by using obfuscation techniques. Adversaries may also seek to evade vetting by placing code in a malicious application to detect whether it is running in an app analysis environment and, if so, avoid performing malicious actions while under analysis. Adversaries may also use fake identities, payment cards, etc., to create developer accounts to publish malicious applications to app stores. Adversaries may also use control of a target's Google account to use the Google Play Store's remote installation capability to install apps onto the Android devices associated with the Google account. Only applications that are available for download through the Google Play Store can be remotely installed using this technique. This 'Malicious app' technique also includes installing a malicious application on targeted mobile devices without involving an authorized app store (e.g., Google Play Store or the OEM's app store). Adversaries may wish to avoid placing malicious applications in an authorized app store due to increased potential risk of detection or other reasons. However, mobile devices often are configured to allow application installation only from an authorized app store which would prevent this technique from working. Delivery methods for the malicious application include spearphishing attachments, spearphishing links, and third party app stores (as opposed to an authorized app store that the device implicitly trusts as part of its default behavior), which may not apply the same level of scrutiny to apps as applied by an authorized app store. Some Android malware comes with functionality to install additional applications, either automatically or when the adversary instructs it to. Finally, this technique also includes situations where an adversary develops and distributes malware that masquerades as as a legitimate application. This can be done in two different ways: by embedding the malware in a legitimate application, or by pretending to be a legitimate application. Embedding the malware in a legitimate application is done by downloading the application, disassembling it, adding the malicious code, and then re-assembling it.The app would appear to be the original app, but would contain additional malicious functionality. The adversary could then publish the malicious application to app stores or use another delivery method. Pretending to be a legitimate application relies heavily on lack of scrutinization by the user. Typically, a malicious app pretending to be a legitimate one will have many similar details as the legitimate one, such as name, icon, and description. Malicious applications may also masquerade as legitimate applications when requesting access to the accessibility service in order to appear as legitimate to the user, increasing the likelihood that the access will be granted. This technique is a combination of three techniques described in the MITRE ATT&CK matrix for mobile devices: Deliver Malicious App via Authorized App Store, Deliver Malicious App via Other Means, and Masquerade as Legitimate Application.",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3124,7 +3124,7 @@
             ]
         },
         {
-            "id": "T.087",
+            "id": "T.088",
             "name": "Native API",
             "description": "Adversaries may directly interact with the native OS application programming interface (API) to execute behaviors. Native APIs provide a controlled means of calling low-level OS services within the kernel, such as those involving hardware/devices, memory, and processes. These native APIs are leveraged by the OS during system boot (when other system components are not yet initialized) as well as carrying out tasks and requests during routine operations. Functionality provided by native APIs are often also exposed to user-mode applications via interfaces and libraries. For example, functions such as the Windows API CreateProcess() or GNU fork() will allow programs and scripts to start other processes. This may allow API callers to execute a binary, run a CLI command, load modules, etc. as thousands of similar API functions exist for various system operations. Higher level software frameworks, such as Microsoft .NET and macOS Cocoa, are also available to interact with native APIs. These frameworks typically provide language wrappers/abstractions to API functionalities and are designed for ease-of-use/portability of code. Adversaries may abuse these native API functions as a means of executing behaviors. Similar to Command and Scripting Interpreter, the native API and its hierarchy of interfaces, provide mechanisms to interact with and utilize various components of a victimized system. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3169,7 +3169,7 @@
             ]
         },
         {
-            "id": "T.088",
+            "id": "T.089",
             "name": "Abuse Standard Diagnostic Protocol to Temporarily Modify Execution",
             "description": "Standard diagnostic protocols can be used to write directly to RAM such as the UDS service, WriteMemoryByAddress (in contrast to RequestDownload, which usually targets writing to persistent flash). This can be used to modify sensitive data (for example verification keys) or change execution through writing to stack memory, or direct execution (if the device offers execution from RAM).",
             "classificationModel": "MITRE ATT&CK®",
@@ -3210,7 +3210,7 @@
             ]
         },
         {
-            "id": "T.089",
+            "id": "T.090",
             "name": "Persistence",
             "description": "The adversary is trying to maintain their foothold. Persistence consists of techniques that adversaries use to keep access to vehicle systems across restarts, changed credentials, and other interruptions that could cut off their access. Techniques used for persistence include any access, action, or configuration changes that let them maintain their foothold on vehicle systems, such as replacing or hijacking legitimate code or adding startup code. Adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3249,7 +3249,7 @@
             ]
         },
         {
-            "id": "T.089",
+            "id": "T.091",
             "name": "Abuse Standard Diagnostic Protocol for Persistence",
             "description": "The adversary can attempt to use standard diagnostic protocols to persist their presence on an ECU. For example, UDS' capabilities for firmware updates and 'download-and-execute' can be abused by an adversary to achieve persistence. ",
             "classificationModel": "MITRE ATT&CK®",
@@ -3280,7 +3280,7 @@
                     }
                 }
             },
-            "refines": "T.089",
+            "refines": "T.090",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3295,7 +3295,7 @@
             ]
         },
         {
-            "id": "T.090",
+            "id": "T.092",
             "name": "Disable Software Update",
             "description": "The adversary may disable or modify an ECU's software update mechanism so that it cannot be used to restore the device to an uncompromised state.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3326,7 +3326,7 @@
                     }
                 }
             },
-            "refines": "T.089",
+            "refines": "T.090",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3341,7 +3341,7 @@
             ]
         },
         {
-            "id": "T.091",
+            "id": "T.093",
             "name": "Modify OS Kernel, Boot Partition, or System Partition",
             "description": "If an adversary can escalate privileges, he or she may be able to use those privileges to place malicious code in the system partition, operating system kernel or other boot partition components, where the code may evade detection, may persist after device resets, and may not be removable by the device user. In some cases (e.g., the Samsung Knox warranty bit), the attack may be detected but could result in the device being placed in a state that no longer allows certain functionality.Many Android devices provide the ability to unlock the bootloader for development purposes, but doing so introduces the potential ability for others to maliciously update the kernel or other boot partition code.If the bootloader is not unlocked, it may still be possible to exploit device vulnerabilities to update the code or escalate privileges and then modify the system partition.This technique was adapted from MITRE ATT&CK techniques Modify System Partition and Modify OS Kernel or Boot Partition.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3373,7 +3373,7 @@
                     }
                 }
             },
-            "refines": "T.089",
+            "refines": "T.090",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3386,7 +3386,7 @@
             ]
         },
         {
-            "id": "T.092",
+            "id": "T.094",
             "name": "Modify Isolated Execution Environment",
             "description": "If an adversary can escalate privileges, he or she may be able to use those privileges to place malicious code in the ECU's isolated execution environment (TrustZone, SMU, CAAM, SE, TPM, EVITA HSM, SHE, SGX, TEE etc.) where the code can evade detection, may persist after device resets, and may not be removable by the device user. Running code within the isolated execution environment may provide an adversary with the ability to monitor or tamper with overall device behavior. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3417,7 +3417,7 @@
                     }
                 }
             },
-            "refines": "T.089",
+            "refines": "T.090",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3430,9 +3430,9 @@
             ]
         },
         {
-            "id": "T.092",
+            "id": "T.095",
             "name": "Compromise Cryptographic Security",
-            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently 'strong'in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, 'encryption'does not provide 'integrity'or 'authenticity'. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o 'padding oracles': Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3459,7 +3459,7 @@
                     }
                 }
             },
-            "refines": "T.089",
+            "refines": "T.090",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3474,7 +3474,7 @@
             ]
         },
         {
-            "id": "T.093",
+            "id": "T.096",
             "name": "Privilege Escalation",
             "description": "The adversary is trying to gain higher-level permissions. Privilege Escalation consists of techniques that adversaries use to gain higher-level permissions on an ECU. Adversaries can often gain initial access to an ECU with unprivileged access but require elevated permissions or capabilities to follow through on their objectives. Common approaches are to take advantage of system weaknesses, misconfigurations, and vulnerabilities. Examples of elevated access include root access and control of adjacent computing environments on the same ECU. These techniques can overlap with Persistence techniques, as OS features that let an adversary persist can execute in an elevated context. Adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3516,7 +3516,7 @@
             ]
         },
         {
-            "id": "T.094",
+            "id": "T.097",
             "name": "Abuse Elevation Control Mechanism",
             "description": "Adversaries may circumvent mechanisms designed to control elevate privileges to gain higher-level permissions. Many modern systems contain native elevation control mechanisms that are intended to limit privileges that a user can perform on an ECU. Authorization has to be granted to specific system users or system processes in order to perform tasks that can be considered of higher risk. An adversary can perform several methods to take advantage of built-in control mechanisms in order to escalate privileges on a system. Adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3545,7 +3545,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3561,7 +3561,7 @@
             ]
         },
         {
-            "id": "T.095",
+            "id": "T.098",
             "name": "Exploit Co-Located Computing Device for Privilege Escalation",
             "description": "Adversaries may be able to leverage their access on one of an ECU's computing devices to gain control of another computing device on the same ECU. For example, it may be possible for a compromised USB controller or Wi-Fi/Bluetooth chip to gain control of the operating system running on a separate chip but still part of the same ECU.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3593,7 +3593,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3607,7 +3607,7 @@
             ]
         },
         {
-            "id": "T.096",
+            "id": "T.099",
             "name": "Exploit OS Vulnerability",
             "description": "A malicious app can exploit unpatched vulnerabilities in the operating system to obtain escalated privileges. Adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3638,7 +3638,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3652,7 +3652,7 @@
             ]
         },
         {
-            "id": "T.097",
+            "id": "T.100",
             "name": "Exploit Isolated Execution Environment Vulnerability",
             "description": "A malicious app or other attack vector could be used to exploit vulnerabilities in code running within a isolated execution environment (IEE), which could include ARM TrustZone, SEs, TPMs, EVITA HSMs, SHEs, SPUs, CAAMs, TEE, or similar. The adversary could then obtain privileges held by the IEE potentially including the ability to access cryptographic keys or other sensitive data. Escalated operating system privileges may be first required in order to have the ability to attack the IEE. If not, privileges within the IEE can potentially be used to exploit the operating system. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3684,7 +3684,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3698,7 +3698,7 @@
             ]
         },
         {
-            "id": "T.098",
+            "id": "T.101",
             "name": "Hardware Fault Injection",
             "description": "The adversary may attempt fault injection attacks to elevate privileges by 'flipping' bits that control authentication states. For example, through voltage or clock glitching it may be possible to bypass password authentication on debug interfaces. Many different fault injection attacks exist, some require direct physical access to the target ECU and specialized tools (e.g., ChipSHOUTER), while others can be implemented in software (e.g., Row hammer).",
             "classificationModel": "MITRE ATT&CK®",
@@ -3730,7 +3730,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3746,7 +3746,7 @@
             ]
         },
         {
-            "id": "T.099",
+            "id": "T.102",
             "name": "Process Injection",
             "description": "Adversaries may inject code into processes in order to evade process-based defenses as well as possibly elevate privileges. Process injection is a method of executing arbitrary code in the address space of a separate live process. Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via process injection may also evade detection from security products since the execution is masked under a legitimate process. There are many different ways to inject code into a process, many of which abuse legitimate functionalities. These implementations exist for every major OS but are typically platform specific. More sophisticated samples may perform multiple process injections to segment modules and further evade detection, utilizing named pipes or other inter-process communication (IPC) mechanisms as a communication channel. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3778,7 +3778,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3791,7 +3791,7 @@
             ]
         },
         {
-            "id": "T.100",
+            "id": "T.103",
             "name": "Reporgram Co-Located Computing Device for Privilege Escalation",
             "description": "The adversary may attempt to elevate privileges by using their access on one of the ECU's computing devices to reprogram another computing device on the same ECU. For example, if an ECU that uses a system-on-chip for most tasks and a separate microcontroller for communication on the vehicle's CAN network, an adversary that can execute code on the SoC could attempt to reprogram the CAN microcontroller.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3823,7 +3823,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3837,9 +3837,9 @@
             ]
         },
         {
-            "id": "T.101",
+            "id": "T.104",
             "name": "Compromise Cryptographic Security",
-            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently 'strong'in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, 'encryption'does not provide 'integrity'or 'authenticity'. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o 'padding oracles': Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3866,7 +3866,7 @@
                     }
                 }
             },
-            "refines": "T.093",
+            "refines": "T.096",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -3881,7 +3881,7 @@
             ]
         },
         {
-            "id": "T.102",
+            "id": "T.105",
             "name": "Defense Evasion",
             "description": "The adversary is attempting to bypass or manipulate security controls. This can include bypassing networking filtering, intrusion detection systems (IDS), and code integrity checks to undermine the protection measures in place. Defense Evasion consists of techniques that adversaries use to advance their objectives despite the presence of defensive measures. This tactic is different from MITRE ATT&CK's 'defense evasion', which is squarely focused on avoiding detection.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3919,7 +3919,7 @@
             ]
         },
         {
-            "id": "T.103",
+            "id": "T.106",
             "name": "Bypass Code Integrity Protections",
             "description": "Adversaries may seek to circumvent various code integrity protections to install unauthorized firmware or software on the device.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3951,7 +3951,7 @@
                     }
                 }
             },
-            "refines": "T.102",
+            "refines": "T.105",
             "compromises": [
                 "Authenticity",
                 "Integrity"
@@ -3962,7 +3962,7 @@
             ]
         },
         {
-            "id": "T.104",
+            "id": "T.107",
             "name": "Bypass Network Filtering",
             "description": "Adversaries may disable or modify network filters in order to bypass controls limiting vehicle network usage. Changes could be disabling the entire mechanism as well as adding, deleting, or modifying particular rules. This can be done numerous ways depending on the operating system, including via command-line. Modifying or disabling a system filter may enable adversary C2 communications, lateral movement, and/or data exfiltration that would otherwise not be allowed. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -3994,7 +3994,7 @@
                     }
                 }
             },
-            "refines": "T.102",
+            "refines": "T.105",
             "compromises": [
                 "Authenticity",
                 "Integrity",
@@ -4007,9 +4007,9 @@
             ]
         },
         {
-            "id": "T.105",
+            "id": "T.108",
             "name": "Bypass UDS Security Access",
-            "description": "Adversaries may find ways to bypass or defeat the Universal Diagnostic Services “Security Access / mode 0x27” security mechanism. Implementation details for this mechanism are not part of the standard and an adversary could seek to defeat mechanisms that use a common secret value on all devices of a given make and model, static challenge-response mechanisms, mechanisms that use short secrets susceptible to brute forcing, and other approaches including diagnostic session hijacking.",
+            "description": "Adversaries may find ways to bypass or defeat the Universal Diagnostic Services 'Security Access / mode 0x27'security mechanism. Implementation details for this mechanism are not part of the standard and an adversary could seek to defeat mechanisms that use a common secret value on all devices of a given make and model, static challenge-response mechanisms, mechanisms that use short secrets susceptible to brute forcing, and other approaches including diagnostic session hijacking.",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4039,7 +4039,7 @@
                     }
                 }
             },
-            "refines": "T.102",
+            "refines": "T.105",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4053,9 +4053,9 @@
             ]
         },
         {
-            "id": "T.106",
+            "id": "T.109",
             "name": "Bypass Mandatory Access Control",
-            "description": "Adversaries may find ways to defeat mandatory access control mechanisms such as SELinux or AppArmor. This could include finding a ‘hole' in the policy, or exploiting a vulnerability in the operating system, kernel, or trusted execution environment that allows the adversary to disable mandatory access control.",
+            "description": "Adversaries may find ways to defeat mandatory access control mechanisms such as SELinux or AppArmor. This could include finding a 'hole' in the policy, or exploiting a vulnerability in the operating system, kernel, or trusted execution environment that allows the adversary to disable mandatory access control.",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4085,7 +4085,7 @@
                     }
                 }
             },
-            "refines": "T.102",
+            "refines": "T.105",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4100,9 +4100,9 @@
             ]
         },
         {
-            "id": "T.107",
+            "id": "T.110",
             "name": "Compromise Cryptographic Security",
-            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently 'strong'in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, 'encryption'does not provide 'integrity'or 'authenticity'. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o 'padding oracles': Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4129,7 +4129,7 @@
                     }
                 }
             },
-            "refines": "T.102",
+            "refines": "T.105",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -4144,7 +4144,7 @@
             ]
         },
         {
-            "id": "T.108",
+            "id": "T.111",
             "name": "Credential Access",
             "description": "The adversary is trying to steal vehicle network credentials. Credential Access consists of techniques for stealing vehicle network credentials like cryptographic tokens, keys, and passwords. Techniques used to get credentials include credential dumping and collecting unsecured credentials stored on ECU file systems. Using legitimate credentials can give adversaries access to vehicle systems and make them harder to detect. Adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4184,7 +4184,7 @@
             ]
         },
         {
-            "id": "T.109",
+            "id": "T.112",
             "name": "Exploit Isolated Execution Environment Vulnerability",
             "description": "A malicious app or other attack vector could be used to exploit vulnerabilities in code running within a isolated execution environment (IEE), which could include ARM TrustZone, SEs, TPMs, EVITA HSMs, SHEs, SPUs, CAAMs, TEE, or similar. The adversary could then obtain privileges held by the IEE potentially including the ability to access cryptographic keys or other sensitive data. Escalated operating system privileges may be first required in order to have the ability to attack the IEE. If not, privileges within the IEE can potentially be used to exploit the operating system. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4216,7 +4216,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -4230,7 +4230,7 @@
             ]
         },
         {
-            "id": "T.110",
+            "id": "T.113",
             "name": "Capture SMS Message",
             "description": "A malicious application could capture sensitive data sent via SMS, including authentication credentials. SMS is frequently used to transmit codes used for multi-factor authentication. On Android, a malicious application must request and obtain permission (either at app install time or run time) in order to receive SMS messages. Alternatively, a malicious application could attempt to perform an operating system privilege escalation attack to bypass the permission requirement. This technique description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4262,7 +4262,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4275,7 +4275,7 @@
             ]
         },
         {
-            "id": "T.111",
+            "id": "T.114",
             "name": "Input Capture",
             "description": "Adversaries may capture user input to obtain credentials or other information from the user through various methods. Malware may masquerade as a legitimate third-party keyboard to record user keystrokes. On Android, users must explicitly authorize the use of third-party keyboard apps. Users should be advised to use extreme caution before granting this authorization when it is requested. On Android, malware may abuse accessibility features to record keystrokes by registering an AccessibilityService class, overriding the onAccessibilityEvent method, and listening for the AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED event type. The event object passed into the function will contain the data that the user typed. Additional methods of keylogging may be possible if root access is available. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4305,7 +4305,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4319,7 +4319,7 @@
             ]
         },
         {
-            "id": "T.112",
+            "id": "T.115",
             "name": "Input Prompt",
             "description": "The operating system and installed applications often have legitimate needs to prompt the user for sensitive information such as account credentials, bank account information, or Personally Identifiable Information (PII). Adversaries may mimic this functionality to prompt users for sensitive information. Compared to traditional PCs, the constrained display size of vehicle screens may impair the ability to provide users with contextual information, making users more susceptible to this technique's use. Specific approaches to this technique include: - Impersonate the identity of a legitimate application: A malicious application could impersonate the identity of a legitimate application (e.g. use the same application name and/or icon) and get installed on the vehicle. The malicious app could then prompt the user for sensitive information. - Display a prompt on top of a running legitimate application: A malicious application could display a prompt on top of a running legitimate application to trick users into entering sensitive information into the malicious application rather than the legitimate application. Typically, the malicious application would need to know when the targeted application (and individual activity within the targeted application) is running in the foreground, so that the malicious application knows when to display its prompt. Android 5.0 and 5.1.1, respectively, increased the difficulty of determining the current foreground application through modifications to the ActivityManager API. A malicious application can still abuse Android's accessibility features to determine which application is currently in the foreground. Approaches to display a prompt include: 1) A malicious application could start a new activity on top of a running legitimate application. Android 10 places new restrictions on the ability for an application to start a new activity on top of another application, which may make it more difficult for adversaries to utilize this technique. 2) A malicious application could create an application overlay window on top of a running legitimate application. Applications must hold the SYSTEM_ALERT_WINDOW permission to create overlay windows. This permission is handled differently than typical Android permissions, and at least under certain conditions is automatically granted to applications installed from the Google Play Store. The SYSTEM_ALERT_WINDOW permission and its associated ability to create application overlay windows are expected to be deprecated in a future release of Android in favor of a new API. - Fake device notifications: A malicious application could send fake device notifications to the user. Clicking on the device notification could trigger the malicious application to display an input prompt. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4351,7 +4351,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4365,7 +4365,7 @@
             ]
         },
         {
-            "id": "T.113",
+            "id": "T.116",
             "name": "Network Sniffing",
             "description": "Adversaries may sniff vehicle network traffic to capture information about an environment, including authentication material passed over the vehicle network. Network sniffing refers to using the network interface on a system to monitor or capture information sent over a wired or wireless vehicle network connection. An adversary may place a network interface into promiscuous mode to passively access data in transit over the network, or use span ports to capture a larger amount of data. Data captured via this technique may include user credentials, especially those sent over an insecure, unencrypted protocol. Techniques for name service resolution poisoning can also be used to capture credentials to websites, proxies, and internal systems by redirecting traffic to an adversary. Network sniffing may also reveal configuration details, such as running services, version numbers, and other network characteristics (e.g. IP addresses, hostnames, VLAN IDs) necessary for subsequent Lateral Movement and/or Defense Evasion activities.Adversaries may also try to collect vehicle telemetry, including propulsion system status (e.g., hard acceleration or braking), whether vehicle enclosures are locked / unlocked, etc. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4396,7 +4396,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4406,7 +4406,7 @@
             ]
         },
         {
-            "id": "T.114",
+            "id": "T.117",
             "name": "ECU Credential Dumping",
             "description": "Adversaries may attempt to dump credentials to obtain account login and credential material, normally in the form of a hash or a clear text password, from the operating system and software. Credentials can then be used to perform Lateral Movement and access restricted information. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4438,7 +4438,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4452,7 +4452,7 @@
             ]
         },
         {
-            "id": "T.115",
+            "id": "T.118",
             "name": "Unsecured Credentials",
             "description": "Adversaries may search compromised systems to find and obtain insecurely stored credentials. These credentials can be stored and/or misplaced in many locations on a system, including plaintext files (e.g. bash history), operating system or application-specific repositories (e.g. credentials in registry), or other specialized files/artifacts (e.g. Private Keys). This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4484,7 +4484,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4498,7 +4498,7 @@
             ]
         },
         {
-            "id": "T.114",
+            "id": "T.119",
             "name": "URI Hijacking",
             "description": "Adversaries may register Uniform Resource Identifiers (URIs) to intercept sensitive data. Applications regularly register URIs with the operating system to act as a response handler for various actions, such as logging into an app using an external account via single sign-on. This allows redirections to that specific URI to be intercepted by the application. If a malicious application were to register for a URI that was already in use by a genuine application, the malicious application may be able to intercept data intended for the genuine application or perform a phishing attack against the genuine application. Intercepted data may include OAuth authorization codes or tokens that could be used by the malicious application to gain access to resources. This technique description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4530,7 +4530,7 @@
                     }
                 }
             },
-            "refines": "T.108",
+            "refines": "T.111",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -4544,9 +4544,9 @@
             ]
         },
         {
-            "id": "T.115",
+            "id": "T.120",
             "name": "Discovery",
-            "description": "The adversary is trying to figure out the vehicle environment. Discovery consists of techniques an adversary may use to gain knowledge about a vehicle's systems and its internal network. These techniques help adversaries observe the environment and orient themselves before deciding how to act. They also allow adversaries to explore what they can control and what's around their entry point in order to discover how it could benefit their current objective. Native operating system tools are often used toward this post-compromise information-gathering objective. This tactic does not include techniques or other work that is performed during an offline / reverse engineering phase of an attack – this is currently out of scope of the auto threat matrix. In other words, the techniques are listed here if they are part of an active attack, but they are not listed if they only need to be used during a reverse engineering / exploit development phase. This tactic was adapted from MITRE ATT&CK.",
+            "description": "The adversary is trying to figure out the vehicle environment. Discovery consists of techniques an adversary may use to gain knowledge about a vehicle's systems and its internal network. These techniques help adversaries observe the environment and orient themselves before deciding how to act. They also allow adversaries to explore what they can control and what's around their entry point in order to discover how it could benefit their current objective. Native operating system tools are often used toward this post-compromise information-gathering objective. This tactic does not include techniques or other work that is performed during an offline / reverse engineering phase of an attack \u2013 this is currently out of scope of the auto threat matrix. In other words, the techniques are listed here if they are part of an active attack, but they are not listed if they only need to be used during a reverse engineering / exploit development phase. This tactic was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4582,7 +4582,7 @@
             ]
         },
         {
-            "id": "T.116",
+            "id": "T.121",
             "name": "File and Directory Discovery",
             "description": "Adversaries may enumerate files and directories or may search in specific locations of an ECU for certain information within a file system. Adversaries may use the information from this technique during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. Many command shell utilities can be used to obtain this information. Examples include dir, tree, ls, find, and locate. Custom tools may also be used to gather file and directory information and interact with the Native API. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4614,7 +4614,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4624,7 +4624,7 @@
             ]
         },
         {
-            "id": "T.117",
+            "id": "T.122",
             "name": "Location Tracking",
             "description": "An adversary could use a malicious or exploited application to surreptitiously track the vehicle's physical location through use of standard operating system APIs. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4656,7 +4656,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4668,7 +4668,7 @@
             ]
         },
         {
-            "id": "T.118",
+            "id": "T.123",
             "name": "Network Service Scanning",
             "description": "Adversaries may attempt to get a listing of services running on a vehicle's ECUs, including those that may be vulnerable to remote software exploitation. Methods to acquire this information include port scans and vulnerability scans using tools that are brought onto a system. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4700,7 +4700,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4712,7 +4712,7 @@
             ]
         },
         {
-            "id": "T.119",
+            "id": "T.124",
             "name": "Process Discovery",
             "description": "Adversaries may attempt to get information about running processes on a system. Information obtained could be used to gain an understanding of common software/applications running on systems within the vehicle network. Adversaries may use the information from process discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4743,7 +4743,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4752,7 +4752,7 @@
             ]
         },
         {
-            "id": "T.120",
+            "id": "T.125",
             "name": "Software Discovery",
             "description": "Adversaries may attempt to get a listing of software and software versions that are installed on a vehicle. Adversaries may use the information from this technique during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. Adversaries may attempt to enumerate software for a variety of reasons, such as figuring out what security measures are present or if the compromised system has a version of software that is vulnerable to exploitation for privilege escalation. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4784,7 +4784,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4794,7 +4794,7 @@
             ]
         },
         {
-            "id": "T.121",
+            "id": "T.126",
             "name": "System Information Discovery",
             "description": "An adversary may attempt to get detailed information about the ECU's operating system and hardware, including version, patches, hotfixes, service packs, and architecture. Adversaries may use the information from this technique during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4826,7 +4826,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4838,7 +4838,7 @@
             ]
         },
         {
-            "id": "T.122",
+            "id": "T.127",
             "name": "System Network Configuration Discovery",
             "description": "Adversaries may look for details about the network configuration and settings of systems they access or through information discovery of remote systems. Several operating system administration utilities exist that can be used to gather this information. Examples include Arp, ipconfig/ifconfig, nbtstat, and route. Adversaries may use the information from System Network Configuration Discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4870,7 +4870,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4882,7 +4882,7 @@
             ]
         },
         {
-            "id": "T.123",
+            "id": "T.128",
             "name": "System Network Connections Discovery",
             "description": "Adversaries may attempt to get a listing of network connections to or from the compromised system they are currently accessing or from remote systems by querying for information over the network. An adversary who gains access to a system that is part of a cloud-based environment may map out Virtual Private Clouds or Virtual Networks in order to determine what systems and services are connected. The actions performed are likely the same types of discovery techniques depending on the operating system, but the resulting information may include details about the networked cloud environment relevant to the adversary's goals. Cloud providers may have different ways in which their virtual networks operate. Utilities and commands that acquire this information include netstat, 'net use,' and 'net session' with Net. In Linux, netstat and lsof can be used to list current connections. who -a and w can be used to show which users are currently logged in, similar to 'net session'. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4914,7 +4914,7 @@
                     }
                 }
             },
-            "refines": "T.115",
+          "refines": "T.120",
             "compromises": [
                 "Confidentiality"
             ],
@@ -4926,7 +4926,7 @@
             ]
         },
         {
-            "id": "T.124",
+            "id": "T.129",
             "name": "Lateral Movement",
             "description": "The adversary is trying to move through the vehicle network. Lateral movement consists of techniques that enable an adversary to access and control remote systems on a vehicle network and could, but does not necessarily, include execution of tools on ECUs. The lateral movement techniques could allow an adversary to gather information from a system without needing additional tools, such as a remote access tool. This definition was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4967,7 +4967,7 @@
             ]
         },
         {
-            "id": "T.125",
+            "id": "T.130",
             "name": "Abuse Standard Diagnostic Protocol for Lateral Movement",
             "description": "The adversary could try to abuse standard diagnostic protocols (e.g., unified diagnostic services) to move laterally inside the vehicle network. For example, an adversary that can send diagnostic commands could attempt to use UDS 'download and execute' or 'write memory by address' capabilities to gain code execution on an ECU on the vehicle network.",
             "classificationModel": "MITRE ATT&CK®",
@@ -4999,7 +4999,7 @@
                     }
                 }
             },
-            "refines": "T.124",
+            "refines": "T.129",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5014,7 +5014,7 @@
             ]
         },
         {
-            "id": "T.126",
+            "id": "T.131",
             "name": "Bridge Vehicle Networks",
             "description": "The adversary may seek to bridge vehicle vehicle networks to obtain their objectives. Some ECUs may possess multiple interfaces to the vehicle network, including interfaces that use different networking technologies, and an adversary could modify these ECUs to bridge networks that would otherwise be separated. For example, an adversary that has gained initial access on an ECU with a connection to a vehicle's Ethernet network may attempt to modify an ECU that is connected to the vehicle's Ethernet and CAN networks so that they can extend their reach to ECU on the vehicle's CAN network.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5046,7 +5046,7 @@
                     }
                 }
             },
-            "refines": "T.124",
+            "refines": "T.129",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5060,7 +5060,7 @@
             ]
         },
         {
-            "id": "T.127",
+            "id": "T.132",
             "name": "Exploit ECU for Lateral Movement",
             "description": "Adversaries may exploit an ECU's services to gain unauthorized access to internal systems once inside of a vehicle network. Exploitation of a software vulnerability occurs when an adversary takes advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code. A common goal for post-compromise exploitation of remote services is for lateral movement to enable control of additional ECUs on the vehicle network. An adversary may need to determine if the remote system is in a vulnerable state, which may be done through network service scanning or other discovery methods looking for common, vulnerable software that may be deployed in the network, the lack of certain patches that may indicate vulnerabilities, or security software that may be used to detect or contain remote exploitation. Depending on the permissions level of the vulnerable remote service an adversary may achieve exploitation for privilege escalation as a result of lateral movement exploitation as well. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5092,7 +5092,7 @@
                     }
                 }
             },
-            "refines": "T.124",
+            "refines": "T.129",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5107,7 +5107,7 @@
             ]
         },
         {
-            "id": "T.128",
+            "id": "T.133",
             "name": "Remote Services",
             "description": "Adversaries may attempt to log into a service specifically designed to accept remote connections, such as telnet, SSH, and VNC. The adversary may then perform actions as the logged-on user. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5139,7 +5139,7 @@
                     }
                 }
             },
-            "refines": "T.124",
+            "refines": "T.129",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5153,7 +5153,7 @@
             ]
         },
         {
-            "id": "T.129",
+            "id": "T.134",
             "name": "Reprogram ECU for Lateral Movement",
             "description": "The adversary may attempt to move laterally in a vehicle's network by reprogramming an ECU via its software update mechanisms. This can be successful if an ECU on the vehicle network does not possess a mechanism to verify the authenticity of a software update. Flaws in the verification mechanism, including weak cryptography, coding errors, and the failure to address version rollback attacks, can result in Bypass code signing.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5185,7 +5185,7 @@
                     }
                 }
             },
-            "refines": "T.124",
+            "refines": "T.129",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5198,9 +5198,9 @@
             ]
         },
         {
-            "id": "T.130",
+            "id": "T.135",
             "name": "Compromise Cryptographic Security",
-            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently “strong” in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, “encryption” does not provide “integrity” or “authenticity”. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o “padding oracles”: Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
+            "description": "Adversaries may compromise the cryptographic mechanisms used by vehicles to bypass controls that would otherwise protect assets. These assets may be internal to an ECU, or used in communication between ECUs within the vehicle, or with services outside the vehicle. This technique does not cover exploitation of poorly-protected keys. See  ECU Credential Dumping (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0039) & Unsecured Credentials (https://atm.automotiveisac.com/technique/ATM-TA0007/ATM-T0040). Cryptographic methods can be used to protect the security properties of assets both within a vehicle or ECU and between a vehicle and other communication partners. They are intended to be computationally intensive to decipher without the associated key. Typically, longer keys increase the cost of cryptanalysis, or decryption without the key. Adversaries can compromise assets within the vehicle (or its ECUs) by exploiting a variety of issues relating to cryptography. Examples and references are given below - these are in no way an exhaustive list. There are a huge number of cryptographic flaws of various kinds which have existed and continue to occur. - The algorithm is inherently weak (Dismantling Megamos Crypto: Wirelessly Lockpicking a Vehicle Immobilizer, Gone in 360 Seconds: Hijacking with Hitag2). Recommendation: use consensus standard cryptography. - The security strength of the cryptography used is not sufficient. Recent recommendations can be found in Recommendation for Key Management: Part 1 - General, Cryptographic Mechanisms: Recommendations and Key Lengths, Version 2024-01. - The implementation of cryptographic primitives is flawed. Recommendation: use carefully selected providers of cryptographic code. Examples of such flaws include: o Information leakage through timing (CWE - CWE-208: Observable Timing Discrepancy (4.16), Challenge 17 Set 3 - The Cryptopals Crypto Challenges). An example of this has been observed in a fielded automotive product. o Parameters which are insufficiently 'strong'in all possible use-cases.  e=3 in RSA encryption of small messages e=3 in RSA signature validation with incorrect padding validation. This has been observed in a fielded automotive product. o Summary of RSA flaws: Twenty years of attacks on the RSA Cryptosystem. - The cryptographic primitive does not provide the property the use-case requires. Recommendation: carefully review all uses of cryptography to ensure the correct properties are defended. o For example, 'encryption'does not provide 'integrity'or 'authenticity'. Challenge 16 Set 2 - The Cryptopals Crypto Challenges. - The structure/protocol has vulnerabilities (despite using a good cryptographic primitive). Recommendation: use well-reviewed (not ad-hoc) structures and protocols: o 'padding oracles': Practical Padding Oracle Attacks o Reused nonces/IVs: ECDSA-Nonce-Reuse-Exploit-Example o Message extension attacks: Flickr's API Signature Forgery Vulnerability This technique may be used as a precursor to ATM techniques such as: Bypass Code Integrity Protections (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0031) & Bypass UDS Security Access (https://atm.automotiveisac.com/technique/ATM-TA0006/ATM-T0033)",
             "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5227,7 +5227,7 @@
                     }
                 }
             },
-            "refines": "T.124",
+            "refines": "T.129",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -5242,7 +5242,7 @@
             ]
         },
         {
-            "id": "T.131",
+            "id": "T.136",
             "name": "Collection",
             "description": "The adversary is trying to gather data of interest to their goal. Collection consists of techniques used to identify and gather information, such as sensitive files, location history, or recordings of in-vehicle audio from a target vehicle prior to exfiltration. This category also covers locations on a system or vehicle network where the adversary may look for information to exfiltrate. This tactic was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5280,7 +5280,7 @@
             ]
         },
         {
-            "id": "T.132",
+            "id": "T.137",
             "name": "Capture SMS Message",
             "description": "A malicious application could capture sensitive data sent via SMS, including authentication credentials. SMS is frequently used to transmit codes used for multi-factor authentication. On Android, a malicious application must request and obtain permission (either at app install time or run time) in order to receive SMS messages. Alternatively, a malicious application could attempt to perform an operating system privilege escalation attack to bypass the permission requirement. This technique description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5312,7 +5312,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5324,7 +5324,7 @@
             ]
         },
         {
-            "id": "T.133",
+            "id": "T.138",
             "name": "Input Capture",
             "description": "Adversaries may capture user input to obtain credentials or other information from the user through various methods. Malware may masquerade as a legitimate third-party keyboard to record user keystrokes.[1] On Android, users must explicitly authorize the use of third-party keyboard apps. Users should be advised to use extreme caution before granting this authorization when it is requested. On Android, malware may abuse accessibility features to record keystrokes by registering an AccessibilityService class, overriding the onAccessibilityEvent method, and listening for the AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED event type. The event object passed into the function will contain the data that the user typed. Additional methods of keylogging may be possible if root access is available. This technique was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5356,7 +5356,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5368,7 +5368,7 @@
             ]
         },
         {
-            "id": "T.134",
+            "id": "T.139",
             "name": "Network Sniffing",
             "description": "Adversaries may sniff vehicle network traffic to capture information about an environment, including authentication material passed over the vehicle network. Network sniffing refers to using the network interface on a system to monitor or capture information sent over a wired or wireless vehicle network connection. An adversary may place a network interface into promiscuous mode to passively access data in transit over the network, or use span ports to capture a larger amount of data. Data captured via this technique may include user credentials, especially those sent over an insecure, unencrypted protocol. Techniques for name service resolution poisoning can also be used to capture credentials to websites, proxies, and internal systems by redirecting traffic to an adversary. Network sniffing may also reveal configuration details, such as running services, version numbers, and other network characteristics (e.g. IP addresses, hostnames, VLAN IDs) necessary for subsequent Lateral Movement and/or Defense Evasion activities.Adversaries may also try to collect vehicle telemetry, including propulsion system status (e.g., hard acceleration or braking), whether vehicle enclosures are locked / unlocked, etc. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5399,7 +5399,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5409,7 +5409,7 @@
             ]
         },
         {
-            "id": "T.135",
+            "id": "T.140",
             "name": "Location Tracking",
             "description": "An adversary could use a malicious or exploited application to surreptitiously track the vehicle's physical location through use of standard operating system APIs. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5441,7 +5441,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5453,7 +5453,7 @@
             ]
         },
         {
-            "id": "T.136",
+            "id": "T.141",
             "name": "Abuse Standard Diagnostic Protocol for Collection",
             "description": "The adversary can attempt to abuse 'read' capabilities in standard diagnostic protocols, such as the UDS service 'read memory by address' to access customer information from an ECU's storage or memory. ",
             "classificationModel": "MITRE ATT&CK®",
@@ -5485,7 +5485,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5497,7 +5497,7 @@
             ]
         },
         {
-            "id": "T.137",
+            "id": "T.142",
             "name": "Capture Camera or Audio",
             "description": "Adversaries may utilize the vehicle's cameras and microphones to capture information about the user, their surroundings, or other physical identifiers. Adversaries may use the vehicle's camera and microphones on the vehicle to capture images, audio recordings, or video. This technique's description was adapted from two techniques in the MITRE ATT&CK for Mobile matrix: Capture Audio and Capture Camera.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5529,7 +5529,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5541,7 +5541,7 @@
             ]
         },
         {
-            "id": "T.138",
+            "id": "T.143",
             "name": "Data from Local System",
             "description": "Adversaries may search local system sources, such as file systems, local databases, logs, or volatile storage via data dumps to find files of interest and sensitive data prior to exfiltration. Adversaries may do this using a command and scripting interpreter, such as cmd, which has functionality to interact with the file system to gather information. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5573,7 +5573,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5585,7 +5585,7 @@
             ]
         },
         {
-            "id": "T.139",
+            "id": "T.144",
             "name": "Network Information Discovery",
             "description": "Adversaries may use device sensors to collect information about nearby networks, such as Wi-Fi and Bluetooth. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5616,7 +5616,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5628,7 +5628,7 @@
             ]
         },
         {
-            "id": "T.140",
+            "id": "T.145",
             "name": "Screen Capture",
             "description": "Adversaries may use screen captures to collect information about applications running in the foreground, capture user data, credentials, or other sensitive information. Screen capturing functionality may be included as a feature of a remote access tool used in post-compromise operations. Taking a screenshot is also typically possible through native utilities or API calls, such as CopyFromScreen, xwd, or screencapture. This technique's description was adapted from the 'Screen capture' technique in MITRE ATT&CK for Enterprise and MITRE ATT&CK for Mobile.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5659,7 +5659,7 @@
                     }
                 }
             },
-            "refines": "T.131",
+            "refines": "T.136",
             "compromises": [
                 "Confidentiality"
             ],
@@ -5671,7 +5671,7 @@
             ]
         },
         {
-            "id": "T.141",
+            "id": "T.146",
             "name": "Command and Control",
             "description": "The adversary is trying to communicate with compromised systems to control them. Command and Control consists of techniques that adversaries may use to communicate with a compromised vehicle and its systems. Adversaries can attempt to mimic normal, expected traffic to avoid detection. There are many ways an adversary can establish command and control with various levels of stealth depending on the vehicle's connectivity features and its defenses. This tactic was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5712,7 +5712,7 @@
             ]
         },
         {
-            "id": "T.142",
+            "id": "T.147",
             "name": "Aftermarket, Customer, or Dealer Equipment",
             "description": "Adversaries may take use aftermarket, customer, or dealer equipment as an initial access point into the vehicle. Paired devices, such as a customer's smart phone, often possess valid credentials for the vehicle's Bluetooth and Wi-Fi networks, access to phone projection technologies, and may be connected to USB ports. Dealer test and diagnostic tools are typically connected to a vehicle's OBD-II port, which may provide direct access to a vehicle network; these tools may also have access to credentials for running diagnostic procedures. Third-party OBD-II accessories, such as insurance dongles and fleet management dongles, may introduce a wireless ingress points to the vehicle through its OBD-II port. These devices may also be used as a post-exploitation command-and-control mechanism, and to exfiltrate data from a vehicle.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5739,7 +5739,7 @@
                     }
                 }
             },
-            "refines": "T.141",
+            "refines": "T.146",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -5750,7 +5750,7 @@
             ]
         },
         {
-            "id": "T.143",
+            "id": "T.148",
             "name": "Cellular Communication",
             "description": "If available, the adversary can use the vehicle's cellular communication system (e.g., SMS) in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5781,7 +5781,7 @@
                     }
                 }
             },
-            "refines": "T.141",
+            "refines": "T.146",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5795,7 +5795,7 @@
             ]
         },
         {
-            "id": "T.144",
+            "id": "T.149",
             "name": "Internet Communication",
             "description": "The adversary can use a compromised ECU's internet connection (if available) for command and control and to exfiltrate data.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5826,7 +5826,7 @@
                     }
                 }
             },
-            "refines": "T.141",
+            "refines": "T.146",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5840,7 +5840,7 @@
             ]
         },
         {
-            "id": "T.145",
+            "id": "T.150",
             "name": "Receive Only Communication",
             "description": "The adversary can use a receive-only communication channel, such as Radio Data System (RDS) or TPMS to send commands to the compromised vehicle.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5871,7 +5871,7 @@
                     }
                 }
             },
-            "refines": "T.141",
+            "refines": "T.146",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5885,7 +5885,7 @@
             ]
         },
         {
-            "id": "T.146",
+            "id": "T.151",
             "name": "Short Range Wireless Communication",
             "description": "If available, the adversary can use the vehicle's short range wireless communication capabilities, including Bluetooth and Wi-Fi, in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5916,7 +5916,7 @@
                     }
                 }
             },
-            "refines": "T.141",
+            "refines": "T.146",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5931,7 +5931,7 @@
             ]
         },
         {
-            "id": "T.147",
+            "id": "T.152",
             "name": "Standard Cryptographic Protocol",
             "description": "Adversaries may employ a known encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Despite the use of a secure algorithm, these implementations may be vulnerable to reverse engineering if secret keys are encoded and/or generated within malware samples/configuration files. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -5962,7 +5962,7 @@
                     }
                 }
             },
-            "refines": "T.141",
+            "refines": "T.146",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -5976,7 +5976,7 @@
             ]
         },
         {
-            "id": "T.148",
+            "id": "T.153",
             "name": "Exfiltration",
             "description": "The adversary is trying to steal data. Exfiltration consists of techniques that adversaries may use to steal data from the vehicle. Once they've collected data, adversaries often package it to avoid detection while removing it. This can include compression and encryption. Techniques for getting data out of a target network typically include transferring it over their command and control channel or an alternate channel and may also include putting size limits on the transmission. Depending on a vehicle's connectivity features, it may be possible to exfiltrate over channels that do not use internet communication, such as Bluetooth or Wi-Fi. This tactic was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6014,7 +6014,7 @@
             ]
         },
         {
-            "id": "T.149",
+            "id": "T.154",
             "name": "Aftermarket, Customer, or Dealer Equipment",
             "description": "Adversaries may take use aftermarket, customer, or dealer equipment as an initial access point into the vehicle. Paired devices, such as a customer's smart phone, often possess valid credentials for the vehicle's Bluetooth and Wi-Fi networks, access to phone projection technologies, and may be connected to USB ports. Dealer test and diagnostic tools are typically connected to a vehicle's OBD-II port, which may provide direct access to a vehicle network; these tools may also have access to credentials for running diagnostic procedures. Third-party OBD-II accessories, such as insurance dongles and fleet management dongles, may introduce a wireless ingress points to the vehicle through its OBD-II port. These devices may also be used as a post-exploitation command-and-control mechanism, and to exfiltrate data from a vehicle.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6041,7 +6041,7 @@
                     }
                 }
             },
-            "refines": "T.148",
+            "refines": "T.153",
             "compromises": [
                 "Confidentiality",
                 "Integrity",
@@ -6052,7 +6052,7 @@
             ]
         },
         {
-            "id": "T.150",
+            "id": "T.155",
             "name": "Cellular Communication",
             "description": "If available, the adversary can use the vehicle's cellular communication system (e.g., SMS) in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6083,7 +6083,7 @@
                     }
                 }
             },
-            "refines": "T.148",
+            "refines": "T.153",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -6097,7 +6097,7 @@
             ]
         },
         {
-            "id": "T.151",
+            "id": "T.156",
             "name": "Internet Communication",
             "description": "The adversary can use a compromised ECU's internet connection (if available) for command and control and to exfiltrate data.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6128,7 +6128,7 @@
                     }
                 }
             },
-            "refines": "T.148",
+            "refines": "T.153",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -6142,7 +6142,7 @@
             ]
         },
         {
-            "id": "T.152",
+            "id": "T.157",
             "name": "Short Range Wireless Communication",
             "description": "If available, the adversary can use the vehicle's short range wireless communication capabilities, including Bluetooth and Wi-Fi, in a post-exploitation environment to fulfill their command and control and exfiltration objectives.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6173,7 +6173,7 @@
                     }
                 }
             },
-            "refines": "T.148",
+            "refines": "T.153",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -6188,7 +6188,7 @@
             ]
         },
         {
-            "id": "T.153",
+            "id": "T.158",
             "name": "Standard Cryptographic Protocol",
             "description": "Adversaries may employ a known encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Despite the use of a secure algorithm, these implementations may be vulnerable to reverse engineering if secret keys are encoded and/or generated within malware samples/configuration files. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6219,7 +6219,7 @@
                     }
                 }
             },
-            "refines": "T.148",
+            "refines": "T.153",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -6233,7 +6233,7 @@
             ]
         },
         {
-            "id": "T.154",
+            "id": "T.159",
             "name": "Removable Media",
             "description": "Adversaries may attempt to exfiltrate data via a physical medium, such as a removable drive. Such media could be an external hard drive, USB drive, cellular phone, MP3 player, or other removable storage and processing device. This technique's description was adapted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6264,7 +6264,7 @@
                     }
                 }
             },
-            "refines": "T.148",
+            "refines": "T.153",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -6276,7 +6276,7 @@
             ]
         },
         {
-            "id": "T.155",
+            "id": "T.160",
             "name": "Physical Access",
             "description": "Physical access via a JTAG / debug / serial interface could be used to exfiltrate data -- for example, a private key could be extracted using one of these techniques / cold boot attack / memory remanence attack some possible technique names - extract using physical medium / extract using developer interface.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6305,7 +6305,7 @@
                     }
                 }
             },
-            "refines": "T.148",
+            "refines": "T.153",
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
@@ -6317,7 +6317,7 @@
             ]
         },
         {
-            "id": "T.156",
+            "id": "T.161",
             "name": "Affect Vehicle Function",
             "description": "The adversary is trying to affect vehicle functions and systems, such as propulsion control, airbag deployment, audio, and displays.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6358,7 +6358,7 @@
             ]
         },
         {
-            "id": "T.157",
+            "id": "T.162",
             "name": "Adversarial Machine Learning",
             "description": "As per Wikipedia, adversarial machine learning can be defined as a machine learning technique that attempts to fool models by supplying deceptive input. In the context of automotive cybersecurity, the adversary could try to use adversarial machine learning techniques to cause vehicle perception systems to misclassify objects, fail to detect obstacles, misinterpret road signs, respond inappropriately to road conditions, and others.For example, it may be possible to create an image that appears as a stop sign to a human but is interpreted by a vehicle's vision system as a speed limit sign. It has been shown that some adversarial machine learning techniques could be used to attack multi-sensor fusion systems and possibly affect the behavior of driver assist or autonomous driving features.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6387,7 +6387,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Integrity",
                 "Authenticity",
@@ -6399,7 +6399,7 @@
             ]
         },
         {
-            "id": "T.158",
+            "id": "T.163",
             "name": "Analog Sensor Attacks",
             "description": "The adversary may use analog sensor attacks to disrupt the availability of vehicle's analog sensors, and possibly control their output. Examples of these techniques include shining a laser into a Lidar receiver, transmitting an interfering radar signal that causes a vehicle to perceive a vehicle or obstacle where there isn't one, or transmitting inaudible voice commands to a vehicle's voice assistant.One survey paper found that a vehicle's Lidar, camera, radar, ultrasonic, and magnetic sensors could be jammed, and in some cases their outputs controlled, using analog sensor attack techniques.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6428,7 +6428,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Integrity",
                 "Authenticity",
@@ -6441,7 +6441,7 @@
             ]
         },
         {
-            "id": "T.159",
+            "id": "T.164",
             "name": "Abuse Standard Diagnostic Protocol for Affecting Vehicle Function",
             "description": "The adversary could try to abuse standard diagnostic protocls to actuate vehicle functions. For example, if an adversary may try to send diagnostic commands to actuate the brakes or control headlamps. Some UDS functions, such as write memory by address, could be abused to modify an ECU's firmware and affect the functions it actuates.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6468,7 +6468,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Availability",
                 "Authenticity",
@@ -6482,7 +6482,7 @@
             ]
         },
         {
-            "id": "T.160",
+            "id": "T.165",
             "name": "CAN Bus Denial of Service",
             "description": "An adversary with access to one of the vehicle's CAN busses may be able to perform a denial-of-service attack by flooding the bus with high-priority messages, preventing other ECUs from being able to communicate.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6509,7 +6509,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Availability"
             ],
@@ -6520,7 +6520,7 @@
             ]
         },
         {
-            "id": "T.161",
+            "id": "T.166",
             "name": "Denial of Service on Vehicle Function",
             "description": "Adversaries may perform Denial of Service (DoS) attacks to disrupt expected vehicle functionality. Examples of DoS attacks include overwhelming an ECU with a high volume of requests in a short time period and sending an ECU a request it does not know how to handle. Vulnerabilities that cause processes to crash can result in a denial of service.  In some cases, disrupting the availability of some vehicle functions may cause the vehicle to try to default to a known 'safe state' that could result in reduced or blocked vehicle propulsion, further impacting the road user. This technique was adopted from MITRE ATT&CK.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6547,7 +6547,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Availability"
             ],
@@ -6558,7 +6558,7 @@
             ]
         },
         {
-            "id": "T.162",
+            "id": "T.167",
             "name": "Local Function",
             "description": "Once the adversary has gained some level of access to an ECU they will have partial or complete control of the functions actuated by that device. For example, an adversary that can execute arbitrary code on a body controller ECU will likely be able to exercise door lock / unlock functions.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6585,7 +6585,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Availability",
                 "Integrity",
@@ -6599,7 +6599,7 @@
             ]
         },
         {
-            "id": "T.163",
+            "id": "T.168",
             "name": "Modify Bus Message",
             "description": "An adversary that has gained access to one of the vehicle's communication busses may try to modify or suppress messages sent by another ECU on that network. This technique is particularly applicable to CAN busses, but is not necessarily limited to that technology.",
             "classificationModel": "MITRE ATT&CK®",
@@ -6626,7 +6626,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Availability",
                 "Integrity",
@@ -6639,7 +6639,7 @@
             ]
         },
         {
-            "id": "T.164",
+            "id": "T.169",
             "name": "Unintended Vehicle Network Message",
             "description": "The adversary may try to send unintended messages on the in-vehicle network. While this technique is not specific to CAN communications, it often follows a privilege escalation technique that grants the adversary control of an ECU's CAN communication system. Unintended message includes: - Messages that the host is not supposed to send, - Messages that the host is authorized to send, but at an incorrect time, at the wrong rate, or out of the intended sequence, - Messages that the host is authorized to send, but with unintended parameters, - Any messages sent by an unauthenticated host",
             "classificationModel": "MITRE ATT&CK®",
@@ -6666,7 +6666,7 @@
                     }
                 }
             },
-            "refines": "T.156",
+            "refines": "T.161",
             "compromises": [
                 "Availability",
                 "Integrity",
