@@ -144,13 +144,23 @@
                             ]
                         }
                     },
-                    "mitigates": {
+                    "denies": {
                         "type": "array",
-                        "description": "List of threat IDs this control mitigates",
+                        "description": "The specific capabilities this control prevents an attacker from exercising.",
                         "items": {
-                            "type": "string",
-                            "pattern": "^T\\.\\d{3}$"
+                            "$ref": "#/$defs/CapabilityString"
                         }
+                    },
+                    "overriddenBy": {
+                        "description": "The specific capabilities an attacker must possess to force this control to fail.",
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LogicalCondition"
+                            },
+                            {
+                                "$ref": "#/$defs/CapabilityNode"
+                            }
+                        ]
                     }
                 },
                 "required": [
@@ -186,6 +196,59 @@
             "required": [
                 "feasibility"
             ]
+        },
+        "CapabilityString": {
+            "type": "string",
+            "description": "Strict Capability:Technology:Domain format string.",
+            "pattern": "^(Access|Extract|Modify|Execute|Impersonate|Bypass|Evade|Control|Disrupt):(CAN|LIN|AE|FlexRay|Bluetooth|WiFi|RF|UWB|NFC|Cellular|GNSS|OBD2|USB|JTAG|Serial|Memory|Sensor|OS|UDS|SecOC|Crypto|Bootloader|Hypervisor|Container|Middleware|API|PLC|PWM|Power|Clock|EM|Optical|SoC):(Powertrain(\\.Engine|\\.Battery|\\.BMS|\\.Inverter|\\.Charging)?|Chassis(\\.Braking|\\.Steering|\\.Suspension|\\.Stability)?|Body(\\.Access|\\.Immobilizer|\\.HVAC|\\.Lighting)?|Infotainment(\\.Display|\\.Connectivity|\\.Audio)?|Telematics(\\.OTA|\\.V2X)?|ADAS(\\.Perception|\\.Planning|\\.Control)?|Compute(\\.HPC|\\.Zonal|\\.Gateway)?|Backend(\\.OEM|\\.ThirdParty|\\.PKI)?|External(\\.EVSE|\\.Grid|\\.MobileApp|\\.DiagnosticTool)?|\\*)$"
+        },
+        "CapabilityNode": {
+            "type": "object",
+            "properties": {
+                "capability": {
+                    "$ref": "#/$defs/CapabilityString"
+                }
+            },
+            "required": [
+                "capability"
+            ],
+            "additionalProperties": false
+        },
+        "LogicalCondition": {
+            "type": "object",
+            "properties": {
+                "AND": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/CapabilityNode"
+                            },
+                            {
+                                "$ref": "#/$defs/LogicalCondition"
+                            }
+                        ]
+                    },
+                    "minItems": 1
+                },
+                "OR": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/CapabilityNode"
+                            },
+                            {
+                                "$ref": "#/$defs/LogicalCondition"
+                            }
+                        ]
+                    },
+                    "minItems": 1
+                }
+            },
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1
         }
     }
 }
