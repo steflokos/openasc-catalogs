@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "1.0.0",
   "$schema": "../schemas/control-array.schema.json",
   "controls": [
     {
@@ -33,7 +33,9 @@
         "Data",
         "Channel",
         "Data Flow"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.002",
@@ -67,7 +69,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.001"
+      "refines": "C.001",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.003",
@@ -101,7 +105,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.001"
+      "refines": "C.001",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.004",
@@ -134,7 +140,9 @@
         "Data",
         "Channel",
         "Data Flow"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.005",
@@ -168,7 +176,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.004"
+      "refines": "C.004",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.006",
@@ -202,7 +212,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.004"
+      "refines": "C.004",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.007",
@@ -236,7 +248,9 @@
         "Channel",
         "Data Flow",
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.008",
@@ -270,7 +284,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.009",
@@ -304,7 +320,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.010",
@@ -338,7 +356,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.011",
@@ -371,7 +391,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.012",
@@ -407,7 +429,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.013",
@@ -443,7 +467,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.014",
@@ -475,7 +501,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.015",
@@ -506,7 +534,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.016",
@@ -541,7 +571,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.017",
@@ -576,7 +608,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.018",
@@ -610,7 +644,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.007"
+      "refines": "C.007",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.019",
@@ -641,7 +677,9 @@
       "actsOn": [
         "Data",
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.020",
@@ -673,7 +711,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.019"
+      "refines": "C.019",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.021",
@@ -705,7 +745,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.019"
+      "refines": "C.019",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.022",
@@ -737,7 +779,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.019"
+      "refines": "C.019",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.023",
@@ -770,7 +814,9 @@
       "actsOn": [
         "Component",
         "Data"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.024",
@@ -804,7 +850,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.023"
+      "refines": "C.023",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.025",
@@ -838,7 +886,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.023"
+      "refines": "C.023",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.026",
@@ -872,7 +922,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.023"
+      "refines": "C.023",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.027",
@@ -905,7 +957,9 @@
         "Channel",
         "Data Flow",
         "Data"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.028",
@@ -939,7 +993,9 @@
         "Data Flow",
         "Data"
       ],
-      "refines": "C.027"
+      "refines": "C.027",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.029",
@@ -973,7 +1029,9 @@
         "Data Flow",
         "Data"
       ],
-      "refines": "C.027"
+      "refines": "C.027",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.030",
@@ -1005,7 +1063,9 @@
       ],
       "actsOn": [
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.031",
@@ -1038,7 +1098,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.030"
+      "refines": "C.030",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.032",
@@ -1071,7 +1133,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.030"
+      "refines": "C.030",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.033",
@@ -1103,7 +1167,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.030"
+      "refines": "C.030",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.034",
@@ -1136,7 +1202,9 @@
       "actsOn": [
         "Component",
         "Data"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.035",
@@ -1169,7 +1237,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.034"
+      "refines": "C.034",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.036",
@@ -1201,7 +1271,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.034"
+      "refines": "C.034",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.037",
@@ -1233,7 +1305,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.034"
+      "refines": "C.034",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.038",
@@ -1266,7 +1340,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.034"
+      "refines": "C.034",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.039",
@@ -1298,7 +1374,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.034"
+      "refines": "C.034",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.040",
@@ -1330,7 +1408,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.039"
+      "refines": "C.039",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.041",
@@ -1361,7 +1441,9 @@
       ],
       "actsOn": [
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.042",
@@ -1393,7 +1475,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.041"
+      "refines": "C.041",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.043",
@@ -1425,7 +1509,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.041"
+      "refines": "C.041",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.044",
@@ -1457,7 +1543,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.041"
+      "refines": "C.041",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.045",
@@ -1488,7 +1576,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.041"
+      "refines": "C.041",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.046",
@@ -1519,7 +1609,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.041"
+      "refines": "C.041",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.047",
@@ -1550,7 +1642,9 @@
       ],
       "actsOn": [
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.048",
@@ -1581,7 +1675,9 @@
       "actsOn": [
         "Component",
         "Data"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.049",
@@ -1613,7 +1709,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.048"
+      "refines": "C.048",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.050",
@@ -1645,7 +1743,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.048"
+      "refines": "C.048",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.051",
@@ -1677,7 +1777,9 @@
       "actsOn": [
         "Component",
         "Data"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.052",
@@ -1710,7 +1812,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.051"
+      "refines": "C.051",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.053",
@@ -1741,7 +1845,9 @@
       ],
       "actsOn": [
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.054",
@@ -1773,7 +1879,9 @@
       ],
       "actsOn": [
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.055",
@@ -1806,7 +1914,9 @@
         "Component",
         "Channel",
         "Data Flow"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.056",
@@ -1839,7 +1949,9 @@
       "actsOn": [
         "Component",
         "Data"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.057",
@@ -1873,7 +1985,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.056"
+      "refines": "C.056",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.058",
@@ -1907,7 +2021,9 @@
         "Component",
         "Data"
       ],
-      "refines": "C.056"
+      "refines": "C.056",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.059",
@@ -1939,7 +2055,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.056"
+      "refines": "C.056",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.060",
@@ -1970,7 +2088,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.056"
+      "refines": "C.056",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.061",
@@ -2002,7 +2122,9 @@
       "actsOn": [
         "Component",
         "Data"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.062",
@@ -2032,7 +2154,9 @@
       ],
       "actsOn": [
         "Component"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.063",
@@ -2063,7 +2187,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.062"
+      "refines": "C.062",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.064",
@@ -2094,7 +2220,9 @@
       "actsOn": [
         "Component"
       ],
-      "refines": "C.062"
+      "refines": "C.062",
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.065",
@@ -2126,7 +2254,9 @@
       "actsOn": [
         "Channel",
         "Data Flow"
-      ]
+      ],
+      "denies": [],
+      "overriddenBy": {}
     },
     {
       "id": "C.066",
@@ -2159,7 +2289,9 @@
         "Channel",
         "Data Flow"
       ],
-      "refines": "C.065"
+      "refines": "C.065",
+      "denies": [],
+      "overriddenBy": {}
     }
   ]
 }
