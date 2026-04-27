@@ -34,8 +34,28 @@
         "Channel",
         "Data Flow"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.002",
@@ -70,8 +90,27 @@
         "Data Flow"
       ],
       "refines": "C.001",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*",
+        "Read:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Read:EM:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.003",
@@ -106,8 +145,32 @@
         "Data Flow"
       ],
       "refines": "C.001",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*",
+        "Read:Firmware:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Read:Nonce:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.004",
@@ -141,8 +204,25 @@
         "Channel",
         "Data Flow"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:V2X:*",
+        "Spoof:Ethernet:*",
+        "Spoof:API:*",
+        "Write:Firmware:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Inject:UDS:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.005",
@@ -177,8 +257,20 @@
         "Data Flow"
       ],
       "refines": "C.004",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:Firmware:*",
+        "Spoof:*:Backend.*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.006",
@@ -213,8 +305,20 @@
         "Data Flow"
       ],
       "refines": "C.004",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:V2X:*",
+        "Execute:App:External.DiagnosticTool"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.007",
@@ -249,8 +353,41 @@
         "Data Flow",
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:CAN:*",
+        "Read:LIN:*",
+        "Read:Ethernet:*",
+        "Read:DoIP:*",
+        "Read:SOME_IP:*",
+        "Read:UDS:*",
+        "Read:J1939:*",
+        "Read:V2X:*",
+        "Read:WiFi:*",
+        "Read:Cellular:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Inject:UDS:*",
+        "Inject:DoIP:*",
+        "Inject:SOME_IP:*",
+        "Inject:J1939:*",
+        "Inject:V2X:*",
+        "Inject:WiFi:*",
+        "Disrupt:CAN:*",
+        "Disrupt:Ethernet:*",
+        "Disrupt:Cellular:*",
+        "Disrupt:WiFi:*",
+        "Disrupt:V2X:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:*:Compute.Gateway"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.008",
@@ -285,8 +422,25 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Spoof:CAN:*"
+          },
+          {
+            "capability": "Spoof:Ethernet:*"
+          },
+          {
+            "capability": "Spoof:V2X:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.009",
@@ -321,8 +475,34 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:*:External.*",
+        "Read:*:Backend.*",
+        "Spoof:*:Backend.*",
+        "Inject:*:External.*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Certificate:*"
+          },
+          {
+            "capability": "Downgrade:Ethernet:*"
+          },
+          {
+            "capability": "Downgrade:API:*"
+          },
+          {
+            "capability": "Downgrade:Cellular:*"
+          },
+          {
+            "capability": "Downgrade:WiFi:*"
+          },
+          {
+            "capability": "Read:Key:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.010",
@@ -357,8 +537,34 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Inject:UDS:*",
+        "Inject:API:*",
+        "Inject:USB:*",
+        "Disrupt:CAN:*",
+        "Disrupt:Ethernet:*",
+        "Disrupt:Cellular:*",
+        "Disrupt:WiFi:*",
+        "Execute:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Elevate:OS:*"
+          },
+          {
+            "capability": "Elevate:Kernel:*"
+          },
+          {
+            "capability": "Elevate:App:*"
+          },
+          {
+            "capability": "Bypass:OS:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.011",
@@ -392,8 +598,19 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Disrupt:*:Backend.*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Inject:*:Backend.*"
+          },
+          {
+            "capability": "Bypass:Algorithm:Backend.*"
+          }
+        ]
+      }
     },
     {
       "id": "C.012",
@@ -431,7 +648,16 @@
       ],
       "refines": "C.007",
       "denies": [],
-      "overriddenBy": {}
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          },
+          {
+            "capability": "Spoof:Log:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.013",
@@ -468,8 +694,24 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Execute:Firmware:*",
+        "Execute:App:*",
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.014",
@@ -502,8 +744,32 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Disrupt:CAN:*",
+        "Disrupt:Ethernet:*",
+        "Disrupt:WiFi:*",
+        "Disrupt:Cellular:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Inject:UDS:*",
+        "Inject:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          },
+          {
+            "capability": "Spoof:CAN:*"
+          },
+          {
+            "capability": "Spoof:Ethernet:*"
+          },
+          {
+            "capability": "Spoof:V2X:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.015",
@@ -535,8 +801,19 @@
         "Component"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Disrupt:*:Backend.*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Execute:API:Backend.*"
+          },
+          {
+            "capability": "Bypass:Algorithm:Backend.*"
+          }
+        ]
+      }
     },
     {
       "id": "C.016",
@@ -572,8 +849,35 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*",
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Execute:MCU:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:*:Compute.Gateway"
+          },
+          {
+            "capability": "Elevate:OS:*"
+          },
+          {
+            "capability": "Elevate:Kernel:*"
+          },
+          {
+            "capability": "Elevate:App:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.017",
@@ -609,8 +913,23 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:CAN:*",
+        "Spoof:Ethernet:*",
+        "Spoof:V2X:*",
+        "Spoof:API:*",
+        "Execute:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Certificate:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.018",
@@ -645,8 +964,24 @@
         "Data Flow"
       ],
       "refines": "C.007",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Ethernet:*",
+        "Write:Ethernet:*",
+        "Spoof:Ethernet:*",
+        "Spoof:CAN:*",
+        "Spoof:V2X:*",
+        "Spoof:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.019",
@@ -678,8 +1013,24 @@
         "Data",
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Firmware:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Hash:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.020",
@@ -712,8 +1063,24 @@
         "Data"
       ],
       "refines": "C.019",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Firmware:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Hash:*"
+          },
+          {
+            "capability": "Bypass:Bootloader:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.021",
@@ -746,8 +1113,24 @@
         "Data"
       ],
       "refines": "C.019",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Firmware:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Hash:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.022",
@@ -780,8 +1163,19 @@
         "Data"
       ],
       "refines": "C.019",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Hash:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.023",
@@ -815,8 +1209,25 @@
         "Component",
         "Data"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:Firmware:*",
+        "Execute:App:*",
+        "Spoof:CAN:*",
+        "Spoof:Ethernet:*",
+        "Spoof:V2X:*",
+        "Spoof:API:*",
+        "Write:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          },
+          {
+            "capability": "Read:Key:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.024",
@@ -851,8 +1262,21 @@
         "Data"
       ],
       "refines": "C.023",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Firmware:*",
+        "Execute:OS:*",
+        "Execute:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          },
+          {
+            "capability": "Read:Key:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.025",
@@ -887,8 +1311,24 @@
         "Data"
       ],
       "refines": "C.023",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:V2X:*",
+        "Spoof:*:External.*",
+        "Write:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Nonce:*"
+          },
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.026",
@@ -923,8 +1363,26 @@
         "Data"
       ],
       "refines": "C.023",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:V2X:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          },
+          {
+            "capability": "Bypass:PCB:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.027",
@@ -958,8 +1416,28 @@
         "Data Flow",
         "Data"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*",
+        "Spoof:CAN:*",
+        "Spoof:Ethernet:*",
+        "Spoof:V2X:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.028",
@@ -994,8 +1472,26 @@
         "Data"
       ],
       "refines": "C.027",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:CAN:*",
+        "Spoof:Ethernet:*",
+        "Inject:UDS:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Hash:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.029",
@@ -1030,8 +1526,25 @@
         "Data"
       ],
       "refines": "C.027",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Inject:CAN:*",
+        "Write:UDS:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.030",
@@ -1064,8 +1577,21 @@
       "actsOn": [
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*",
+        "Execute:App:*",
+        "Read:RAM:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:TEE:*"
+          },
+          {
+            "capability": "Write:Power:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.031",
@@ -1099,8 +1625,27 @@
         "Component"
       ],
       "refines": "C.030",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*",
+        "Execute:OS:*",
+        "Read:RAM:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:TEE:*"
+          },
+          {
+            "capability": "Elevate:OS:*"
+          },
+          {
+            "capability": "Elevate:Kernel:*"
+          },
+          {
+            "capability": "Elevate:App:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.032",
@@ -1134,8 +1679,24 @@
         "Component"
       ],
       "refines": "C.030",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:RAM:*",
+        "Read:Key:*",
+        "Execute:MCU:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Write:Power:*"
+          },
+          {
+            "capability": "Write:Clock:*"
+          },
+          {
+            "capability": "Read:EM:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.033",
@@ -1168,8 +1729,20 @@
         "Component"
       ],
       "refines": "C.030",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:RAM:*",
+        "Write:RAM:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:PCB:*"
+          },
+          {
+            "capability": "Read:Power:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.034",
@@ -1203,8 +1776,20 @@
         "Component",
         "Data"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*",
+        "Write:Key:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          },
+          {
+            "capability": "Bypass:HSM:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.035",
@@ -1238,8 +1823,17 @@
         "Data"
       ],
       "refines": "C.034",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*",
+        "Read:Flash:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:PCB:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.036",
@@ -1272,8 +1866,21 @@
         "Component"
       ],
       "refines": "C.034",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*",
+        "Execute:Firmware:*",
+        "Bypass:Certificate:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:HSM:*"
+          },
+          {
+            "capability": "Write:Power:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.037",
@@ -1306,8 +1913,21 @@
         "Component"
       ],
       "refines": "C.034",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:Log:*",
+        "Read:Key:*",
+        "Bypass:Bootloader:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:TPM:*"
+          },
+          {
+            "capability": "Bypass:SPI:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.038",
@@ -1341,8 +1961,18 @@
         "Component"
       ],
       "refines": "C.034",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*",
+        "Read:PII:*",
+        "Spoof:V2X:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:PCB:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.039",
@@ -1375,8 +2005,21 @@
         "Component"
       ],
       "refines": "C.034",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Flash:*",
+        "Write:Key:*",
+        "Downgrade:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:PCB:*"
+          },
+          {
+            "capability": "Bypass:OTP:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.040",
@@ -1409,8 +2052,21 @@
         "Component"
       ],
       "refines": "C.039",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Key:*",
+        "Write:OTP:*",
+        "Downgrade:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:PCB:*"
+          },
+          {
+            "capability": "Write:Power:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.041",
@@ -1442,8 +2098,34 @@
       "actsOn": [
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:RAM:*",
+        "Read:Flash:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*",
+        "Write:RAM:*",
+        "Write:Flash:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*",
+        "Execute:App:*",
+        "Execute:Firmware:*",
+        "Execute:OS:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Elevate:OS:*"
+          },
+          {
+            "capability": "Elevate:Kernel:*"
+          },
+          {
+            "capability": "Bypass:OS:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.042",
@@ -1476,8 +2158,23 @@
         "Component"
       ],
       "refines": "C.041",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:UDS:*",
+        "Write:Firmware:*",
+        "Elevate:OS:*",
+        "Elevate:Kernel:*",
+        "Elevate:App:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Token:*"
+          },
+          {
+            "capability": "Read:Session:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.043",
@@ -1510,8 +2207,27 @@
         "Component"
       ],
       "refines": "C.041",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*",
+        "Execute:App:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Elevate:OS:*"
+          },
+          {
+            "capability": "Elevate:Kernel:*"
+          },
+          {
+            "capability": "Elevate:App:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.044",
@@ -1544,8 +2260,18 @@
         "Component"
       ],
       "refines": "C.041",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Inject:App:*",
+        "Execute:OS:*",
+        "Read:RAM:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Kernel:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.045",
@@ -1577,8 +2303,17 @@
         "Component"
       ],
       "refines": "C.041",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:App:*",
+        "Execute:Firmware:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Inject:App:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.046",
@@ -1610,8 +2345,22 @@
         "Component"
       ],
       "refines": "C.041",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:App:*",
+        "Inject:App:*",
+        "Inject:API:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Inject:UDS:*",
+        "Inject:USB:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.047",
@@ -1643,8 +2392,24 @@
       "actsOn": [
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Firmware:*",
+        "Execute:Firmware:*",
+        "Execute:Kernel:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Write:Power:*"
+          },
+          {
+            "capability": "Write:Clock:*"
+          },
+          {
+            "capability": "Bypass:Bootloader:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.048",
@@ -1676,8 +2441,21 @@
         "Component",
         "Data"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:OS:*",
+        "Write:Flash:*",
+        "Write:RAM:*",
+        "Write:CAN:*",
+        "Write:Ethernet:*",
+        "Write:API:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Hash:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.049",
@@ -1710,8 +2488,17 @@
         "Data"
       ],
       "refines": "C.048",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:OS:*",
+        "Inject:App:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Kernel:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.050",
@@ -1744,8 +2531,17 @@
         "Data"
       ],
       "refines": "C.048",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Flash:*",
+        "Write:EEPROM:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.051",
@@ -1778,8 +2574,24 @@
         "Component",
         "Data"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*",
+        "Read:PII:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Key:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.052",
@@ -1813,8 +2625,23 @@
         "Data"
       ],
       "refines": "C.051",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Flash:*",
+        "Read:RAM:*",
+        "Read:CAN:*",
+        "Read:Ethernet:*",
+        "Read:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:RAM:*"
+          },
+          {
+            "capability": "Bypass:HSM:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.053",
@@ -1846,8 +2673,22 @@
       "actsOn": [
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:UDS:External.DiagnosticTool",
+        "Write:Firmware:*",
+        "Read:RAM:*",
+        "Read:PII:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          },
+          {
+            "capability": "Read:Token:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.054",
@@ -1880,8 +2721,22 @@
       "actsOn": [
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:JTAG:*",
+        "Execute:UART:*",
+        "Read:Firmware:*",
+        "Read:Flash:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Password:*"
+          },
+          {
+            "capability": "Write:Power:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.055",
@@ -1915,8 +2770,27 @@
         "Channel",
         "Data Flow"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Spoof:Log:*",
+        "Write:Log:*",
+        "Bypass:Log:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Elevate:OS:*"
+          },
+          {
+            "capability": "Elevate:Kernel:*"
+          },
+          {
+            "capability": "Elevate:App:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.056",
@@ -1950,8 +2824,23 @@
         "Component",
         "Data"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:App:*",
+        "Write:Firmware:*",
+        "Inject:App:*",
+        "Inject:API:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Inject:UDS:*",
+        "Inject:USB:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.057",
@@ -1986,8 +2875,22 @@
         "Data"
       ],
       "refines": "C.056",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:App:*",
+        "Inject:App:*",
+        "Inject:API:*",
+        "Inject:CAN:*",
+        "Inject:Ethernet:*",
+        "Inject:UDS:*",
+        "Inject:USB:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.058",
@@ -2022,8 +2925,19 @@
         "Data"
       ],
       "refines": "C.056",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Execute:App:*",
+        "Execute:Firmware:*",
+        "Execute:OS:*",
+        "Bypass:OS:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.059",
@@ -2056,8 +2970,21 @@
         "Component"
       ],
       "refines": "C.056",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Write:Firmware:*",
+        "Execute:Firmware:*",
+        "Downgrade:Firmware:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Bypass:Certificate:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.060",
@@ -2089,8 +3016,16 @@
         "Component"
       ],
       "refines": "C.056",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Downgrade:Firmware:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Bootloader:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.061",
@@ -2123,8 +3058,21 @@
         "Component",
         "Data"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Read:Key:*",
+        "Read:Nonce:*",
+        "Bypass:Algorithm:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Read:Seed:*"
+          },
+          {
+            "capability": "Read:Entropy:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.062",
@@ -2155,8 +3103,38 @@
       "actsOn": [
         "Component"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Disrupt:CAN:*",
+        "Disrupt:Ethernet:*",
+        "Disrupt:Cellular:*",
+        "Disrupt:WiFi:*",
+        "Disrupt:API:*"
+      ],
+      "overriddenBy": {
+        "OR": [
+          {
+            "capability": "Inject:App:*"
+          },
+          {
+            "capability": "Inject:API:*"
+          },
+          {
+            "capability": "Inject:CAN:*"
+          },
+          {
+            "capability": "Inject:Ethernet:*"
+          },
+          {
+            "capability": "Inject:UDS:*"
+          },
+          {
+            "capability": "Inject:USB:*"
+          },
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.063",
@@ -2188,8 +3166,17 @@
         "Component"
       ],
       "refines": "C.062",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Disrupt:MCU:*",
+        "Disrupt:OS:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Execute:OS:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.064",
@@ -2221,8 +3208,23 @@
         "Component"
       ],
       "refines": "C.062",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Disrupt:RAM:*",
+        "Disrupt:MCU:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Elevate:OS:*"
+          },
+          {
+            "capability": "Elevate:Kernel:*"
+          },
+          {
+            "capability": "Elevate:App:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.065",
@@ -2255,8 +3257,21 @@
         "Channel",
         "Data Flow"
       ],
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Replay:CAN:*",
+        "Replay:Ethernet:*",
+        "Replay:UDS:*",
+        "Replay:V2X:*",
+        "Replay:WiFi:*",
+        "Replay:Cellular:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Nonce:*"
+          }
+        ]
+      }
     },
     {
       "id": "C.066",
@@ -2290,8 +3305,22 @@
         "Data Flow"
       ],
       "refines": "C.065",
-      "denies": [],
-      "overriddenBy": {}
+      "denies": [
+        "Replay:CAN:*",
+        "Replay:Ethernet:*",
+        "Replay:UDS:*",
+        "Replay:V2X:*",
+        "Replay:WiFi:*",
+        "Replay:Cellular:*",
+        "Downgrade:Firmware:*"
+      ],
+      "overriddenBy": {
+        "AND": [
+          {
+            "capability": "Bypass:Algorithm:*"
+          }
+        ]
+      }
     }
   ]
 }

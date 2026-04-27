@@ -37,8 +37,29 @@
                 "Data Flow",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:Token:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Algorithm:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:*:*",
+                "Elevate:*:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.002",
@@ -74,8 +95,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:*:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:*:*",
+                "Spoof:*:*"
+            ]
         },
         {
             "id": "T.003",
@@ -116,8 +149,18 @@
                 "Data Flow",
                 "Channel"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Password:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Bypass:Session:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.004",
@@ -152,8 +195,17 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Certificate:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Execute:App:*"
+            ]
         },
         {
             "id": "T.005",
@@ -189,8 +241,28 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:PCB:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:SoC:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:PCB:*",
+                "Execute:SoC:*"
+            ]
         },
         {
             "id": "T.006",
@@ -228,8 +300,17 @@
                 "Data Flow",
                 "Channel"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:API:External.*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:*:External.*",
+                "Spoof:App:External.MobileApp"
+            ]
         },
         {
             "id": "T.007",
@@ -267,8 +348,17 @@
                 "Data Flow",
                 "Channel"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:SecOC:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:*:*",
+                "Disrupt:*:*"
+            ]
         },
         {
             "id": "T.008",
@@ -309,8 +399,20 @@
                 "Data Flow",
                 "Channel"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:GNSS:*",
+                "Spoof:Sensor:*"
+            ]
         },
         {
             "id": "T.009",
@@ -347,8 +449,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Algorithm:*"
+                    },
+                    {
+                        "capability": "Bypass:Certificate:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:*:*",
+                "Elevate:*:*"
+            ]
         },
         {
             "id": "T.010",
@@ -383,8 +497,32 @@
                 "Data Flow",
                 "Channel"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Bootloader:*"
+                            },
+                            {
+                                "capability": "Bypass:Hash:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:PCB:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Write:Flash:*",
+                "Write:EEPROM:*"
+            ]
         },
         {
             "id": "T.011",
@@ -419,8 +557,19 @@
                 "Data Flow",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:*:External.*"
+                    },
+                    {
+                        "capability": "Bypass:Certificate:External.*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:*:External.*"
+            ]
         },
         {
             "id": "T.012",
@@ -455,8 +604,19 @@
                 "Data Flow",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:*:*"
+                    },
+                    {
+                        "capability": "Bypass:SecOC:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:*:*"
+            ]
         },
         {
             "id": "T.013",
@@ -490,8 +650,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:RAM:*",
+                "Execute:App:*"
+            ]
         },
         {
             "id": "T.014",
@@ -525,8 +694,18 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Kernel:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Flash:*",
+                "Write:EEPROM:*",
+                "Write:RAM:*"
+            ]
         },
         {
             "id": "T.015",
@@ -559,8 +738,28 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Bootloader:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Certificate:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Execute:Firmware:*"
+            ]
         },
         {
             "id": "T.016",
@@ -595,8 +794,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:API:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:API:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.017",
@@ -629,8 +840,17 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:API:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:App:*",
+                "Execute:App:*"
+            ]
         },
         {
             "id": "T.018",
@@ -663,8 +883,18 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Middleware:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:API:*",
+                "Elevate:*:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.019",
@@ -698,7 +928,11 @@
                 "Component"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Disrupt:Power:*",
+                "Disrupt:Clock:*",
+                "Bypass:SoC:*"
+            ]
         },
         {
             "id": "T.020",
@@ -732,8 +966,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:*:*"
+                    },
+                    {
+                        "capability": "Bypass:Nonce:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Replay:*:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.021",
@@ -767,8 +1013,21 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Elevate:*:*"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:EEPROM:*",
+                "Write:Flash:*",
+                "Write:OS:*"
+            ]
         },
         {
             "id": "T.022",
@@ -802,8 +1061,21 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:*:*"
+                    },
+                    {
+                        "capability": "Bypass:SecOC:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:*:*",
+                "Write:*:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.023",
@@ -839,8 +1111,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Firmware:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.024",
@@ -874,8 +1158,21 @@
                 "Data"
             ],
             "refines": "T.010",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Flash:*",
+                "Write:EEPROM:*",
+                "Write:RAM:*"
+            ]
         },
         {
             "id": "T.025",
@@ -909,8 +1206,17 @@
                 "Data"
             ],
             "refines": "T.024",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:Firmware:*",
+                "Write:Flash:*"
+            ]
         },
         {
             "id": "T.026",
@@ -944,8 +1250,20 @@
                 "Data"
             ],
             "refines": "T.024",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    },
+                    {
+                        "capability": "Bypass:JTAG:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Execute:Firmware:*"
+            ]
         },
         {
             "id": "T.027",
@@ -979,8 +1297,17 @@
                 "Data"
             ],
             "refines": "T.024",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Flash:*",
+                "Disrupt:*:*"
+            ]
         },
         {
             "id": "T.028",
@@ -1014,8 +1341,20 @@
                 "Data"
             ],
             "refines": "T.024",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Flash:*",
+                "Write:Firmware:*"
+            ]
         },
         {
             "id": "T.029",
@@ -1049,8 +1388,18 @@
                 "Data"
             ],
             "refines": "T.024",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:Firmware:*",
+                "Write:Flash:*",
+                "Write:EEPROM:*"
+            ]
         },
         {
             "id": "T.030",
@@ -1085,8 +1434,20 @@
                 "Data Flow",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Certificate:*"
+                    },
+                    {
+                        "capability": "Bypass:Log:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:Log:*",
+                "Write:Log:*"
+            ]
         },
         {
             "id": "T.031",
@@ -1122,8 +1483,28 @@
                 "Data Flow",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Elevate:*:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:Log:*",
+                "Bypass:Certificate:*"
+            ]
         },
         {
             "id": "T.032",
@@ -1159,8 +1540,17 @@
                 "Data Flow",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:Log:*",
+                "Spoof:*:*"
+            ]
         },
         {
             "id": "T.033",
@@ -1192,8 +1582,28 @@
             "actsOn": [
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Password:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:API:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:PII:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.034",
@@ -1227,8 +1637,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.035",
@@ -1262,8 +1680,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:*:Compute.Gateway"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.036",
@@ -1297,8 +1723,27 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Algorithm:External.*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Token:External.*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:*:External.*"
+            ]
         },
         {
             "id": "T.037",
@@ -1332,8 +1777,27 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:API:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:Log:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:PII:*"
+            ]
         },
         {
             "id": "T.038",
@@ -1366,8 +1830,28 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Flash:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:EEPROM:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Firmware:*",
+                "Read:Algorithm:*"
+            ]
         },
         {
             "id": "T.039",
@@ -1402,8 +1886,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:JTAG:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:UART:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Log:*",
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.040",
@@ -1438,8 +1942,35 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:EM:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:Power:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:Clock:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Key:*",
+                "Read:Algorithm:*"
+            ]
         },
         {
             "id": "T.041",
@@ -1472,8 +2003,20 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Firmware:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Algorithm:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.042",
@@ -1507,8 +2050,36 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:PCB:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:JTAG:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:UART:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Flash:*",
+                "Read:EEPROM:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.043",
@@ -1542,8 +2113,17 @@
                 "Data"
             ],
             "refines": "T.042",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Firmware:*",
+                "Read:Flash:*"
+            ]
         },
         {
             "id": "T.044",
@@ -1577,8 +2157,17 @@
                 "Data"
             ],
             "refines": "T.042",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Firmware:*",
+                "Read:EEPROM:*"
+            ]
         },
         {
             "id": "T.045",
@@ -1612,8 +2201,17 @@
                 "Data"
             ],
             "refines": "T.042",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Firmware:*",
+                "Read:Flash:*"
+            ]
         },
         {
             "id": "T.046",
@@ -1647,8 +2245,17 @@
                 "Data"
             ],
             "refines": "T.042",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Firmware:*",
+                "Read:EEPROM:*"
+            ]
         },
         {
             "id": "T.047",
@@ -1682,8 +2289,17 @@
                 "Data"
             ],
             "refines": "T.042",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Firmware:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.048",
@@ -1718,8 +2334,16 @@
                 "Data Flow",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:*:*"
+            ]
         },
         {
             "id": "T.049",
@@ -1753,8 +2377,18 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:Cellular:*",
+                "Disrupt:WiFi:*",
+                "Disrupt:Bluetooth:*"
+            ]
         },
         {
             "id": "T.050",
@@ -1788,8 +2422,29 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:PCB:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:Compute.Gateway"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:CAN:*",
+                "Disrupt:Ethernet:*",
+                "Disrupt:LIN:*"
+            ]
         },
         {
             "id": "T.051",
@@ -1823,8 +2478,29 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Kernel:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:MCU:*",
+                "Disrupt:SoC:*",
+                "Disrupt:App:*"
+            ]
         },
         {
             "id": "T.052",
@@ -1859,8 +2535,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:*:*",
+                "Disrupt:*:*"
+            ]
         },
         {
             "id": "T.053",
@@ -1895,8 +2580,21 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:WiFi:*",
+                "Disrupt:Cellular:*",
+                "Disrupt:Bluetooth:*"
+            ]
         },
         {
             "id": "T.054",
@@ -1931,8 +2629,19 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:GNSS:*"
+            ]
         },
         {
             "id": "T.055",
@@ -1965,8 +2674,35 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Execute:*:*"
+                            },
+                            {
+                                "capability": "Bypass:Algorithm:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Inject:*:*"
+                            },
+                            {
+                                "capability": "Bypass:Algorithm:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:RAM:*",
+                "Disrupt:MCU:*",
+                "Disrupt:*:*"
+            ]
         },
         {
             "id": "T.056",
@@ -1999,8 +2735,20 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:RAM:*",
+                "Disrupt:OS:*"
+            ]
         },
         {
             "id": "T.057",
@@ -2033,8 +2781,20 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:API:Backend.*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:Backend.*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:API:Backend.*",
+                "Disrupt:*:Backend.*"
+            ]
         },
         {
             "id": "T.058",
@@ -2072,8 +2832,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Password:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Algorithm:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.059",
@@ -2108,8 +2888,17 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.060",
@@ -2144,8 +2933,29 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Hypervisor:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:RAM:*",
+                "Execute:MCU:*"
+            ]
         },
         {
             "id": "T.061",
@@ -2180,8 +2990,28 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:Session:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:Token:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Write:*:*"
+            ]
         },
         {
             "id": "T.062",
@@ -2219,7 +3049,11 @@
                 "Channel"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Execute:JTAG:*",
+                "Execute:UART:*",
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.063",
@@ -2259,8 +3093,29 @@
                 "Data Flow"
             ],
             "refines": "T.058",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Algorithm:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:App:*",
+                "Write:*:*"
+            ]
         },
         {
             "id": "T.064",
@@ -2300,8 +3155,21 @@
                 "Data Flow"
             ],
             "refines": "T.058",
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:Password:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.065",
@@ -2338,7 +3206,10 @@
                 "Data"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Read:Log:*",
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.066",
@@ -2376,7 +3247,10 @@
                 "Data"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Read:*:Backend.*",
+                "Read:*:External.*"
+            ]
         },
         {
             "id": "T.067",
@@ -2417,7 +3291,10 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Read:*:*",
+                "Read:Firmware:*"
+            ]
         },
         {
             "id": "T.068",
@@ -2457,8 +3334,35 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Read:*:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:RF:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:Optical:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:Sensor:*",
+                "Write:*:*"
+            ]
         },
         {
             "id": "T.069",
@@ -2501,7 +3405,10 @@
                 "Data"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Spoof:Sensor:ADAS.Perception",
+                "Disrupt:Algorithm:ADAS.Decision"
+            ]
         },
         {
             "id": "T.070",
@@ -2544,8 +3451,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:Optical:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:RF:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:Sensor:*",
+                "Spoof:Sensor:*"
+            ]
         },
         {
             "id": "T.071",
@@ -2588,8 +3515,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Downgrade:Cellular:*"
+            ]
         },
         {
             "id": "T.072",
@@ -2629,8 +3564,18 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:WiFi:*",
+                "Disrupt:Cellular:*",
+                "Disrupt:GNSS:*"
+            ]
         },
         {
             "id": "T.073",
@@ -2673,8 +3618,21 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:*:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:V2X:*",
+                "Spoof:GNSS:*",
+                "Write:*:*"
+            ]
         },
         {
             "id": "T.074",
@@ -2717,8 +3675,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:RF:*"
+                    },
+                    {
+                        "capability": "Write:RF:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Replay:RF:External.KeyFob",
+                "Spoof:*:Body.Access"
+            ]
         },
         {
             "id": "T.075",
@@ -2761,8 +3731,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:Cellular:*",
+                "Read:Cellular:*"
+            ]
         },
         {
             "id": "T.076",
@@ -2805,8 +3787,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:WiFi:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:WiFi:*",
+                "Read:WiFi:*"
+            ]
         },
         {
             "id": "T.077",
@@ -2848,7 +3842,10 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Read:*:*",
+                "Write:*:*"
+            ]
         },
         {
             "id": "T.078",
@@ -2887,8 +3884,29 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:External.DiagnosticTool"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:External.MobileApp"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:OBD2:*",
+                "Inject:Bluetooth:*",
+                "Execute:USB:*"
+            ]
         },
         {
             "id": "T.079",
@@ -2933,8 +3951,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:App:Infotainment.UI"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:App:Infotainment.UI",
+                "Execute:OS:Infotainment.OS"
+            ]
         },
         {
             "id": "T.080",
@@ -2980,8 +4007,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:Cellular:Telematics.Network",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.081",
@@ -3027,8 +4066,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:USB:*",
+                "Execute:App:*"
+            ]
         },
         {
             "id": "T.082",
@@ -3073,8 +4121,28 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Algorithm:External.*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Policy:External.*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:App:External.MobileApp",
+                "Execute:App:Infotainment.UI"
+            ]
         },
         {
             "id": "T.083",
@@ -3117,8 +4185,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:App:*",
+                "Read:Password:*"
+            ]
         },
         {
             "id": "T.084",
@@ -3161,8 +4238,18 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:MCU:*",
+                "Write:Flash:*",
+                "Disrupt:*:*"
+            ]
         },
         {
             "id": "T.085",
@@ -3206,8 +4293,28 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:Backend.ThirdParty"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Certificate:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:Firmware:*",
+                "Execute:App:*"
+            ]
         },
         {
             "id": "T.086",
@@ -3249,7 +4356,11 @@
                 "Data"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Execute:MCU:*",
+                "Execute:OS:*",
+                "Execute:App:*"
+            ]
         },
         {
             "id": "T.087",
@@ -3294,8 +4405,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:App:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:App:*",
+                "Execute:OS:*"
+            ]
         },
         {
             "id": "T.088",
@@ -3341,8 +4461,28 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:API:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:OS:*",
+                "Read:RAM:*"
+            ]
         },
         {
             "id": "T.089",
@@ -3384,8 +4524,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:RAM:*",
+                "Execute:RAM:*"
+            ]
         },
         {
             "id": "T.090",
@@ -3426,7 +4575,10 @@
                 "Data"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Execute:OS:*",
+                "Write:Flash:*"
+            ]
         },
         {
             "id": "T.091",
@@ -3473,8 +4625,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Algorithm:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Certificate:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Flash:*",
+                "Write:EEPROM:*"
+            ]
         },
         {
             "id": "T.092",
@@ -3521,8 +4693,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Elevate:*:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Bootloader:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:Firmware:*",
+                "Disrupt:OS:*"
+            ]
         },
         {
             "id": "T.093",
@@ -3568,8 +4760,20 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Elevate:*:*"
+                    },
+                    {
+                        "capability": "Bypass:Bootloader:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Kernel:*",
+                "Write:OS:*"
+            ]
         },
         {
             "id": "T.094",
@@ -3614,8 +4818,21 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Elevate:*:*"
+                    },
+                    {
+                        "capability": "Bypass:TEE:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:TEE:*",
+                "Execute:HSM:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.095",
@@ -3660,8 +4877,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:Algorithm:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.096",
@@ -3705,7 +4931,10 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Elevate:*:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.097",
@@ -3751,8 +4980,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:OS:*"
+            ]
         },
         {
             "id": "T.098",
@@ -3799,8 +5037,20 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:WiFi:*"
+                    },
+                    {
+                        "capability": "Bypass:PCIe:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:MCU:*",
+                "Execute:SoC:*"
+            ]
         },
         {
             "id": "T.099",
@@ -3846,8 +5096,20 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:OS:*"
+            ]
         },
         {
             "id": "T.100",
@@ -3894,8 +5156,21 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Elevate:*:*"
+                    },
+                    {
+                        "capability": "Bypass:TEE:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:TEE:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.101",
@@ -3944,8 +5219,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:Power:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:Clock:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:Algorithm:*",
+                "Elevate:*:*"
+            ]
         },
         {
             "id": "T.102",
@@ -3991,8 +5286,18 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:App:*",
+                "Elevate:*:*",
+                "Execute:OS:*"
+            ]
         },
         {
             "id": "T.103",
@@ -4039,8 +5344,20 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:SoC:*"
+                    },
+                    {
+                        "capability": "Bypass:SPI:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Elevate:*:*"
+            ]
         },
         {
             "id": "T.104",
@@ -4085,8 +5402,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:Algorithm:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.105",
@@ -4126,7 +5452,11 @@
                 "Data"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Bypass:Algorithm:*",
+                "Bypass:Certificate:*",
+                "Bypass:OS:*"
+            ]
         },
         {
             "id": "T.106",
@@ -4170,8 +5500,28 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Certificate:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Bootloader:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Execute:Firmware:*"
+            ]
         },
         {
             "id": "T.107",
@@ -4217,8 +5567,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Elevate:*:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:Compute.Gateway"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:OS:*",
+                "Write:*:*"
+            ]
         },
         {
             "id": "T.108",
@@ -4265,8 +5635,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:UDS:*",
+                "Elevate:*:*"
+            ]
         },
         {
             "id": "T.109",
@@ -4314,8 +5693,35 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Kernel:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:TEE:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Elevate:*:*",
+                "Execute:OS:*"
+            ]
         },
         {
             "id": "T.110",
@@ -4360,8 +5766,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:Algorithm:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.111",
@@ -4403,7 +5818,11 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Read:Key:*",
+                "Read:Password:*",
+                "Read:Token:*"
+            ]
         },
         {
             "id": "T.112",
@@ -4450,8 +5869,21 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Elevate:*:*"
+                    },
+                    {
+                        "capability": "Bypass:TEE:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:TEE:*",
+                "Execute:HSM:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.113",
@@ -4497,8 +5929,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:Policy:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Token:*",
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.114",
@@ -4543,8 +5987,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Policy:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Password:*",
+                "Read:PII:*"
+            ]
         },
         {
             "id": "T.115",
@@ -4591,8 +6055,21 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:App:Infotainment.UI",
+                "Read:Password:*",
+                "Read:PII:*"
+            ]
         },
         {
             "id": "T.116",
@@ -4634,8 +6111,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:*:Compute.Gateway"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:*:*",
+                "Read:Password:*"
+            ]
         },
         {
             "id": "T.117",
@@ -4682,8 +6168,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Elevate:*:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Password:*",
+                "Read:Hash:*"
+            ]
         },
         {
             "id": "T.118",
@@ -4730,8 +6225,18 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Password:*",
+                "Read:Key:*",
+                "Read:Token:*"
+            ]
         },
         {
             "id": "T.119",
@@ -4778,8 +6283,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:App:*",
+                "Read:Token:*"
+            ]
         },
         {
             "id": "T.120",
@@ -4819,7 +6336,9 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.121",
@@ -4862,8 +6381,16 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.122",
@@ -4908,8 +6435,19 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:Policy:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:GNSS:*"
+            ]
         },
         {
             "id": "T.123",
@@ -4954,8 +6492,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.124",
@@ -4996,8 +6542,16 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:OS:*"
+            ]
         },
         {
             "id": "T.125",
@@ -5040,8 +6594,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:App:*",
+                "Read:Firmware:*"
+            ]
         },
         {
             "id": "T.126",
@@ -5086,8 +6649,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:OS:*"
+            ]
         },
         {
             "id": "T.127",
@@ -5132,8 +6703,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:OS:*"
+            ]
         },
         {
             "id": "T.128",
@@ -5178,8 +6757,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:OS:*"
+            ]
         },
         {
             "id": "T.129",
@@ -5222,7 +6809,10 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Execute:MCU:*",
+                "Execute:SoC:*"
+            ]
         },
         {
             "id": "T.130",
@@ -5270,8 +6860,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:MCU:*",
+                "Write:RAM:*"
+            ]
         },
         {
             "id": "T.131",
@@ -5318,8 +6917,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Elevate:*:*"
+                    },
+                    {
+                        "capability": "Bypass:*:Compute.Gateway"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:CAN:*",
+                "Write:Ethernet:*"
+            ]
         },
         {
             "id": "T.132",
@@ -5367,8 +6978,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:MCU:*",
+                "Execute:OS:*"
+            ]
         },
         {
             "id": "T.133",
@@ -5415,8 +7035,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Password:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:OS:*"
+            ]
         },
         {
             "id": "T.134",
@@ -5462,8 +7090,28 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Certificate:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Algorithm:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Firmware:*",
+                "Execute:MCU:*"
+            ]
         },
         {
             "id": "T.135",
@@ -5508,8 +7156,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Read:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Bypass:Algorithm:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.136",
@@ -5549,7 +7206,9 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.137",
@@ -5594,8 +7253,19 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:Policy:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.138",
@@ -5640,8 +7310,27 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:Policy:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:OS:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Read:PII:*"
+            ]
         },
         {
             "id": "T.139",
@@ -5683,8 +7372,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:*:Compute.Gateway"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.140",
@@ -5729,8 +7426,19 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:Policy:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:GNSS:*"
+            ]
         },
         {
             "id": "T.141",
@@ -5775,8 +7483,18 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:RAM:*",
+                "Read:EEPROM:*",
+                "Read:PII:*"
+            ]
         },
         {
             "id": "T.142",
@@ -5821,8 +7539,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:*:*"
+                    },
+                    {
+                        "capability": "Bypass:Policy:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Optical:*",
+                "Read:Sensor:*"
+            ]
         },
         {
             "id": "T.143",
@@ -5867,8 +7597,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Data:*",
+                "Read:Log:*"
+            ]
         },
         {
             "id": "T.144",
@@ -5912,8 +7654,19 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:WiFi:*"
+                    },
+                    {
+                        "capability": "Execute:Bluetooth:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.145",
@@ -5957,8 +7710,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:Policy:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:PII:*",
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.146",
@@ -6001,7 +7766,11 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Write:*:*",
+                "Execute:*:*",
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.147",
@@ -6040,8 +7809,29 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:External.DiagnosticTool"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:External.MobileApp"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Bluetooth:*",
+                "Write:OBD2:*",
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.148",
@@ -6087,8 +7877,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:Cellular:Telematics.Network"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Cellular:*",
+                "Read:Cellular:*"
+            ]
         },
         {
             "id": "T.149",
@@ -6134,8 +7936,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:WiFi:*",
+                "Read:WiFi:*"
+            ]
         },
         {
             "id": "T.150",
@@ -6181,8 +7995,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Write:RF:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:RF:*",
+                "Execute:*:*"
+            ]
         },
         {
             "id": "T.151",
@@ -6229,8 +8055,35 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Execute:WiFi:*"
+                            },
+                            {
+                                "capability": "Bypass:Policy:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Execute:Bluetooth:*"
+                            },
+                            {
+                                "capability": "Bypass:Policy:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:WiFi:*",
+                "Write:Bluetooth:*",
+                "Read:*:*"
+            ]
         },
         {
             "id": "T.152",
@@ -6276,8 +8129,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:*:*"
+                    },
+                    {
+                        "capability": "Read:Key:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:*:*",
+                "Bypass:Algorithm:*"
+            ]
         },
         {
             "id": "T.153",
@@ -6317,7 +8182,10 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Write:*:*",
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.154",
@@ -6356,8 +8224,29 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:External.DiagnosticTool"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Bypass:*:External.MobileApp"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Bluetooth:*",
+                "Write:OBD2:*",
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.155",
@@ -6403,8 +8292,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:Cellular:Telematics.Network"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:Cellular:*",
+                "Read:Cellular:*"
+            ]
         },
         {
             "id": "T.156",
@@ -6450,8 +8351,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:App:*"
+                    },
+                    {
+                        "capability": "Bypass:OS:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:WiFi:*",
+                "Read:WiFi:*"
+            ]
         },
         {
             "id": "T.157",
@@ -6498,8 +8411,35 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Execute:WiFi:*"
+                            },
+                            {
+                                "capability": "Bypass:Policy:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Execute:Bluetooth:*"
+                            },
+                            {
+                                "capability": "Bypass:Policy:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Write:WiFi:*",
+                "Write:Bluetooth:*",
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.158",
@@ -6545,8 +8485,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:*:*"
+                    },
+                    {
+                        "capability": "Read:Key:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:*:*",
+                "Bypass:Algorithm:*"
+            ]
         },
         {
             "id": "T.159",
@@ -6590,8 +8542,20 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:OS:*"
+                    },
+                    {
+                        "capability": "Bypass:Policy:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:USB:*",
+                "Read:Data:*"
+            ]
         },
         {
             "id": "T.160",
@@ -6633,8 +8597,20 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:PCB:*"
+                    },
+                    {
+                        "capability": "Bypass:JTAG:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Read:RAM:*",
+                "Read:Key:*"
+            ]
         },
         {
             "id": "T.161",
@@ -6677,7 +8653,11 @@
                 "Data Flow"
             ],
             "requires": {},
-            "grants": []
+            "grants": [
+                "Disrupt:Actuator:*",
+                "Spoof:Component:*",
+                "Write:Data:*"
+            ]
         },
         {
             "id": "T.162",
@@ -6719,8 +8699,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:ADAS.Perception"
+                    }
+                ]
+            },
+            "grants": [
+                "Spoof:Sensor:ADAS.Perception",
+                "Disrupt:Algorithm:ADAS.Decision"
+            ]
         },
         {
             "id": "T.163",
@@ -6763,8 +8752,28 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "OR": [
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:Optical:*"
+                            }
+                        ]
+                    },
+                    {
+                        "AND": [
+                            {
+                                "capability": "Write:RF:*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:Sensor:*",
+                "Spoof:Sensor:*"
+            ]
         },
         {
             "id": "T.164",
@@ -6806,8 +8815,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:Actuator:*",
+                "Write:Firmware:*"
+            ]
         },
         {
             "id": "T.165",
@@ -6846,8 +8864,19 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:MCU:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:CAN:*"
+            ]
         },
         {
             "id": "T.166",
@@ -6886,8 +8915,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Inject:*:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Disrupt:App:*",
+                "Disrupt:Actuator:*"
+            ]
         },
         {
             "id": "T.167",
@@ -6929,8 +8970,16 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:MCU:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Execute:Actuator:*"
+            ]
         },
         {
             "id": "T.168",
@@ -6971,8 +9020,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:MCU:*"
+                    },
+                    {
+                        "capability": "Bypass:SecOC:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Write:CAN:*",
+                "Disrupt:CAN:*"
+            ]
         },
         {
             "id": "T.169",
@@ -7013,8 +9074,20 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
-            "grants": []
+            "requires": {
+                "AND": [
+                    {
+                        "capability": "Execute:MCU:*"
+                    },
+                    {
+                        "capability": "Bypass:Algorithm:*"
+                    }
+                ]
+            },
+            "grants": [
+                "Inject:CAN:*",
+                "Spoof:Data:*"
+            ]
         }
     ]
 }
