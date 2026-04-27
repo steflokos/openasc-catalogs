@@ -1,0 +1,264 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AssetArraySchema",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Catalog version"
+        },
+        "assets": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "pattern": "^[A]\\.\\d{3}$",
+                        "description": "Unique identifier for the asset, e.g., 'A.001'"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the asset, e.g., 'BMS Master Firmware'"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Detailed description of the asset and its function within the system"
+                    },
+                    "technology": {
+                        "type": "string",
+                        "description": "The exact physical or logical technology of the asset (maps to the capability taxonomy 'Noun')",
+                        "enum": [
+                            "CAN",
+                            "LIN",
+                            "FlexRay",
+                            "Ethernet",
+                            "DoIP",
+                            "SOME_IP",
+                            "UDS",
+                            "XCP",
+                            "CCP",
+                            "SecOC",
+                            "MACsec",
+                            "IPsec",
+                            "J1939",
+                            "MQTT",
+                            "DDS",
+                            "Cellular",
+                            "WiFi",
+                            "Bluetooth",
+                            "V2X",
+                            "GNSS",
+                            "RF",
+                            "UWB",
+                            "NFC",
+                            "OBD2",
+                            "USB",
+                            "JTAG",
+                            "SWD",
+                            "UART",
+                            "SPI",
+                            "I2C",
+                            "PCIe",
+                            "GMSL",
+                            "Sensor",
+                            "Actuator",
+                            "Power",
+                            "Clock",
+                            "EM",
+                            "Optical",
+                            "PCB",
+                            "SoC",
+                            "MCU",
+                            "GPU",
+                            "NPU",
+                            "HSM",
+                            "TPM",
+                            "TEE",
+                            "TRNG",
+                            "RAM",
+                            "Flash",
+                            "EEPROM",
+                            "OTP",
+                            "eFuse",
+                            "Bootloader",
+                            "Kernel",
+                            "OS",
+                            "Hypervisor",
+                            "Container",
+                            "Middleware",
+                            "Firmware",
+                            "API",
+                            "App",
+                            "Key",
+                            "Certificate",
+                            "Token",
+                            "Session",
+                            "Seed",
+                            "Nonce",
+                            "Hash",
+                            "MAC",
+                            "Password",
+                            "Algorithm",
+                            "Entropy",
+                            "Calibration",
+                            "Config",
+                            "Model",
+                            "Log",
+                            "PII"
+                        ]
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The vehicle architecture domain where this asset resides",
+                        "enum": [
+                            "Powertrain.Propulsion",
+                            "Powertrain.Energy",
+                            "Powertrain.BMS",
+                            "Chassis.Braking",
+                            "Chassis.Steering",
+                            "Chassis.Suspension",
+                            "Chassis.Safety",
+                            "Body.Access",
+                            "Body.Comfort",
+                            "Body.Lighting",
+                            "Infotainment.UI",
+                            "Infotainment.OS",
+                            "Infotainment.Cluster",
+                            "ADAS.Perception",
+                            "ADAS.Decision",
+                            "Telematics.Network",
+                            "Telematics.Services",
+                            "Compute.Gateway",
+                            "Compute.HPC",
+                            "Compute.Zonal",
+                            "Backend.OEM",
+                            "Backend.ThirdParty",
+                            "External.MobileApp",
+                            "External.EVSE",
+                            "External.DiagnosticTool",
+                            "External.KeyFob"
+                        ]
+                    },
+                    "refines": {
+                        "type": "string",
+                        "pattern": "^[A]\\.\\d{3}$",
+                        "description": "Reference to a parent asset that this asset belongs to (e.g., A Firmware asset 'refines' an ECU asset)"
+                    },
+                    "notes": {
+                        "type": "string",
+                        "description": "Optional notes, comments, or references for the asset"
+                    },
+                    "partOf": {
+                        "type": "string",
+                        "pattern": "^[A]\\.\\d{3}$",
+                        "description": "Reference to a parent asset that this asset belongs to or is hosted on (e.g., Firmware A.002 is partOf Component A.001)."
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The system aspect this asset represents.",
+                        "enum": [
+                            "Component",
+                            "Interface",
+                            "Data",
+                            "Channel",
+                            "Data Flow"
+                        ]
+                    },
+                    "cybersecurityProperties": {
+                        "type": "array",
+                        "description": "The CIANA security properties that must be protected for this asset",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "Confidentiality",
+                                "Integrity",
+                                "Availability",
+                                "Authenticity",
+                                "Non-Repudiation"
+                            ]
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    },
+                    "impact": {
+                        "type": "object",
+                        "description": "Impact evaluation if the asset is compromised, categorized by stakeholder perspective",
+                        "properties": {
+                            "oem": {
+                                "$ref": "#/$defs/StakeholderImpact",
+                                "description": "Impact from the perspective of the Original Equipment Manufacturer (OEM)"
+                            },
+                            "roadUser": {
+                                "$ref": "#/$defs/StakeholderImpact",
+                                "description": "Impact from the perspective of the driver, passengers, or surrounding pedestrians"
+                            },
+                            "thirdPartySupplier": {
+                                "$ref": "#/$defs/StakeholderImpact",
+                                "description": "Impact from the perspective of the Tier 1/Tier 2 supplier or connected service provider"
+                            }
+                        },
+                        "required": [
+                            "oem",
+                            "roadUser"
+                        ]
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "technology",
+                    "domain",
+                    "type",
+                    "cybersecurityProperties",
+                    "impact"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": [
+        "version",
+        "assets"
+    ],
+    "$defs": {
+        "StakeholderImpact": {
+            "type": "object",
+            "properties": {
+                "safety": {
+                    "$ref": "#/$defs/ImpactLevel"
+                },
+                "financial": {
+                    "$ref": "#/$defs/ImpactLevel"
+                },
+                "operational": {
+                    "$ref": "#/$defs/ImpactLevel"
+                },
+                "privacy": {
+                    "$ref": "#/$defs/ImpactLevel"
+                },
+                "rationale": {
+                    "type": "string",
+                    "description": "A text explanation of the damage scenario and why these impact ratings were chosen for this specific stakeholder"
+                }
+            },
+            "required": [
+                "rationale"
+            ],
+            "additionalProperties": false
+        },
+        "ImpactLevel": {
+            "type": "string",
+            "enum": [
+                "Severe",
+                "Major",
+                "Moderate",
+                "Negligible",
+                "None"
+            ],
+            "description": "Standard ISO 21434 impact rating scale"
+        }
+    }
+}
