@@ -128,7 +128,8 @@
                 "External.MobileApp",
                 "External.EVSE",
                 "External.DiagnosticTool",
-                "External.KeyFob"
+                "External.KeyFob",
+                "External.RSU"
             ]
         },
         "partOf": {
