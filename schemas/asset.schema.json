@@ -18,7 +18,7 @@
         },
         "technology": {
             "type": "string",
-            "description": "The exact physical or logical technology of the asset (maps to the capability taxonomy 'Noun')",
+            "description": "The exact technology being acted upon, or a wildcard.",
             "enum": [
                 "CAN",
                 "LIN",
@@ -96,40 +96,60 @@
                 "Config",
                 "Model",
                 "Log",
-                "PII"
+                "PII",
+                "*"
             ]
         },
         "domain": {
             "type": "string",
-            "description": "The vehicle architecture domain where this asset resides",
+            "description": "The vehicle domain, sub-domain, or wildcard.",
             "enum": [
+                "Powertrain",
                 "Powertrain.Propulsion",
                 "Powertrain.Energy",
                 "Powertrain.BMS",
+                "Powertrain.*",
+                "Chassis",
                 "Chassis.Braking",
                 "Chassis.Steering",
                 "Chassis.Suspension",
                 "Chassis.Safety",
+                "Chassis.*",
+                "Body",
                 "Body.Access",
                 "Body.Comfort",
                 "Body.Lighting",
+                "Body.*",
+                "Infotainment",
                 "Infotainment.UI",
                 "Infotainment.OS",
                 "Infotainment.Cluster",
+                "Infotainment.*",
+                "ADAS",
                 "ADAS.Perception",
                 "ADAS.Decision",
+                "ADAS.*",
+                "Telematics",
                 "Telematics.Network",
                 "Telematics.Services",
+                "Telematics.*",
+                "Compute",
                 "Compute.Gateway",
                 "Compute.HPC",
                 "Compute.Zonal",
+                "Compute.*",
+                "Backend",
                 "Backend.OEM",
                 "Backend.ThirdParty",
+                "Backend.*",
+                "External",
                 "External.MobileApp",
                 "External.EVSE",
                 "External.DiagnosticTool",
                 "External.KeyFob",
-                "External.RSU"
+                "External.RSU",
+                "External.*",
+                "*"
             ]
         },
         "partOf": {
@@ -206,24 +226,40 @@
             "type": "object",
             "properties": {
                 "safety": {
-                    "$ref": "#/$defs/ImpactLevel"
+                    "$ref": "#/$defs/ImpactComponent"
                 },
                 "financial": {
-                    "$ref": "#/$defs/ImpactLevel"
+                    "$ref": "#/$defs/ImpactComponent"
                 },
                 "operational": {
-                    "$ref": "#/$defs/ImpactLevel"
+                    "$ref": "#/$defs/ImpactComponent"
                 },
                 "privacy": {
+                    "$ref": "#/$defs/ImpactComponent"
+                }
+            },
+            "required": [
+                "safety",
+                "financial",
+                "operational",
+                "privacy"
+            ],
+            "additionalProperties": false
+        },
+        "ImpactComponent": {
+            "type": "object",
+            "properties": {
+                "level": {
                     "$ref": "#/$defs/ImpactLevel"
                 },
                 "rationale": {
                     "type": "string",
-                    "description": "A text explanation of the damage scenario and why these impact ratings were chosen for this specific stakeholder"
+                    "description": "Optional explanation for why this specific impact rating was chosen",
+                    "default": ""
                 }
             },
             "required": [
-                "rationale"
+                "level"
             ],
             "additionalProperties": false
         },
