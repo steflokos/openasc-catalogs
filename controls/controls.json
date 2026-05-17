@@ -35,24 +35,68 @@
         "Data Flow"
       ],
       "denies": [
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -91,23 +135,53 @@
       ],
       "refines": "C.001",
       "denies": [
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*",
-        "Read:Firmware:*"
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Read:EM:*"
+            "action": "Read",
+            "technology": "EM",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -146,28 +220,78 @@
       ],
       "refines": "C.001",
       "denies": [
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*",
-        "Read:Firmware:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Read:Nonce:*"
+            "action": "Read",
+            "technology": "Nonce",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -175,7 +299,7 @@
     {
       "id": "C.004",
       "name": "Asymmetric Encryption",
-      "description": "Asymmetric encryption uses public/private key pairs for secure key exchange, authentication, and digital signatures in automotive systems. It is essential for secure OTA updates, V2X communications, and establishing trust between ECUs and backend servers. Algorithms such as RSA and ECC are commonly used. Asymmetric encryption complements symmetric encryption by enabling secure key distribution and non-repudiation.",
+      "description": "Asymmetric encryption uses public/private key pairs for secure key exchange, authentication, and digital signatures in automotive systems. It is essential for secure OTA updates, V2X communications, and establishing trust between ECUs and backend servers. Algorithms such as RSA and ECC are commonly used. Asymmetric encryption complements symmetric encryption by enabling secure key distribution and Non Repudiation.",
       "attackFeasibilityReduction": {
         "attackPotentialReduction": {
           "elapsedTime": {
@@ -205,21 +329,53 @@
         "Data Flow"
       ],
       "denies": [
-        "Spoof:V2X:*",
-        "Spoof:Ethernet:*",
-        "Spoof:API:*",
-        "Write:Firmware:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Inject:UDS:*"
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -258,16 +414,28 @@
       ],
       "refines": "C.004",
       "denies": [
-        "Execute:Firmware:*",
-        "Spoof:*:Backend.*"
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "*",
+          "domain": "Backend.*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -306,16 +474,28 @@
       ],
       "refines": "C.004",
       "denies": [
-        "Spoof:V2X:*",
-        "Execute:App:External.DiagnosticTool"
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "External.DiagnosticTool"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -354,37 +534,133 @@
         "Component"
       ],
       "denies": [
-        "Read:CAN:*",
-        "Read:LIN:*",
-        "Read:Ethernet:*",
-        "Read:DoIP:*",
-        "Read:SOME_IP:*",
-        "Read:UDS:*",
-        "Read:J1939:*",
-        "Read:V2X:*",
-        "Read:WiFi:*",
-        "Read:Cellular:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Inject:UDS:*",
-        "Inject:DoIP:*",
-        "Inject:SOME_IP:*",
-        "Inject:J1939:*",
-        "Inject:V2X:*",
-        "Inject:WiFi:*",
-        "Disrupt:CAN:*",
-        "Disrupt:Ethernet:*",
-        "Disrupt:Cellular:*",
-        "Disrupt:WiFi:*",
-        "Disrupt:V2X:*"
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "LIN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "DoIP",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "SOME_IP",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "J1939",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Cellular",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "DoIP",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "SOME_IP",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "J1939",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Cellular",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "V2X",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:*:Compute.Gateway"
+            "action": "Bypass",
+            "technology": "*",
+            "domain": "Compute.Gateway"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -423,21 +699,33 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Read:Key:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Spoof:CAN:*"
+            "action": "Spoof",
+            "technology": "CAN",
+            "domain": "*"
           },
           {
-            "capability": "Spoof:Ethernet:*"
+            "action": "Spoof",
+            "technology": "Ethernet",
+            "domain": "*"
           },
           {
-            "capability": "Spoof:V2X:*"
+            "action": "Spoof",
+            "technology": "V2X",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -476,30 +764,58 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Read:*:External.*",
-        "Read:*:Backend.*",
-        "Spoof:*:Backend.*",
-        "Inject:*:External.*"
+        {
+          "action": "Read",
+          "technology": "*",
+          "domain": "External.*"
+        },
+        {
+          "action": "Read",
+          "technology": "*",
+          "domain": "Backend.*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "*",
+          "domain": "Backend.*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "*",
+          "domain": "External.*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Certificate:*"
+            "action": "Bypass",
+            "technology": "Certificate",
+            "domain": "*"
           },
           {
-            "capability": "Downgrade:Ethernet:*"
+            "action": "Modify.Downgrade",
+            "technology": "Ethernet",
+            "domain": "*"
           },
           {
-            "capability": "Downgrade:API:*"
+            "action": "Modify.Downgrade",
+            "technology": "API",
+            "domain": "*"
           },
           {
-            "capability": "Downgrade:Cellular:*"
+            "action": "Modify.Downgrade",
+            "technology": "Cellular",
+            "domain": "*"
           },
           {
-            "capability": "Downgrade:WiFi:*"
+            "action": "Modify.Downgrade",
+            "technology": "WiFi",
+            "domain": "*"
           },
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           }
         ]
       }
@@ -538,30 +854,78 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Inject:UDS:*",
-        "Inject:API:*",
-        "Inject:USB:*",
-        "Disrupt:CAN:*",
-        "Disrupt:Ethernet:*",
-        "Disrupt:Cellular:*",
-        "Disrupt:WiFi:*",
-        "Execute:API:*"
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "USB",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Cellular",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Elevate:OS:*"
+            "action": "Elevate",
+            "technology": "OS",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:Kernel:*"
+            "action": "Elevate",
+            "technology": "Kernel",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:App:*"
+            "action": "Elevate",
+            "technology": "App",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:OS:*"
+            "action": "Bypass",
+            "technology": "OS",
+            "domain": "*"
           }
         ]
       }
@@ -599,15 +963,23 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Disrupt:*:Backend.*"
+        {
+          "action": "Disrupt",
+          "technology": "*",
+          "domain": "Backend.*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Inject:*:Backend.*"
+            "action": "Modify.Inject",
+            "technology": "*",
+            "domain": "Backend.*"
           },
           {
-            "capability": "Bypass:Algorithm:Backend.*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "Backend.*"
           }
         ]
       }
@@ -638,7 +1010,7 @@
       "protects": [
         "Confidentiality",
         "Integrity",
-        "Non-Repudiation"
+        "Non Repudiation"
       ],
       "actsOn": [
         "Data",
@@ -651,10 +1023,14 @@
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           },
           {
-            "capability": "Spoof:Log:*"
+            "action": "Spoof",
+            "technology": "Log",
+            "domain": "*"
           }
         ]
       }
@@ -695,20 +1071,58 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Execute:Firmware:*",
-        "Execute:App:*",
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*"
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -745,28 +1159,68 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Disrupt:CAN:*",
-        "Disrupt:Ethernet:*",
-        "Disrupt:WiFi:*",
-        "Disrupt:Cellular:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Inject:UDS:*",
-        "Inject:API:*"
+        {
+          "action": "Disrupt",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Cellular",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           },
           {
-            "capability": "Spoof:CAN:*"
+            "action": "Spoof",
+            "technology": "CAN",
+            "domain": "*"
           },
           {
-            "capability": "Spoof:Ethernet:*"
+            "action": "Spoof",
+            "technology": "Ethernet",
+            "domain": "*"
           },
           {
-            "capability": "Spoof:V2X:*"
+            "action": "Spoof",
+            "technology": "V2X",
+            "domain": "*"
           }
         ]
       }
@@ -802,15 +1256,23 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Disrupt:*:Backend.*"
+        {
+          "action": "Disrupt",
+          "technology": "*",
+          "domain": "Backend.*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Execute:API:Backend.*"
+            "action": "Execute",
+            "technology": "API",
+            "domain": "Backend.*"
           },
           {
-            "capability": "Bypass:Algorithm:Backend.*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "Backend.*"
           }
         ]
       }
@@ -850,31 +1312,83 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*",
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Execute:MCU:*"
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "MCU",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:*:Compute.Gateway"
+            "action": "Bypass",
+            "technology": "*",
+            "domain": "Compute.Gateway"
           },
           {
-            "capability": "Elevate:OS:*"
+            "action": "Elevate",
+            "technology": "OS",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:Kernel:*"
+            "action": "Elevate",
+            "technology": "Kernel",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:App:*"
+            "action": "Elevate",
+            "technology": "App",
+            "domain": "*"
           }
         ]
       }
@@ -914,19 +1428,43 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Spoof:CAN:*",
-        "Spoof:Ethernet:*",
-        "Spoof:V2X:*",
-        "Spoof:API:*",
-        "Execute:Firmware:*"
+        {
+          "action": "Spoof",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Certificate:*"
+            "action": "Bypass",
+            "technology": "Certificate",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -965,20 +1503,48 @@
       ],
       "refines": "C.007",
       "denies": [
-        "Read:Ethernet:*",
-        "Write:Ethernet:*",
-        "Spoof:Ethernet:*",
-        "Spoof:CAN:*",
-        "Spoof:V2X:*",
-        "Spoof:API:*"
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -1014,20 +1580,48 @@
         "Component"
       ],
       "denies": [
-        "Write:Firmware:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Hash:*"
+            "action": "Bypass",
+            "technology": "Hash",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -1035,7 +1629,7 @@
     {
       "id": "C.020",
       "name": "SHA-2 Family",
-      "description": "The SHA-2 family consists of cryptographic hash functions including SHA-224, SHA-256, SHA-384, and SHA-512, which are based on the Merkle-Damg\u00e5rd construction and use a one-way compression function. These algorithms are widely used for verifying firmware, generating digital signatures, and ensuring data integrity in automotive systems. SHA-2 algorithms are adopted for secure boot, OTA update validation, and message authentication. SHA-256 is the most commonly used variant in automotive cybersecurity, providing strong collision resistance and serving as a standard for secure automotive applications.",
+      "description": "The SHA-2 family consists of cryptographic hash functions including SHA-224, SHA-256, SHA-384, and SHA-512, which are based on the Merkle-Damgård construction and use a one-way compression function. These algorithms are widely used for verifying firmware, generating digital signatures, and ensuring data integrity in automotive systems. SHA-2 algorithms are adopted for secure boot, OTA update validation, and message authentication. SHA-256 is the most commonly used variant in automotive cybersecurity, providing strong collision resistance and serving as a standard for secure automotive applications.",
       "attackFeasibilityReduction": {
         "attackPotentialReduction": {
           "elapsedTime": {
@@ -1064,20 +1658,48 @@
       ],
       "refines": "C.019",
       "denies": [
-        "Write:Firmware:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Hash:*"
+            "action": "Bypass",
+            "technology": "Hash",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Bootloader:*"
+            "action": "Bypass",
+            "technology": "Bootloader",
+            "domain": "*"
           }
         ]
       }
@@ -1114,20 +1736,48 @@
       ],
       "refines": "C.019",
       "denies": [
-        "Write:Firmware:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Hash:*"
+            "action": "Bypass",
+            "technology": "Hash",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -1164,15 +1814,23 @@
       ],
       "refines": "C.019",
       "denies": [
-        "Write:Firmware:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Hash:*"
+            "action": "Bypass",
+            "technology": "Hash",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -1203,28 +1861,60 @@
       "protects": [
         "Integrity",
         "Authenticity",
-        "Non-Repudiation"
+        "Non Repudiation"
       ],
       "actsOn": [
         "Component",
         "Data"
       ],
       "denies": [
-        "Execute:Firmware:*",
-        "Execute:App:*",
-        "Spoof:CAN:*",
-        "Spoof:Ethernet:*",
-        "Spoof:V2X:*",
-        "Spoof:API:*",
-        "Write:Firmware:*"
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           },
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           }
         ]
       }
@@ -1232,7 +1922,7 @@
     {
       "id": "C.024",
       "name": "DSA (Digital Signature Algorithm)",
-      "description": "DSA is a standard for generating and verifying digital signatures, used to authenticate firmware, software, and messages in automotive ECUs. It provides non-repudiation and ensures that only authorized code and data are accepted by the system. DSA is often used in secure boot and OTA update processes.",
+      "description": "DSA is a standard for generating and verifying digital signatures, used to authenticate firmware, software, and messages in automotive ECUs. It provides Non Repudiation and ensures that only authorized code and data are accepted by the system. DSA is often used in secure boot and OTA update processes.",
       "attackFeasibilityReduction": {
         "attackPotentialReduction": {
           "elapsedTime": {
@@ -1255,7 +1945,7 @@
       "protects": [
         "Integrity",
         "Authenticity",
-        "Non-Repudiation"
+        "Non Repudiation"
       ],
       "actsOn": [
         "Component",
@@ -1263,17 +1953,33 @@
       ],
       "refines": "C.023",
       "denies": [
-        "Write:Firmware:*",
-        "Execute:OS:*",
-        "Execute:Firmware:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "OS",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           },
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           }
         ]
       }
@@ -1304,7 +2010,7 @@
       "protects": [
         "Integrity",
         "Authenticity",
-        "Non-Repudiation"
+        "Non Repudiation"
       ],
       "actsOn": [
         "Component",
@@ -1312,20 +2018,38 @@
       ],
       "refines": "C.023",
       "denies": [
-        "Spoof:V2X:*",
-        "Spoof:*:External.*",
-        "Write:Firmware:*"
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "*",
+          "domain": "External.*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Nonce:*"
+            "action": "Bypass",
+            "technology": "Nonce",
+            "domain": "*"
           },
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -1356,7 +2080,7 @@
       "protects": [
         "Integrity",
         "Authenticity",
-        "Non-Repudiation"
+        "Non Repudiation"
       ],
       "actsOn": [
         "Component",
@@ -1364,22 +2088,58 @@
       ],
       "refines": "C.023",
       "denies": [
-        "Spoof:V2X:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:PCB:*"
+            "action": "Bypass",
+            "technology": "PCB",
+            "domain": "*"
           }
         ]
       }
@@ -1417,24 +2177,68 @@
         "Data"
       ],
       "denies": [
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*",
-        "Spoof:CAN:*",
-        "Spoof:Ethernet:*",
-        "Spoof:V2X:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -1473,22 +2277,58 @@
       ],
       "refines": "C.027",
       "denies": [
-        "Spoof:CAN:*",
-        "Spoof:Ethernet:*",
-        "Inject:UDS:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Spoof",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Hash:*"
+            "action": "Bypass",
+            "technology": "Hash",
+            "domain": "*"
           }
         ]
       }
@@ -1527,21 +2367,53 @@
       ],
       "refines": "C.027",
       "denies": [
-        "Inject:CAN:*",
-        "Write:UDS:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -1578,17 +2450,33 @@
         "Component"
       ],
       "denies": [
-        "Read:Key:*",
-        "Execute:App:*",
-        "Read:RAM:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:TEE:*"
+            "action": "Bypass",
+            "technology": "TEE",
+            "domain": "*"
           },
           {
-            "capability": "Write:Power:*"
+            "action": "Modify.Write",
+            "technology": "Power",
+            "domain": "*"
           }
         ]
       }
@@ -1626,23 +2514,43 @@
       ],
       "refines": "C.030",
       "denies": [
-        "Read:Key:*",
-        "Execute:OS:*",
-        "Read:RAM:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "OS",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:TEE:*"
+            "action": "Bypass",
+            "technology": "TEE",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:OS:*"
+            "action": "Elevate",
+            "technology": "OS",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:Kernel:*"
+            "action": "Elevate",
+            "technology": "Kernel",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:App:*"
+            "action": "Elevate",
+            "technology": "App",
+            "domain": "*"
           }
         ]
       }
@@ -1680,20 +2588,38 @@
       ],
       "refines": "C.030",
       "denies": [
-        "Read:RAM:*",
-        "Read:Key:*",
-        "Execute:MCU:*"
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "MCU",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Write:Power:*"
+            "action": "Modify.Write",
+            "technology": "Power",
+            "domain": "*"
           },
           {
-            "capability": "Write:Clock:*"
+            "action": "Modify.Write",
+            "technology": "Clock",
+            "domain": "*"
           },
           {
-            "capability": "Read:EM:*"
+            "action": "Read",
+            "technology": "EM",
+            "domain": "*"
           }
         ]
       }
@@ -1730,16 +2656,28 @@
       ],
       "refines": "C.030",
       "denies": [
-        "Read:RAM:*",
-        "Write:RAM:*"
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:PCB:*"
+            "action": "Bypass",
+            "technology": "PCB",
+            "domain": "*"
           },
           {
-            "capability": "Read:Power:*"
+            "action": "Read",
+            "technology": "Power",
+            "domain": "*"
           }
         ]
       }
@@ -1777,16 +2715,28 @@
         "Data"
       ],
       "denies": [
-        "Read:Key:*",
-        "Write:Key:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Key",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:HSM:*"
+            "action": "Bypass",
+            "technology": "HSM",
+            "domain": "*"
           }
         ]
       }
@@ -1824,13 +2774,23 @@
       ],
       "refines": "C.034",
       "denies": [
-        "Read:Key:*",
-        "Read:Flash:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:PCB:*"
+            "action": "Bypass",
+            "technology": "PCB",
+            "domain": "*"
           }
         ]
       }
@@ -1867,17 +2827,33 @@
       ],
       "refines": "C.034",
       "denies": [
-        "Read:Key:*",
-        "Execute:Firmware:*",
-        "Bypass:Certificate:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Bypass",
+          "technology": "Certificate",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:HSM:*"
+            "action": "Bypass",
+            "technology": "HSM",
+            "domain": "*"
           },
           {
-            "capability": "Write:Power:*"
+            "action": "Modify.Write",
+            "technology": "Power",
+            "domain": "*"
           }
         ]
       }
@@ -1914,17 +2890,33 @@
       ],
       "refines": "C.034",
       "denies": [
-        "Spoof:Log:*",
-        "Read:Key:*",
-        "Bypass:Bootloader:*"
+        {
+          "action": "Spoof",
+          "technology": "Log",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Bypass",
+          "technology": "Bootloader",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:TPM:*"
+            "action": "Bypass",
+            "technology": "TPM",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:SPI:*"
+            "action": "Bypass",
+            "technology": "SPI",
+            "domain": "*"
           }
         ]
       }
@@ -1962,14 +2954,28 @@
       ],
       "refines": "C.034",
       "denies": [
-        "Read:Key:*",
-        "Read:PII:*",
-        "Spoof:V2X:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "PII",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof",
+          "technology": "V2X",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:PCB:*"
+            "action": "Bypass",
+            "technology": "PCB",
+            "domain": "*"
           }
         ]
       }
@@ -2006,17 +3012,33 @@
       ],
       "refines": "C.034",
       "denies": [
-        "Write:Flash:*",
-        "Write:Key:*",
-        "Downgrade:Firmware:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Downgrade",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:PCB:*"
+            "action": "Bypass",
+            "technology": "PCB",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:OTP:*"
+            "action": "Bypass",
+            "technology": "OTP",
+            "domain": "*"
           }
         ]
       }
@@ -2053,17 +3075,33 @@
       ],
       "refines": "C.039",
       "denies": [
-        "Write:Key:*",
-        "Write:OTP:*",
-        "Downgrade:Firmware:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "OTP",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Downgrade",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:PCB:*"
+            "action": "Bypass",
+            "technology": "PCB",
+            "domain": "*"
           },
           {
-            "capability": "Write:Power:*"
+            "action": "Modify.Write",
+            "technology": "Power",
+            "domain": "*"
           }
         ]
       }
@@ -2099,30 +3137,88 @@
         "Component"
       ],
       "denies": [
-        "Read:RAM:*",
-        "Read:Flash:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*",
-        "Write:RAM:*",
-        "Write:Flash:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*",
-        "Execute:App:*",
-        "Execute:Firmware:*",
-        "Execute:OS:*"
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "OS",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Elevate:OS:*"
+            "action": "Elevate",
+            "technology": "OS",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:Kernel:*"
+            "action": "Elevate",
+            "technology": "Kernel",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:OS:*"
+            "action": "Bypass",
+            "technology": "OS",
+            "domain": "*"
           }
         ]
       }
@@ -2159,19 +3255,43 @@
       ],
       "refines": "C.041",
       "denies": [
-        "Execute:UDS:*",
-        "Write:Firmware:*",
-        "Elevate:OS:*",
-        "Elevate:Kernel:*",
-        "Elevate:App:*"
+        {
+          "action": "Execute",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Elevate",
+          "technology": "OS",
+          "domain": "*"
+        },
+        {
+          "action": "Elevate",
+          "technology": "Kernel",
+          "domain": "*"
+        },
+        {
+          "action": "Elevate",
+          "technology": "App",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Token:*"
+            "action": "Read",
+            "technology": "Token",
+            "domain": "*"
           },
           {
-            "capability": "Read:Session:*"
+            "action": "Read",
+            "technology": "Session",
+            "domain": "*"
           }
         ]
       }
@@ -2208,23 +3328,53 @@
       ],
       "refines": "C.041",
       "denies": [
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*",
-        "Execute:App:*"
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Elevate:OS:*"
+            "action": "Elevate",
+            "technology": "OS",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:Kernel:*"
+            "action": "Elevate",
+            "technology": "Kernel",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:App:*"
+            "action": "Elevate",
+            "technology": "App",
+            "domain": "*"
           }
         ]
       }
@@ -2261,14 +3411,28 @@
       ],
       "refines": "C.041",
       "denies": [
-        "Inject:App:*",
-        "Execute:OS:*",
-        "Read:RAM:*"
+        {
+          "action": "Modify.Inject",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "OS",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Kernel:*"
+            "action": "Bypass",
+            "technology": "Kernel",
+            "domain": "*"
           }
         ]
       }
@@ -2304,13 +3468,23 @@
       ],
       "refines": "C.041",
       "denies": [
-        "Execute:App:*",
-        "Execute:Firmware:*"
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Inject:App:*"
+            "action": "Modify.Inject",
+            "technology": "App",
+            "domain": "*"
           }
         ]
       }
@@ -2346,18 +3520,48 @@
       ],
       "refines": "C.041",
       "denies": [
-        "Execute:App:*",
-        "Inject:App:*",
-        "Inject:API:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Inject:UDS:*",
-        "Inject:USB:*"
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "USB",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -2393,20 +3597,38 @@
         "Component"
       ],
       "denies": [
-        "Write:Firmware:*",
-        "Execute:Firmware:*",
-        "Execute:Kernel:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Kernel",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Write:Power:*"
+            "action": "Modify.Write",
+            "technology": "Power",
+            "domain": "*"
           },
           {
-            "capability": "Write:Clock:*"
+            "action": "Modify.Write",
+            "technology": "Clock",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Bootloader:*"
+            "action": "Bypass",
+            "technology": "Bootloader",
+            "domain": "*"
           }
         ]
       }
@@ -2442,17 +3664,43 @@
         "Data"
       ],
       "denies": [
-        "Write:OS:*",
-        "Write:Flash:*",
-        "Write:RAM:*",
-        "Write:CAN:*",
-        "Write:Ethernet:*",
-        "Write:API:*"
+        {
+          "action": "Modify.Write",
+          "technology": "OS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Hash:*"
+            "action": "Bypass",
+            "technology": "Hash",
+            "domain": "*"
           }
         ]
       }
@@ -2489,13 +3737,23 @@
       ],
       "refines": "C.048",
       "denies": [
-        "Write:OS:*",
-        "Inject:App:*"
+        {
+          "action": "Modify.Write",
+          "technology": "OS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "App",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Kernel:*"
+            "action": "Bypass",
+            "technology": "Kernel",
+            "domain": "*"
           }
         ]
       }
@@ -2532,13 +3790,23 @@
       ],
       "refines": "C.048",
       "denies": [
-        "Write:Flash:*",
-        "Write:EEPROM:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "EEPROM",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -2575,20 +3843,48 @@
         "Data"
       ],
       "denies": [
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*",
-        "Read:PII:*"
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "PII",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Key:*"
+            "action": "Read",
+            "technology": "Key",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -2626,19 +3922,43 @@
       ],
       "refines": "C.051",
       "denies": [
-        "Read:Flash:*",
-        "Read:RAM:*",
-        "Read:CAN:*",
-        "Read:Ethernet:*",
-        "Read:API:*"
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:RAM:*"
+            "action": "Read",
+            "technology": "RAM",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:HSM:*"
+            "action": "Bypass",
+            "technology": "HSM",
+            "domain": "*"
           }
         ]
       }
@@ -2674,18 +3994,38 @@
         "Component"
       ],
       "denies": [
-        "Execute:UDS:External.DiagnosticTool",
-        "Write:Firmware:*",
-        "Read:RAM:*",
-        "Read:PII:*"
+        {
+          "action": "Execute",
+          "technology": "UDS",
+          "domain": "External.DiagnosticTool"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "PII",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           },
           {
-            "capability": "Read:Token:*"
+            "action": "Read",
+            "technology": "Token",
+            "domain": "*"
           }
         ]
       }
@@ -2722,18 +4062,38 @@
         "Component"
       ],
       "denies": [
-        "Execute:JTAG:*",
-        "Execute:UART:*",
-        "Read:Firmware:*",
-        "Read:Flash:*"
+        {
+          "action": "Execute",
+          "technology": "JTAG",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "UART",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Flash",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Password:*"
+            "action": "Bypass",
+            "technology": "Password",
+            "domain": "*"
           },
           {
-            "capability": "Write:Power:*"
+            "action": "Modify.Write",
+            "technology": "Power",
+            "domain": "*"
           }
         ]
       }
@@ -2763,7 +4123,7 @@
       },
       "protects": [
         "Integrity",
-        "Non-Repudiation"
+        "Non Repudiation"
       ],
       "actsOn": [
         "Component",
@@ -2771,23 +4131,43 @@
         "Data Flow"
       ],
       "denies": [
-        "Spoof:Log:*",
-        "Write:Log:*",
-        "Bypass:Log:*"
+        {
+          "action": "Spoof",
+          "technology": "Log",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Log",
+          "domain": "*"
+        },
+        {
+          "action": "Bypass",
+          "technology": "Log",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Elevate:OS:*"
+            "action": "Elevate",
+            "technology": "OS",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:Kernel:*"
+            "action": "Elevate",
+            "technology": "Kernel",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:App:*"
+            "action": "Elevate",
+            "technology": "App",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -2825,19 +4205,53 @@
         "Data"
       ],
       "denies": [
-        "Execute:App:*",
-        "Write:Firmware:*",
-        "Inject:App:*",
-        "Inject:API:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Inject:UDS:*",
-        "Inject:USB:*"
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "USB",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -2876,18 +4290,48 @@
       ],
       "refines": "C.056",
       "denies": [
-        "Execute:App:*",
-        "Inject:App:*",
-        "Inject:API:*",
-        "Inject:CAN:*",
-        "Inject:Ethernet:*",
-        "Inject:UDS:*",
-        "Inject:USB:*"
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "API",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Inject",
+          "technology": "USB",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -2926,15 +4370,33 @@
       ],
       "refines": "C.056",
       "denies": [
-        "Execute:App:*",
-        "Execute:Firmware:*",
-        "Execute:OS:*",
-        "Bypass:OS:*"
+        {
+          "action": "Execute",
+          "technology": "App",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "OS",
+          "domain": "*"
+        },
+        {
+          "action": "Bypass",
+          "technology": "OS",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -2971,17 +4433,33 @@
       ],
       "refines": "C.056",
       "denies": [
-        "Write:Firmware:*",
-        "Execute:Firmware:*",
-        "Downgrade:Firmware:*"
+        {
+          "action": "Modify.Write",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Execute",
+          "technology": "Firmware",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Downgrade",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Bypass:Certificate:*"
+            "action": "Bypass",
+            "technology": "Certificate",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -3017,12 +4495,18 @@
       ],
       "refines": "C.056",
       "denies": [
-        "Downgrade:Firmware:*"
+        {
+          "action": "Modify.Downgrade",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Bootloader:*"
+            "action": "Bypass",
+            "technology": "Bootloader",
+            "domain": "*"
           }
         ]
       }
@@ -3059,17 +4543,33 @@
         "Data"
       ],
       "denies": [
-        "Read:Key:*",
-        "Read:Nonce:*",
-        "Bypass:Algorithm:*"
+        {
+          "action": "Read",
+          "technology": "Key",
+          "domain": "*"
+        },
+        {
+          "action": "Read",
+          "technology": "Nonce",
+          "domain": "*"
+        },
+        {
+          "action": "Bypass",
+          "technology": "Algorithm",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Read:Seed:*"
+            "action": "Read",
+            "technology": "Seed",
+            "domain": "*"
           },
           {
-            "capability": "Read:Entropy:*"
+            "action": "Read",
+            "technology": "Entropy",
+            "domain": "*"
           }
         ]
       }
@@ -3104,34 +4604,68 @@
         "Component"
       ],
       "denies": [
-        "Disrupt:CAN:*",
-        "Disrupt:Ethernet:*",
-        "Disrupt:Cellular:*",
-        "Disrupt:WiFi:*",
-        "Disrupt:API:*"
+        {
+          "action": "Disrupt",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "Cellular",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "API",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "OR": [
           {
-            "capability": "Inject:App:*"
+            "action": "Modify.Inject",
+            "technology": "App",
+            "domain": "*"
           },
           {
-            "capability": "Inject:API:*"
+            "action": "Modify.Inject",
+            "technology": "API",
+            "domain": "*"
           },
           {
-            "capability": "Inject:CAN:*"
+            "action": "Modify.Inject",
+            "technology": "CAN",
+            "domain": "*"
           },
           {
-            "capability": "Inject:Ethernet:*"
+            "action": "Modify.Inject",
+            "technology": "Ethernet",
+            "domain": "*"
           },
           {
-            "capability": "Inject:UDS:*"
+            "action": "Modify.Inject",
+            "technology": "UDS",
+            "domain": "*"
           },
           {
-            "capability": "Inject:USB:*"
+            "action": "Modify.Inject",
+            "technology": "USB",
+            "domain": "*"
           },
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }
@@ -3167,13 +4701,23 @@
       ],
       "refines": "C.062",
       "denies": [
-        "Disrupt:MCU:*",
-        "Disrupt:OS:*"
+        {
+          "action": "Disrupt",
+          "technology": "MCU",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "OS",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Execute:OS:*"
+            "action": "Execute",
+            "technology": "OS",
+            "domain": "*"
           }
         ]
       }
@@ -3209,19 +4753,33 @@
       ],
       "refines": "C.062",
       "denies": [
-        "Disrupt:RAM:*",
-        "Disrupt:MCU:*"
+        {
+          "action": "Disrupt",
+          "technology": "RAM",
+          "domain": "*"
+        },
+        {
+          "action": "Disrupt",
+          "technology": "MCU",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Elevate:OS:*"
+            "action": "Elevate",
+            "technology": "OS",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:Kernel:*"
+            "action": "Elevate",
+            "technology": "Kernel",
+            "domain": "*"
           },
           {
-            "capability": "Elevate:App:*"
+            "action": "Elevate",
+            "technology": "App",
+            "domain": "*"
           }
         ]
       }
@@ -3258,17 +4816,43 @@
         "Data Flow"
       ],
       "denies": [
-        "Replay:CAN:*",
-        "Replay:Ethernet:*",
-        "Replay:UDS:*",
-        "Replay:V2X:*",
-        "Replay:WiFi:*",
-        "Replay:Cellular:*"
+        {
+          "action": "Spoof.Replay",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "Cellular",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Nonce:*"
+            "action": "Bypass",
+            "technology": "Nonce",
+            "domain": "*"
           }
         ]
       }
@@ -3306,18 +4890,48 @@
       ],
       "refines": "C.065",
       "denies": [
-        "Replay:CAN:*",
-        "Replay:Ethernet:*",
-        "Replay:UDS:*",
-        "Replay:V2X:*",
-        "Replay:WiFi:*",
-        "Replay:Cellular:*",
-        "Downgrade:Firmware:*"
+        {
+          "action": "Spoof.Replay",
+          "technology": "CAN",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "Ethernet",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "UDS",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "V2X",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "WiFi",
+          "domain": "*"
+        },
+        {
+          "action": "Spoof.Replay",
+          "technology": "Cellular",
+          "domain": "*"
+        },
+        {
+          "action": "Modify.Downgrade",
+          "technology": "Firmware",
+          "domain": "*"
+        }
       ],
       "overriddenBy": {
         "AND": [
           {
-            "capability": "Bypass:Algorithm:*"
+            "action": "Bypass",
+            "technology": "Algorithm",
+            "domain": "*"
           }
         ]
       }

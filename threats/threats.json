@@ -42,23 +42,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Read:Token:*"
+                                "action": "Read",
+                                "technology": "Token",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Algorithm:*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Inject:*:*",
-                "Elevate:*:*",
-                "Execute:*:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -98,16 +114,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:*:*"
+                        "action": "Read",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:*:*",
-                "Spoof:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -152,14 +180,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Password:*"
+                        "action": "Read",
+                        "technology": "Password",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Bypass:Session:*",
-                "Execute:*:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Bypass",
+                    "technology": "Session",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -198,13 +240,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Certificate:*"
+                        "action": "Bypass",
+                        "technology": "Certificate",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Execute:App:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -246,22 +298,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:PCB:*"
+                                "action": "Bypass",
+                                "technology": "PCB",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:SoC:*"
+                                "action": "Bypass",
+                                "technology": "SoC",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Execute:PCB:*",
-                "Execute:SoC:*"
+                {
+                    "action": "Execute",
+                    "technology": "PCB",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "SoC",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -303,13 +367,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:API:External.*"
+                        "action": "Bypass",
+                        "technology": "API",
+                        "domain": "External.*"
                     }
                 ]
             },
             "grants": [
-                "Inject:*:External.*",
-                "Spoof:App:External.MobileApp"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "*",
+                    "domain": "External.*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "App",
+                    "domain": "External.MobileApp"
+                }
             ]
         },
         {
@@ -351,13 +425,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:SecOC:*"
+                        "action": "Bypass",
+                        "technology": "SecOC",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:*:*",
-                "Disrupt:*:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -402,16 +486,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:GNSS:*",
-                "Spoof:Sensor:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "GNSS",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "Sensor",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -452,16 +548,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Algorithm:*"
+                        "action": "Read",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Certificate:*"
+                        "action": "Bypass",
+                        "technology": "Certificate",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Spoof:*:*",
-                "Elevate:*:*"
+                {
+                    "action": "Spoof",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -502,26 +610,44 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Bootloader:*"
+                                "action": "Bypass",
+                                "technology": "Bootloader",
+                                "domain": "*"
                             },
                             {
-                                "capability": "Bypass:Hash:*"
+                                "action": "Bypass",
+                                "technology": "Hash",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:PCB:*"
+                                "action": "Bypass",
+                                "technology": "PCB",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Write:Flash:*",
-                "Write:EEPROM:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -560,15 +686,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:*:External.*"
+                        "action": "Read",
+                        "technology": "*",
+                        "domain": "External.*"
                     },
                     {
-                        "capability": "Bypass:Certificate:External.*"
+                        "action": "Bypass",
+                        "technology": "Certificate",
+                        "domain": "External.*"
                     }
                 ]
             },
             "grants": [
-                "Write:*:External.*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "External.*"
+                }
             ]
         },
         {
@@ -607,15 +741,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:*:*"
+                        "action": "Read",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:SecOC:*"
+                        "action": "Bypass",
+                        "technology": "SecOC",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -653,13 +795,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:RAM:*",
-                "Execute:App:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "RAM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -697,14 +849,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Kernel:*"
+                        "action": "Bypass",
+                        "technology": "Kernel",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Flash:*",
-                "Write:EEPROM:*",
-                "Write:RAM:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "RAM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -743,22 +909,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Bootloader:*"
+                                "action": "Bypass",
+                                "technology": "Bootloader",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Certificate:*"
+                                "action": "Bypass",
+                                "technology": "Certificate",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Execute:Firmware:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "Firmware",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -797,16 +975,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:API:*"
+                        "action": "Read",
+                        "technology": "API",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:API:*",
-                "Execute:*:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "API",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -843,13 +1033,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:API:*"
+                        "action": "Bypass",
+                        "technology": "API",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:App:*",
-                "Execute:App:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -886,14 +1086,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Middleware:*"
+                        "action": "Bypass",
+                        "technology": "Middleware",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:API:*",
-                "Elevate:*:*",
-                "Execute:*:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "API",
+                    "domain": "*"
+                },
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -927,11 +1141,22 @@
             "actsOn": [
                 "Component"
             ],
-            "requires": {},
             "grants": [
-                "Disrupt:Power:*",
-                "Disrupt:Clock:*",
-                "Bypass:SoC:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "Power",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Clock",
+                    "domain": "*"
+                },
+                {
+                    "action": "Bypass",
+                    "technology": "SoC",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -969,16 +1194,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:*:*"
+                        "action": "Read",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Nonce:*"
+                        "action": "Bypass",
+                        "technology": "Nonce",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Replay:*:*",
-                "Execute:*:*"
+                {
+                    "action": "Spoof.Replay",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1016,17 +1253,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Elevate:*:*"
+                        "action": "Elevate",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:EEPROM:*",
-                "Write:Flash:*",
-                "Write:OS:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1064,17 +1317,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:*:*"
+                        "action": "Read",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:SecOC:*"
+                        "action": "Bypass",
+                        "technology": "SecOC",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:*:*",
-                "Write:*:*",
-                "Execute:*:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1114,16 +1383,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Firmware:*"
+                        "action": "Read",
+                        "technology": "Firmware",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Execute:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1161,17 +1442,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Flash:*",
-                "Write:EEPROM:*",
-                "Write:RAM:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "RAM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1209,13 +1506,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:Firmware:*",
-                "Write:Flash:*"
+                {
+                    "action": "Execute",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1253,16 +1560,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:JTAG:*"
+                        "action": "Bypass",
+                        "technology": "JTAG",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Execute:Firmware:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "Firmware",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1300,13 +1619,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Flash:*",
-                "Disrupt:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1344,16 +1673,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Flash:*",
-                "Write:Firmware:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1391,14 +1732,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:Firmware:*",
-                "Write:Flash:*",
-                "Write:EEPROM:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1426,7 +1781,7 @@
                 }
             },
             "compromises": [
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -1437,16 +1792,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Certificate:*"
+                        "action": "Bypass",
+                        "technology": "Certificate",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Log:*"
+                        "action": "Bypass",
+                        "technology": "Log",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Spoof:Log:*",
-                "Write:Log:*"
+                {
+                    "action": "Spoof",
+                    "technology": "Log",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Log",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1475,7 +1842,7 @@
             },
             "refines": "T.030",
             "compromises": [
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -1488,22 +1855,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Elevate:*:*"
+                                "action": "Elevate",
+                                "technology": "*",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Bypass:Log:*",
-                "Bypass:Certificate:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Log",
+                    "domain": "*"
+                },
+                {
+                    "action": "Bypass",
+                    "technology": "Certificate",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1532,7 +1911,7 @@
             },
             "refines": "T.030",
             "compromises": [
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -1543,13 +1922,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Algorithm:*"
+                        "action": "Read",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Bypass:Log:*",
-                "Spoof:*:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Log",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1587,22 +1976,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Password:*"
+                                "action": "Bypass",
+                                "technology": "Password",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:API:*"
+                                "action": "Bypass",
+                                "technology": "API",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:PII:*",
-                "Read:Key:*"
+                {
+                    "action": "Read",
+                    "technology": "PII",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1640,12 +2041,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:*:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1683,12 +2090,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:*:Compute.Gateway"
+                        "action": "Bypass",
+                        "technology": "*",
+                        "domain": "Compute.Gateway"
                     }
                 ]
             },
             "grants": [
-                "Read:*:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1728,21 +2141,29 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Algorithm:External.*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "External.*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Token:External.*"
+                                "action": "Bypass",
+                                "technology": "Token",
+                                "domain": "External.*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:*:External.*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "External.*"
+                }
             ]
         },
         {
@@ -1782,21 +2203,29 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:API:*"
+                                "action": "Bypass",
+                                "technology": "API",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Read:Log:*"
+                                "action": "Read",
+                                "technology": "Log",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:PII:*"
+                {
+                    "action": "Read",
+                    "technology": "PII",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1835,22 +2264,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Flash:*"
+                                "action": "Bypass",
+                                "technology": "Flash",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:EEPROM:*"
+                                "action": "Bypass",
+                                "technology": "EEPROM",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:Firmware:*",
-                "Read:Algorithm:*"
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1891,22 +2332,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:JTAG:*"
+                                "action": "Bypass",
+                                "technology": "JTAG",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:UART:*"
+                                "action": "Bypass",
+                                "technology": "UART",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:Log:*",
-                "Read:*:*"
+                {
+                    "action": "Read",
+                    "technology": "Log",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -1947,29 +2400,43 @@
                     {
                         "AND": [
                             {
-                                "capability": "Read:EM:*"
+                                "action": "Read",
+                                "technology": "EM",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Read:Power:*"
+                                "action": "Read",
+                                "technology": "Power",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Read:Clock:*"
+                                "action": "Read",
+                                "technology": "Clock",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:Key:*",
-                "Read:Algorithm:*"
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2006,16 +2473,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Firmware:*"
+                        "action": "Read",
+                        "technology": "Firmware",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Algorithm:*",
-                "Read:Key:*"
+                {
+                    "action": "Read",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2055,30 +2534,48 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:PCB:*"
+                                "action": "Bypass",
+                                "technology": "PCB",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:JTAG:*"
+                                "action": "Bypass",
+                                "technology": "JTAG",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:UART:*"
+                                "action": "Bypass",
+                                "technology": "UART",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:Flash:*",
-                "Read:EEPROM:*",
-                "Read:Key:*"
+                {
+                    "action": "Read",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2116,13 +2613,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Firmware:*",
-                "Read:Flash:*"
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Flash",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2160,13 +2667,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Firmware:*",
-                "Read:EEPROM:*"
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2204,13 +2721,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Firmware:*",
-                "Read:Flash:*"
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Flash",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2248,13 +2775,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Firmware:*",
-                "Read:EEPROM:*"
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2292,13 +2829,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Firmware:*",
-                "Read:Key:*"
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2337,12 +2884,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:*:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2380,14 +2933,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:Cellular:*",
-                "Disrupt:WiFi:*",
-                "Disrupt:Bluetooth:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "Cellular",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Bluetooth",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2427,23 +2994,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:PCB:*"
+                                "action": "Bypass",
+                                "technology": "PCB",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:Compute.Gateway"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "Compute.Gateway"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Disrupt:CAN:*",
-                "Disrupt:Ethernet:*",
-                "Disrupt:LIN:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "CAN",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Ethernet",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "LIN",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2483,23 +3066,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Kernel:*"
+                                "action": "Bypass",
+                                "technology": "Kernel",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Disrupt:MCU:*",
-                "Disrupt:SoC:*",
-                "Disrupt:App:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "SoC",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "App",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2538,13 +3137,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:*:*",
-                "Disrupt:*:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2583,17 +3192,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:WiFi:*",
-                "Disrupt:Cellular:*",
-                "Disrupt:Bluetooth:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Cellular",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Bluetooth",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2632,15 +3257,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:GNSS:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "GNSS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2679,29 +3312,49 @@
                     {
                         "AND": [
                             {
-                                "capability": "Execute:*:*"
+                                "action": "Execute",
+                                "technology": "*",
+                                "domain": "*"
                             },
                             {
-                                "capability": "Bypass:Algorithm:*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Inject:*:*"
+                                "action": "Modify.Inject",
+                                "technology": "*",
+                                "domain": "*"
                             },
                             {
-                                "capability": "Bypass:Algorithm:*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Disrupt:RAM:*",
-                "Disrupt:MCU:*",
-                "Disrupt:*:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "RAM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2738,16 +3391,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:RAM:*",
-                "Disrupt:OS:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "RAM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2784,16 +3449,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:API:Backend.*"
+                        "action": "Bypass",
+                        "technology": "API",
+                        "domain": "Backend.*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:Backend.*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "Backend.*"
                     }
                 ]
             },
             "grants": [
-                "Execute:API:Backend.*",
-                "Disrupt:*:Backend.*"
+                {
+                    "action": "Execute",
+                    "technology": "API",
+                    "domain": "Backend.*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "*",
+                    "domain": "Backend.*"
+                }
             ]
         },
         {
@@ -2824,7 +3501,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Availability",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Authenticity"
             ],
             "actsOn": [
@@ -2837,22 +3514,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Password:*"
+                                "action": "Bypass",
+                                "technology": "Password",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Algorithm:*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:*:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2891,13 +3580,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Read:*:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2928,7 +3627,7 @@
             "compromises": [
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component"
@@ -2938,23 +3637,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Hypervisor:*"
+                                "action": "Bypass",
+                                "technology": "Hypervisor",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:RAM:*",
-                "Execute:MCU:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "RAM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -2995,22 +3710,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Read:Session:*"
+                                "action": "Read",
+                                "technology": "Session",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Read:Token:*"
+                                "action": "Read",
+                                "technology": "Token",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Write:*:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3048,11 +3775,22 @@
                 "Data Flow",
                 "Channel"
             ],
-            "requires": {},
             "grants": [
-                "Execute:JTAG:*",
-                "Execute:UART:*",
-                "Read:*:*"
+                {
+                    "action": "Execute",
+                    "technology": "JTAG",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "UART",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3084,7 +3822,7 @@
                 "Integrity",
                 "Availability",
                 "Authenticity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -3098,23 +3836,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Algorithm:*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:App:*",
-                "Write:*:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3146,7 +3900,7 @@
                 "Integrity",
                 "Availability",
                 "Authenticity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -3160,15 +3914,25 @@
                     {
                         "AND": [
                             {
-                                "capability": "Read:Password:*"
+                                "action": "Read",
+                                "technology": "Password",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:*:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3205,10 +3969,17 @@
             "actsOn": [
                 "Data"
             ],
-            "requires": {},
             "grants": [
-                "Read:Log:*",
-                "Read:*:*"
+                {
+                    "action": "Read",
+                    "technology": "Log",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3246,10 +4017,17 @@
             "actsOn": [
                 "Data"
             ],
-            "requires": {},
             "grants": [
-                "Read:*:Backend.*",
-                "Read:*:External.*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "Backend.*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "External.*"
+                }
             ]
         },
         {
@@ -3290,10 +4068,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Read:*:*",
-                "Read:Firmware:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3339,29 +4124,43 @@
                     {
                         "AND": [
                             {
-                                "capability": "Read:*:*"
+                                "action": "Read",
+                                "technology": "*",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Write:RF:*"
+                                "action": "Modify.Write",
+                                "technology": "RF",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Write:Optical:*"
+                                "action": "Modify.Write",
+                                "technology": "Optical",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Spoof:Sensor:*",
-                "Write:*:*"
+                {
+                    "action": "Spoof",
+                    "technology": "Sensor",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3404,10 +4203,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
             "grants": [
-                "Spoof:Sensor:ADAS.Perception",
-                "Disrupt:Algorithm:ADAS.Decision"
+                {
+                    "action": "Spoof",
+                    "technology": "Sensor",
+                    "domain": "ADAS.Perception"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Algorithm",
+                    "domain": "ADAS.Decision"
+                }
             ]
         },
         {
@@ -3456,22 +4262,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Write:Optical:*"
+                                "action": "Modify.Write",
+                                "technology": "Optical",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Write:RF:*"
+                                "action": "Modify.Write",
+                                "technology": "RF",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Disrupt:Sensor:*",
-                "Spoof:Sensor:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "Sensor",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "Sensor",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3518,12 +4336,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Downgrade:Cellular:*"
+                {
+                    "action": "Modify.Downgrade",
+                    "technology": "Cellular",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3567,14 +4391,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:WiFi:*",
-                "Disrupt:Cellular:*",
-                "Disrupt:GNSS:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Cellular",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "GNSS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3621,17 +4459,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:*:*"
+                        "action": "Read",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Spoof:V2X:*",
-                "Spoof:GNSS:*",
-                "Write:*:*"
+                {
+                    "action": "Spoof",
+                    "technology": "V2X",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "GNSS",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3678,16 +4532,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:RF:*"
+                        "action": "Read",
+                        "technology": "RF",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Replay:RF:External.KeyFob",
-                "Spoof:*:Body.Access"
+                {
+                    "action": "Spoof.Replay",
+                    "technology": "RF",
+                    "domain": "External.KeyFob"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "*",
+                    "domain": "Body.Access"
+                }
             ]
         },
         {
@@ -3734,16 +4600,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Spoof:Cellular:*",
-                "Read:Cellular:*"
+                {
+                    "action": "Spoof",
+                    "technology": "Cellular",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Cellular",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3790,16 +4668,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:WiFi:*"
+                        "action": "Modify.Write",
+                        "technology": "WiFi",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Spoof:WiFi:*",
-                "Read:WiFi:*"
+                {
+                    "action": "Spoof",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "WiFi",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3841,10 +4731,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Read:*:*",
-                "Write:*:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3889,23 +4786,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:External.DiagnosticTool"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "External.DiagnosticTool"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:External.MobileApp"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "External.MobileApp"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Inject:OBD2:*",
-                "Inject:Bluetooth:*",
-                "Execute:USB:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "OBD2",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Inject",
+                    "technology": "Bluetooth",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "USB",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -3954,13 +4867,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:App:Infotainment.UI"
+                        "action": "Bypass",
+                        "technology": "App",
+                        "domain": "Infotainment.UI"
                     }
                 ]
             },
             "grants": [
-                "Execute:App:Infotainment.UI",
-                "Execute:OS:Infotainment.OS"
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "Infotainment.UI"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "Infotainment.OS"
+                }
             ]
         },
         {
@@ -4010,16 +4933,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:Cellular:Telematics.Network",
-                "Execute:*:*"
+                {
+                    "action": "Execute",
+                    "technology": "Cellular",
+                    "domain": "Telematics.Network"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4069,13 +5004,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:USB:*",
-                "Execute:App:*"
+                {
+                    "action": "Execute",
+                    "technology": "USB",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4126,22 +5071,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Algorithm:External.*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "External.*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Policy:External.*"
+                                "action": "Bypass",
+                                "technology": "Config",
+                                "domain": "External.*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Execute:App:External.MobileApp",
-                "Execute:App:Infotainment.UI"
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "External.MobileApp"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "Infotainment.UI"
+                }
             ]
         },
         {
@@ -4188,13 +5145,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:App:*",
-                "Read:Password:*"
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Password",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4241,14 +5208,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:MCU:*",
-                "Write:Flash:*",
-                "Disrupt:*:*"
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4298,22 +5279,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:Backend.ThirdParty"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "Backend.ThirdParty"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Certificate:*"
+                                "action": "Bypass",
+                                "technology": "Certificate",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Execute:Firmware:*",
-                "Execute:App:*"
+                {
+                    "action": "Execute",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4349,17 +5342,28 @@
                 "Authenticity",
                 "Confidentiality",
                 "Availability",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
                 "Data"
             ],
-            "requires": {},
             "grants": [
-                "Execute:MCU:*",
-                "Execute:OS:*",
-                "Execute:App:*"
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4408,13 +5412,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:App:*"
+                        "action": "Bypass",
+                        "technology": "App",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:App:*",
-                "Execute:OS:*"
+                {
+                    "action": "Execute",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4466,22 +5480,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:API:*"
+                                "action": "Bypass",
+                                "technology": "API",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Execute:OS:*",
-                "Read:RAM:*"
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "RAM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4527,13 +5553,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:RAM:*",
-                "Execute:RAM:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "RAM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "RAM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4574,10 +5610,17 @@
                 "Component",
                 "Data"
             ],
-            "requires": {},
             "grants": [
-                "Execute:OS:*",
-                "Write:Flash:*"
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4630,22 +5673,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Algorithm:*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Certificate:*"
+                                "action": "Bypass",
+                                "technology": "Certificate",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:Flash:*",
-                "Write:EEPROM:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Flash",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4698,22 +5753,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Elevate:*:*"
+                                "action": "Elevate",
+                                "technology": "*",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Bootloader:*"
+                                "action": "Bypass",
+                                "technology": "Bootloader",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Disrupt:Firmware:*",
-                "Disrupt:OS:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4763,16 +5830,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Elevate:*:*"
+                        "action": "Elevate",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Bootloader:*"
+                        "action": "Bypass",
+                        "technology": "Bootloader",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Kernel:*",
-                "Write:OS:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Kernel",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4821,17 +5900,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Elevate:*:*"
+                        "action": "Elevate",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:TEE:*"
+                        "action": "Bypass",
+                        "technology": "TEE",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:TEE:*",
-                "Execute:HSM:*",
-                "Read:Key:*"
+                {
+                    "action": "Execute",
+                    "technology": "TEE",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "HSM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4880,13 +5975,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Algorithm:*"
+                        "action": "Read",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Bypass:Algorithm:*",
-                "Read:Key:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4921,7 +6026,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -4930,10 +6035,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Elevate:*:*",
-                "Execute:*:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -4971,7 +6083,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -4983,13 +6095,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:OS:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5030,7 +6152,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -5040,16 +6162,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:WiFi:*"
+                        "action": "Execute",
+                        "technology": "WiFi",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:PCIe:*"
+                        "action": "Bypass",
+                        "technology": "PCIe",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:MCU:*",
-                "Execute:SoC:*"
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "SoC",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5089,7 +6223,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -5099,16 +6233,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:OS:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5149,7 +6295,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -5159,17 +6305,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Elevate:*:*"
+                        "action": "Elevate",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:TEE:*"
+                        "action": "Bypass",
+                        "technology": "TEE",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:TEE:*",
-                "Read:Key:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "TEE",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5210,7 +6372,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -5224,22 +6386,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Write:Power:*"
+                                "action": "Modify.Write",
+                                "technology": "Power",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Write:Clock:*"
+                                "action": "Modify.Write",
+                                "technology": "Clock",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Bypass:Algorithm:*",
-                "Elevate:*:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                },
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5280,7 +6454,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -5289,14 +6463,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:App:*",
-                "Elevate:*:*",
-                "Execute:OS:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5337,7 +6525,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -5347,16 +6535,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:SoC:*"
+                        "action": "Execute",
+                        "technology": "SoC",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:SPI:*"
+                        "action": "Bypass",
+                        "technology": "SPI",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Elevate:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5405,13 +6605,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Algorithm:*"
+                        "action": "Read",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Bypass:Algorithm:*",
-                "Read:Key:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5445,17 +6655,28 @@
             "compromises": [
                 "Authenticity",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
                 "Data"
             ],
-            "requires": {},
             "grants": [
-                "Bypass:Algorithm:*",
-                "Bypass:Certificate:*",
-                "Bypass:OS:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                },
+                {
+                    "action": "Bypass",
+                    "technology": "Certificate",
+                    "domain": "*"
+                },
+                {
+                    "action": "Bypass",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5505,22 +6726,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Certificate:*"
+                                "action": "Bypass",
+                                "technology": "Certificate",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Bootloader:*"
+                                "action": "Bypass",
+                                "technology": "Bootloader",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Execute:Firmware:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "Firmware",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5560,7 +6793,7 @@
             "compromises": [
                 "Authenticity",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -5572,22 +6805,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Elevate:*:*"
+                                "action": "Elevate",
+                                "technology": "*",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:Compute.Gateway"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "Compute.Gateway"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Bypass:OS:*",
-                "Write:*:*"
+                {
+                    "action": "Bypass",
+                    "technology": "OS",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5638,13 +6883,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Bypass:UDS:*",
-                "Elevate:*:*"
+                {
+                    "action": "Bypass",
+                    "technology": "UDS",
+                    "domain": "*"
+                },
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5685,7 +6940,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -5698,29 +6953,43 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Kernel:*"
+                                "action": "Bypass",
+                                "technology": "Kernel",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:TEE:*"
+                                "action": "Bypass",
+                                "technology": "TEE",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Elevate:*:*",
-                "Execute:OS:*"
+                {
+                    "action": "Elevate",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5769,13 +7038,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Algorithm:*"
+                        "action": "Read",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Bypass:Algorithm:*",
-                "Read:Key:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5817,11 +7096,22 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Read:Key:*",
-                "Read:Password:*",
-                "Read:Token:*"
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Password",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Token",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5862,7 +7152,7 @@
                 "Confidentiality",
                 "Integrity",
                 "Authenticity",
-                "Non-Repudiation",
+                "Non Repudiation",
                 "Availability"
             ],
             "actsOn": [
@@ -5872,17 +7162,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Elevate:*:*"
+                        "action": "Elevate",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:TEE:*"
+                        "action": "Bypass",
+                        "technology": "TEE",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:TEE:*",
-                "Execute:HSM:*",
-                "Read:Key:*"
+                {
+                    "action": "Execute",
+                    "technology": "TEE",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "HSM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5932,16 +7238,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Policy:*"
+                        "action": "Bypass",
+                        "technology": "Config",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Token:*",
-                "Read:Data:*"
+                {
+                    "action": "Read",
+                    "technology": "Token",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -5992,22 +7310,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Policy:*"
+                                "action": "Bypass",
+                                "technology": "Config",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:Password:*",
-                "Read:PII:*"
+                {
+                    "action": "Read",
+                    "technology": "Password",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "PII",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6058,17 +7388,33 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Spoof:App:Infotainment.UI",
-                "Read:Password:*",
-                "Read:PII:*"
+                {
+                    "action": "Spoof",
+                    "technology": "App",
+                    "domain": "Infotainment.UI"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Password",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "PII",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6114,13 +7460,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:*:Compute.Gateway"
+                        "action": "Bypass",
+                        "technology": "*",
+                        "domain": "Compute.Gateway"
                     }
                 ]
             },
             "grants": [
-                "Read:*:*",
-                "Read:Password:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Password",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6171,13 +7527,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Elevate:*:*"
+                        "action": "Elevate",
+                        "technology": "*",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Password:*",
-                "Read:Hash:*"
+                {
+                    "action": "Read",
+                    "technology": "Password",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Hash",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6228,14 +7594,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Password:*",
-                "Read:Key:*",
-                "Read:Token:*"
+                {
+                    "action": "Read",
+                    "technology": "Password",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Token",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6286,16 +7666,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Spoof:App:*",
-                "Read:Token:*"
+                {
+                    "action": "Spoof",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Token",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6335,9 +7727,12 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Read:*:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6352,8 +7747,7 @@
             "attackFeasibility": {
                 "attackPotential": {
                     "elapsedTime": {
-                        "feasibility": "ET2",
-                        "rationale": "Highly variable depending on the methodology used, but knowledge of the vehicles directory system is required and must be researched by the attacker first "
+                        "feasibility": "ET2"
                     },
                     "specialistExpertise": {
                         "feasibility": "SE1",
@@ -6384,12 +7778,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Data:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6438,15 +7838,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Policy:*"
+                        "action": "Bypass",
+                        "technology": "Config",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:GNSS:*"
+                {
+                    "action": "Read",
+                    "technology": "GNSS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6495,12 +7903,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:*:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6545,12 +7959,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:OS:*"
+                {
+                    "action": "Read",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6597,13 +8017,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:App:*",
-                "Read:Firmware:*"
+                {
+                    "action": "Read",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Firmware",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6652,12 +8082,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:OS:*"
+                {
+                    "action": "Read",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6706,12 +8142,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:OS:*"
+                {
+                    "action": "Read",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6760,12 +8202,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:OS:*"
+                {
+                    "action": "Read",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6800,7 +8248,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -6808,10 +8256,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Execute:MCU:*",
-                "Execute:SoC:*"
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "SoC",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6852,7 +8307,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -6863,13 +8318,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:MCU:*",
-                "Write:RAM:*"
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "RAM",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6920,16 +8385,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Elevate:*:*"
+                        "action": "Elevate",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:*:Compute.Gateway"
+                        "action": "Bypass",
+                        "technology": "*",
+                        "domain": "Compute.Gateway"
                     }
                 ]
             },
             "grants": [
-                "Write:CAN:*",
-                "Write:Ethernet:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "CAN",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Ethernet",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -6970,7 +8447,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -6981,13 +8458,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:MCU:*",
-                "Execute:OS:*"
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7028,7 +8515,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -7038,12 +8525,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Password:*"
+                        "action": "Bypass",
+                        "technology": "Password",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:OS:*"
+                {
+                    "action": "Execute",
+                    "technology": "OS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7084,7 +8577,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -7095,22 +8588,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Certificate:*"
+                                "action": "Bypass",
+                                "technology": "Certificate",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Algorithm:*"
+                                "action": "Bypass",
+                                "technology": "Algorithm",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:Firmware:*",
-                "Execute:MCU:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "MCU",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7159,13 +8664,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Read:Algorithm:*"
+                        "action": "Read",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Bypass:Algorithm:*",
-                "Read:Key:*"
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7205,9 +8720,12 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Read:Data:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7256,15 +8774,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Policy:*"
+                        "action": "Bypass",
+                        "technology": "Config",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Data:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7315,21 +8841,29 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:Policy:*"
+                                "action": "Bypass",
+                                "technology": "Config",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:OS:*"
+                                "action": "Bypass",
+                                "technology": "OS",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Read:PII:*"
+                {
+                    "action": "Read",
+                    "technology": "PII",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7375,12 +8909,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:*:Compute.Gateway"
+                        "action": "Bypass",
+                        "technology": "*",
+                        "domain": "Compute.Gateway"
                     }
                 ]
             },
             "grants": [
-                "Read:*:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7429,15 +8969,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Policy:*"
+                        "action": "Bypass",
+                        "technology": "Config",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:GNSS:*"
+                {
+                    "action": "Read",
+                    "technology": "GNSS",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7486,14 +9034,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:RAM:*",
-                "Read:EEPROM:*",
-                "Read:PII:*"
+                {
+                    "action": "Read",
+                    "technology": "RAM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "EEPROM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "PII",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7542,16 +9104,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:*:*"
+                        "action": "Execute",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Policy:*"
+                        "action": "Bypass",
+                        "technology": "Config",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Optical:*",
-                "Read:Sensor:*"
+                {
+                    "action": "Read",
+                    "technology": "Optical",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Sensor",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7600,16 +9174,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Data:*",
-                "Read:Log:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Log",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7657,15 +9243,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:WiFi:*"
+                        "action": "Execute",
+                        "technology": "WiFi",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Execute:Bluetooth:*"
+                        "action": "Execute",
+                        "technology": "Bluetooth",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:Data:*"
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7713,16 +9307,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Policy:*"
+                        "action": "Bypass",
+                        "technology": "Config",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:PII:*",
-                "Read:Data:*"
+                {
+                    "action": "Read",
+                    "technology": "PII",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7757,7 +9363,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -7765,11 +9371,22 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Write:*:*",
-                "Execute:*:*",
-                "Read:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7814,23 +9431,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:External.DiagnosticTool"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "External.DiagnosticTool"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:External.MobileApp"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "External.MobileApp"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:Bluetooth:*",
-                "Write:OBD2:*",
-                "Read:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Bluetooth",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "OBD2",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7870,7 +9503,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Data",
@@ -7880,16 +9513,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:Cellular:Telematics.Network"
+                        "action": "Execute",
+                        "technology": "Cellular",
+                        "domain": "Telematics.Network"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Cellular:*",
-                "Read:Cellular:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Cellular",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Cellular",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7929,7 +9574,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Data",
@@ -7939,16 +9584,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:WiFi:*",
-                "Read:WiFi:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "WiFi",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -7988,7 +9645,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Data",
@@ -7998,16 +9655,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Write:RF:*"
+                        "action": "Modify.Write",
+                        "technology": "RF",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:RF:*",
-                "Execute:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "RF",
+                    "domain": "*"
+                },
+                {
+                    "action": "Execute",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8047,7 +9716,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -8060,29 +9729,49 @@
                     {
                         "AND": [
                             {
-                                "capability": "Execute:WiFi:*"
+                                "action": "Execute",
+                                "technology": "WiFi",
+                                "domain": "*"
                             },
                             {
-                                "capability": "Bypass:Policy:*"
+                                "action": "Bypass",
+                                "technology": "Config",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Execute:Bluetooth:*"
+                                "action": "Execute",
+                                "technology": "Bluetooth",
+                                "domain": "*"
                             },
                             {
-                                "capability": "Bypass:Policy:*"
+                                "action": "Bypass",
+                                "technology": "Config",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:WiFi:*",
-                "Write:Bluetooth:*",
-                "Read:*:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Bluetooth",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8132,16 +9821,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:*:*"
+                        "action": "Execute",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Read:Key:*"
+                        "action": "Read",
+                        "technology": "Key",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:*:*",
-                "Bypass:Algorithm:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8181,10 +9882,17 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Write:*:*",
-                "Read:Data:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8229,23 +9937,39 @@
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:External.DiagnosticTool"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "External.DiagnosticTool"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Bypass:*:External.MobileApp"
+                                "action": "Bypass",
+                                "technology": "*",
+                                "domain": "External.MobileApp"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:Bluetooth:*",
-                "Write:OBD2:*",
-                "Read:Data:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Bluetooth",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "OBD2",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8285,7 +10009,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Data",
@@ -8295,16 +10019,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:Cellular:Telematics.Network"
+                        "action": "Execute",
+                        "technology": "Cellular",
+                        "domain": "Telematics.Network"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:Cellular:*",
-                "Read:Cellular:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "Cellular",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Cellular",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8344,7 +10080,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Data",
@@ -8354,16 +10090,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:App:*"
+                        "action": "Execute",
+                        "technology": "App",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:OS:*"
+                        "action": "Bypass",
+                        "technology": "OS",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:WiFi:*",
-                "Read:WiFi:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "WiFi",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8403,7 +10151,7 @@
                 "Authenticity",
                 "Confidentiality",
                 "Integrity",
-                "Non-Repudiation"
+                "Non Repudiation"
             ],
             "actsOn": [
                 "Component",
@@ -8416,29 +10164,49 @@
                     {
                         "AND": [
                             {
-                                "capability": "Execute:WiFi:*"
+                                "action": "Execute",
+                                "technology": "WiFi",
+                                "domain": "*"
                             },
                             {
-                                "capability": "Bypass:Policy:*"
+                                "action": "Bypass",
+                                "technology": "Config",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Execute:Bluetooth:*"
+                                "action": "Execute",
+                                "technology": "Bluetooth",
+                                "domain": "*"
                             },
                             {
-                                "capability": "Bypass:Policy:*"
+                                "action": "Bypass",
+                                "technology": "Config",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Write:WiFi:*",
-                "Write:Bluetooth:*",
-                "Read:Data:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "WiFi",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Bluetooth",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8488,16 +10256,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:*:*"
+                        "action": "Execute",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Read:Key:*"
+                        "action": "Read",
+                        "technology": "Key",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:*:*",
-                "Bypass:Algorithm:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Bypass",
+                    "technology": "Algorithm",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8545,16 +10325,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:OS:*"
+                        "action": "Execute",
+                        "technology": "OS",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Policy:*"
+                        "action": "Bypass",
+                        "technology": "Config",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:USB:*",
-                "Read:Data:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "USB",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8600,16 +10392,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:PCB:*"
+                        "action": "Bypass",
+                        "technology": "PCB",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:JTAG:*"
+                        "action": "Bypass",
+                        "technology": "JTAG",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Read:RAM:*",
-                "Read:Key:*"
+                {
+                    "action": "Read",
+                    "technology": "RAM",
+                    "domain": "*"
+                },
+                {
+                    "action": "Read",
+                    "technology": "Key",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8652,11 +10456,22 @@
                 "Channel",
                 "Data Flow"
             ],
-            "requires": {},
             "grants": [
-                "Disrupt:Actuator:*",
-                "Spoof:Component:*",
-                "Write:Data:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "Actuator",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "*",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8702,13 +10517,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:ADAS.Perception"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "ADAS.Perception"
                     }
                 ]
             },
             "grants": [
-                "Spoof:Sensor:ADAS.Perception",
-                "Disrupt:Algorithm:ADAS.Decision"
+                {
+                    "action": "Spoof",
+                    "technology": "Sensor",
+                    "domain": "ADAS.Perception"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Algorithm",
+                    "domain": "ADAS.Decision"
+                }
             ]
         },
         {
@@ -8757,22 +10582,34 @@
                     {
                         "AND": [
                             {
-                                "capability": "Write:Optical:*"
+                                "action": "Modify.Write",
+                                "technology": "Optical",
+                                "domain": "*"
                             }
                         ]
                     },
                     {
                         "AND": [
                             {
-                                "capability": "Write:RF:*"
+                                "action": "Modify.Write",
+                                "technology": "RF",
+                                "domain": "*"
                             }
                         ]
                     }
                 ]
             },
             "grants": [
-                "Disrupt:Sensor:*",
-                "Spoof:Sensor:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "Sensor",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "Sensor",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8818,13 +10655,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:Actuator:*",
-                "Write:Firmware:*"
+                {
+                    "action": "Execute",
+                    "technology": "Actuator",
+                    "domain": "*"
+                },
+                {
+                    "action": "Modify.Write",
+                    "technology": "Firmware",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8867,15 +10714,23 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:MCU:*"
+                        "action": "Execute",
+                        "technology": "MCU",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:CAN:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "CAN",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8918,16 +10773,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Inject:*:*"
+                        "action": "Modify.Inject",
+                        "technology": "*",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Disrupt:App:*",
-                "Disrupt:Actuator:*"
+                {
+                    "action": "Disrupt",
+                    "technology": "App",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "Actuator",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -8973,12 +10840,18 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:MCU:*"
+                        "action": "Execute",
+                        "technology": "MCU",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Execute:Actuator:*"
+                {
+                    "action": "Execute",
+                    "technology": "Actuator",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -9023,16 +10896,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:MCU:*"
+                        "action": "Execute",
+                        "technology": "MCU",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:SecOC:*"
+                        "action": "Bypass",
+                        "technology": "SecOC",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Write:CAN:*",
-                "Disrupt:CAN:*"
+                {
+                    "action": "Modify.Write",
+                    "technology": "CAN",
+                    "domain": "*"
+                },
+                {
+                    "action": "Disrupt",
+                    "technology": "CAN",
+                    "domain": "*"
+                }
             ]
         },
         {
@@ -9077,16 +10962,28 @@
             "requires": {
                 "AND": [
                     {
-                        "capability": "Execute:MCU:*"
+                        "action": "Execute",
+                        "technology": "MCU",
+                        "domain": "*"
                     },
                     {
-                        "capability": "Bypass:Algorithm:*"
+                        "action": "Bypass",
+                        "technology": "Algorithm",
+                        "domain": "*"
                     }
                 ]
             },
             "grants": [
-                "Inject:CAN:*",
-                "Spoof:Data:*"
+                {
+                    "action": "Modify.Inject",
+                    "technology": "CAN",
+                    "domain": "*"
+                },
+                {
+                    "action": "Spoof",
+                    "technology": "*",
+                    "domain": "*"
+                }
             ]
         }
     ]
