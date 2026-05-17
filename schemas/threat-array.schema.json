@@ -214,7 +214,7 @@
                         "type": "array",
                         "description": "The new capabilities this threat provides to the attacker upon success.",
                         "items": {
-                            "$ref": "#/$defs/CapabilityString"
+                            "$ref": "#/$defs/CapabilityNode"
                         }
                     }
                 },

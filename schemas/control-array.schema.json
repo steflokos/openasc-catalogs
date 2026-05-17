@@ -149,7 +149,7 @@
                         "type": "array",
                         "description": "The specific capabilities this control prevents an attacker from exercising.",
                         "items": {
-                            "$ref": "#/$defs/CapabilityString"
+                            "$ref": "#/$defs/CapabilityNode"
                         }
                     },
                     "overriddenBy": {
