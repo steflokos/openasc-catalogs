@@ -1,0 +1,3952 @@
+{
+    "version": "1.0.0",
+    "assets": [
+        {
+            "id": "A.001",
+            "name": "Secure Bootloader",
+            "description": "Primary bootloader responsible for verifying the authenticity and integrity of firmware images before execution.",
+            "technology": "Bootloader",
+            "domain": "*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.002",
+            "name": "Device Private Key / Root of Trust",
+            "description": "Cryptographic private key stored securely in hardware (e.g., HSM/TPM) used for signing, authentication, and secure communication.",
+            "technology": "Key",
+            "domain": "*",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.003",
+            "name": "OS / Kernel Configuration File",
+            "description": "System configuration parameters and access control lists defining runtime privileges and network settings.",
+            "technology": "Config",
+            "domain": "*",
+            "partOf": "A.004",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.004",
+            "name": "Operating System Core / Kernel",
+            "description": "The base operating system layer managing hardware resources, scheduling, and basic process isolation.",
+            "technology": "Kernel",
+            "domain": "*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Moderate"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.005",
+            "name": "BMS Master Control Application",
+            "description": "Firmware application running on the Battery Management System managing cell balancing, state of charge (SoC), and thermal safety thresholds.",
+            "technology": "App",
+            "domain": "Powertrain.BMS",
+            "partOf": "A.090",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.006",
+            "name": "Inverter Calibration Parameters",
+            "description": "Lookup tables and fine-tuning parameters mapping throttle inputs to motor torque limits.",
+            "technology": "Calibration",
+            "domain": "Powertrain.Propulsion",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.007",
+            "name": "Powertrain CAN Bus Messages",
+            "description": "Real-time critical signals including torque commands, engine speed, and transmission status transmitted over CAN.",
+            "technology": "CAN",
+            "domain": "Powertrain.*",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.008",
+            "name": "Electronic Stability Control (ESC) Firmware",
+            "description": "Embedded software controlling braking force distribution to prevent skidding and maintain vehicle traction.",
+            "technology": "Firmware",
+            "domain": "Chassis.Braking",
+            "partOf": "A.092",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.009",
+            "name": "Steering Angle Sensor Signals",
+            "description": "Sensor outputs measuring driver steering wheel input, sent via FlexRay or CAN to the EPS (Electric Power Steering).",
+            "technology": "Sensor",
+            "domain": "Chassis.Steering",
+            "partOf": "A.091",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.010",
+            "name": "Passive Entry Passive Start (PEPS) Session Token",
+            "description": "Ephemeral cryptographic tokens exchanged over UWB or BLE to authorize vehicle unlocking and engine start.",
+            "technology": "Token",
+            "domain": "Body.Access",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.011",
+            "name": "IVI Operating System",
+            "description": "The complex high-level operating system (e.g., Linux or Android Automotive) running the In-Vehicle Infotainment system.",
+            "technology": "OS",
+            "domain": "Infotainment.OS",
+            "partOf": "A.089",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Negligible"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.012",
+            "name": "User Profile and PII Data",
+            "description": "User specific data stored locally, including navigation history, phone sync contacts, and application credentials.",
+            "technology": "PII",
+            "domain": "Infotainment.*",
+            "partOf": "A.089",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.013",
+            "name": "Perception Camera Object Detection Model",
+            "description": "Deep learning neural network weights and models used to classify lane markings, signs, pedestrians, and vehicles.",
+            "technology": "Model",
+            "domain": "ADAS.Perception",
+            "partOf": "A.088",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Confidentiality"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.014",
+            "name": "Autonomous Trajectory Planning Logic",
+            "description": "Decision-making algorithms that consume sensor data fusion and output acceleration, braking, and steering setpoints.",
+            "technology": "Algorithm",
+            "domain": "ADAS.Decision",
+            "partOf": "A.088",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.015",
+            "name": "Over-The-Air (OTA) Client Service",
+            "description": "Middleware application running inside the Telematics Control Unit handling download, staging, and orchestrating updates.",
+            "technology": "Middleware",
+            "domain": "Telematics.Services",
+            "partOf": "A.087",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.016",
+            "name": "Cellular Network Communication Channel",
+            "description": "The wireless communication link establishing connection between the vehicle TCU and cellular base stations.",
+            "technology": "Cellular",
+            "domain": "Telematics.Network",
+            "type": "Channel",
+            "cybersecurityProperties": [
+                "Availability",
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Moderate"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Moderate"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.017",
+            "name": "Central Gateway Firewall Rules",
+            "description": "Network configuration tables and access rules determining which Ethernet frames or CAN signals can pass between vehicle zones.",
+            "technology": "Config",
+            "domain": "Compute.Gateway",
+            "partOf": "A.086",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.018",
+            "name": "Zonal Controller Hypervisor",
+            "description": "Type-1 hypervisor partitioning computing power into safety-critical domains and non-critical domains on a single High-Performance Compute platform.",
+            "technology": "Hypervisor",
+            "domain": "Compute.HPC",
+            "partOf": "A.086",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.019",
+            "name": "OEM Fleet Management API",
+            "description": "Web service API endpoint allowing the vehicle to exchange status, telemetry, and fetch configuration changes from the OEM back-end.",
+            "technology": "API",
+            "domain": "Backend.OEM",
+            "type": "Interface",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity",
+                "Non Repudiation"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Moderate"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.020",
+            "name": "Diagnostic Session Seed / Nonce",
+            "description": "Random numbers generated during security access (UDS $27) used to challenge external diagnostic tools before unlocking privileged functions.",
+            "technology": "Seed",
+            "domain": "External.DiagnosticTool",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.021",
+            "name": "EVSE Charging Session Token",
+            "description": "Cryptographic tokens and keys used during ISO 15118 communication between EV and charging station to authenticate billing details.",
+            "technology": "Token",
+            "domain": "External.EVSE",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Moderate"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.022",
+            "name": "MACsec Key Exchange Link",
+            "description": "Cryptographic keys used to secure high-speed automotive Ethernet backbones against sniffing and insertion attacks.",
+            "technology": "MACsec",
+            "domain": "Compute.Zonal",
+            "type": "Channel",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.023",
+            "name": "Hardware Security Module (HSM) Firmware",
+            "description": "Dedicated cryptographic processor core firmware executing safe cryptographic runtime services.",
+            "technology": "Firmware",
+            "domain": "*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.024",
+            "name": "Secure Storage / Flash Partition",
+            "description": "Protected non-volatile memory partition housing system files, runtime settings, and security manifests.",
+            "technology": "Flash",
+            "domain": "*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Moderate"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.025",
+            "name": "One-Time Programmable (OTP) eFuses",
+            "description": "Hardware eFuses mapping cryptographic keys and permanent lifecycle status settings during ECU production.",
+            "technology": "OTP",
+            "domain": "*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.026",
+            "name": "Trusted Execution Environment (TEE) Core",
+            "description": "Secure region of the main processor ensuring code and data loaded inside are protected with respect to confidentiality and integrity.",
+            "technology": "TEE",
+            "domain": "*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Moderate"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.027",
+            "name": "True Random Number Generator (TRNG) Entropy Source",
+            "description": "Hardware peripheral harvesting physical entropy to generate non-deterministic random numbers for cryptographic operations.",
+            "technology": "TRNG",
+            "domain": "*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.028",
+            "name": "High-Voltage Interlock Loop (HVIL) Status Signals",
+            "description": "Real-time hardware signals detecting open circuits or tampering across high-voltage components.",
+            "technology": "Sensor",
+            "domain": "Powertrain.BMS",
+            "partOf": "A.090",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.029",
+            "name": "Torque Request Control Signals",
+            "description": "High-frequency operational commands controlling motor acceleration and deceleration levels.",
+            "technology": "FlexRay",
+            "domain": "Powertrain.Propulsion",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.030",
+            "name": "DC-DC Converter Configuration Matrix",
+            "description": "Voltage configuration profile mapping multi-domain target output ranges across low and high voltage subsystems.",
+            "technology": "Config",
+            "domain": "Powertrain.Energy",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.031",
+            "name": "Powertrain ECU Diagnostic UDS Interface",
+            "description": "Unified Diagnostic Services interface allowing execution of routing, flash download routines, and override routines.",
+            "technology": "UDS",
+            "domain": "Powertrain",
+            "type": "Interface",
+            "cybersecurityProperties": [
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.032",
+            "name": "Brake Pedal Position Sensor Readings",
+            "description": "Sensor output matrix capturing physical user deceleration commands forwarded to Electronic Braking Modules.",
+            "technology": "Sensor",
+            "domain": "Chassis.Braking",
+            "partOf": "A.092",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.033",
+            "name": "Electric Power Steering (EPS) Calibration Maps",
+            "description": "Pre-programmed curves establishing dynamic torque-assist levels based on vehicle speed variables.",
+            "technology": "Calibration",
+            "domain": "Chassis.Steering",
+            "partOf": "A.091",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.034",
+            "name": "Active Suspension Control Application",
+            "description": "Application logic orchestrating active damper behavior adjustments in real-time.",
+            "technology": "App",
+            "domain": "Chassis.Suspension",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.035",
+            "name": "Airbag Deployment Trigger Logic",
+            "description": "High-safety mathematical algorithm processing multi-axis accelerometer triggers to actuate squibs.",
+            "technology": "Algorithm",
+            "domain": "Chassis.Safety",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.036",
+            "name": "SecOC Symmetric Freshness Value & Keys",
+            "description": "Symmetric cryptographic keys and sequence freshness values used to verify secure onboard network messaging validity.",
+            "technology": "SecOC",
+            "domain": "Chassis.*",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.037",
+            "name": "Immobilizer System Secret Key",
+            "description": "Pre-shared master cryptographic token verified during key verification sequences before enabling propulsion loops.",
+            "technology": "Key",
+            "domain": "Body.Access",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.038",
+            "name": "Climate Control Configuration Profile",
+            "description": "Configuration layouts managing cabin comfort bounds and actuator parameter definitions.",
+            "technology": "Config",
+            "domain": "Body.Comfort",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Negligible"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.039",
+            "name": "Smart Headlight Adaptive Firmware",
+            "description": "Control logic handling adaptive high beam shaping, leveling matrix mappings, and matrix LED operations.",
+            "technology": "Firmware",
+            "domain": "Body.Lighting",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.040",
+            "name": "Body Control Module LIN Communications",
+            "description": "Low-speed master-slave bus interactions signaling door lock states, mirror controls, and panel statuses.",
+            "technology": "LIN",
+            "domain": "Body.*",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.041",
+            "name": "Digital Cluster UI Renderer Engine",
+            "description": "High-performance interface application responsible for generating the digital graphical display layout.",
+            "technology": "App",
+            "domain": "Infotainment.UI",
+            "partOf": "A.089",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.042",
+            "name": "Instrument Cluster Telltale Status Signal",
+            "description": "Safety critical display flags forwarding active fault markers, MIL status, and safety warnings to display arrays.",
+            "technology": "CAN",
+            "domain": "Infotainment.Cluster",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.043",
+            "name": "IVI Bluetooth Pairing Session Keys",
+            "description": "Link cryptographic keys generated during handset pairing protocols ensuring security over vehicle Bluetooth links.",
+            "technology": "Key",
+            "domain": "Infotainment.*",
+            "partOf": "A.089",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.044",
+            "name": "LiDAR / Radar Point Cloud Data Flow",
+            "description": "High-bandwidth raw network stream carrying object proximity telemetry from field arrays into sensor fusion boards.",
+            "technology": "Ethernet",
+            "domain": "ADAS.Perception",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.045",
+            "name": "Emergency Lane Keep Safety Application",
+            "description": "Active safety control app logic commanding corrections upon detecting imminent lane departure paths.",
+            "technology": "App",
+            "domain": "ADAS.Decision",
+            "partOf": "A.088",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.046",
+            "name": "ADAS ECU Internal System Log Files",
+            "description": "Runtime operational event logging records tracking sensor diagnostic histories and framework faults.",
+            "technology": "Log",
+            "domain": "ADAS.*",
+            "partOf": "A.088",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.047",
+            "name": "Vehicle Remote Control Session Token",
+            "description": "Authorization token generated via cloud authentication for locking, unlocking, or tracking vehicles remotely.",
+            "technology": "Token",
+            "domain": "Telematics.Services",
+            "partOf": "A.087",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.048",
+            "name": "Wi-Fi Hotspot Access Passwords",
+            "description": "System access string variables validating client endpoints joining local onboard wireless network boundaries.",
+            "technology": "Password",
+            "domain": "Telematics.Network",
+            "partOf": "A.087",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.049",
+            "name": "Telematics Public Key Infrastructure Certificate",
+            "description": "Device cryptographic identity certificate facilitating transport encryption validations with infrastructure nodes.",
+            "technology": "Certificate",
+            "domain": "Telematics.*",
+            "partOf": "A.087",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.050",
+            "name": "Vehicle Service Registry Daemon",
+            "description": "Service registry management framework coordinating dynamic inter-process connection mapping configurations via SOME/IP or DDS protocols.",
+            "technology": "Middleware",
+            "domain": "Compute.HPC",
+            "partOf": "A.018",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.051",
+            "name": "Time Synchronization Master Clock",
+            "description": "Hardware system clock providing time sync indexing (gPTP) over high-speed networks for multi-sensor operations.",
+            "technology": "Clock",
+            "domain": "Compute.Zonal",
+            "partOf": "A.086",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.052",
+            "name": "Containerized Service Isolation Image",
+            "description": "Encapsulated user space platform instances carrying executable service stacks isolated from core architecture kernels.",
+            "technology": "Container",
+            "domain": "Compute.*",
+            "partOf": "A.018",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.053",
+            "name": "Third-Party Fleet Telemetry API",
+            "description": "External software interfaces routing specific functional diagnostic queries to outside vendor endpoints.",
+            "technology": "API",
+            "domain": "Backend.ThirdParty",
+            "type": "Interface",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.054",
+            "name": "Backend Transport Layer Security (TLS) Pre-Shared Keys",
+            "description": "Cryptographic symmetric secrets used to instantly construct secure pipelines towards infrastructure networks.",
+            "technology": "Key",
+            "domain": "Backend.*",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.055",
+            "name": "UDS Security Access Secret Calculation Keys",
+            "description": "Secret parameters or algorithm identifiers stored within the device to validate external diagnostic unlocks.",
+            "technology": "Key",
+            "domain": "External.DiagnosticTool",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.056",
+            "name": "Companion Mobile App Authentication Token",
+            "description": "JSON Web Token (JWT) instances mapping active pairing authorizations originating from external owner apps.",
+            "technology": "Token",
+            "domain": "External.MobileApp",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.057",
+            "name": "Key Fob RF Rolling Code Seed Matrix",
+            "description": "Secret seed tracking array matching cryptographically shifting authorization codes for physical access entries.",
+            "technology": "Seed",
+            "domain": "External.KeyFob",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.058",
+            "name": "V2X Roadside Unit (RSU) Signing Certificates",
+            "description": "Infrastructure credentials validating security validation bounds for incoming cooperative intersection notifications.",
+            "technology": "Certificate",
+            "domain": "External.RSU",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.059",
+            "name": "Physical USB Mass Storage Interface",
+            "description": "Local physical communication target layer driving peripheral system updates or trace diagnostic data capture.",
+            "technology": "USB",
+            "domain": "External.*",
+            "type": "Interface",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.060",
+            "name": "OEM Firmware Verification Root Certificate",
+            "description": "The public root certificate or public key hash pinned in hardware used by the secure boot loader to verify the OEM's signature on incoming software updates.",
+            "technology": "Certificate",
+            "domain": "*",
+            "partOf": "A.001",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.061",
+            "name": "XCP/CCP Calibration Session Authorization Key",
+            "description": "The seed/key pair or session token that unlocks ASAM XCP or CCP protocols, which allow engineers (or attackers) to read and directly manipulate raw ECU memory during runtime.",
+            "technology": "XCP",
+            "domain": "Powertrain.*",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.062",
+            "name": "Hardware Debug Port (JTAG/SWD) Fuse Configuration",
+            "description": "The logical configuration state (often controlled by eFuses) that commands the SoC or MCU to permanently lock or disable physical JTAG/SWD debug interfaces before production release.",
+            "technology": "JTAG",
+            "domain": "*",
+            "partOf": "A.025",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.063",
+            "name": "ISO 15118 Plug & Charge Contract Certificates",
+            "description": "The Electric Vehicle Provisioning and Contract Certificates stored in the vehicle to allow automatic cloud authentication and direct financial billing when plugging into a charger.",
+            "technology": "Certificate",
+            "domain": "External.EVSE",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.064",
+            "name": "V2X Security Credential Pseudonym Keys",
+            "description": "Short-lived cryptographic certificates used to sign outgoing V2X Cooperative Awareness Messages (CAM), designed to change frequently to protect vehicle tracking privacy.",
+            "technology": "Certificate",
+            "domain": "Telematics.*",
+            "partOf": "A.087",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.065",
+            "name": "GNSS / NMEA Raw Positioning Data Flow",
+            "description": "The live coordinates, time sync references, and velocity vectors coming from the satellite receiver to the navigation module and ADAS automated driving domain.",
+            "technology": "GNSS",
+            "domain": "ADAS.Perception",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.066",
+            "name": "End-to-End (E2E) Protection Configuration Profile",
+            "description": "The software check settings (CRCs, counters, and data IDs) mapping AUTOSAR E2E configurations used to detect transmission faults and data injection over functional safety networks.",
+            "technology": "Config",
+            "domain": "*",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.067",
+            "name": "GMSL High-Speed Video Raw Signal",
+            "description": "The raw, uncompressed high-bandwidth deserializer video pipeline connecting ADAS surround cameras directly to the central SoC perception hardware processing engine.",
+            "technology": "GMSL",
+            "domain": "ADAS.Perception",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.068",
+            "name": "DoIP Edge Routing Configuration Table",
+            "description": "The edge network rule layer defining diagnostic addressing routing bounds for processing Diagnostics over IP (ISO 13400) requests down into core sub-buses.",
+            "technology": "DoIP",
+            "domain": "Compute.Gateway",
+            "partOf": "A.086",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.069",
+            "name": "IPsec VPN Tunnel Security Associations",
+            "description": "The dynamic keys, security parameter indexes (SPI), and policies maintaining the encrypted cloud telemetry pipeline between the Telematics module and the OEM Cloud Backend.",
+            "technology": "IPsec",
+            "domain": "Telematics.Network",
+            "type": "Channel",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.070",
+            "name": "Intrusion Detection System (IDPS) Rule Signature Matrix",
+            "description": "The baseline threshold patterns, whitelist matrices, and payload signature parameters used by the onboard IDPS to classify malicious CAN frames or anomalous Ethernet traffic.",
+            "technology": "Config",
+            "domain": "Compute.Gateway",
+            "partOf": "A.086",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.071",
+            "name": "Diagnostic Log and Trace (DLT) Core Channel",
+            "description": "The system-wide logging protocol interface (e.g., AUTOSAR DLT) streaming real-time debugging logs, trace strings, and software runtime warnings from across the internal network.",
+            "technology": "Log",
+            "domain": "Compute.*",
+            "type": "Channel",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.072",
+            "name": "Software Bill of Materials (SBOM) Manifest Hash",
+            "description": "The cryptographically signed inventory manifest of binary component versions and supply chain identifiers deployed on the high-performance compute zone used for verifying update baseline validity.",
+            "technology": "Hash",
+            "domain": "*",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.073",
+            "name": "Feature-on-Demand (FoD) Cryptographic Activation Keys",
+            "description": "Symmetric or asymmetric token keys parsed by the gateway or infotainment module to selectively unlock premium optional vehicle capabilities.",
+            "technology": "Key",
+            "domain": "Infotainment.*",
+            "partOf": "A.089",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.074",
+            "name": "UN R155 Local Security Audit Trail Store",
+            "description": "The non-volatile, append-only local storage partition dedicated to tracking authenticated security events, failed remote login attempts, and policy violations for continuous regulatory auditing.",
+            "technology": "Log",
+            "domain": "*",
+            "partOf": "A.024",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Non Repudiation"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.075",
+            "name": "AUTOSAR RTE Inter-Runnable Context Variables",
+            "description": "The local virtual shared-memory addresses handling high-speed inter-task data exchanges between application runnables isolated inside the same microcontroller block.",
+            "technology": "Middleware",
+            "domain": "*",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.076",
+            "name": "ISO 14229-1 AP Authenticated Diagnostics Certificates",
+            "description": "Asymmetric public key credentials used during modern advanced diagnostic procedures (instead of seed-key pairs) to safely negotiate token authorizations with external OEM client tools.",
+            "technology": "Certificate",
+            "domain": "External.DiagnosticTool",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.077",
+            "name": "Drive-by-Wire Control Command Arbitration Logic",
+            "description": "The central algorithmic software routing engine determining controller privilege priority when concurrent trajectory manipulation requests compete.",
+            "technology": "Algorithm",
+            "domain": "Chassis.*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.078",
+            "name": "Ethernet AVB/TSN Quality of Service Stream Reservation Mappings",
+            "description": "The specific logical channel allocation configuration defining bandwidth priority mappings (IEEE 802.1Qav) across zonal networks to ensure time-critical frames bypass low-priority entertainment streams.",
+            "technology": "Config",
+            "domain": "Compute.Zonal",
+            "partOf": "A.086",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.079",
+            "name": "High-Voltage Pyrofuse Detonation Trigger",
+            "description": "The physical electric actuator circuit command line fired by safety or battery modules to instantly sever power loops during extreme crash situations or thermal runaway indicators.",
+            "technology": "Actuator",
+            "domain": "Powertrain.Energy",
+            "partOf": "A.090",
+            "type": "Data Flow",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.080",
+            "name": "Network Communication Database Files (DBC / FIBEX Matrix)",
+            "description": "The static network definition databases (DBC for CAN, FIBEX/ARXML for FlexRay) that map raw bit offsets to physical signals.",
+            "technology": "Config",
+            "domain": "*",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.081",
+            "name": "Central Gateway Signal-to-Signal Translation Maps",
+            "description": "The legacy routing matrix used by the central gateway to copy a raw signal out of a CAN frame, translate it, and pack it into a FlexRay slot or LIN frame for another domain.",
+            "technology": "Config",
+            "domain": "Compute.Gateway",
+            "partOf": "A.093",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.082",
+            "name": "UDS Diagnostic 'Tester Present' ($3E) Session State Control",
+            "description": "The logical safety timing loop that maintains an unlocked programming session. If hijacked or kept persistently high via timing manipulation, the ECU stays in a vulnerable diagnostic state.",
+            "technology": "UDS",
+            "domain": "External.DiagnosticTool",
+            "type": "Session",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Moderate"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.083",
+            "name": "Ethernet Virtual LAN (VLAN 802.1Q) Isolation Mapping Table",
+            "description": "The configuration matrix on the central switch that segments a single physical automotive Ethernet backbone into isolated logical networks.",
+            "technology": "Ethernet",
+            "domain": "Compute.Gateway",
+            "partOf": "A.086",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.084",
+            "name": "Service-Oriented Architecture (SOA) Governance & Permission Files",
+            "description": "The access control configurations (such as DDS Security governance XML or SOME/IP IAM policies) that explicitly define which specific application components or containerized pods are allowed to subscribe/publish to particular vehicle methods.",
+            "technology": "Middleware",
+            "domain": "Compute.HPC",
+            "partOf": "A.018",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.085",
+            "name": "Adaptive AUTOSAR Execution Manifests",
+            "description": "The deployment configuration manifests that determine dependency constraints, scheduling properties, and resource allocation policies for dynamic applications starting up on a high-performance compute platform.",
+            "technology": "Middleware",
+            "domain": "Compute.HPC",
+            "partOf": "A.018",
+            "type": "Data",
+            "cybersecurityProperties": [
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.086",
+            "name": "Central High-Performance Compute Platform (HPC)",
+            "description": "Physical core compute hardware enclosure housing multi-core SoCs, shared memory channels, and high-speed network switch chips.",
+            "technology": "SoC",
+            "domain": "Compute.HPC",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Major"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.087",
+            "name": "Telematics Control Unit (TCU) PCB Node",
+            "description": "Physical electronic control unit assembly managing wireless connectivity modems, transceivers, and positioning chips.",
+            "technology": "PCB",
+            "domain": "Telematics.*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.088",
+            "name": "ADAS Central Domain Controller ECU",
+            "description": "High-throughput safety hardware platform hosting perception hardware acceleration matrix processing nodes, GPUs, and NPUs.",
+            "technology": "SoC",
+            "domain": "ADAS.*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.089",
+            "name": "In-Vehicle Infotainment (IVI) Core Head Unit",
+            "description": "Physical hardware unit driving complex dashboard displays, passenger screens, radio receivers, and high-level operating system architectures.",
+            "technology": "SoC",
+            "domain": "Infotainment.*",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Negligible"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.090",
+            "name": "Battery Management System (BMS) Electronic Control Unit",
+            "description": "Physical microcontroller board monitoring cell balancing circuitry, thermistors, and safety pyrofuse triggers.",
+            "technology": "MCU",
+            "domain": "Powertrain.BMS",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.091",
+            "name": "Electronic Power Steering (EPS) Mechatronic Housing",
+            "description": "Physical mechatronic assembly grouping the steering angle sensor, steering controller microcontroller, and electric assist motor.",
+            "technology": "MCU",
+            "domain": "Chassis.Steering",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.092",
+            "name": "Electronic Stability Control (ESC) Valve Block Assembly",
+            "description": "The integrated chassis control module containing the hydraulic valve driver microcontrollers and braking pressure sensor loops.",
+            "technology": "MCU",
+            "domain": "Chassis.Braking",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.093",
+            "name": "Central Gateway (CGW) Routing Module",
+            "description": "Legacy standalone hardware routing block linking multiple physical vehicle communication rings (CAN, LIN, FlexRay) before cross-domain central computing switches.",
+            "technology": "MCU",
+            "domain": "Compute.Gateway",
+            "type": "Component",
+            "cybersecurityProperties": [
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "Severe"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        }
+    ]
+}
