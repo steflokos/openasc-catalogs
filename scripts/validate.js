@@ -30,10 +30,13 @@ if (target === "threats") {
   validate("schemas/threat-array.schema.json", "threats/threats.json", "Threats");
 } else if (target === "controls") {
   validate("schemas/control-array.schema.json", "controls/controls.json", "Controls");
+} else if (target === "assets") {
+  validate("schemas/asset-array.schema.json", "assets/assets.json", "Assets");
 } else if (target === "all") {
   validate("schemas/threat-array.schema.json", "threats/threats.json", "Threats");
   validate("schemas/control-array.schema.json", "controls/controls.json", "Controls");
+  validate("schemas/asset-array.schema.json", "assets/assets.json", "Assets");
 } else {
-  console.log("Usage: node scripts/validate.js [threats|controls|all]");
+  console.log("Usage: node scripts/validate.js [threats|controls|assets|all]");
   process.exit(1);
 }
