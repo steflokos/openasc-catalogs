@@ -15,8 +15,8 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "pattern": "^[C]\\.\\d{3}$",
-                        "description": "Unique identifier for the control, e.g., 'C.001'"
+                        "pattern": "^C\\.\\d{3}(\\.[1-9]\\d*)*$",
+                        "description": "Hierarchical ID. Base: C.001. Refinements: C.001.1, C.001.2.1, etc."
                     },
                     "name": {
                         "type": "string",
@@ -114,8 +114,8 @@
                     },
                     "refines": {
                         "type": "string",
-                        "pattern": "^[C]\\.\\d{3}$",
-                        "description": "Reference to a more general control that this one refines, if any"
+                        "pattern": "^C\\.\\d{3}(\\.[1-9]\\d*)*$",
+                        "description": "Must equal the parent prefix of id. Used for secondary checks."
                     },
                     "protects": {
                         "type": "array",

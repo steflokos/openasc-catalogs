@@ -5,8 +5,8 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "^[A]\\.\\d{3}$",
-            "description": "Unique identifier for the asset, e.g., 'A.001'"
+            "pattern": "^A\\.\\d{3}(\\.[1-9]\\d*)*$",
+            "description": "Hierarchical ID. Base: A.001. Refinements: A.001.1, A.001.2.1, etc."
         },
         "name": {
             "type": "string",
@@ -154,9 +154,10 @@
         },
         "partOf": {
             "type": "string",
-            "pattern": "^[A]\\.\\d{3}$",
-            "description": "Reference to a parent asset that this asset belongs to or is hosted on (e.g., Firmware A.002 is partOf Component A.001)."
+            "pattern": "^A\\.\\d{3}(\\.[1-9]\\d*)*$",
+            "description": "Reference to a parent asset that this asset belongs to or is hosted on. Used for secondary checks."
         },
+                
         "notes": {
             "type": "string",
             "description": "Optional notes, comments, or references for the asset"

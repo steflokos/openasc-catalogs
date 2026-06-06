@@ -5,8 +5,8 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "^[T]\\.\\d{3}$",
-            "description": "Unique identifier for the threat, e.g., 'T.001'"
+            "pattern": "^T\\.\\d{3}(\\.[1-9]\\d*)*$",
+            "description": "Hierarchical ID. Base: T.001. Refinements: T.001.1, T.001.2.1, etc."
         },
         "name": {
             "type": "string",
@@ -159,8 +159,8 @@
         },
         "refines": {
             "type": "string",
-            "pattern": "^[T]\\.\\d{3}$",
-            "description": "Reference to a parent threat unique identifier if this is a refinement (optional)"
+            "pattern": "^T\\.\\d{3}(\\.[1-9]\\d*)*$",
+            "description": "Must equal the parent prefix of id. Used for secondary checks."
         },
         "compromises": {
             "type": "array",
