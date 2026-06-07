@@ -15,7 +15,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "pattern": "^A\\.\\d{2}(\\.[1-9]\\d*)*$",
+                        "pattern": "^A\\.\\d{3}(\\.[1-9]\\d*)*$",
                         "description": "Hierarchical ID. Base: A.001. Refinements: A.001.1, A.001.2.1, etc."
                     },
                     "name": {
@@ -164,7 +164,7 @@
                     },
                     "partOf": {
                         "type": "string",
-                        "pattern": "^A\\.\\d{2}(\\.[1-9]\\d*)*$",
+                        "pattern": "^A\\.\\d{3}(\\.[1-9]\\d*)*$",
                         "description": "Reference to a parent asset that this asset belongs to or is hosted on. Used for secondary checks."
                     },
                     "notes": {
