@@ -7,6 +7,7 @@
     "scripts": {
         "validate:threats": "node scripts/validate.js threats",
         "validate:controls": "node scripts/validate.js controls",
+        "validate:assets": "node scripts/validate.js assets",
         "validate:all": "node scripts/validate.js all"
     },
     "keywords": [
