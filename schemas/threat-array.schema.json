@@ -14,7 +14,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "pattern": "^T\\.\\d{3}(\\.[1-9]\\d*)*$",
+                        "pattern": "^T\\.\\d{2}(\\.[1-9]\\d*)*$",
                         "description": "Hierarchical ID. Base: T.001. Refinements: T.001.1, T.001.2.1, etc."
                     },
                     "name": {
@@ -168,7 +168,7 @@
                     },
                     "refines": {
                         "type": "string",
-                        "pattern": "^T\\.\\d{3}(\\.[1-9]\\d*)*$",
+                        "pattern": "^T\\.\\d{2}(\\.[1-9]\\d*)*$",
                         "description": "Must equal the parent prefix of id. Used for secondary checks."
                     },
                     "compromises": {

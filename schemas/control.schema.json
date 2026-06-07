@@ -5,7 +5,7 @@
     "properties": {
         "id": {
             "type": "string",
-            "pattern": "^C\\.\\d{3}(\\.[1-9]\\d*)*$",
+            "pattern": "^C\\.\\d{2}(\\.[1-9]\\d*)*$",
             "description": "Hierarchical ID. Base: C.001. Refinements: C.001.1, C.001.2.1, etc."
         },
         "name": {
@@ -104,7 +104,7 @@
         },
         "refines": {
             "type": "string",
-            "pattern": "^C\\.\\d{3}(\\.[1-9]\\d*)*$",
+            "pattern": "^C\\.\\d{2}(\\.[1-9]\\d*)*$",
             "description": "Must equal the parent prefix of id. Used for secondary checks."
         },
         "protects": {
