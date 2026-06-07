@@ -1,35 +1,35 @@
 import fs from "fs";
+import path from "path";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
 const ajv = new Ajv({ allErrors: true, strict: true });
 addFormats(ajv);
 
+// 1. Pre-load all standalone schemas into AJV cache so $ref matching works natively
+const schemaDir = "schemas";
+fs.readdirSync(schemaDir).forEach(file => {
+  if (file.endsWith(".schema.json") && !file.includes("-array")) {
+    const individualSchema = JSON.parse(fs.readFileSync(path.join(schemaDir, file), "utf-8"));
+    // Use the filename as the schema ID key
+    ajv.addSchema(individualSchema, file);
+  }
+});
+
 function load(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }
 
-/**
- * Validates a catalog file against its array schema, then pinpoint individual item issues.
- * @param {string} schemaPath - Path to the *-array.schema.json
- * @param {string} dataPath - Path to the data .json file
- * @param {string} arrayKey - The object property where the array lives ('threats', 'controls', 'assets')
- * @param {string} label - Human-readable label for logs
- */
 function validateCatalog(schemaPath, dataPath, arrayKey, label) {
   const schema = load(schemaPath);
   const data = load(dataPath);
 
-  // 1. Compile and validate the entire document structure (checks version, structure, etc.)
+  // Validate the overall file object structure (e.g., version formatting)
   const validateRoot = ajv.compile(schema);
   const isRootValid = validateRoot(data);
 
-  // If the structure itself is broken (e.g. version missing), catch it early
   if (!isRootValid) {
-    // Check if the error is just an item inside the array failing.
-    // If it is, we will provide a much cleaner per-item breakdown below instead of crashing here.
     const hasOnlyArrayErrors = validateRoot.errors.every(err => err.instancePath.startsWith(`/${arrayKey}`));
-    
     if (!hasOnlyArrayErrors) {
       console.error(`❌ [${label}] Global structure validation failed:`);
       console.error(validateRoot.errors);
@@ -38,34 +38,27 @@ function validateCatalog(schemaPath, dataPath, arrayKey, label) {
     }
   }
 
-  // 2. Extract the sub-schema for an individual item from the compilation tree
-  const itemSchema = schema.properties?.[arrayKey]?.items;
-  if (!itemSchema) {
-    console.error(`❌ System Error: Could not isolate item definitions for property "${arrayKey}" in ${schemaPath}`);
+  // Fetch the schema validation rule directly out of the compiled root schema tree
+  const itemSchemaRef = schema.properties?.[arrayKey]?.items;
+  if (!itemSchemaRef) {
+    console.error(`❌ System Error: Could not locate item reference definitions for property "${arrayKey}"`);
     process.exitCode = 1;
     return;
   }
 
-  // Compile individual item validator (inherits root $defs automatically)
-  const validateItem = ajv.compile({
-    $schema: schema.$schema,
-    ...itemSchema,
-    $defs: schema.$defs // Forward the definitions tree down
-  });
-
+  // Compile the validator for individual items using AJV's cache lookup
+  const validateItem = ajv.compile(itemSchemaRef);
   const targetArray = data[arrayKey] || [];
   let fileHasErrors = false;
 
   console.log(`\nChecking ${label} catalog (Version: ${data.version || "Unknown"})...`);
 
-  // 3. Loop through individual items to pinpoint exact failures
   targetArray.forEach((item, index) => {
     const valid = validateItem(item);
     
     if (!valid) {
       fileHasErrors = true;
       const identifier = item.id || item.name || `Index ${index}`;
-      
       console.error(`   ❌ Invalid Item: "${identifier}" (at ${arrayKey}[${index}])`);
       
       validateItem.errors.forEach(err => {
@@ -85,11 +78,11 @@ function validateCatalog(schemaPath, dataPath, arrayKey, label) {
   }
 }
 
-// Target routing configuration mapping targets to schemas, data files, and internal object keys
+// Configured targets pointing directly to your streamlined "catalogs/" data files
 const targets = {
-  threats: { schema: "schemas/threat-array.schema.json", data: "threats/threats.json", key: "threats", label: "Threats" },
-  controls: { schema: "schemas/control-array.schema.json", data: "controls/controls.json", key: "controls", label: "Controls" },
-  assets: { schema: "schemas/asset-array.schema.json", data: "assets/assets.json", key: "assets", label: "Assets" }
+  threats: { schema: "schemas/threat-array.schema.json", data: "catalogs/threats.json", key: "threats", label: "Threats" },
+  controls: { schema: "schemas/control-array.schema.json", data: "catalogs/controls.json", key: "controls", label: "Controls" },
+  assets: { schema: "schemas/asset-array.schema.json", data: "catalogs/assets.json", key: "assets", label: "Assets" }
 };
 
 const [targetArg] = process.argv.slice(2);
