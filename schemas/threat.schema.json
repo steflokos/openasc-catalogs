@@ -6,7 +6,7 @@
         "id": {
             "type": "string",
             "pattern": "^T\\.\\d{2}(\\.[1-9]\\d*)*$",
-            "description": "Hierarchical ID. Base: T.001. Refinements: T.001.1, T.001.2.1, etc."
+            "description": "Hierarchical ID. Base: T.01. Refinements: T.01.1, T.01.2.1, etc."
         },
         "name": {
             "type": "string",
