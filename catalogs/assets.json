@@ -16,11 +16,12 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None",
+                        "rationale": "Corporations do not suffer physical injuries."
                     },
                     "financial": {
                         "level": "Severe",
-                        "rationale": "Compromise allows fleet-wide persistent rootkits, requiring physical component replacement."
+                        "rationale": "Compromise allows fleet-wide persistent rootkits, requiring massive physical recall and component replacement."
                     },
                     "operational": {
                         "level": "Severe"
@@ -31,7 +32,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "A compromised bootloader can load malicious firmware into safety-critical ECUs, leading to loss of vehicle control."
                     },
                     "financial": {
                         "level": "None"
@@ -60,11 +62,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe",
-                        "rationale": "Compromise allows attackers to forge legitimate signed firmware updates or clone physical modules."
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Key compromise breaks the trust anchor, allowing attackers to forge legitimate signed firmware updates or clone physical modules."
                     },
                     "operational": {
                         "level": "Severe"
@@ -75,7 +77,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Enables malicious OTA updates to safety-critical components."
                     },
                     "financial": {
                         "level": "None"
@@ -104,13 +107,14 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
                     },
                     "operational": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Kernel compromise causes complete loss of control over the node's behavior."
                     },
                     "privacy": {
                         "level": "Moderate"
@@ -118,7 +122,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Kernel panic or hijacking in an RTOS can instantly freeze safety-critical actuator commands."
                     },
                     "financial": {
                         "level": "None"
@@ -150,7 +155,8 @@
                         "level": "None"
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Major",
+                        "rationale": "Results in reputational damage and potential liability for easily stolen vehicles."
                     },
                     "operational": {
                         "level": "Moderate"
@@ -165,10 +171,11 @@
                     },
                     "financial": {
                         "level": "Severe",
-                        "rationale": "Token sniffing or replay attacks bypass physical barriers, enabling unauthorized vehicle theft."
+                        "rationale": "Token sniffing or replay attacks bypass physical barriers, enabling complete vehicle theft."
                     },
                     "operational": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Loss of primary transportation."
                     },
                     "privacy": {
                         "level": "None"
@@ -235,11 +242,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe",
-                        "rationale": "Exfiltration of proprietary neural network weights represents massive intellectual property loss."
+                        "rationale": "Exfiltration of proprietary neural network weights represents massive intellectual property loss for the OEM."
                     },
                     "operational": {
                         "level": "Severe"
@@ -280,7 +287,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -294,7 +301,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Corruption of the trajectory logic directly commands the vehicle into unsafe physical paths."
                     },
                     "financial": {
                         "level": "None"
@@ -323,10 +331,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Failure of OTA mechanisms prevents the OEM from patching security flaws or deploying feature updates, leading to mass physical recalls."
                     },
                     "operational": {
                         "level": "Severe"
@@ -337,7 +346,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "A compromised OTA orchestrator allows arbitrary code execution across any ECU in the vehicle."
                     },
                     "financial": {
                         "level": "None"
@@ -372,7 +382,8 @@
                         "level": "Moderate"
                     },
                     "operational": {
-                        "level": "Major"
+                        "level": "Major",
+                        "rationale": "Loss of telemetry data from the fleet."
                     },
                     "privacy": {
                         "level": "Moderate"
@@ -381,7 +392,7 @@
                 "roadUser": {
                     "safety": {
                         "level": "Moderate",
-                        "rationale": "Loss of cellular infrastructure completely breaks automated emergency tracking and safety eCall applications."
+                        "rationale": "Loss of cellular infrastructure breaks automated emergency tracking and safety eCall applications."
                     },
                     "financial": {
                         "level": "None"
@@ -409,7 +420,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -424,7 +435,7 @@
                 "roadUser": {
                     "safety": {
                         "level": "Severe",
-                        "rationale": "Corrupting security rules permits unauthorized lateral movement from low-trust domains to safety-critical targets."
+                        "rationale": "Corrupting security rules permits unauthorized lateral movement from low-trust domains to safety-critical target buses."
                     },
                     "financial": {
                         "level": "None"
@@ -453,7 +464,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -468,7 +479,7 @@
                 "roadUser": {
                     "safety": {
                         "level": "Severe",
-                        "rationale": "Hypervisor jailbreaks permit an unprivileged OS guest to crash or starve real-time safety critical tasks."
+                        "rationale": "Hypervisor jailbreaks permit an unprivileged OS guest (like Infotainment) to crash or starve real-time safety critical tasks running in adjacent VMs."
                     },
                     "financial": {
                         "level": "None"
@@ -499,7 +510,7 @@
                 "oem": {
                     "safety": {
                         "level": "None",
-                        "rationale": "Cloud APIs cannot directly command kinetic functions at speed due to gateway filtering."
+                        "rationale": "Cloud APIs generally cannot directly command kinetic functions at speed due to gateway filtering."
                     },
                     "financial": {
                         "level": "Severe"
@@ -520,7 +531,8 @@
                         "level": "None"
                     },
                     "operational": {
-                        "level": "Major"
+                        "level": "Major",
+                        "rationale": "Loss of remote start, remote climate, or cloud-based navigation capabilities."
                     },
                     "privacy": {
                         "level": "Moderate"
@@ -543,7 +555,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Major"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -557,7 +569,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Major"
+                        "level": "Major",
+                        "rationale": "Corruption of NVRAM can brick ECU operations or load corrupted configuration states during driving."
                     },
                     "financial": {
                         "level": "None"
@@ -586,7 +599,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Major"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe",
@@ -632,7 +645,8 @@
                         "level": "None"
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Major",
+                        "rationale": "Reputational impact and warranty/insurance claims due to easily bypassed immobilizers."
                     },
                     "operational": {
                         "level": "Major"
@@ -646,11 +660,11 @@
                         "level": "None"
                     },
                     "financial": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Key theft allows full physical bypass of anti-theft mechanics, enabling vehicle theft."
                     },
                     "operational": {
-                        "level": "Severe",
-                        "rationale": "Key theft allows full physical bypass of anti-theft mechanics, enabling vehicle conversion."
+                        "level": "Severe"
                     },
                     "privacy": {
                         "level": "None"
@@ -661,7 +675,7 @@
         {
             "id": "A.016",
             "name": "Non-Safety Vehicle Comfort Configuration Profile",
-            "description": "Configuration metadata layouts managing peripheral user comfort bounds, actuator target mappings, and internal environmental preferences.",
+            "description": "Configuration metadata layouts managing peripheral user comfort bounds, actuator target mappings, and internal environmental preferences (e.g., HVAC, seating positions).",
             "technology": "Config",
             "domain": "Body.Comfort",
             "type": "Data",
@@ -691,7 +705,8 @@
                         "level": "None"
                     },
                     "operational": {
-                        "level": "Moderate"
+                        "level": "Moderate",
+                        "rationale": "Annoyance due to reset seating or temperature settings."
                     },
                     "privacy": {
                         "level": "None"
@@ -713,7 +728,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Moderate"
@@ -727,7 +742,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "Moderate",
+                        "rationale": "Potential for minor mechanical pinching (windows/sunroof) if local hardware anti-pinch controls fail simultaneously."
                     },
                     "financial": {
                         "level": "None"
@@ -756,7 +772,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Major"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Moderate"
@@ -799,7 +815,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Major"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Major"
@@ -814,7 +830,7 @@
                 "roadUser": {
                     "safety": {
                         "level": "Major",
-                        "rationale": "Spoofing or dropping indicator signals blinds the road user to active platform faults, increasing operation risk profiles."
+                        "rationale": "Spoofing or dropping indicator signals blinds the road user to active platform faults, increasing operational risk profiles."
                     },
                     "financial": {
                         "level": "None"
@@ -851,7 +867,8 @@
                         "level": "Moderate"
                     },
                     "privacy": {
-                        "level": "Major"
+                        "level": "Major",
+                        "rationale": "OEM liability for failing to secure Bluetooth link keys."
                     }
                 },
                 "roadUser": {
@@ -885,10 +902,12 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None",
+                        "rationale": "Corporations do not suffer physical injuries."
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Severe",
+                        "rationale": "Safety failures due to blind ADAS systems result in massive litigation and recall costs."
                     },
                     "operational": {
                         "level": "Severe"
@@ -930,7 +949,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -1062,7 +1081,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe",
@@ -1105,10 +1124,10 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Severe"
                     },
                     "operational": {
                         "level": "Severe"
@@ -1149,8 +1168,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate",
-                        "rationale": "A breakout targets the host OS but remains isolated from physical vehicle control lines."
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Major"
@@ -1164,7 +1182,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "Moderate",
+                        "rationale": "A breakout targets the host OS but remains isolated from physical vehicle control lines."
                     },
                     "financial": {
                         "level": "None"
@@ -1192,7 +1211,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe",
@@ -1207,7 +1226,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Allows an attacker to actuate brakes or alter steering calibrations while driving."
                     },
                     "financial": {
                         "level": "None"
@@ -1321,7 +1341,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -1451,10 +1471,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Major"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "None"
+                        "level": "Severe",
+                        "rationale": "Collateral liability and brand damage stemming from mass ADAS misbehavior."
                     },
                     "operational": {
                         "level": "Major"
@@ -1495,7 +1516,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -1509,7 +1530,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "Moderate",
+                        "rationale": "Compromise of telemetry may delay critical remote safety responses."
                     },
                     "financial": {
                         "level": "None"
@@ -1536,10 +1558,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Major",
+                        "rationale": "Tampering with manifests destroys configuration management, leading to costly fleet-wide audits and compliance failures."
                     },
                     "operational": {
                         "level": "Severe"
@@ -1550,7 +1573,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "Moderate",
+                        "rationale": "Could allow a vulnerable component to persist, indirectly increasing safety risks over time."
                     },
                     "financial": {
                         "level": "None"
@@ -1594,7 +1618,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "Moderate",
+                        "rationale": "Illegally activating unregulated performance features (like acceleration boosts) alters vehicle dynamics."
                     },
                     "financial": {
                         "level": "None"
@@ -1622,10 +1647,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Loss of these certificates effectively gives threat actors 'god mode' over the entire vehicle fleet."
                     },
                     "operational": {
                         "level": "Severe"
@@ -1636,7 +1662,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Attackers with advanced diagnostic access can actuate physical safety systems remotely."
                     },
                     "financial": {
                         "level": "None"
@@ -1664,7 +1691,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -1678,7 +1705,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "The HPC aggregates multiple safety functions; its failure can cascade across braking, steering, and perception."
                     },
                     "financial": {
                         "level": "None"
@@ -1706,7 +1734,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -1790,7 +1818,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -1804,7 +1832,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "A compromised gateway can arbitrarily inject or block safety-critical messages moving between domains."
                     },
                     "financial": {
                         "level": "None"
@@ -1832,11 +1861,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe",
-                        "rationale": "Compromise can bypass thermal runaway protections, leading directly to catastrophic battery fires."
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Massive warranty costs and reputational destruction due to battery fires."
                     },
                     "operational": {
                         "level": "Severe"
@@ -1847,7 +1876,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Compromise can bypass thermal runaway protections, leading directly to catastrophic battery fires and passenger injury."
                     },
                     "financial": {
                         "level": "None"
@@ -1876,7 +1906,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -1919,7 +1949,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Major",
@@ -1963,10 +1993,10 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Severe"
                     },
                     "operational": {
                         "level": "Severe"
@@ -1978,7 +2008,7 @@
                 "roadUser": {
                     "safety": {
                         "level": "Severe",
-                        "rationale": "Disabling or hijacking a single zonal hub drops all peripheral traffic for an entire quadrant of the vehicle."
+                        "rationale": "Disabling or hijacking a single zonal hub drops all peripheral traffic for an entire quadrant of the vehicle, potentially blinding ADAS or dropping chassis controls."
                     },
                     "financial": {
                         "level": "None"
@@ -2006,10 +2036,10 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Moderate"
+                        "level": "Severe"
                     },
                     "operational": {
                         "level": "Major"
@@ -2049,10 +2079,11 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Moderate"
+                        "level": "Severe",
+                        "rationale": "Safety-related crashes due to deterministic network failures lead to massive liability."
                     },
                     "operational": {
                         "level": "Severe"
@@ -2092,7 +2123,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -2134,10 +2165,10 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Severe"
                     },
                     "operational": {
                         "level": "Severe"
@@ -2166,7 +2197,7 @@
         {
             "id": "A.051",
             "name": "Secure Debug Challenge-Response Tokens",
-            "description": "Cryptographic cryptographic tokens generated on OEM server architectures used by authorized diagnostic tools to temporarily open physical JTAG debug lines or root shells for system remediation.",
+            "description": "Cryptographic tokens generated on OEM server architectures used by authorized diagnostic tools to temporarily open physical JTAG debug lines or root shells for system remediation.",
             "technology": "Token",
             "domain": "External.DiagnosticTool",
             "type": "Data",
@@ -2177,7 +2208,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -2191,7 +2222,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "Severe",
+                        "rationale": "Unlocking hardware debug lines enables full platform compromise, allowing an attacker to actuate driving functions."
                     },
                     "financial": {
                         "level": "None"
@@ -2220,7 +2252,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -2262,7 +2294,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Major"
@@ -2276,7 +2308,7 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "None"
@@ -2305,7 +2337,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -2348,7 +2380,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -2392,7 +2424,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Major"
@@ -2406,7 +2438,7 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Moderate"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "None"
@@ -2435,7 +2467,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -2479,7 +2511,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Severe"
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
