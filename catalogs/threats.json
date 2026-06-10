@@ -296,7 +296,7 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Elevate",
+                        "action": "Extract",
                         "assetClass": "Crypto",
                         "domain": "Backend"
                     },
@@ -352,7 +352,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Elevate",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     }
@@ -842,7 +842,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Elevate",
+                        "action": "Fault",
                         "assetClass": "Compute",
                         "domain": "Powertrain"
                     }
@@ -1038,7 +1038,7 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -1149,7 +1149,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     }
@@ -1845,7 +1845,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     }
@@ -2345,7 +2345,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     }
@@ -3335,6 +3335,11 @@
             },
             "grants": [
                 {
+                    "action": "Fault",
+                    "assetClass": "Compute",
+                    "domain": "Powertrain"
+                },
+                {
                     "action": "Execute",
                     "assetClass": "Compute",
                     "domain": "Powertrain"
@@ -3622,7 +3627,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -3641,7 +3646,7 @@
                 },
                 {
                     "action": "Execute",
-                    "assetClass": "Memory",
+                    "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
             ]
@@ -3744,7 +3749,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -3877,7 +3882,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Interface",
                         "domain": "Powertrain"
                     }
@@ -4167,7 +4172,7 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Interface",
                         "domain": "Powertrain"
                     }
@@ -4336,18 +4341,9 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Elevate",
+                        "action": "Fault",
                         "assetClass": "Compute",
                         "domain": "Powertrain"
-                    },
-                    {
-                        "OR": [
-                            {
-                                "action": "Modify",
-                                "assetClass": "Compute",
-                                "domain": "Powertrain"
-                            }
-                        ]
                     }
                 ]
             },
@@ -4571,7 +4567,7 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Execute",
+                        "action": "Modify",
                         "assetClass": "Data",
                         "domain": "Powertrain"
                     }
@@ -4753,7 +4749,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     }
@@ -5947,7 +5943,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -6190,7 +6186,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -6584,7 +6580,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -6650,7 +6646,7 @@
                     {
                         "action": "Elevate",
                         "assetClass": "Executable",
-                        "domain": "ADAS"
+                        "domain": "Powertrain"
                     }
                 ]
             },
@@ -6752,7 +6748,7 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Interface",
                         "domain": "Powertrain"
                     }
@@ -7895,7 +7891,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Execute",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -8125,7 +8121,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Elevate",
+                        "action": "Inject",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     }

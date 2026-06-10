@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "1.0.0",
     "assets": [
         {
             "id": "A.001",
@@ -138,7 +138,7 @@
             "id": "A.004",
             "name": "Vehicle Access Authorization Token",
             "description": "Ephemeral cryptographic security keys or tokens authorizing vehicle unlocking, physical entry, and immobilization override (covers PEPS, PaaK, and smart fobs).",
-            "domain": "Powertrain",
+            "domain": "Body",
             "cybersecurityProperties": [
                 "Confidentiality",
                 "Integrity",
@@ -480,7 +480,7 @@
                     }
                 }
             },
-            "class": "Compute"
+            "class": "Executable"
         },
         {
             "id": "A.012",
@@ -823,7 +823,7 @@
                     }
                 }
             },
-            "class": "Data"
+            "class": "Network"
         },
         {
             "id": "A.020",
@@ -910,7 +910,7 @@
                     }
                 }
             },
-            "class": "Data"
+            "class": "Network"
         },
         {
             "id": "A.022",
@@ -1253,7 +1253,7 @@
                     }
                 }
             },
-            "class": "Interface"
+            "class": "Crypto"
         },
         {
             "id": "A.030",
@@ -1508,7 +1508,7 @@
                     }
                 }
             },
-            "class": "Network"
+            "class": "Crypto"
         },
         {
             "id": "A.036",
@@ -1550,7 +1550,7 @@
                     }
                 }
             },
-            "class": "Executable"
+            "class": "Data"
         },
         {
             "id": "A.037",
@@ -1803,7 +1803,7 @@
                     }
                 }
             },
-            "class": "Network"
+            "class": "Compute"
         },
         {
             "id": "A.043",
@@ -1932,7 +1932,7 @@
                     }
                 }
             },
-            "class": "Interface"
+            "class": "Data"
         },
         {
             "id": "A.046",
@@ -2059,7 +2059,7 @@
                     }
                 }
             },
-            "class": "Compute"
+            "class": "Network"
         },
         {
             "id": "A.049",
@@ -2101,7 +2101,7 @@
                     }
                 }
             },
-            "class": "Compute"
+            "class": "Data"
         },
         {
             "id": "A.050",
@@ -2394,7 +2394,7 @@
                     }
                 }
             },
-            "class": "Interface"
+            "class": "Executable"
         },
         {
             "id": "A.057",
@@ -2524,7 +2524,137 @@
                     }
                 }
             },
-            "class": "Interface"
+            "class": "Data"
+        },
+        {
+            "id": "A.060",
+            "name": "ADAS Camera, Radar, and LiDAR Sensor Array",
+            "description": "Physical perception sensors capturing the external vehicle environment to feed machine learning algorithms and active safety functions.",
+            "domain": "ADAS",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "Hardware recalls or loss of autonomous driving feature subscriptions."
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe",
+                        "rationale": "Compromised or spoofed sensors can cause the vehicle to misinterpret obstacles, leading to collisions."
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            },
+            "class": "Peripheral"
+        },
+        {
+            "id": "A.061",
+            "name": "Powertrain & Chassis Electromechanical Actuators",
+            "description": "Physical edge hardware components (e.g., electronic throttle bodies, brake calipers, steering motors) responsible for actualizing vehicle movement commands.",
+            "domain": "Powertrain",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe",
+                        "rationale": "Unauthorized manipulation of acceleration, braking, or steering actuators directly results in fatal vehicle behavior."
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            },
+            "class": "Peripheral"
+        },
+        {
+            "id": "A.062",
+            "name": "In-Cabin Microphones & Multimedia Capture Devices",
+            "description": "Physical multimedia peripherals used for voice commands, hands-free calling, and driver monitoring systems.",
+            "domain": "Infotainment",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "Regulatory fines for privacy violations."
+                    },
+                    "operational": {
+                        "level": "Moderate"
+                    },
+                    "privacy": {
+                        "level": "Severe"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "None"
+                    },
+                    "privacy": {
+                        "level": "Severe",
+                        "rationale": "Eavesdropping on private conversations within the vehicle cabin."
+                    }
+                }
+            },
+            "class": "Peripheral"
         }
     ]
 }
