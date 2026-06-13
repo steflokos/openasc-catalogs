@@ -5,6 +5,10 @@
             "id": "A.001",
             "name": "Secure Bootloader",
             "description": "Primary bootloader responsible for verifying the authenticity and integrity of firmware images before execution on any compute tier (HPC, Gateway, Zonal Controller, or Classic ECU).",
+            "metadata": [
+                "Bootloader",
+                "Secure Boot"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -50,6 +54,15 @@
             "id": "A.002",
             "name": "Device Private Key / Root of Trust",
             "description": "Cryptographic private key securely fused in physical hardware (HSM, TPM, or TEE) used for component identity, secure boot, and cryptographic handshakes.",
+            "metadata": [
+                "Transceiver / PHY",
+                "HSM / SHE",
+                "TEE",
+                "TPM / SE",
+                "Secure Boot",
+                "Asymmetric Keys",
+                "Seeds / RoT Data"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -94,6 +107,10 @@
             "id": "A.003",
             "name": "Operating System Kernel",
             "description": "The base runtime operating system layer (RTOS or Rich OS) managing hardware resources, execution tasks, and process isolation boundaries.",
+            "metadata": [
+                "RTOS",
+                "Kernel / Driver"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -138,6 +155,10 @@
             "id": "A.004",
             "name": "Vehicle Access Authorization Token",
             "description": "Ephemeral cryptographic security keys or tokens authorizing vehicle unlocking, physical entry, and immobilization override (covers PEPS, PaaK, and smart fobs).",
+            "metadata": [
+                "Transceiver / PHY",
+                "Tokens / API Keys"
+            ],
             "domain": "Body",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -183,6 +204,12 @@
             "id": "A.005",
             "name": "In-Vehicle User Profile and PII Data",
             "description": "User-specific personal data stored locally within the vehicle compute environment, including navigation history, sync maps, contact directories, and cloud application credentials.",
+            "metadata": [
+                "gRPC / REST",
+                "App / Service",
+                "Config / Calibration File",
+                "Backend"
+            ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -226,6 +253,11 @@
             "id": "A.006",
             "name": "Machine Learning Perception Weights & Models",
             "description": "Deep learning network configuration layers, object detection models, and neural network weights used to classify environmental features (lanes, signs, targets). Shared by specialized edge sensors or central ADAS accelerators.",
+            "metadata": [
+                "Sensor / Actuator",
+                "ML Model / Weights",
+                "Config / Calibration File"
+            ],
             "domain": "ADAS",
             "partOf": "A.040",
             "cybersecurityProperties": [
@@ -270,6 +302,10 @@
             "id": "A.007",
             "name": "Automated Driving Trajectory Planning Algorithm",
             "description": "Decision-making application binaries that ingest sensor fusion telemetry and output core dynamic lateral and longitudinal vehicle control matrices.",
+            "metadata": [
+                "Sensor / Actuator",
+                "App / Service"
+            ],
             "domain": "ADAS",
             "partOf": "A.040",
             "cybersecurityProperties": [
@@ -313,6 +349,14 @@
             "id": "A.008",
             "name": "OTA Update Orchestration Middleware",
             "description": "Software lifecycle middleware coordinating package download, security verification, signature verification, and flashing choreography across targeting sub-buses.",
+            "metadata": [
+                "Transceiver / PHY",
+                "NVRAM",
+                "Middleware",
+                "App / Service",
+                "Digital Signatures",
+                "OTA"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -357,6 +401,10 @@
             "id": "A.009",
             "name": "Wireless Wide-Area Network (WWAN) Communication Channel",
             "description": "The cellular radio frequency connection (4G/5G/6G) link establishing data transport pipelines between the vehicle's network coordinator and external telematics base stations.",
+            "metadata": [
+                "Cellular",
+                "LF / RF"
+            ],
             "domain": "Telematics",
             "cybersecurityProperties": [
                 "Availability",
@@ -401,6 +449,11 @@
             "id": "A.010",
             "name": "Central Network Routing & Firewall Rules",
             "description": "Configuration matrices, access control lists (ACLs), and frame forwarding rules separating security domains over CAN matrices or Ethernet VLANs.",
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "Config / Calibration File"
+            ],
             "domain": "Powertrain",
             "partOf": "A.042",
             "cybersecurityProperties": [
@@ -443,6 +496,10 @@
             "id": "A.011",
             "name": "Type-1 Hypervisor Platform",
             "description": "Hardware-level hypervisor partitioning execution environments into safe, highly isolated virtual machines on high-performance compute nodes.",
+            "metadata": [
+                "Hypervisor",
+                "App / Service"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -486,6 +543,12 @@
             "id": "A.012",
             "name": "OEM & Fleet Operations Back-End API Interface",
             "description": "Web service gateway patterns allowing the vehicle platform to exchange operational metrics, state configurations, and remote orchestration events with cloud structures.",
+            "metadata": [
+                "gRPC / REST",
+                "App / Service",
+                "Config / Calibration File",
+                "Backend"
+            ],
             "domain": "Backend",
             "cybersecurityProperties": [
                 "Integrity",
@@ -532,6 +595,11 @@
             "id": "A.013",
             "name": "Secure Non-Volatile Storage / Hardware Protected Partition",
             "description": "Protected physical non-volatile system structures hosting core system binaries, persistent operational parameters, and localized encryption manifests.",
+            "metadata": [
+                "Transceiver / PHY",
+                "NVRAM",
+                "Seeds / RoT Data"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -575,6 +643,12 @@
             "id": "A.014",
             "name": "Hardware Enclave / Trusted Execution Environment (TEE) Core",
             "description": "Physical processor isolating secure operations, ensuring private key processing and sensitive cryptographic computations are hidden from high-level software environments.",
+            "metadata": [
+                "SoC",
+                "Transceiver / PHY",
+                "TEE",
+                "Asymmetric Keys"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -618,6 +692,9 @@
             "id": "A.015",
             "name": "Vehicle Immobilization Cryptographic Secret",
             "description": "Pre-shared master keys or security parameters validated across local coordination boundaries prior to authorizing powertrain system loop activation.",
+            "metadata": [
+                "Middleware"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -661,6 +738,12 @@
             "id": "A.016",
             "name": "Non-Safety Vehicle Comfort Configuration Profile",
             "description": "Configuration metadata layouts managing peripheral user comfort bounds, actuator target mappings, and internal environmental preferences (e.g., HVAC, seating positions).",
+            "metadata": [
+                "Sensor / Actuator",
+                "App / Service",
+                "Config / Calibration File",
+                "Passwords / PINs"
+            ],
             "domain": "Body",
             "cybersecurityProperties": [
                 "Integrity"
@@ -702,6 +785,9 @@
             "id": "A.017",
             "name": "Low-Speed Serial Local Interconnect Network (LIN) Bus Data Flow",
             "description": "Low-frequency master-slave communication interactions managing peripheral interface monitoring, mechanical switches, and window/panel status states.",
+            "metadata": [
+                "LIN"
+            ],
             "domain": "Body",
             "cybersecurityProperties": [
                 "Integrity",
@@ -744,6 +830,11 @@
             "id": "A.018",
             "name": "Driver Information Display Rendering Application",
             "description": "High-priority graphic execution space responsible for rendering vital telemetry arrays (speedometer telemetry, active indicators, power levels) onto vehicle display blocks.",
+            "metadata": [
+                "HDMI / DisplayPort",
+                "App / Service",
+                "Kernel / Driver"
+            ],
             "domain": "Infotainment",
             "partOf": "A.041",
             "cybersecurityProperties": [
@@ -787,6 +878,10 @@
             "id": "A.019",
             "name": "Safety-Critical Telltale & Warning Signal Flow",
             "description": "High-priority vehicle metric network traffic carrying structural fault markers, malfunction indicator states, and dynamic restraint statuses across architectural boundaries.",
+            "metadata": [
+                "gRPC / REST",
+                "Middleware"
+            ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
                 "Integrity",
@@ -829,6 +924,11 @@
             "id": "A.020",
             "name": "Wireless Handset Pairing Session Keys",
             "description": "Cryptographic link keys generated during mobile device pairing protocols (e.g., Bluetooth, Wi-Fi Direct) to ensure secure sessions between user devices and the vehicle's connection manager.",
+            "metadata": [
+                "Wi-Fi",
+                "Bluetooth / BLE",
+                "Seeds / RoT Data"
+            ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -872,6 +972,10 @@
             "id": "A.021",
             "name": "High-Bandwidth Sensor Raw Telemetry Flow",
             "description": "High-throughput data pipeline carrying raw or semi-processed environmental perception streams (cameras, LiDAR, Radar) from edge arrays into central fusion processors.",
+            "metadata": [
+                "SoC",
+                "Sensor / Actuator"
+            ],
             "domain": "ADAS",
             "cybersecurityProperties": [
                 "Integrity",
@@ -916,6 +1020,10 @@
             "id": "A.022",
             "name": "Active Safety Control Command Application",
             "description": "Safety-critical application logic commanding immediate actuator corrections upon detecting imminent collision or lane departure vectors.",
+            "metadata": [
+                "Sensor / Actuator",
+                "App / Service"
+            ],
             "domain": "ADAS",
             "partOf": "A.040",
             "cybersecurityProperties": [
@@ -960,6 +1068,11 @@
             "id": "A.023",
             "name": "System Diagnostics and Operational Log Files",
             "description": "Runtime operational event records, diagnostic trace strings (e.g., DLT), crash dumps, and historical telemetry generated by underlying operating systems across any compute node.",
+            "metadata": [
+                "UDS",
+                "Middleware",
+                "Config / Calibration File"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1003,6 +1116,12 @@
             "id": "A.024",
             "name": "Cloud & Mobile App Authorization Token (OAuth/JWT)",
             "description": "Bearer tokens or session cookies generated via cloud authentication used to authorize the mobile companion app and execute remote vehicle orchestration commands (e.g., remote start, unlock) via the backend.",
+            "metadata": [
+                "gRPC / REST",
+                "App / Service",
+                "Tokens / API Keys",
+                "Backend"
+            ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1047,6 +1166,12 @@
             "id": "A.025",
             "name": "Vehicle-to-Cloud (V2C) PKI Identity Certificate",
             "description": "Cryptographic identity document facilitating transport encryption (mTLS) and ensuring mutual authentication between vehicle endpoint nodes and OEM backend infrastructures.",
+            "metadata": [
+                "gRPC / REST",
+                "TLS / DTLS",
+                "PKI / Certificates",
+                "Backend"
+            ],
             "domain": "Telematics",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1089,6 +1214,13 @@
             "id": "A.026",
             "name": "Service-Oriented Architecture (SOA) Registry Middleware",
             "description": "Dynamic service discovery and routing framework coordinating inter-process messaging (e.g., SOME/IP, DDS) across high-performance compute architectures and Ethernet boundaries.",
+            "metadata": [
+                "Automotive Ethernet",
+                "SOME/IP",
+                "DDS",
+                "Middleware",
+                "App / Service"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1131,6 +1263,14 @@
             "id": "A.027",
             "name": "Containerized Service Encapsulation Profile",
             "description": "Encapsulated user-space computing instances (e.g., Docker, LXC) isolating infotainment or telematics software services from the core hypervisor/kernel layers.",
+            "metadata": [
+                "Cellular",
+                "Hypervisor",
+                "Container",
+                "App / Service",
+                "Kernel / Driver",
+                "OTA"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1174,6 +1314,11 @@
             "id": "A.028",
             "name": "Diagnostic Security Access Authentication Secrets",
             "description": "Seed/Key calculation algorithms and fixed secret arrays embedded within node firmware to authenticate privileged UDS diagnostic sessions (e.g., Service $27, Service $29).",
+            "metadata": [
+                "UDS",
+                "App / Service",
+                "Seeds / RoT Data"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1217,6 +1362,15 @@
             "id": "A.029",
             "name": "Third-Party API Keys & Service Credentials",
             "description": "Static API keys or shared secrets hardcoded or provisioned in the Infotainment/Telematics systems to authenticate outbound requests to third-party cloud services (e.g., mapping providers, weather APIs, streaming media).",
+            "metadata": [
+                "Cellular",
+                "gRPC / REST",
+                "App / Service",
+                "Passwords / PINs",
+                "Tokens / API Keys",
+                "Backend",
+                "OTA"
+            ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
                 "Confidentiality"
@@ -1259,6 +1413,11 @@
             "id": "A.030",
             "name": "Physical Key RF Rolling Code Seed Matrix",
             "description": "Secret seed tracking parameters dynamically synchronizing cryptographically shifting authorization codes for physical access control modules.",
+            "metadata": [
+                "LF / RF",
+                "Transceiver / PHY",
+                "Seeds / RoT Data"
+            ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1301,6 +1460,15 @@
             "id": "A.031",
             "name": "Trust Anchor / OEM Root Certificate",
             "description": "The foundational public root certificate or hardware-pinned public key hash used by secure bootloaders and update managers to cryptographically verify the OEM's signature on all incoming software.",
+            "metadata": [
+                "Bootloader",
+                "Secure Boot",
+                "PKI / Certificates",
+                "Asymmetric Keys",
+                "Hashes",
+                "Digital Signatures",
+                "Passwords / PINs"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1342,6 +1510,11 @@
             "id": "A.032",
             "name": "EVSE Plug & Charge Billing Credentials",
             "description": "Provisioning and contract certificates (e.g., ISO 15118) stored within the vehicle's charge controller to negotiate automatic cloud authentication and financial billing at charging stations.",
+            "metadata": [
+                "gRPC / REST",
+                "PKI / Certificates",
+                "Backend"
+            ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1385,6 +1558,13 @@
             "id": "A.033",
             "name": "V2X Cooperative ITS Pseudonym Certificates",
             "description": "Short-lived cryptographic certificates used to sign outgoing V2X Cooperative Awareness Messages (CAM), rotating frequently to protect the driver from spatial tracking.",
+            "metadata": [
+                "V2X",
+                "Kernel / Driver",
+                "PKI / Certificates",
+                "Seeds / RoT Data",
+                "OTA"
+            ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1428,6 +1608,10 @@
             "id": "A.034",
             "name": "Global Positioning & Time Sync Data Flow",
             "description": "Live spatial coordinates, time synchronization references, and velocity vectors streaming from satellite receivers to navigation displays and ADAS perception fusion domains.",
+            "metadata": [
+                "HDMI / DisplayPort",
+                "Container"
+            ],
             "domain": "ADAS",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1471,6 +1655,14 @@
             "id": "A.035",
             "name": "Secure Tunnel & VPN Security Associations",
             "description": "Dynamic encryption keys, security parameter indexes (SPI), and network policies maintaining protected telemetry pipelines between the vehicle's edge and OEM backends.",
+            "metadata": [
+                "SPI / I2C / I3C",
+                "gRPC / REST",
+                "SoC",
+                "Container",
+                "Seeds / RoT Data",
+                "Backend"
+            ],
             "domain": "Telematics",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1514,6 +1706,11 @@
             "id": "A.036",
             "name": "Firmware Baseline Integrity Manifest / SBOM",
             "description": "Cryptographically signed inventory manifests and binary component hashes stored locally to verify the validity of the software stack prior to executing updates.",
+            "metadata": [
+                "Config / Calibration File",
+                "HSM / SHE",
+                "Hashes"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity"
@@ -1556,6 +1753,10 @@
             "id": "A.037",
             "name": "Premium Feature Activation Entitlement Tokens",
             "description": "Cryptographic tokens parsed by vehicle gateways or zonal hubs to selectively unlock optional, paid vehicle capabilities (e.g., heated seats, advanced autopilot, increased acceleration).",
+            "metadata": [
+                "HPC / Zonal Controller",
+                "Tokens / API Keys"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -1600,6 +1801,12 @@
             "id": "A.038",
             "name": "Advanced Diagnostic Authentication Certificates",
             "description": "Asymmetric credentials (e.g., ISO 14229-1 AP) used to securely negotiate access rights with authorized dealership and engineering diagnostic tools.",
+            "metadata": [
+                "UDS",
+                "PKI / Certificates",
+                "Symmetric Keys",
+                "Asymmetric Keys"
+            ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1643,6 +1850,14 @@
             "id": "A.039",
             "name": "Central High-Performance Compute (HPC) Platform",
             "description": "Physical core compute hardware engine housing multi-core asymmetric SoCs, neural processing blocks, and high-speed switching fabrics characteristic of modern Zonal and Consolidated Domain layouts.",
+            "metadata": [
+                "SoC",
+                "HPC / Zonal Controller",
+                "GPU / NPU",
+                "Transceiver / PHY",
+                "Symmetric Keys",
+                "Asymmetric Keys"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Availability",
@@ -1685,6 +1900,10 @@
             "id": "A.040",
             "name": "ADAS / Automated Driving Compute Node",
             "description": "High-throughput safety hardware platform hosting perception hardware acceleration matrices, GPUs, and decision-making ASIL-D modules.",
+            "metadata": [
+                "MCU",
+                "GPU / NPU"
+            ],
             "domain": "ADAS",
             "cybersecurityProperties": [
                 "Availability",
@@ -1727,6 +1946,13 @@
             "id": "A.041",
             "name": "Cockpit / Infotainment Domain Controller",
             "description": "The primary hardware unit driving high-level rich operating systems, passenger displays, connectivity radios, and third-party application spaces.",
+            "metadata": [
+                "HDMI / DisplayPort",
+                "MCU",
+                "HPC / Zonal Controller",
+                "App / Service",
+                "OTA"
+            ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
                 "Availability"
@@ -1767,6 +1993,12 @@
             "id": "A.042",
             "name": "Central Gateway (CGW) Module",
             "description": "Physical routing backbone or network processing element orchestrating diagnostics translation and legacy frame conversions across separate structural domain buses.",
+            "metadata": [
+                "UDS",
+                "MCU",
+                "Transceiver / PHY",
+                "Middleware"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Availability",
@@ -1809,6 +2041,9 @@
             "id": "A.043",
             "name": "High-Voltage Battery Management System (BMS) Logic",
             "description": "Algorithms governing cell balancing, thermal management bounds, and high-voltage contactor isolation for the primary propulsion battery pack.",
+            "metadata": [
+                "App / Service"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1852,6 +2087,11 @@
             "id": "A.044",
             "name": "Powertrain & Chassis Actuation Command Flow",
             "description": "High-priority, deterministic network traffic carrying critical steering angle, braking force, and motor torque setpoints to physical control actuators.",
+            "metadata": [
+                "Sensor / Actuator",
+                "Transceiver / PHY",
+                "TEE"
+            ],
             "domain": "Chassis",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1895,6 +2135,12 @@
             "id": "A.045",
             "name": "Diagnostic Trouble Code (DTC) & OBD State Data",
             "description": "Data records representing vehicle component health, emissions faults, and active safety system errors, readable via physical tools or remote telemetry.",
+            "metadata": [
+                "SENT / PSI5",
+                "UDS",
+                "Transceiver / PHY",
+                "Config / Calibration File"
+            ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Integrity",
@@ -1938,6 +2184,13 @@
             "id": "A.046",
             "name": "Zonal Aggregator & Smart I/O Hub Module",
             "description": "Physical localized zonal controllers acting as smart concentration nodes, converting local sensor/actuator analog lines directly to Ethernet serialization streams.",
+            "metadata": [
+                "Automotive Ethernet",
+                "MCU",
+                "HPC / Zonal Controller",
+                "Sensor / Actuator",
+                "Transceiver / PHY"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Availability",
@@ -1980,6 +2233,11 @@
             "id": "A.047",
             "name": "Real-Time Edge Electronic Control Unit (ECU)",
             "description": "Physical dedicated single-function microcontroller handling low-latency loops (characteristic of distributed Classic architectures or physical end-nodes in Zonal layouts).",
+            "metadata": [
+                "MCU",
+                "HPC / Zonal Controller",
+                "Transceiver / PHY"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Availability",
@@ -2022,6 +2280,10 @@
             "id": "A.048",
             "name": "Network Time Synchronization Data Flow",
             "description": "Precision clock synchronization traffic (gPTP / IEEE 802.1AS) distributed across Ethernet backbones to ensure time-deterministic task scheduling.",
+            "metadata": [
+                "Automotive Ethernet",
+                "Middleware"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2065,6 +2327,12 @@
             "id": "A.049",
             "name": "Intelligent Power Distribution Profile",
             "description": "Dynamic configuration matrix and logic parameters handling solid-state eFuse switches over physical zonal power distribution rings.",
+            "metadata": [
+                "HPC / Zonal Controller",
+                "Transceiver / PHY",
+                "eFuse / OTP",
+                "Config / Calibration File"
+            ],
             "domain": "Body",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2107,6 +2375,14 @@
             "id": "A.050",
             "name": "ECU Calibration Data and Performance Maps",
             "description": "Dynamic lookup tables and mechanical alignment boundary constraints flashed during servicing or manufacturing. Manages physical thresholds like engine torque output patterns or camera dead-zone pixels.",
+            "metadata": [
+                "XCP / CCP",
+                "Sensor / Actuator",
+                "Transceiver / PHY",
+                "NVRAM",
+                "Config / Calibration File",
+                "HSM / SHE"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity"
@@ -2148,6 +2424,14 @@
             "id": "A.051",
             "name": "Secure Debug Challenge-Response Tokens",
             "description": "Cryptographic tokens generated on OEM server architectures used by authorized diagnostic tools to temporarily open physical JTAG debug lines or root shells for system remediation.",
+            "metadata": [
+                "UDS",
+                "JTAG / cJTAG",
+                "Transceiver / PHY",
+                "HSM / SHE",
+                "Tokens / API Keys",
+                "Backend"
+            ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -2190,6 +2474,13 @@
             "id": "A.052",
             "name": "Internal Secure Communication (SecOC / MACsec) Keys",
             "description": "Symmetric cryptographic keys (pre-shared or dynamically derived via KEM) used by the vehicle's internal gateways and ECUs to authenticate intra-vehicle CAN traffic (SecOC) or encrypt Ethernet links (MACsec).",
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "SecOC",
+                "MACsec / IPsec",
+                "Symmetric Keys"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
@@ -2233,6 +2524,14 @@
             "id": "A.053",
             "name": "System Trusted Certificate Authority (CA) Store",
             "description": "The repository of trusted root and intermediate certificates used by the vehicle's operating systems (Linux/QNX/Android) to validate outbound internet connections (TLS) and third-party app signatures.",
+            "metadata": [
+                "RTOS",
+                "HLOS",
+                "App / Service",
+                "TLS / DTLS",
+                "PKI / Certificates",
+                "Digital Signatures"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity"
@@ -2274,6 +2573,10 @@
             "id": "A.054",
             "name": "Powertrain / Vehicle Control Unit (VCU) Logic",
             "description": "Core software application binaries managing propulsion energy distribution, torque vectoring, transmission shifting, and motor/engine orchestration.",
+            "metadata": [
+                "Sensor / Actuator",
+                "App / Service"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2316,6 +2619,11 @@
             "id": "A.055",
             "name": "Chassis & Dynamic Stability Control Logic",
             "description": "Safety-critical application software calculating and commanding anti-lock braking (ABS), electronic stability programs (ESP), and active suspension/steering adjustments.",
+            "metadata": [
+                "Sensor / Actuator",
+                "App / Service",
+                "TEE"
+            ],
             "domain": "Chassis",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2358,6 +2666,13 @@
             "id": "A.056",
             "name": "Telematics Communication Routing Daemon",
             "description": "The software service running on the TCU or Gateway responsible for managing MQTT/HTTPS connections to the backend and securely parsing/routing authorized cloud commands into the internal vehicle network.",
+            "metadata": [
+                "Cellular",
+                "gRPC / REST",
+                "App / Service",
+                "Backend",
+                "MQTT"
+            ],
             "domain": "Telematics",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2400,6 +2715,11 @@
             "id": "A.057",
             "name": "CAN / CAN-FD In-Vehicle Network Data Flow",
             "description": "Deterministic, frame-based network traffic carrying real-time operational state, diagnostic commands, and control metrics across distributed vehicle domains (Powertrain, Chassis, Body).",
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "UDS",
+                "Middleware"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2443,6 +2763,11 @@
             "id": "A.058",
             "name": "Automotive Ethernet Backbone Data Flow",
             "description": "High-bandwidth, IP-based network traffic forming the backbone of Zonal and HPC architectures, carrying SOA payloads, heavy sensor data (video/LiDAR), and inter-domain communications.",
+            "metadata": [
+                "Automotive Ethernet",
+                "HPC / Zonal Controller",
+                "Sensor / Actuator"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2486,6 +2811,13 @@
             "id": "A.059",
             "name": "Cloud Backend & API Gateway Configuration",
             "description": "Infrastructure definitions, API rate limits, load balancer routing rules, and cloud firewall configurations governing the OEM telematics and connected services backend environments.",
+            "metadata": [
+                "Cellular",
+                "gRPC / REST",
+                "App / Service",
+                "Config / Calibration File",
+                "Backend"
+            ],
             "domain": "Backend",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2530,6 +2862,10 @@
             "id": "A.060",
             "name": "ADAS Camera, Radar, and LiDAR Sensor Array",
             "description": "Physical perception sensors capturing the external vehicle environment to feed machine learning algorithms and active safety functions.",
+            "metadata": [
+                "Sensor / Actuator",
+                "Transceiver / PHY"
+            ],
             "domain": "ADAS",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2574,6 +2910,12 @@
             "id": "A.061",
             "name": "Powertrain & Chassis Electromechanical Actuators",
             "description": "Physical edge hardware components (e.g., electronic throttle bodies, brake calipers, steering motors) responsible for actualizing vehicle movement commands.",
+            "metadata": [
+                "Sensor / Actuator",
+                "Transceiver / PHY",
+                "TEE",
+                "Seeds / RoT Data"
+            ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
@@ -2617,6 +2959,12 @@
             "id": "A.062",
             "name": "In-Cabin Microphones & Multimedia Capture Devices",
             "description": "Physical multimedia peripherals used for voice commands, hands-free calling, and driver monitoring systems.",
+            "metadata": [
+                "Audio Jacks / A2B",
+                "Sensor / Actuator",
+                "Transceiver / PHY",
+                "Kernel / Driver"
+            ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
                 "Confidentiality",

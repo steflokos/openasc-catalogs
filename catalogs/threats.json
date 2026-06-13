@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "threats": [
         {
             "id": "T.01",
@@ -49,6 +49,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MAC / HMAC / CMAC",
+                "Digital Signatures",
+                "PKI / Certificates"
             ]
         },
         {
@@ -86,14 +91,14 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Data",
-                        "domain": "Powertrain"
+                        "action": "Intercept",
+                        "assetClass": "Network",
+                        "domain": "External"
                     },
                     {
                         "action": "Elevate",
                         "assetClass": "Crypto",
-                        "domain": "Powertrain"
+                        "domain": "Telematics"
                     }
                 ]
             },
@@ -103,6 +108,14 @@
                     "assetClass": "Data",
                     "domain": "Telematics"
                 }
+            ],
+            "metadata": [
+                "TLS / DTLS",
+                "PKI / Certificates",
+                "Automotive Ethernet",
+                "Wi-Fi",
+                "Cellular",
+                "MACsec / IPsec"
             ]
         },
         {
@@ -149,6 +162,11 @@
                     "assetClass": "Executable",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Passwords / PINs",
+                "Tokens / API Keys",
+                "App / Service"
             ]
         },
         {
@@ -208,6 +226,13 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Secure Boot",
+                "Digital Signatures",
+                "Bootloader",
+                "UDS",
+                "App / Service"
             ]
         },
         {
@@ -261,6 +286,13 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MCU",
+                "SoC",
+                "Transceiver / PHY",
+                "Secure Boot",
+                "HSM / SHE"
             ]
         },
         {
@@ -318,6 +350,12 @@
                     "assetClass": "Executable",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "gRPC / REST",
+                "App / Service",
+                "TLS / DTLS",
+                "Tokens / API Keys"
             ]
         },
         {
@@ -364,6 +402,13 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "LIN",
+                "FlexRay",
+                "SecOC"
             ]
         },
         {
@@ -411,6 +456,11 @@
                     "assetClass": "Interface",
                     "domain": "Telematics"
                 }
+            ],
+            "metadata": [
+                "GNSS",
+                "Satellite",
+                "Sensor / Actuator"
             ]
         },
         {
@@ -448,8 +498,8 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Modify",
-                        "assetClass": "Compute",
+                        "action": "Inject",
+                        "assetClass": "Interface",
                         "domain": "External"
                     }
                 ]
@@ -460,6 +510,11 @@
                     "assetClass": "Peripheral",
                     "domain": "ADAS"
                 }
+            ],
+            "metadata": [
+                "Sensor / Actuator",
+                "ML Model / Weights",
+                "GPU / NPU"
             ]
         },
         {
@@ -494,13 +549,13 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Data",
+                        "action": "Intercept",
+                        "assetClass": "Network",
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Elevate",
-                        "assetClass": "Crypto",
+                        "action": "Inject",
+                        "assetClass": "Network",
                         "domain": "Powertrain"
                     }
                 ]
@@ -511,6 +566,12 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Nonces / IVs",
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "SecOC"
             ]
         },
         {
@@ -548,6 +609,11 @@
                         "action": "Extract",
                         "assetClass": "Crypto",
                         "domain": "External"
+                    },
+                    {
+                        "action": "Extract",
+                        "assetClass": "Crypto",
+                        "domain": "Powertrain"
                     }
                 ]
             },
@@ -555,8 +621,14 @@
                 {
                     "action": "Execute",
                     "assetClass": "Network",
-                    "domain": "External"
+                    "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "UDS",
+                "DoIP",
+                "Seeds / RoT Data",
+                "Passwords / PINs"
             ]
         },
         {
@@ -606,6 +678,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Hashes",
+                "Digital Signatures",
+                "MAC / HMAC / CMAC"
             ]
         },
         {
@@ -651,6 +728,12 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Memory",
+                "RTOS",
+                "HLOS",
+                "Kernel / Driver"
             ]
         },
         {
@@ -701,6 +784,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "NVRAM",
+                "Config / Calibration File",
+                "Memory"
             ]
         },
         {
@@ -757,6 +845,12 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Bootloader",
+                "Secure Boot",
+                "Memory",
+                "Digital Signatures"
             ]
         },
         {
@@ -807,6 +901,11 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Middleware",
+                "UDS"
             ]
         },
         {
@@ -859,6 +958,12 @@
                     "assetClass": "Compute",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "SoC",
+                "MCU",
+                "Secure Boot",
+                "Bootloader"
             ]
         },
         {
@@ -910,6 +1015,13 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "UDS",
+                "SOME/IP",
+                "Transceiver / PHY"
             ]
         },
         {
@@ -956,6 +1068,11 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Memory",
+                "SPI / I2C / I3C",
+                "Diagnostic Pads"
             ]
         },
         {
@@ -1003,6 +1120,11 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Memory",
+                "eFuse / OTP",
+                "Diagnostic Pads"
             ]
         },
         {
@@ -1055,6 +1177,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Config / Calibration File",
+                "NVRAM",
+                "XCP / CCP"
             ]
         },
         {
@@ -1109,6 +1236,10 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Digital Signatures",
+                "PKI / Certificates"
             ]
         },
         {
@@ -1161,6 +1292,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "NVRAM",
+                "Memory",
+                "UDS"
             ]
         },
         {
@@ -1212,6 +1348,12 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "V2X",
+                "Digital Signatures",
+                "PKI / Certificates",
+                "Backend"
             ]
         },
         {
@@ -1256,6 +1398,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Symmetric Keys",
+                "Asymmetric Keys",
+                "TLS / DTLS"
             ]
         },
         {
@@ -1308,6 +1455,13 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "LIN",
+                "FlexRay",
+                "OBD-II"
             ]
         },
         {
@@ -1369,6 +1523,12 @@
                     "assetClass": "Data",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "Wi-Fi",
+                "Bluetooth / BLE",
+                "TLS / DTLS"
             ]
         },
         {
@@ -1419,6 +1579,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "HLOS",
+                "Infotainment"
             ]
         },
         {
@@ -1454,7 +1619,7 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Extract",
+                        "action": "Intercept",
                         "assetClass": "Compute",
                         "domain": "Powertrain"
                     }
@@ -1466,6 +1631,14 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "SoC",
+                "MCU",
+                "Crypto",
+                "TRNG / PRNG",
+                "Symmetric Keys",
+                "Asymmetric Keys"
             ]
         },
         {
@@ -1516,6 +1689,11 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Memory",
+                "SoC",
+                "JTAG / cJTAG"
             ]
         },
         {
@@ -1567,6 +1745,10 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Memory",
+                "SPI / I2C / I3C"
             ]
         },
         {
@@ -1616,6 +1798,10 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Network"
             ]
         },
         {
@@ -1663,6 +1849,11 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "Transceiver / PHY"
             ]
         },
         {
@@ -1713,6 +1904,13 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MCU",
+                "SoC",
+                "HPC / Zonal Controller",
+                "RTOS",
+                "HLOS"
             ]
         },
         {
@@ -1759,8 +1957,15 @@
                 {
                     "action": "Disrupt",
                     "assetClass": "Interface",
-                    "domain": "Powertrain"
+                    "domain": "Telematics"
                 }
+            ],
+            "metadata": [
+                "GNSS",
+                "Cellular",
+                "Wi-Fi",
+                "Bluetooth / BLE",
+                "V2X"
             ]
         },
         {
@@ -1807,6 +2012,11 @@
                     "assetClass": "Executable",
                     "domain": "Backend"
                 }
+            ],
+            "metadata": [
+                "gRPC / REST",
+                "Backend",
+                "App / Service"
             ]
         },
         {
@@ -1872,6 +2082,12 @@
                     "assetClass": "Compute",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "NVRAM",
+                "Bootloader",
+                "Memory",
+                "Config / Calibration File"
             ]
         },
         {
@@ -1925,6 +2141,11 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Kernel / Driver",
+                "Hypervisor"
             ]
         },
         {
@@ -1977,6 +2198,11 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "RTOS",
+                "HLOS",
+                "Kernel / Driver"
             ]
         },
         {
@@ -2036,6 +2262,11 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Hypervisor",
+                "TEE",
+                "HSM / SHE"
             ]
         },
         {
@@ -2083,6 +2314,12 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Container",
+                "App / Service",
+                "HLOS",
+                "Middleware"
             ]
         },
         {
@@ -2141,6 +2378,12 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "JTAG / cJTAG",
+                "SWD",
+                "UART / USART",
+                "Diagnostic Pads"
             ]
         },
         {
@@ -2202,13 +2445,18 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Passwords / PINs",
+                "App / Service",
+                "Config / Calibration File"
             ]
         },
         {
             "id": "T.07",
             "name": "Reconnaissance",
             "description": "The adversary is trying to gather information they can use to plan future operations. Reconnaissance consists of active or passive information gathering to support an attack on the vehicle.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0000"
@@ -2250,13 +2498,16 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service"
             ]
         },
         {
             "id": "T.07.1",
             "name": "Gather Target Information - from Other",
             "description": "The adversary gathers information by directly targeting sources that do not involve the vehicle itself, such as OEM supply chains, surface/dark web, engineering manuals, or breach reports.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.07",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2302,13 +2553,18 @@
                     "assetClass": "Data",
                     "domain": "Backend"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "gRPC / REST",
+                "Backend"
             ]
         },
         {
             "id": "T.07.2",
             "name": "Gather Target Information - from Vehicle",
             "description": "The adversary gathers information by targeting a vehicle's hardware and/or communication environment to extract firmware, map network topologies, or identify component vulnerabilities.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.07",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2362,13 +2618,19 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Diagnostic Pads",
+                "OBD-II",
+                "JTAG / cJTAG",
+                "UDS"
             ]
         },
         {
             "id": "T.08",
             "name": "Manipulate Environment",
             "description": "The adversary manipulates the physical environment or RF spectrum surrounding a vehicle to confuse its sensors, intercept traffic, or force degraded operational states.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0001"
@@ -2422,13 +2684,17 @@
                     "assetClass": "Interface",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Sensor / Actuator",
+                "LF / RF"
             ]
         },
         {
             "id": "T.08.1",
             "name": "Adversarial Machine Learning",
             "description": "Supplying deceptive inputs (e.g., physically altered stop signs, adversarial noise patches) to cause vehicle perception systems to misclassify objects or respond inappropriately to road conditions.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2464,8 +2730,8 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Modify",
-                        "assetClass": "Compute",
+                        "action": "Inject",
+                        "assetClass": "Interface",
                         "domain": "External"
                     }
                 ]
@@ -2481,13 +2747,18 @@
                     "assetClass": "Data",
                     "domain": "ADAS"
                 }
+            ],
+            "metadata": [
+                "ML Model / Weights",
+                "GPU / NPU",
+                "Sensor / Actuator"
             ]
         },
         {
             "id": "T.08.2",
             "name": "Analog Sensor Attacks",
             "description": "Disrupting availability or spoofing inputs of analog sensors (e.g., shining a laser into a Lidar receiver, transmitting ultrasonic noise) without directly altering the vehicle's mechanics.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2520,8 +2791,8 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Modify",
-                        "assetClass": "Compute",
+                        "action": "Inject",
+                        "assetClass": "Interface",
                         "domain": "External"
                     }
                 ]
@@ -2537,13 +2808,16 @@
                     "assetClass": "Peripheral",
                     "domain": "ADAS"
                 }
+            ],
+            "metadata": [
+                "Sensor / Actuator"
             ]
         },
         {
             "id": "T.08.3",
             "name": "Downgrade to Insecure Protocols",
             "description": "Jamming modern secure frequencies (e.g., 4G/5G, WPA3) to force the vehicle's wireless interfaces to failover to older, vulnerable legacy protocols (e.g., 2G GSM, WEP) to facilitate eavesdropping.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2593,13 +2867,18 @@
                     "assetClass": "Interface",
                     "domain": "Infotainment"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "Wi-Fi",
+                "Bluetooth / BLE"
             ]
         },
         {
             "id": "T.08.4",
             "name": "Jamming or Denial of Service",
             "description": "Emitting excessive RF noise to block Wi-Fi, cellular, GPS, or key fobs, preventing the vehicle from communicating with external entities.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2644,13 +2923,20 @@
                     "assetClass": "Interface",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "Wi-Fi",
+                "GNSS",
+                "Bluetooth / BLE",
+                "LF / RF"
             ]
         },
         {
             "id": "T.08.5",
             "name": "Manipulate Communication",
             "description": "Intercepting and altering network traffic between the vehicle and a remote server/mobile device (MitM) by exploiting insecure or improperly implemented TLS/encryption schemas.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2705,13 +2991,19 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "TLS / DTLS",
+                "Cellular",
+                "Wi-Fi",
+                "PKI / Certificates"
             ]
         },
         {
             "id": "T.08.6",
             "name": "Relay Communications",
             "description": "Relaying RF communications to make a trusted device appear physically closer to the vehicle than it is, bypassing distance-bound security assumptions (e.g., Key Fob PKES relay theft).",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2762,13 +3054,19 @@
                     "assetClass": "Executable",
                     "domain": "Body"
                 }
+            ],
+            "metadata": [
+                "LF / RF",
+                "Bluetooth / BLE",
+                "UWB",
+                "NFC / RFID"
             ]
         },
         {
             "id": "T.08.7",
             "name": "Rogue Cellular Base Station",
             "description": "Setting up a malicious cellular eNodeB/femtocell (IMSI Catcher) to trick the vehicle's telematics unit into connecting, allowing eavesdropping or manipulation of backend communications.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2819,13 +3117,16 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Cellular"
             ]
         },
         {
             "id": "T.08.8",
             "name": "Rogue Wi-Fi Access Point",
             "description": "Deploying unauthorized Wi-Fi access points to intercept connections from the vehicle's infotainment system or diagnostic interfaces to execute network-based attacks.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.08",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2876,13 +3177,16 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Wi-Fi"
             ]
         },
         {
             "id": "T.09",
             "name": "Initial Access",
             "description": "Adapted from MITRE ATT&CK: The adversary is trying to get into the vehicle network. The initial access tactic represents the vectors adversaries use to gain an initial foothold onto a vehicle.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0002"
@@ -2936,13 +3240,16 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Interface"
             ]
         },
         {
             "id": "T.09.1",
             "name": "Aftermarket, Customer, or Dealer Equipment",
             "description": "Adversaries may use aftermarket, customer, or dealer equipment (e.g., paired smartphones, fleet management dongles, dealer diagnostic tools) as an initial access point into the vehicle.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -2992,13 +3299,19 @@
                     "assetClass": "Executable",
                     "domain": "Infotainment"
                 }
+            ],
+            "metadata": [
+                "OBD-II",
+                "Bluetooth / BLE",
+                "USB",
+                "Cellular"
             ]
         },
         {
             "id": "T.09.2",
             "name": "Browser Compromise",
             "description": "A browser compromise is when an adversary gains access to a system through a user visiting a website. The user's web browser is targeted for exploitation (e.g., WebKit/V8 engine flaws).",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3055,13 +3368,19 @@
                     "assetClass": "Executable",
                     "domain": "Infotainment"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "HLOS",
+                "Wi-Fi",
+                "Cellular"
             ]
         },
         {
             "id": "T.09.3",
             "name": "Exploit Via Radio Interface",
             "description": "The vehicle may be targeted for exploitation through its interface to cellular networks or other radio interfaces via baseband vulnerabilities or malicious SMS parsing.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3114,13 +3433,19 @@
                     "assetClass": "Executable",
                     "domain": "Telematics"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "Bluetooth / BLE",
+                "Wi-Fi",
+                "Transceiver / PHY"
             ]
         },
         {
             "id": "T.09.4",
             "name": "Exploit Via Removable Media",
             "description": "Adversaries may gain initial access by copying malware to removable media (e.g., USB drive) and taking advantage of automatic parsing of files (e.g., media parsers) when inserted.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3171,13 +3496,18 @@
                     "assetClass": "Executable",
                     "domain": "Infotainment"
                 }
+            ],
+            "metadata": [
+                "USB",
+                "Media Slots",
+                "App / Service"
             ]
         },
         {
             "id": "T.09.5",
             "name": "Malicious App",
             "description": "Malicious applications could be used by adversaries to gain a presence on a vehicle. This includes evading vetting in official stores or distributing via third-party repositories.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3232,13 +3562,17 @@
                     "assetClass": "Executable",
                     "domain": "Infotainment"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "HLOS"
             ]
         },
         {
             "id": "T.09.6",
             "name": "Phishing",
             "description": "Adversaries may send phishing messages to gain access to victim credentials or deploy malicious code. This relies heavily on social engineering the vehicle owner or fleet manager.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3288,13 +3622,17 @@
                     "assetClass": "Crypto",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Passwords / PINs"
             ]
         },
         {
             "id": "T.09.7",
             "name": "Physical Modification",
             "description": "The adversary can make physical modifications to the vehicle's ECUs, wiring harnesses, or swap out legitimate ECUs for malicious ones to gain initial access.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3349,13 +3687,18 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MCU",
+                "SoC",
+                "Transceiver / PHY"
             ]
         },
         {
             "id": "T.09.8",
             "name": "Supply Chain Compromise",
             "description": "Adversaries may manipulate products or product delivery mechanisms prior to receipt by a final consumer (e.g., compromised OEM software repositories or vendor hardware).",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.09",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3411,13 +3754,18 @@
                     "assetClass": "Executable",
                     "domain": "Infotainment"
                 }
+            ],
+            "metadata": [
+                "Bootloader",
+                "Executable",
+                "App / Service"
             ]
         },
         {
             "id": "T.10",
             "name": "Execution",
             "description": "The adversary is trying to run malicious code. Execution involves infiltrating an ECU's memory space, where it can manipulate data and instructions to carry out unauthorized operations.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0003"
@@ -3473,13 +3821,16 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Executable"
             ]
         },
         {
             "id": "T.10.1",
             "name": "Command and Scripting Interpreter",
             "description": "Adversaries may abuse command and script interpreters (e.g., Python, Javascript, bash) to execute arbitrary commands, scripts, or binaries within the vehicle's environment.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.10",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3530,13 +3881,18 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "HLOS",
+                "Middleware"
             ]
         },
         {
             "id": "T.10.2",
             "name": "Native API",
             "description": "Adversaries may directly interact with the native OS application programming interface (API) to execute behaviors, calling low-level OS services involving hardware/devices, memory, and processes.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.10",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3587,13 +3943,18 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Kernel / Driver",
+                "HLOS",
+                "RTOS"
             ]
         },
         {
             "id": "T.10.3",
             "name": "Abuse Standard Diagnostic Protocol to Temporarily Modify Execution",
             "description": "Using standard diagnostic protocols to write directly to RAM (e.g., UDS WriteMemoryByAddress). This alters execution flow or overrides sensitive variables without persistent flashing.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.10",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3649,13 +4010,17 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "UDS",
+                "DoIP"
             ]
         },
         {
             "id": "T.11",
             "name": "Persistence",
-            "description": "The adversary is trying to maintain their foothold. Persistence consists of techniques that adversaries use to keep access to vehicle systems across restarts, changed credentials, and other interruptions that could cut off their access. Techniques used for persistence include any access, action, or configuration changes that let them maintain their foothold on vehicle systems, such as replacing or hijacking legitimate code or adding startup code. Adapted from MITRE ATT&CK.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "description": "The adversary is trying to maintain their foothold. Persistence consists of techniques that adversaries use to keep access to vehicle systems across restarts, changed credentials, and other interruptions that could cut off their access.",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0004"
@@ -3705,13 +4070,16 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Executable"
             ]
         },
         {
             "id": "T.11.1",
             "name": "Abuse Standard Diagnostic Protocol for Persistence",
             "description": "The adversary can attempt to use standard diagnostic protocols to persist their presence on an ECU. For example, UDS' capabilities for firmware updates and 'download-and-execute' can be abused by an adversary to achieve persistence.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.11",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3771,13 +4139,20 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "UDS",
+                "DoIP",
+                "Bootloader",
+                "Secure Boot",
+                "Seeds / RoT Data"
             ]
         },
         {
             "id": "T.11.2",
             "name": "Disable Software Update",
             "description": "The adversary may disable or modify an ECU's software update mechanism so that it cannot be used to restore the device to an uncompromised state.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.11",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3834,13 +4209,18 @@
                     "assetClass": "Executable",
                     "domain": "Backend"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Config / Calibration File",
+                "LWM2M / OMA-DM"
             ]
         },
         {
             "id": "T.11.3",
             "name": "Modify OS Kernel, Boot Partition, or System Partition",
             "description": "If an adversary can escalate privileges, they may place malicious code in the system partition, kernel, or bootloader components where it evades detection and persists after device resets.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.11",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3894,13 +4274,20 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Bootloader",
+                "Secure Boot",
+                "Kernel / Driver",
+                "HLOS",
+                "RTOS"
             ]
         },
         {
             "id": "T.11.4",
             "name": "Modify Isolated Execution Environment",
             "description": "Using elevated privileges to place malicious code in the ECU's isolated execution environment (TrustZone, HSM, TEE, etc.) where the code can evade detection and monitor overall device behavior.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.11",
             "source": {
                 "name": "AutoISAC ATM",
@@ -3957,13 +4344,18 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "TEE",
+                "HSM / SHE",
+                "TPM / SE"
             ]
         },
         {
             "id": "T.11.5",
             "name": "Compromise Cryptographic Security",
             "description": "Adversaries compromise cryptographic mechanisms (e.g., exploiting weak algorithms, reusing nonces, or poor implementation) to bypass controls, establish persistent communication, or re-sign malicious firmware.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.11",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4020,13 +4412,19 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Digital Signatures",
+                "Symmetric Keys",
+                "Asymmetric Keys",
+                "PKI / Certificates"
             ]
         },
         {
             "id": "T.12",
             "name": "Privilege Escalation",
-            "description": "The adversary is trying to gain higher-level permissions. Privilege Escalation consists of techniques that adversaries use to gain higher-level permissions on an ECU. Common approaches are to take advantage of system weaknesses, misconfigurations, and vulnerabilities. Adapted from MITRE ATT&CK.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "description": "The adversary is trying to gain higher-level permissions. Privilege Escalation consists of techniques that adversaries use to gain higher-level permissions on an ECU. Common approaches are to take advantage of system weaknesses, misconfigurations, and vulnerabilities.",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0005"
@@ -4077,13 +4475,16 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Executable"
             ]
         },
         {
             "id": "T.12.1",
             "name": "Abuse Elevation Control Mechanism",
             "description": "Adversaries may circumvent mechanisms designed to control elevated privileges to gain higher-level permissions, taking advantage of built-in control mechanisms to escalate privileges on a system.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4131,13 +4532,17 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "HLOS"
             ]
         },
         {
             "id": "T.12.2",
             "name": "Exploit Co-Located Computing Device for Privilege Escalation",
             "description": "Adversaries may leverage their access on one computing device (e.g., a Wi-Fi/Bluetooth chip) to gain control of the primary operating system running on a separate chip (SoC) within the same ECU.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4189,13 +4594,20 @@
                     "assetClass": "Compute",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MCU",
+                "SoC",
+                "PCIe",
+                "SPI / I2C / I3C",
+                "UART / USART"
             ]
         },
         {
             "id": "T.12.3",
             "name": "Exploit OS Vulnerability",
             "description": "A malicious app can exploit unpatched vulnerabilities in the operating system to obtain escalated privileges.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4242,13 +4654,18 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "RTOS",
+                "Kernel / Driver"
             ]
         },
         {
             "id": "T.12.4",
             "name": "Exploit Isolated Execution Environment Vulnerability",
             "description": "Exploiting vulnerabilities in code running within an IEE/TEE (TrustZone, HSM, CAAM) to obtain privileges held by the environment, granting access to cryptographic keys or root-level operations.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4299,13 +4716,17 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "TEE",
+                "HSM / SHE"
             ]
         },
         {
             "id": "T.12.5",
             "name": "Hardware Fault Injection",
             "description": "Attempting fault injection attacks (voltage/clock glitching) to elevate privileges by flipping bits that control authentication states, bypassing secure boot or debug interfaces.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4353,13 +4774,18 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "SoC",
+                "MCU",
+                "Secure Boot"
             ]
         },
         {
             "id": "T.12.6",
             "name": "Process Injection",
             "description": "Injecting code into the address space of a separate live process to evade defenses and potentially elevate privileges by masking execution under a highly-privileged legitimate process.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4410,13 +4836,18 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "App / Service",
+                "Middleware"
             ]
         },
         {
             "id": "T.12.7",
             "name": "Reprogram Co-Located Computing Device for Privilege Escalation",
             "description": "Elevating privileges by using access on a primary computing device (SoC) to reprogram a secondary microcontroller (e.g., a CAN MCU) on the same ECU.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4467,13 +4898,18 @@
                     "assetClass": "Compute",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MCU",
+                "SoC",
+                "Bootloader"
             ]
         },
         {
             "id": "T.12.8",
             "name": "Compromise Cryptographic Security",
             "description": "Compromising cryptographic mechanisms to bypass privilege controls, allowing the attacker to elevate their session or extract keys necessary to authenticate as a higher-level user.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.12",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4529,13 +4965,19 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Symmetric Keys",
+                "Asymmetric Keys",
+                "Hashes",
+                "Digital Signatures"
             ]
         },
         {
             "id": "T.13",
             "name": "Defense Evasion",
             "description": "The adversary is attempting to bypass or manipulate security controls. This can include bypassing networking filtering, intrusion detection systems (IDS), and code integrity checks to undermine the protection measures in place.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0006"
@@ -4584,13 +5026,16 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Executable"
             ]
         },
         {
             "id": "T.13.1",
             "name": "Bypass Code Integrity Protections",
             "description": "Adversaries may seek to circumvent various code integrity protections (e.g., Secure Boot, signature checks) to install unauthorized firmware or software on the device.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.13",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4652,13 +5097,18 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Secure Boot",
+                "Digital Signatures",
+                "Hashes"
             ]
         },
         {
             "id": "T.13.2",
             "name": "Bypass Network Filtering",
             "description": "Adversaries may disable or modify network filters (firewalls, routing tables) to bypass controls limiting vehicle network usage, enabling lateral movement.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.13",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4708,13 +5158,18 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Config / Calibration File",
+                "IDS / IPS",
+                "MACsec / IPsec"
             ]
         },
         {
             "id": "T.13.3",
             "name": "Bypass UDS Security Access",
             "description": "Adversaries defeat the UDS 'Security Access' (0x27) mechanism by exploiting static seed/keys, weak PRNGs, or brute-forcing short secrets to unlock protected diagnostic routines.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.13",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4766,13 +5221,17 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "UDS",
+                "Seeds / RoT Data"
             ]
         },
         {
             "id": "T.13.4",
             "name": "Bypass Mandatory Access Control",
             "description": "Adversaries defeat MAC mechanisms (SELinux, AppArmor) by finding policy holes or exploiting kernel vulnerabilities, allowing disabled process isolation.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.13",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4823,13 +5282,17 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "Kernel / Driver"
             ]
         },
         {
             "id": "T.13.5",
             "name": "Compromise Cryptographic Security",
             "description": "Adversaries exploit cryptographic flaws (weak algorithms, timing leaks, poor padding) to bypass authenticity or confidentiality controls.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.13",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4885,13 +5348,19 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "PKI / Certificates",
+                "Digital Signatures",
+                "MAC / HMAC / CMAC",
+                "Symmetric Keys"
             ]
         },
         {
             "id": "T.14",
             "name": "Credential Access",
             "description": "The adversary is trying to steal vehicle network credentials. Credential Access consists of techniques for stealing vehicle network credentials like cryptographic tokens, keys, and passwords.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0007"
@@ -4935,13 +5404,16 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Crypto"
             ]
         },
         {
             "id": "T.14.1",
             "name": "Exploit Isolated Execution Environment Vulnerability",
             "description": "A malicious app or other vector exploits vulnerabilities in a TEE (TrustZone, HSM) to obtain privileges and access cryptographic keys or sensitive data.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -4994,13 +5466,19 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "TEE",
+                "HSM / SHE",
+                "Symmetric Keys",
+                "Asymmetric Keys"
             ]
         },
         {
             "id": "T.14.2",
             "name": "Capture SMS Message",
             "description": "A malicious application or intercepted baseband captures sensitive data sent via SMS, including authentication credentials or multi-factor authentication codes.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5050,13 +5528,17 @@
                     "assetClass": "Crypto",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "Tokens / API Keys"
             ]
         },
         {
             "id": "T.14.3",
             "name": "Input Capture",
             "description": "Adversaries capture user input via keyloggers or abused accessibility features to obtain credentials or PII from the user.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5111,13 +5593,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Passwords / PINs"
             ]
         },
         {
             "id": "T.14.4",
             "name": "Input Prompt",
             "description": "Adversaries mimic legitimate application prompts (e.g., overlay attacks) to trick the user into entering sensitive account credentials or PII.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5177,13 +5663,18 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Passwords / PINs",
+                "HLOS"
             ]
         },
         {
             "id": "T.14.5",
             "name": "Network Sniffing",
             "description": "Adversaries sniff vehicle network traffic (CAN, Ethernet) by placing an interface in promiscuous mode or using physical span ports to capture credentials or telemetry.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5236,13 +5727,19 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "Passwords / PINs",
+                "Tokens / API Keys"
             ]
         },
         {
             "id": "T.14.6",
             "name": "ECU Credential Dumping",
             "description": "Adversaries dump credentials (hashes or clear text passwords) from the operating system or secure enclaves to perform Lateral Movement.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5287,13 +5784,19 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Memory",
+                "NVRAM",
+                "Passwords / PINs",
+                "Hashes"
             ]
         },
         {
             "id": "T.14.7",
             "name": "Unsecured Credentials",
             "description": "Adversaries search compromised file systems for insecurely stored credentials (plaintext files, bash history, unprotected registry keys) to quickly escalate access.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5338,13 +5841,18 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Config / Calibration File",
+                "Passwords / PINs",
+                "Tokens / API Keys"
             ]
         },
         {
             "id": "T.14.8",
             "name": "URI Hijacking",
             "description": "Adversaries register malicious Uniform Resource Identifiers (URIs) to intercept sensitive data (e.g., OAuth tokens) passed between legitimate applications during Single Sign-On.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.14",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5394,13 +5902,17 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service",
+                "Tokens / API Keys"
             ]
         },
         {
             "id": "T.15",
             "name": "Discovery",
             "description": "The adversary is trying to figure out the vehicle environment. Discovery consists of techniques an adversary may use to gain knowledge about a vehicle's systems and its internal network.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0008"
@@ -5442,13 +5954,16 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Data"
             ]
         },
         {
             "id": "T.15.1",
             "name": "File and Directory Discovery",
             "description": "Adversaries enumerate files and directories or search specific locations of an ECU for sensitive information within a file system using standard OS utilities (ls, find).",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5493,13 +6008,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "Config / Calibration File"
             ]
         },
         {
             "id": "T.15.2",
             "name": "Location Tracking",
             "description": "An adversary could use a malicious or exploited application to surreptitiously track the vehicle's physical location through use of standard operating system APIs.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5547,13 +6066,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "GNSS",
+                "App / Service"
             ]
         },
         {
             "id": "T.15.3",
             "name": "Network Service Scanning",
             "description": "Adversaries attempt to get a listing of services running on a vehicle's ECUs using port scans (e.g., nmap) to identify vulnerable remote software.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5602,13 +6125,18 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Automotive Ethernet",
+                "SOME/IP",
+                "DDS"
             ]
         },
         {
             "id": "T.15.4",
             "name": "Process Discovery",
             "description": "Adversaries attempt to get information about running processes on a system to understand defensive software or identify vulnerable processes to inject into.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5651,13 +6179,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "RTOS"
             ]
         },
         {
             "id": "T.15.5",
             "name": "Software Discovery",
             "description": "Adversaries attempt to get a listing of software and software versions installed on a vehicle to cross-reference against known CVEs.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5705,13 +6237,17 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "Bootloader"
             ]
         },
         {
             "id": "T.15.6",
             "name": "System Information Discovery",
             "description": "An adversary attempts to get detailed information about the ECU's operating system and hardware architecture, including patches and hotfixes.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5754,13 +6290,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "RTOS"
             ]
         },
         {
             "id": "T.15.7",
             "name": "System Network Configuration Discovery",
             "description": "Adversaries look for details about the network configuration and settings of systems they access (e.g., using arp, ifconfig, or route tables) to facilitate lateral movement.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5803,13 +6343,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "Automotive Ethernet"
             ]
         },
         {
             "id": "T.15.8",
             "name": "System Network Connections Discovery",
             "description": "Adversaries attempt to get a listing of active network connections to or from the compromised system to map out adjacent gateways or backends.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.15",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5852,13 +6396,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "HLOS",
+                "Automotive Ethernet"
             ]
         },
         {
             "id": "T.16",
             "name": "Lateral Movement",
             "description": "The adversary is trying to move through the vehicle network. Lateral movement consists of techniques that enable an adversary to access and control remote systems on a vehicle network, often traversing boundaries from exposed domains to safety-critical ECUs.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0009"
@@ -5903,13 +6451,16 @@
                     "assetClass": "Compute",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Network"
             ]
         },
         {
             "id": "T.16.1",
             "name": "Abuse Standard Diagnostic Protocol for Lateral Movement",
             "description": "The adversary abuses standard diagnostic protocols (e.g., UDS 'download and execute' or 'write memory by address') over the internal network to gain code execution on adjacent ECUs.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.16",
             "source": {
                 "name": "AutoISAC ATM",
@@ -5965,13 +6516,17 @@
                     "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "UDS",
+                "DoIP"
             ]
         },
         {
             "id": "T.16.2",
             "name": "Bridge Vehicle Networks",
             "description": "The adversary modifies an ECU (like a Central Gateway) that possesses multiple network interfaces to bridge networks that would otherwise be strictly separated (e.g., routing Ethernet payloads onto a proprietary CAN bus).",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.16",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6018,13 +6573,19 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "HPC / Zonal Controller",
+                "MCU"
             ]
         },
         {
             "id": "T.16.3",
             "name": "Exploit ECU for Lateral Movement",
             "description": "Adversaries exploit software vulnerabilities (e.g., buffer overflows) in network services running on adjacent ECUs to execute remote code and hop across the vehicle network.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.16",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6075,13 +6636,19 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "SOME/IP",
+                "DDS",
+                "Automotive Ethernet",
+                "App / Service"
             ]
         },
         {
             "id": "T.16.4",
             "name": "Remote Services",
             "description": "Adversaries attempt to log into a service specifically designed to accept remote connections (e.g., Telnet, SSH, VNC) on adjacent ECUs using stolen or default credentials.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.16",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6146,13 +6713,18 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Automotive Ethernet",
+                "App / Service",
+                "Passwords / PINs"
             ]
         },
         {
             "id": "T.16.5",
             "name": "Reprogram ECU for Lateral Movement",
             "description": "The adversary moves laterally by pushing a malicious firmware update over the internal bus to an adjacent ECU, exploiting flaws in the target's update verification mechanism.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.16",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6208,13 +6780,18 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Bootloader",
+                "UDS",
+                "Digital Signatures"
             ]
         },
         {
             "id": "T.16.6",
             "name": "Compromise Cryptographic Security",
             "description": "Adversaries compromise cryptographic mechanisms (e.g., sniffing cleartext, breaking weak algorithms) used in intra-vehicle communication to facilitate lateral movement or bypass internal firewalls.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.16",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6270,13 +6847,19 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MACsec / IPsec",
+                "TLS / DTLS",
+                "SecOC",
+                "Symmetric Keys"
             ]
         },
         {
             "id": "T.17",
             "name": "Collection",
             "description": "The adversary is trying to gather data of interest to their goal. Collection consists of techniques used to identify and gather information, such as sensitive files, location history, or recordings of in-vehicle audio from a target vehicle prior to exfiltration.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0010"
@@ -6318,13 +6901,16 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Data"
             ]
         },
         {
             "id": "T.17.1",
             "name": "Capture SMS Message",
             "description": "A malicious application running on the vehicle platform or an asset on an intercepted channel captures sensitive data sent via SMS, including authentication credentials or multi-factor tokens.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6368,13 +6954,17 @@
                     "assetClass": "Crypto",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "App / Service"
             ]
         },
         {
             "id": "T.17.2",
             "name": "Input Capture",
             "description": "Adversaries capture raw user inputs to obtain credentials or other sensitive material by implementing rogue input methods, accessibility service keylogging logging, or direct peripheral polling.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6428,13 +7018,16 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "App / Service"
             ]
         },
         {
             "id": "T.17.3",
             "name": "Network Sniffing",
             "description": "Adversaries intercept internal vehicle network traffic (CAN, Ethernet) by setting localized interfaces into promiscuous mode or mapping diagnostics to actively harvest authentication data or telematics.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6488,13 +7081,18 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "LIN"
             ]
         },
         {
             "id": "T.17.4",
             "name": "Location Tracking",
             "description": "Surreptitiously tracking the vehicle's real-time geographic location or extracting historical telemetry through standard location framework APIs or raw GPS data parsing.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6542,13 +7140,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "GNSS",
+                "App / Service"
             ]
         },
         {
             "id": "T.17.5",
             "name": "Abuse Standard Diagnostic Protocol for Collection",
             "description": "Abusing 'read' routines within standard diagnostic protocols (e.g., UDS ReadMemoryByAddress) over internal networks to dump memory space containing cryptographic variables or proprietary calibrations.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6602,13 +7204,18 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "UDS",
+                "DoIP",
+                "Memory"
             ]
         },
         {
             "id": "T.17.6",
             "name": "Capture Camera or Audio",
             "description": "Adversaries hook into the vehicle's multimedia drivers or physical hardware capture streams to extract cabin microphone audio, video files, or active safety camera feeds.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6661,13 +7268,18 @@
                     "assetClass": "Peripheral",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Sensor / Actuator",
+                "Audio Jacks / A2B",
+                "HDMI / DisplayPort"
             ]
         },
         {
             "id": "T.17.7",
             "name": "Data from Local System",
             "description": "Adversaries navigate local file systems, databases, or runtime variables via local commands to accumulate target artifacts prior to package offloading.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6711,13 +7323,17 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Memory",
+                "NVRAM"
             ]
         },
         {
             "id": "T.17.8",
             "name": "Network Information Discovery",
             "description": "Adversaries query local network chips to map out adjacent devices, active connections, or nearby environmental nodes across Wi-Fi or Bluetooth domains.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6760,13 +7376,17 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Wi-Fi",
+                "Bluetooth / BLE"
             ]
         },
         {
             "id": "T.17.9",
             "name": "Screen Capture",
             "description": "Adversaries capture screen renderings from the vehicle's primary display outputs to scrape user telemetry, application logs, input variables, or map details.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.17",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6815,13 +7435,18 @@
                     "assetClass": "Data",
                     "domain": "Infotainment"
                 }
+            ],
+            "metadata": [
+                "HDMI / DisplayPort",
+                "App / Service",
+                "HLOS"
             ]
         },
         {
             "id": "T.18",
             "name": "Command and Control",
             "description": "The adversary is trying to communicate with compromised systems to control them. Command and Control consists of techniques that adversaries may use to communicate with a compromised vehicle and its systems. Adversaries can attempt to mimic normal, expected traffic to avoid detection.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0011"
@@ -6871,13 +7496,16 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Network"
             ]
         },
         {
             "id": "T.18.1",
             "name": "Aftermarket, Customer, or Dealer Equipment",
             "description": "Adversaries may use aftermarket, customer, or dealer equipment as a command-and-control ingress point. Paired devices (smartphones) or third-party OBD-II accessories (insurance dongles) bridge the gap between the attacker's external infrastructure and the internal vehicle network.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.18",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6938,13 +7566,18 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "OBD-II",
+                "Bluetooth / BLE",
+                "Cellular"
             ]
         },
         {
             "id": "T.18.2",
             "name": "Cellular Communication",
             "description": "The adversary uses the vehicle's legitimate cellular communication system (e.g., Telematics TCU, SMS) in a post-exploitation environment to fulfill their command and control and exfiltration objectives without needing external hardware.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.18",
             "source": {
                 "name": "AutoISAC ATM",
@@ -6997,13 +7630,17 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "Telematics"
             ]
         },
         {
             "id": "T.18.3",
             "name": "Internet Communication",
             "description": "The adversary routes C2 traffic over the compromised ECU's established internet connection (e.g., via standard TCP/UDP web protocols) to communicate with external attacker-controlled infrastructure.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.18",
             "source": {
                 "name": "AutoISAC ATM",
@@ -7050,13 +7687,18 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Cellular",
+                "Wi-Fi",
+                "gRPC / REST"
             ]
         },
         {
             "id": "T.18.4",
             "name": "Receive Only Communication",
             "description": "The adversary uses a receive-only communication channel, such as Radio Data System (RDS) or TPMS broadcasts, to send covert asynchronous 'trigger' commands to malware already dormant on the vehicle.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.18",
             "source": {
                 "name": "AutoISAC ATM",
@@ -7108,13 +7750,17 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "LF / RF",
+                "Sensor / Actuator"
             ]
         },
         {
             "id": "T.18.5",
             "name": "Short Range Wireless Communication",
             "description": "The adversary uses the vehicle's short-range wireless communication capabilities (Bluetooth, Wi-Fi) to establish a C2 channel with an attacker-controlled laptop or rogue access point in physical proximity to the vehicle.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.18",
             "source": {
                 "name": "AutoISAC ATM",
@@ -7169,13 +7815,18 @@
                     "assetClass": "Interface",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Wi-Fi",
+                "Bluetooth / BLE",
+                "UWB"
             ]
         },
         {
             "id": "T.18.6",
             "name": "Standard Cryptographic Protocol",
             "description": "Adversaries employ strong encryption algorithms (e.g., AES, TLS) embedded directly within their malware to conceal C2 traffic. This allows the traffic to blend in and bypass vehicle Intrusion Detection Systems (IDS) or firewalls without relying on the vehicle's native crypto.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "refines": "T.18",
             "source": {
                 "name": "AutoISAC ATM",
@@ -7226,13 +7877,18 @@
                     "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "TLS / DTLS",
+                "MACsec / IPsec",
+                "Symmetric Keys"
             ]
         },
         {
             "id": "T.19",
             "name": "Exfiltration",
             "description": "The adversary is trying to steal data. Exfiltration consists of techniques that adversaries may use to steal data from the vehicle. Once they've collected data, adversaries often package it to avoid detection while removing it.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0012"
@@ -7288,13 +7944,16 @@
                     "assetClass": "Data",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Data"
             ]
         },
         {
             "id": "T.19.1",
             "name": "Aftermarket, Customer, or Dealer Equipment",
             "description": "Adversaries may exfiltrate data via connected paired devices (smartphones), third-party OBD-II accessories (insurance dongles), or dealer test tools.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0010"
@@ -7342,13 +8001,17 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "OBD-II",
+                "Bluetooth / BLE"
             ]
         },
         {
             "id": "T.19.2",
             "name": "Cellular Communication",
             "description": "If available, the adversary uses the vehicle's cellular communication system in a post-exploitation environment to exfiltrate collected data to external servers.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0062"
@@ -7397,13 +8060,16 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Cellular"
             ]
         },
         {
             "id": "T.19.3",
             "name": "Internet Communication",
             "description": "The adversary uses a compromised ECU's internet connection (TCP/UDP) to exfiltrate data directly to cloud infrastructure.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0063"
@@ -7451,13 +8117,18 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Wi-Fi",
+                "Cellular",
+                "gRPC / REST"
             ]
         },
         {
             "id": "T.19.4",
             "name": "Short Range Wireless Communication",
             "description": "The adversary uses the vehicle's short-range wireless communication capabilities, including Bluetooth and Wi-Fi, to offload data to a nearby attacker-controlled receiver.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0065"
@@ -7506,13 +8177,17 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "Wi-Fi",
+                "Bluetooth / BLE"
             ]
         },
         {
             "id": "T.19.5",
             "name": "Standard Cryptographic Protocol",
             "description": "Adversaries employ a known encryption algorithm embedded in their malware to conceal exfiltration traffic, bypassing network-level DLP (Data Loss Prevention) or IDS.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0066"
@@ -7560,13 +8235,16 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "TLS / DTLS"
             ]
         },
         {
             "id": "T.19.6",
             "name": "Removable Media",
             "description": "Adversaries may attempt to exfiltrate data via a physical medium, such as a USB drive connected to the infotainment system.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0006"
@@ -7615,13 +8293,17 @@
                     "assetClass": "Interface",
                     "domain": "External"
                 }
+            ],
+            "metadata": [
+                "USB",
+                "Media Slots"
             ]
         },
         {
             "id": "T.19.7",
             "name": "Physical Access",
             "description": "Physical access via a JTAG / debug / serial interface could be used to exfiltrate data -- for example, extracting private keys or firmware via memory remanence/cold boot attacks.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0012/ATM-T0073"
@@ -7672,13 +8354,18 @@
                     "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "JTAG / cJTAG",
+                "SWD",
+                "Memory"
             ]
         },
         {
             "id": "T.20",
             "name": "Affect Vehicle Function",
             "description": "The adversary is trying to affect vehicle functions and systems, such as propulsion control, airbag deployment, audio, and displays. This is the ultimate impact tactic in the automotive domain.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/tactic/ATM-TA0013"
@@ -7732,13 +8419,16 @@
                     "assetClass": "Peripheral",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "Peripheral"
             ]
         },
         {
             "id": "T.20.1",
             "name": "Adversarial Machine Learning",
             "description": "Using adversarial ML techniques to fool models by supplying deceptive input (e.g., altered stop signs) to cause vehicle perception systems to misclassify objects or respond inappropriately.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0005"
@@ -7790,13 +8480,18 @@
                     "assetClass": "Executable",
                     "domain": "ADAS"
                 }
+            ],
+            "metadata": [
+                "ML Model / Weights",
+                "GPU / NPU",
+                "Sensor / Actuator"
             ]
         },
         {
             "id": "T.20.2",
             "name": "Analog Sensor Attacks",
             "description": "Using analog sensor attacks to disrupt the availability of vehicle sensors (e.g., shining a laser into a Lidar receiver, transmitting ultrasonic noise).",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0004"
@@ -7829,11 +8524,6 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Modify",
-                        "assetClass": "Compute",
-                        "domain": "External"
-                    },
-                    {
                         "action": "Inject",
                         "assetClass": "Interface",
                         "domain": "External"
@@ -7844,20 +8534,18 @@
                 {
                     "action": "Disrupt",
                     "assetClass": "Peripheral",
-                    "domain": "Powertrain"
-                },
-                {
-                    "action": "Inject",
-                    "assetClass": "Peripheral",
-                    "domain": "Powertrain"
+                    "domain": "ADAS"
                 }
+            ],
+            "metadata": [
+                "Sensor / Actuator"
             ]
         },
         {
             "id": "T.20.3",
             "name": "Abuse Standard Diagnostic Protocol for Affecting Vehicle Function",
             "description": "The adversary abuses standard diagnostic protocols to actuate vehicle functions, such as using UDS RoutineControl to actuate brakes or WriteMemoryByAddress to alter calibrations.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0067"
@@ -7913,13 +8601,18 @@
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "UDS",
+                "DoIP",
+                "CAN / CAN-FD / CAN-XL"
             ]
         },
         {
             "id": "T.20.4",
             "name": "CAN Bus Denial of Service",
             "description": "Flooding the CAN bus with high-priority messages (e.g., ID 0x000), preventing other ECUs from being able to communicate.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0068"
@@ -7967,13 +8660,16 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL"
             ]
         },
         {
             "id": "T.20.5",
             "name": "Denial of Service on Vehicle Function",
             "description": "Performing DoS attacks to disrupt vehicle functionality by overwhelming an ECU with a high volume of requests or exploiting service vulnerabilities to cause a crash.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0072"
@@ -8026,13 +8722,18 @@
                     "assetClass": "Peripheral",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "MCU"
             ]
         },
         {
             "id": "T.20.6",
             "name": "Local Function",
             "description": "Using execution access on a targeted ECU to control the local hardware functions actuated directly by that device (e.g., executing code on a body controller to unlock doors).",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0069"
@@ -8077,13 +8778,17 @@
                     "assetClass": "Peripheral",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "MCU",
+                "Peripheral"
             ]
         },
         {
             "id": "T.20.7",
             "name": "Modify Bus Message",
             "description": "An adversary modifies or suppresses messages sent by another ECU on the internal network by winning arbitration or intercepting the bus logically/physically.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0070"
@@ -8116,7 +8821,7 @@
             "requires": {
                 "AND": [
                     {
-                        "action": "Inject",
+                        "action": "Intercept",
                         "assetClass": "Network",
                         "domain": "Powertrain"
                     },
@@ -8138,13 +8843,17 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet"
             ]
         },
         {
             "id": "T.20.8",
             "name": "Unintended Vehicle Network Message",
             "description": "Sending unintended messages on the in-vehicle network (e.g., out of sequence, wrong rate, unauthorized parameters) post-escalation to trigger unauthorized physical functions.",
-            "classificationModel": "MITRE ATT&CK\u00ae",
+            "classificationModel": "MITRE ATT&CK®",
             "source": {
                 "name": "AutoISAC ATM",
                 "url": "https://atm.automotiveisac.com/technique/ATM-TA0013/ATM-T0071"
@@ -8189,6 +8898,10 @@
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet"
             ]
         }
     ]
