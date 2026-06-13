@@ -86,7 +86,7 @@ This is known internally as the **$8 \times 8 \times 8 \times 80$ Matrix**.
 
 The action list relies on exactly 8 mutually exclusive attacker operations. This forces threat models to describe the *mechanism* of the attack.
 
-* **`Extract`**: Read data or code at rest (e.g., memory dumping, extracting a key).
+* **`Extract`**: Read data or code at rest (e.g., memory dumping, extracting a key, SCA/DFA).
 * **`Intercept`**: Read data or code in transit (e.g., passively sniffing a bus, wiretapping).
 * **`Modify`**: Alter data or code at rest (e.g., patching a binary, changing a config).
 * **`Inject`**: Introduce malicious data or commands in transit (e.g., spoofing messages, API injection).
