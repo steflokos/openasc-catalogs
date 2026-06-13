@@ -96,9 +96,9 @@
                         "domain": "External"
                     },
                     {
-                        "action": "Elevate",
+                        "action": "Extract",
                         "assetClass": "Crypto",
-                        "domain": "Telematics"
+                        "domain": "External"
                     }
                 ]
             },
@@ -150,8 +150,8 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Crypto",
+                        "action": "Intercept",
+                        "assetClass": "Network",
                         "domain": "External"
                     }
                 ]
@@ -341,14 +341,14 @@
             },
             "grants": [
                 {
-                    "action": "Modify",
+                    "action": "Execute",
                     "assetClass": "Executable",
                     "domain": "Backend"
                 },
                 {
-                    "action": "Modify",
-                    "assetClass": "Executable",
-                    "domain": "External"
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Telematics"
                 }
             ],
             "metadata": [
@@ -388,10 +388,15 @@
                 "Authenticity"
             ],
             "requires": {
-                "AND": [
+                "OR": [
                     {
-                        "action": "Inject",
+                        "action": "Intercept",
                         "assetClass": "Network",
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Compute",
                         "domain": "Powertrain"
                     }
                 ]
@@ -441,15 +446,6 @@
                 "Integrity",
                 "Authenticity"
             ],
-            "requires": {
-                "AND": [
-                    {
-                        "action": "Inject",
-                        "assetClass": "Interface",
-                        "domain": "External"
-                    }
-                ]
-            },
             "grants": [
                 {
                     "action": "Inject",
@@ -460,7 +456,8 @@
             "metadata": [
                 "GNSS",
                 "Satellite",
-                "Sensor / Actuator"
+                "Sensor / Actuator",
+                "LF / RF"
             ]
         },
         {
@@ -498,7 +495,7 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Inject",
+                        "action": "Intercept",
                         "assetClass": "Interface",
                         "domain": "External"
                     }
@@ -547,7 +544,7 @@
                 "Authenticity"
             ],
             "requires": {
-                "AND": [
+                "OR": [
                     {
                         "action": "Intercept",
                         "assetClass": "Network",
@@ -620,6 +617,11 @@
             "grants": [
                 {
                     "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Inject",
                     "assetClass": "Network",
                     "domain": "Powertrain"
                 }
@@ -629,6 +631,126 @@
                 "DoIP",
                 "Seeds / RoT Data",
                 "Passwords / PINs"
+            ]
+        },
+        {
+            "id": "T.01.11",
+            "name": "V2X Safety Message Injection",
+            "description": "An attacker broadcasts forged V2X Cooperative Awareness Messages (CAM) or Decentralized Environmental Notification Messages (DENM), spoofing phantom vehicles or false hazard conditions to manipulate ADAS decision logic or mislead the driver.",
+            "classificationModel": "STRIDE",
+            "refines": "T.01",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "V2X message formats (ETSI ITS) are public standards."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Requires proximity (DSRC ~300 m) or a rogue V2X RSU."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq2",
+                        "rationale": "Requires a V2X-capable radio and a valid or forged pseudonym certificate."
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "requires": {
+                "OR": [
+                    {
+                        "action": "Intercept",
+                        "assetClass": "Interface",
+                        "domain": "External"
+                    }
+                ]
+            },
+            "grants": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Peripheral",
+                    "domain": "ADAS"
+                }
+            ],
+            "metadata": [
+                "V2X",
+                "PKI / Certificates",
+                "Digital Signatures",
+                "GNSS",
+                "GPU / NPU",
+                "ML Model / Weights"
+            ]
+        },
+        {
+            "id": "T.01.12",
+            "name": "EV Charging Session Spoofing (ISO 15118 / OCPP)",
+            "description": "An attacker deploys a rogue or tampered EVSE that presents a forged TLS certificate during the ISO 15118 Vehicle-to-Grid (V2G) handshake. Upon a successful TLS downgrade or certificate validation bypass, the attacker can extract the vehicle's contract certificate, manipulate AC/DC charging parameters, or deliver a malicious firmware payload via the update channel.",
+            "classificationModel": "STRIDE",
+            "refines": "T.01",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "ISO 15118 is a public standard but OEM-specific certificate chains require research."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Requires physical access to a charging session (public charger swap or rogue station)."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq2",
+                        "rationale": "Requires a custom EVSE controller or a modified charging station."
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "requires": {
+                "OR": [
+                    {
+                        "action": "Intercept",
+                        "assetClass": "Interface",
+                        "domain": "External"
+                    }
+                ]
+            },
+            "grants": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "External"
+                },
+                {
+                    "action": "Modify",
+                    "assetClass": "Data",
+                    "domain": "Powertrain"
+                }
+            ],
+            "metadata": [
+                "ISO 15118 / OCPP",
+                "EVSE Plug",
+                "TLS / DTLS",
+                "PKI / Certificates",
+                "Asymmetric Keys",
+                "Bootloader"
             ]
         },
         {
@@ -738,20 +860,22 @@
         },
         {
             "id": "T.02.2",
-            "name": "Logical Persistent Storage Tampering",
-            "description": "Unauthorized logical modification of at-rest configuration data, calibration parameters, or OS files stored in NVRAM, EEPROM, or Flash memory via software exploits.",
+            "name": "Persistent Storage and Configuration/Calibration Tampering",
+            "description": "Unauthorized logical modification of at-rest configuration files, calibration parameters (e.g., ADAS sensor limits, engine torque curves), routing tables, or OS files stored in NVRAM/EEPROM. Allows an attacker to alter vehicle behavior without needing to exploit or rewrite the actual executable firmware.",
             "classificationModel": "STRIDE",
             "refines": "T.02",
             "attackFeasibility": {
                 "attackPotential": {
                     "elapsedTime": {
-                        "feasibility": "ET2"
+                        "feasibility": "ET1",
+                        "rationale": "Changing a config value is much faster than reverse-engineering and patching firmware."
                     },
                     "specialistExpertise": {
-                        "feasibility": "SE2"
+                        "feasibility": "SE1"
                     },
                     "knowledgeOfTheItemOrComponent": {
-                        "feasibility": "KoIC2"
+                        "feasibility": "KoIC2",
+                        "rationale": "Requires knowing the specific calibration formats or file paths."
                     },
                     "windowOfOpportunity": {
                         "feasibility": "WoO1"
@@ -765,10 +889,15 @@
                 "Integrity"
             ],
             "requires": {
-                "AND": [
+                "OR": [
                     {
                         "action": "Elevate",
                         "assetClass": "Executable",
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Network",
                         "domain": "Powertrain"
                     }
                 ]
@@ -788,7 +917,8 @@
             "metadata": [
                 "NVRAM",
                 "Config / Calibration File",
-                "Memory"
+                "Memory",
+                "XCP / CCP"
             ]
         },
         {
@@ -818,7 +948,8 @@
                 }
             },
             "compromises": [
-                "Integrity"
+                "Integrity",
+                "Authenticity"
             ],
             "requires": {
                 "OR": [
@@ -879,7 +1010,8 @@
                 }
             },
             "compromises": [
-                "Integrity"
+                "Integrity",
+                "Authenticity"
             ],
             "requires": {
                 "AND": [
@@ -936,7 +1068,8 @@
             },
             "compromises": [
                 "Integrity",
-                "Availability"
+                "Availability",
+                "Authenticity"
             ],
             "requires": {
                 "AND": [
@@ -1067,6 +1200,11 @@
                     "action": "Modify",
                     "assetClass": "Memory",
                     "domain": "Powertrain"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "Powertrain"
                 }
             ],
             "metadata": [
@@ -1119,6 +1257,11 @@
                     "action": "Modify",
                     "assetClass": "Memory",
                     "domain": "Powertrain"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "Powertrain"
                 }
             ],
             "metadata": [
@@ -1129,59 +1272,50 @@
         },
         {
             "id": "T.02.9",
-            "name": "Configuration and Calibration Tampering",
-            "description": "Unauthorized modification of configuration files, calibration data, or routing tables. This allows an attacker to alter vehicle behavior (e.g., changing ADAS sensor alignment limits, engine torque curves, or firewall rules) without needing to exploit or rewrite the actual executable firmware.",
-            "refines": "T.02",
+            "name": "Remote Code Execution via Telematics/IVI Interface",
+            "description": "An attacker exploits an unpatched vulnerability in the vehicle's external wireless stack (Bluetooth BLE, Wi-Fi 802.11, or cellular modem firmware) to gain initial unauthenticated code execution on the Telematics Control Unit (TCU) or IVI head unit without any prior vehicle access.",
             "classificationModel": "STRIDE",
+            "refines": "T.02",
             "attackFeasibility": {
                 "attackPotential": {
                     "elapsedTime": {
-                        "feasibility": "ET1",
-                        "rationale": "Changing a config value is much faster than reverse-engineering and patching firmware."
+                        "feasibility": "ET3"
                     },
                     "specialistExpertise": {
-                        "feasibility": "SE1"
+                        "feasibility": "SE3",
+                        "rationale": "Requires full wireless stack exploit development (e.g., heap spray over BLE)."
                     },
                     "knowledgeOfTheItemOrComponent": {
-                        "feasibility": "KoIC2",
-                        "rationale": "Requires knowing the specific calibration formats or file paths."
+                        "feasibility": "KoIC2"
                     },
                     "windowOfOpportunity": {
-                        "feasibility": "WoO1"
+                        "feasibility": "WoO1",
+                        "rationale": "Wi-Fi/BLE requires proximity; cellular is always reachable while vehicle has coverage."
                     },
                     "equipment": {
-                        "feasibility": "Eq0"
+                        "feasibility": "Eq1",
+                        "rationale": "Commodity SDR and a Linux laptop are sufficient."
                     }
                 }
             },
             "compromises": [
-                "Integrity"
+                "Integrity",
+                "Authenticity"
             ],
-            "requires": {
-                "OR": [
-                    {
-                        "action": "Inject",
-                        "assetClass": "Network",
-                        "domain": "Powertrain"
-                    },
-                    {
-                        "action": "Elevate",
-                        "assetClass": "Executable",
-                        "domain": "Powertrain"
-                    }
-                ]
-            },
             "grants": [
                 {
-                    "action": "Modify",
-                    "assetClass": "Data",
-                    "domain": "Powertrain"
+                    "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "Telematics"
                 }
             ],
             "metadata": [
-                "Config / Calibration File",
-                "NVRAM",
-                "XCP / CCP"
+                "Cellular",
+                "Wi-Fi",
+                "Bluetooth / BLE",
+                "HLOS",
+                "App / Service",
+                "Kernel / Driver"
             ]
         },
         {
@@ -1329,11 +1463,16 @@
                 "Authenticity"
             ],
             "requires": {
-                "AND": [
+                "OR": [
                     {
                         "action": "Inject",
-                        "assetClass": "Interface",
-                        "domain": "External"
+                        "assetClass": "Network",
+                        "domain": "Telematics"
+                    },
+                    {
+                        "action": "Execute",
+                        "assetClass": "Executable",
+                        "domain": "Backend"
                     }
                 ]
             },
@@ -1342,18 +1481,13 @@
                     "action": "Elevate",
                     "assetClass": "Crypto",
                     "domain": "External"
-                },
-                {
-                    "action": "Inject",
-                    "assetClass": "Interface",
-                    "domain": "External"
                 }
             ],
             "metadata": [
                 "V2X",
                 "Digital Signatures",
                 "PKI / Certificates",
-                "Backend"
+                "gRPC / REST"
             ]
         },
         {
@@ -1467,7 +1601,7 @@
         {
             "id": "T.04.2",
             "name": "External Communications Interception",
-            "description": "Intercepting data transmitted between the vehicle and external entities (OEM Backend, Mobile Apps, EVSE) over Cellular, Wi-Fi, or Bluetooth to steal credentials, session tokens, or PII.",
+            "description": "An attacker positions themselves on the vehicle's external communication path (e.g., deploying a rogue Wi-Fi AP, cellular IMSI catcher, or BGP route injection) to intercept data transmitted between the vehicle and external entities. Allows the theft of credentials, session tokens, or PII.",
             "classificationModel": "STRIDE",
             "refines": "T.04",
             "attackFeasibility": {
@@ -1482,11 +1616,12 @@
                         "feasibility": "KoIC1"
                     },
                     "windowOfOpportunity": {
-                        "feasibility": "WoO1"
+                        "feasibility": "WoO1",
+                        "rationale": "Requires proximity for Wi-Fi/BLE positioning; carrier-level access for cellular (IMSI catcher)."
                     },
                     "equipment": {
                         "feasibility": "Eq1",
-                        "rationale": "Requires Wi-Fi/Bluetooth sniffers or rogue base stations (IMSI catchers)."
+                        "rationale": "Requires Wi-Fi/Bluetooth sniffers, rogue APs, or SDR base stations."
                     }
                 }
             },
@@ -1501,8 +1636,8 @@
                         "domain": "External"
                     },
                     {
-                        "action": "Elevate",
-                        "assetClass": "Crypto",
+                        "action": "Intercept",
+                        "assetClass": "Network",
                         "domain": "External"
                     }
                 ]
@@ -1510,8 +1645,13 @@
             "grants": [
                 {
                     "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "External"
+                },
+                {
+                    "action": "Intercept",
                     "assetClass": "Interface",
-                    "domain": "Powertrain"
+                    "domain": "External"
                 },
                 {
                     "action": "Extract",
@@ -1564,7 +1704,7 @@
                     {
                         "action": "Elevate",
                         "assetClass": "Executable",
-                        "domain": "Infotainment"
+                        "domain": "Powertrain"
                     },
                     {
                         "action": "Extract",
@@ -1577,13 +1717,12 @@
                 {
                     "action": "Extract",
                     "assetClass": "Data",
-                    "domain": "Powertrain"
+                    "domain": "External"
                 }
             ],
             "metadata": [
                 "App / Service",
-                "HLOS",
-                "Infotainment"
+                "HLOS"
             ]
         },
         {
@@ -1635,7 +1774,7 @@
             "metadata": [
                 "SoC",
                 "MCU",
-                "Crypto",
+                "HSM / SHE",
                 "TRNG / PRNG",
                 "Symmetric Keys",
                 "Asymmetric Keys"
@@ -1752,6 +1891,52 @@
             ]
         },
         {
+            "id": "T.04.7",
+            "name": "OEM Backend Credential / Key Extraction",
+            "description": "An attacker compromises the OEM's cloud backend through web-application vulnerabilities (SQL injection, insecure object references, credential stuffing against the DevOps pipeline) or insider access to extract cryptographic signing keys, OTA authorization tokens, or fleet-wide symmetric secrets from the backend key management service.",
+            "classificationModel": "STRIDE",
+            "refines": "T.04",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Public API endpoints and OEM web portals are observable."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO0",
+                        "rationale": "Backend is always reachable from the internet."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "grants": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "Backend"
+                }
+            ],
+            "metadata": [
+                "gRPC / REST",
+                "TLS / DTLS",
+                "PKI / Certificates",
+                "Tokens / API Keys",
+                "App / Service",
+                "Symmetric Keys"
+            ]
+        },
+        {
             "id": "T.05",
             "name": "Denial of Service (DoS)",
             "description": "Disrupting the normal operation of vehicle systems by overwhelming resources, blocking communications, or causing system crashes. This is the abstract base class for all availability threats.",
@@ -1787,7 +1972,7 @@
                     },
                     {
                         "action": "Inject",
-                        "assetClass": "Interface",
+                        "assetClass": "Network",
                         "domain": "Powertrain"
                     }
                 ]
@@ -1801,7 +1986,7 @@
             ],
             "metadata": [
                 "App / Service",
-                "Network"
+                "CAN / CAN-FD / CAN-XL"
             ]
         },
         {
@@ -1944,15 +2129,6 @@
             "compromises": [
                 "Availability"
             ],
-            "requires": {
-                "AND": [
-                    {
-                        "action": "Inject",
-                        "assetClass": "Interface",
-                        "domain": "External"
-                    }
-                ]
-            },
             "grants": [
                 {
                     "action": "Disrupt",
@@ -2015,7 +2191,7 @@
             ],
             "metadata": [
                 "gRPC / REST",
-                "Backend",
+                "MQTT / AMQP",
                 "App / Service"
             ]
         },
@@ -2138,7 +2314,7 @@
             "grants": [
                 {
                     "action": "Elevate",
-                    "assetClass": "Data",
+                    "assetClass": "Executable",
                     "domain": "Powertrain"
                 }
             ],
@@ -2253,8 +2429,8 @@
                     "domain": "Powertrain"
                 },
                 {
-                    "action": "Execute",
-                    "assetClass": "Compute",
+                    "action": "Elevate",
+                    "assetClass": "Executable",
                     "domain": "Powertrain"
                 },
                 {
@@ -2365,7 +2541,7 @@
             "grants": [
                 {
                     "action": "Execute",
-                    "assetClass": "Interface",
+                    "assetClass": "Executable",
                     "domain": "Powertrain"
                 },
                 {
@@ -2450,6 +2626,130 @@
                 "Passwords / PINs",
                 "App / Service",
                 "Config / Calibration File"
+            ]
+        },
+        {
+            "id": "T.06.6",
+            "name": "Physical ECU / Vehicle Access",
+            "description": "An attacker gains physical access to vehicle internals (ECU PCB, wiring harness, or OBD-II port), enabling hardware-level attack primitives that cannot be achieved remotely. This is the foundational access condition that roots the physical-access attack chain.",
+            "classificationModel": "STRIDE",
+            "refines": "T.06",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET2"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Requires physical proximity and unobserved access time (e.g., a workshop, overnight parking, or supply chain access)."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Basic tools (screwdrivers, OBD-II adapter, logic analyzer clips) are sufficient to gain initial physical access to ECU internals."
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Confidentiality"
+            ],
+            "grants": [
+                {
+                    "action": "Fault",
+                    "assetClass": "Compute",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Compute",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Modify",
+                    "assetClass": "Compute",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Elevate",
+                    "assetClass": "Compute",
+                    "domain": "Powertrain"
+                }
+            ],
+            "metadata": [
+                "OBD-II",
+                "JTAG / cJTAG",
+                "SWD",
+                "UART / USART",
+                "Diagnostic Pads",
+                "MCU",
+                "SoC"
+            ]
+        },
+        {
+            "id": "T.06.7",
+            "name": "Cross-Domain Lateral Movement",
+            "description": "An attacker with code execution in the Infotainment or Telematics domain exploits a misconfigured or unfiltered central gateway ECU to inject messages directly onto Powertrain-domain bus segments (e.g., CAN-FD) or escalate to host-OS access on an HPC node bridging both domains.",
+            "classificationModel": "STRIDE",
+            "refines": "T.06",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Requires deep knowledge of OEM-specific gateway routing tables and firewall rules."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Gateway configuration is OEM-confidential."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0"
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "requires": {
+                "OR": [
+                    {
+                        "action": "Execute",
+                        "assetClass": "Executable",
+                        "domain": "Telematics"
+                    }
+                ]
+            },
+            "grants": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Elevate",
+                    "assetClass": "Executable",
+                    "domain": "Powertrain"
+                }
+            ],
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "HPC / Zonal Controller",
+                "Middleware",
+                "IDS / IPS"
             ]
         },
         {
@@ -2556,8 +2856,7 @@
             ],
             "metadata": [
                 "App / Service",
-                "gRPC / REST",
-                "Backend"
+                "gRPC / REST"
             ]
         },
         {
@@ -2665,18 +2964,13 @@
                         "action": "Inject",
                         "assetClass": "Interface",
                         "domain": "External"
-                    },
-                    {
-                        "action": "Modify",
-                        "assetClass": "Compute",
-                        "domain": "External"
                     }
                 ]
             },
             "grants": [
                 {
                     "action": "Inject",
-                    "assetClass": "Peripheral",
+                    "assetClass": "Network",
                     "domain": "Powertrain"
                 },
                 {
@@ -2743,8 +3037,8 @@
                     "domain": "ADAS"
                 },
                 {
-                    "action": "Elevate",
-                    "assetClass": "Data",
+                    "action": "Disrupt",
+                    "assetClass": "Executable",
                     "domain": "ADAS"
                 }
             ],
@@ -2786,7 +3080,8 @@
             },
             "compromises": [
                 "Integrity",
-                "Availability"
+                "Availability",
+                "Authenticity"
             ],
             "requires": {
                 "OR": [
@@ -3050,9 +3345,9 @@
                     "domain": "External"
                 },
                 {
-                    "action": "Execute",
-                    "assetClass": "Executable",
-                    "domain": "Body"
+                    "action": "Elevate",
+                    "assetClass": "Compute",
+                    "domain": "Powertrain"
                 }
             ],
             "metadata": [
@@ -3242,7 +3537,10 @@
                 }
             ],
             "metadata": [
-                "Interface"
+                "OBD-II",
+                "USB",
+                "Bluetooth / BLE",
+                "Cellular"
             ]
         },
         {
@@ -3431,7 +3729,7 @@
                 {
                     "action": "Elevate",
                     "assetClass": "Executable",
-                    "domain": "Telematics"
+                    "domain": "Powertrain"
                 }
             ],
             "metadata": [
@@ -3545,7 +3843,7 @@
                         "domain": "Backend"
                     },
                     {
-                        "action": "Elevate",
+                        "action": "Extract",
                         "assetClass": "Crypto",
                         "domain": "External"
                     }
@@ -3615,7 +3913,7 @@
                 {
                     "action": "Extract",
                     "assetClass": "Crypto",
-                    "domain": "Backend"
+                    "domain": "Powertrain"
                 },
                 {
                     "action": "Extract",
@@ -3732,8 +4030,8 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Execute",
-                        "assetClass": "Executable",
+                        "action": "Extract",
+                        "assetClass": "Data",
                         "domain": "Backend"
                     },
                     {
@@ -3757,7 +4055,6 @@
             ],
             "metadata": [
                 "Bootloader",
-                "Executable",
                 "App / Service"
             ]
         },
@@ -3823,7 +4120,9 @@
                 }
             ],
             "metadata": [
-                "Executable"
+                "App / Service",
+                "RTOS",
+                "HLOS"
             ]
         },
         {
@@ -4072,7 +4371,9 @@
                 }
             ],
             "metadata": [
-                "Executable"
+                "Bootloader",
+                "App / Service",
+                "RTOS"
             ]
         },
         {
@@ -4467,7 +4768,7 @@
             "grants": [
                 {
                     "action": "Elevate",
-                    "assetClass": "Data",
+                    "assetClass": "Executable",
                     "domain": "Powertrain"
                 },
                 {
@@ -4477,7 +4778,9 @@
                 }
             ],
             "metadata": [
-                "Executable"
+                "App / Service",
+                "HLOS",
+                "Kernel / Driver"
             ]
         },
         {
@@ -4555,10 +4858,10 @@
                         "rationale": "Exploits for pre-existing commercial wireless devices are often widely documented."
                     },
                     "specialistExpertise": {
-                        "feasibility": "SE1"
+                        "feasibility": "SE2"
                     },
                     "knowledgeOfTheItemOrComponent": {
-                        "feasibility": "KoIC0"
+                        "feasibility": "KoIC1"
                     },
                     "windowOfOpportunity": {
                         "feasibility": "WoO1"
@@ -5028,7 +5331,9 @@
                 }
             ],
             "metadata": [
-                "Executable"
+                "Secure Boot",
+                "IDS / IPS",
+                "App / Service"
             ]
         },
         {
@@ -5149,8 +5454,8 @@
             },
             "grants": [
                 {
-                    "action": "Elevate",
-                    "assetClass": "Data",
+                    "action": "Intercept",
+                    "assetClass": "Network",
                     "domain": "Powertrain"
                 },
                 {
@@ -5406,7 +5711,9 @@
                 }
             ],
             "metadata": [
-                "Crypto"
+                "Passwords / PINs",
+                "Symmetric Keys",
+                "Tokens / API Keys"
             ]
         },
         {
@@ -5651,7 +5958,7 @@
                 {
                     "action": "Modify",
                     "assetClass": "Executable",
-                    "domain": "Infotainment"
+                    "domain": "Powertrain"
                 },
                 {
                     "action": "Extract",
@@ -5956,7 +6263,8 @@
                 }
             ],
             "metadata": [
-                "Data"
+                "Config / Calibration File",
+                "HLOS"
             ]
         },
         {
@@ -6059,7 +6367,7 @@
                 {
                     "action": "Intercept",
                     "assetClass": "Interface",
-                    "domain": "Powertrain"
+                    "domain": "External"
                 },
                 {
                     "action": "Extract",
@@ -6453,7 +6761,8 @@
                 }
             ],
             "metadata": [
-                "Network"
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet"
             ]
         },
         {
@@ -6660,7 +6969,7 @@
                         "feasibility": "ET2"
                     },
                     "specialistExpertise": {
-                        "feasibility": "SE1"
+                        "feasibility": "SE2"
                     },
                     "knowledgeOfTheItemOrComponent": {
                         "feasibility": "KoIC1"
@@ -6903,7 +7212,8 @@
                 }
             ],
             "metadata": [
-                "Data"
+                "Memory",
+                "App / Service"
             ]
         },
         {
@@ -7133,7 +7443,7 @@
                 {
                     "action": "Intercept",
                     "assetClass": "Interface",
-                    "domain": "Powertrain"
+                    "domain": "External"
                 },
                 {
                     "action": "Extract",
@@ -7196,7 +7506,7 @@
             "grants": [
                 {
                     "action": "Extract",
-                    "assetClass": "Memory",
+                    "assetClass": "Executable",
                     "domain": "Powertrain"
                 },
                 {
@@ -7260,7 +7570,7 @@
             "grants": [
                 {
                     "action": "Extract",
-                    "assetClass": "Compute",
+                    "assetClass": "Data",
                     "domain": "Powertrain"
                 },
                 {
@@ -7433,7 +7743,7 @@
                 {
                     "action": "Extract",
                     "assetClass": "Data",
-                    "domain": "Infotainment"
+                    "domain": "Powertrain"
                 }
             ],
             "metadata": [
@@ -7498,7 +7808,8 @@
                 }
             ],
             "metadata": [
-                "Network"
+                "Cellular",
+                "Wi-Fi"
             ]
         },
         {
@@ -7632,8 +7943,7 @@
                 }
             ],
             "metadata": [
-                "Cellular",
-                "Telematics"
+                "Cellular"
             ]
         },
         {
@@ -7868,7 +8178,7 @@
             },
             "grants": [
                 {
-                    "action": "Elevate",
+                    "action": "Extract",
                     "assetClass": "Data",
                     "domain": "Powertrain"
                 },
@@ -7923,18 +8233,9 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "OR": [
-                            {
-                                "action": "Execute",
-                                "assetClass": "Executable",
-                                "domain": "Powertrain"
-                            },
-                            {
-                                "action": "Modify",
-                                "assetClass": "Data",
-                                "domain": "External"
-                            }
-                        ]
+                        "action": "Execute",
+                        "assetClass": "Executable",
+                        "domain": "Powertrain"
                     }
                 ]
             },
@@ -7946,7 +8247,9 @@
                 }
             ],
             "metadata": [
-                "Data"
+                "Cellular",
+                "USB",
+                "Bluetooth / BLE"
             ]
         },
         {
@@ -8231,9 +8534,9 @@
                     "domain": "Powertrain"
                 },
                 {
-                    "action": "Elevate",
+                    "action": "Extract",
                     "assetClass": "Data",
-                    "domain": "Powertrain"
+                    "domain": "External"
                 }
             ],
             "metadata": [
@@ -8346,7 +8649,7 @@
             "grants": [
                 {
                     "action": "Extract",
-                    "assetClass": "Memory",
+                    "assetClass": "Executable",
                     "domain": "Powertrain"
                 },
                 {
@@ -8421,7 +8724,8 @@
                 }
             ],
             "metadata": [
-                "Peripheral"
+                "Sensor / Actuator",
+                "CAN / CAN-FD / CAN-XL"
             ]
         },
         {
@@ -8463,16 +8767,16 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Modify",
-                        "assetClass": "Compute",
+                        "action": "Inject",
+                        "assetClass": "Interface",
                         "domain": "External"
                     }
                 ]
             },
             "grants": [
                 {
-                    "action": "Elevate",
-                    "assetClass": "Data",
+                    "action": "Disrupt",
+                    "assetClass": "Peripheral",
                     "domain": "ADAS"
                 },
                 {
@@ -8781,7 +9085,7 @@
             ],
             "metadata": [
                 "MCU",
-                "Peripheral"
+                "Sensor / Actuator"
             ]
         },
         {

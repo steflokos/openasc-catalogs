@@ -7,7 +7,10 @@
             "description": "Primary bootloader responsible for verifying the authenticity and integrity of firmware images before execution on any compute tier (HPC, Gateway, Zonal Controller, or Classic ECU).",
             "metadata": [
                 "Bootloader",
-                "Secure Boot"
+                "Secure Boot",
+                "MCU",
+                "HLOS",
+                "RTOS"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -18,8 +21,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "None",
-                        "rationale": "Corporations do not suffer physical injuries."
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe",
@@ -55,13 +57,13 @@
             "name": "Device Private Key / Root of Trust",
             "description": "Cryptographic private key securely fused in physical hardware (HSM, TPM, or TEE) used for component identity, secure boot, and cryptographic handshakes.",
             "metadata": [
-                "Transceiver / PHY",
                 "HSM / SHE",
                 "TEE",
                 "TPM / SE",
                 "Secure Boot",
                 "Asymmetric Keys",
-                "Seeds / RoT Data"
+                "Seeds / RoT Data",
+                "PUF"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -109,7 +111,9 @@
             "description": "The base runtime operating system layer (RTOS or Rich OS) managing hardware resources, execution tasks, and process isolation boundaries.",
             "metadata": [
                 "RTOS",
-                "Kernel / Driver"
+                "Kernel / Driver",
+                "SoC",
+                "HLOS"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -156,8 +160,10 @@
             "name": "Vehicle Access Authorization Token",
             "description": "Ephemeral cryptographic security keys or tokens authorizing vehicle unlocking, physical entry, and immobilization override (covers PEPS, PaaK, and smart fobs).",
             "metadata": [
-                "Transceiver / PHY",
-                "Tokens / API Keys"
+                "Tokens / API Keys",
+                "NFC / RFID",
+                "Bluetooth / BLE",
+                "UWB"
             ],
             "domain": "Body",
             "cybersecurityProperties": [
@@ -207,8 +213,8 @@
             "metadata": [
                 "gRPC / REST",
                 "App / Service",
-                "Config / Calibration File",
-                "Backend"
+                "NVRAM",
+                "HLOS"
             ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
@@ -254,15 +260,17 @@
             "name": "Machine Learning Perception Weights & Models",
             "description": "Deep learning network configuration layers, object detection models, and neural network weights used to classify environmental features (lanes, signs, targets). Shared by specialized edge sensors or central ADAS accelerators.",
             "metadata": [
-                "Sensor / Actuator",
                 "ML Model / Weights",
-                "Config / Calibration File"
+                "Config / Calibration File",
+                "GPU / NPU",
+                "HSM / SHE"
             ],
             "domain": "ADAS",
             "partOf": "A.040",
             "cybersecurityProperties": [
                 "Integrity",
-                "Confidentiality"
+                "Confidentiality",
+                "Authenticity"
             ],
             "impact": {
                 "oem": {
@@ -303,14 +311,17 @@
             "name": "Automated Driving Trajectory Planning Algorithm",
             "description": "Decision-making application binaries that ingest sensor fusion telemetry and output core dynamic lateral and longitudinal vehicle control matrices.",
             "metadata": [
-                "Sensor / Actuator",
-                "App / Service"
+                "App / Service",
+                "RTOS",
+                "GPU / NPU",
+                "SecOC"
             ],
             "domain": "ADAS",
             "partOf": "A.040",
             "cybersecurityProperties": [
                 "Integrity",
-                "Availability"
+                "Availability",
+                "Authenticity"
             ],
             "impact": {
                 "oem": {
@@ -350,12 +361,13 @@
             "name": "OTA Update Orchestration Middleware",
             "description": "Software lifecycle middleware coordinating package download, security verification, signature verification, and flashing choreography across targeting sub-buses.",
             "metadata": [
-                "Transceiver / PHY",
                 "NVRAM",
                 "Middleware",
                 "App / Service",
                 "Digital Signatures",
-                "OTA"
+                "Cellular",
+                "LWM2M / OMA-DM",
+                "TLS / DTLS"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -403,7 +415,8 @@
             "description": "The cellular radio frequency connection (4G/5G/6G) link establishing data transport pipelines between the vehicle's network coordinator and external telematics base stations.",
             "metadata": [
                 "Cellular",
-                "LF / RF"
+                "TLS / DTLS",
+                "MQTT / AMQP"
             ],
             "domain": "Telematics",
             "cybersecurityProperties": [
@@ -457,7 +470,9 @@
             "domain": "Powertrain",
             "partOf": "A.042",
             "cybersecurityProperties": [
-                "Integrity"
+                "Integrity",
+                "Availability",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -498,7 +513,9 @@
             "description": "Hardware-level hypervisor partitioning execution environments into safe, highly isolated virtual machines on high-performance compute nodes.",
             "metadata": [
                 "Hypervisor",
-                "App / Service"
+                "SoC",
+                "HPC / Zonal Controller",
+                "RTOS"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -546,8 +563,8 @@
             "metadata": [
                 "gRPC / REST",
                 "App / Service",
-                "Config / Calibration File",
-                "Backend"
+                "TLS / DTLS",
+                "PKI / Certificates"
             ],
             "domain": "Backend",
             "cybersecurityProperties": [
@@ -559,8 +576,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "None",
-                        "rationale": "Cloud APIs generally cannot directly command kinetic functions at speed due to gateway filtering."
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe"
@@ -596,9 +612,10 @@
             "name": "Secure Non-Volatile Storage / Hardware Protected Partition",
             "description": "Protected physical non-volatile system structures hosting core system binaries, persistent operational parameters, and localized encryption manifests.",
             "metadata": [
-                "Transceiver / PHY",
                 "NVRAM",
-                "Seeds / RoT Data"
+                "Seeds / RoT Data",
+                "eFuse / OTP",
+                "HSM / SHE"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -645,9 +662,10 @@
             "description": "Physical processor isolating secure operations, ensuring private key processing and sensitive cryptographic computations are hidden from high-level software environments.",
             "metadata": [
                 "SoC",
-                "Transceiver / PHY",
                 "TEE",
-                "Asymmetric Keys"
+                "Asymmetric Keys",
+                "TRNG / PRNG",
+                "HSM / SHE"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -693,12 +711,17 @@
             "name": "Vehicle Immobilization Cryptographic Secret",
             "description": "Pre-shared master keys or security parameters validated across local coordination boundaries prior to authorizing powertrain system loop activation.",
             "metadata": [
-                "Middleware"
+                "HSM / SHE",
+                "Symmetric Keys",
+                "LF / RF",
+                "Seeds / RoT Data",
+                "TRNG / PRNG"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
-                "Integrity"
+                "Integrity",
+                "Authenticity"
             ],
             "impact": {
                 "oem": {
@@ -742,7 +765,8 @@
                 "Sensor / Actuator",
                 "App / Service",
                 "Config / Calibration File",
-                "Passwords / PINs"
+                "LIN",
+                "UDS"
             ],
             "domain": "Body",
             "cybersecurityProperties": [
@@ -786,7 +810,9 @@
             "name": "Low-Speed Serial Local Interconnect Network (LIN) Bus Data Flow",
             "description": "Low-frequency master-slave communication interactions managing peripheral interface monitoring, mechanical switches, and window/panel status states.",
             "metadata": [
-                "LIN"
+                "LIN",
+                "Transceiver / PHY",
+                "Sensor / Actuator"
             ],
             "domain": "Body",
             "cybersecurityProperties": [
@@ -833,7 +859,10 @@
             "metadata": [
                 "HDMI / DisplayPort",
                 "App / Service",
-                "Kernel / Driver"
+                "Kernel / Driver",
+                "CAN / CAN-FD / CAN-XL",
+                "SOME/IP",
+                "SoC"
             ],
             "domain": "Infotainment",
             "partOf": "A.041",
@@ -879,10 +908,11 @@
             "name": "Safety-Critical Telltale & Warning Signal Flow",
             "description": "High-priority vehicle metric network traffic carrying structural fault markers, malfunction indicator states, and dynamic restraint statuses across architectural boundaries.",
             "metadata": [
-                "gRPC / REST",
-                "Middleware"
+                "Middleware",
+                "CAN / CAN-FD / CAN-XL",
+                "SOME/IP"
             ],
-            "domain": "Infotainment",
+            "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
                 "Availability"
@@ -890,7 +920,8 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "None"
+                        "level": "None",
+                        "rationale": "Suppression or falsification of safety telltales conceals active fault conditions, preventing driver corrective action and creating OEM liability for withheld safety warnings."
                     },
                     "financial": {
                         "level": "Major"
@@ -927,7 +958,8 @@
             "metadata": [
                 "Wi-Fi",
                 "Bluetooth / BLE",
-                "Seeds / RoT Data"
+                "Seeds / RoT Data",
+                "NFC / RFID"
             ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
@@ -973,8 +1005,10 @@
             "name": "High-Bandwidth Sensor Raw Telemetry Flow",
             "description": "High-throughput data pipeline carrying raw or semi-processed environmental perception streams (cameras, LiDAR, Radar) from edge arrays into central fusion processors.",
             "metadata": [
-                "SoC",
-                "Sensor / Actuator"
+                "Sensor / Actuator",
+                "SerDes",
+                "Automotive Ethernet",
+                "PCIe"
             ],
             "domain": "ADAS",
             "cybersecurityProperties": [
@@ -984,8 +1018,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "None",
-                        "rationale": "Corporations do not suffer physical injuries."
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe",
@@ -1022,7 +1055,10 @@
             "description": "Safety-critical application logic commanding immediate actuator corrections upon detecting imminent collision or lane departure vectors.",
             "metadata": [
                 "Sensor / Actuator",
-                "App / Service"
+                "App / Service",
+                "RTOS",
+                "CAN / CAN-FD / CAN-XL",
+                "SecOC"
             ],
             "domain": "ADAS",
             "partOf": "A.040",
@@ -1071,7 +1107,7 @@
             "metadata": [
                 "UDS",
                 "Middleware",
-                "Config / Calibration File"
+                "HLOS"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -1120,7 +1156,8 @@
                 "gRPC / REST",
                 "App / Service",
                 "Tokens / API Keys",
-                "Backend"
+                "TLS / DTLS",
+                "PKI / Certificates"
             ],
             "domain": "External",
             "cybersecurityProperties": [
@@ -1131,8 +1168,7 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "None",
-                        "rationale": "Cloud tokens cannot bypass kinetic safety gateways."
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Major"
@@ -1169,13 +1205,13 @@
             "metadata": [
                 "gRPC / REST",
                 "TLS / DTLS",
-                "PKI / Certificates",
-                "Backend"
+                "PKI / Certificates"
             ],
             "domain": "Telematics",
             "cybersecurityProperties": [
                 "Integrity",
-                "Authenticity"
+                "Authenticity",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -1224,7 +1260,8 @@
             "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Integrity",
-                "Availability"
+                "Availability",
+                "Authenticity"
             ],
             "impact": {
                 "oem": {
@@ -1264,12 +1301,11 @@
             "name": "Containerized Service Encapsulation Profile",
             "description": "Encapsulated user-space computing instances (e.g., Docker, LXC) isolating infotainment or telematics software services from the core hypervisor/kernel layers.",
             "metadata": [
-                "Cellular",
                 "Hypervisor",
                 "Container",
                 "App / Service",
                 "Kernel / Driver",
-                "OTA"
+                "HLOS"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -1317,7 +1353,9 @@
             "metadata": [
                 "UDS",
                 "App / Service",
-                "Seeds / RoT Data"
+                "Seeds / RoT Data",
+                "JTAG / cJTAG",
+                "Symmetric Keys"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -1367,13 +1405,12 @@
                 "gRPC / REST",
                 "App / Service",
                 "Passwords / PINs",
-                "Tokens / API Keys",
-                "Backend",
-                "OTA"
+                "Tokens / API Keys"
             ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
-                "Confidentiality"
+                "Confidentiality",
+                "Integrity"
             ],
             "impact": {
                 "oem": {
@@ -1421,7 +1458,8 @@
             "domain": "External",
             "cybersecurityProperties": [
                 "Confidentiality",
-                "Integrity"
+                "Integrity",
+                "Authenticity"
             ],
             "impact": {
                 "oem": {
@@ -1466,8 +1504,7 @@
                 "PKI / Certificates",
                 "Asymmetric Keys",
                 "Hashes",
-                "Digital Signatures",
-                "Passwords / PINs"
+                "Digital Signatures"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -1513,7 +1550,8 @@
             "metadata": [
                 "gRPC / REST",
                 "PKI / Certificates",
-                "Backend"
+                "ISO 15118 / OCPP",
+                "EVSE Plug"
             ],
             "domain": "External",
             "cybersecurityProperties": [
@@ -1560,10 +1598,9 @@
             "description": "Short-lived cryptographic certificates used to sign outgoing V2X Cooperative Awareness Messages (CAM), rotating frequently to protect the driver from spatial tracking.",
             "metadata": [
                 "V2X",
-                "Kernel / Driver",
                 "PKI / Certificates",
                 "Seeds / RoT Data",
-                "OTA"
+                "Digital Signatures"
             ],
             "domain": "External",
             "cybersecurityProperties": [
@@ -1588,7 +1625,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "None"
+                        "level": "Major",
+                        "rationale": "Spoofed V2X messages (phantom emergency vehicles, false collision warnings) can trigger sudden braking or evasive maneuvers causing accidents."
                     },
                     "financial": {
                         "level": "None"
@@ -1609,8 +1647,9 @@
             "name": "Global Positioning & Time Sync Data Flow",
             "description": "Live spatial coordinates, time synchronization references, and velocity vectors streaming from satellite receivers to navigation displays and ADAS perception fusion domains.",
             "metadata": [
-                "HDMI / DisplayPort",
-                "Container"
+                "GNSS",
+                "SPI / I2C / I3C",
+                "Automotive Ethernet"
             ],
             "domain": "ADAS",
             "cybersecurityProperties": [
@@ -1656,12 +1695,11 @@
             "name": "Secure Tunnel & VPN Security Associations",
             "description": "Dynamic encryption keys, security parameter indexes (SPI), and network policies maintaining protected telemetry pipelines between the vehicle's edge and OEM backends.",
             "metadata": [
-                "SPI / I2C / I3C",
-                "gRPC / REST",
                 "SoC",
-                "Container",
                 "Seeds / RoT Data",
-                "Backend"
+                "MACsec / IPsec",
+                "TLS / DTLS",
+                "Cellular"
             ],
             "domain": "Telematics",
             "cybersecurityProperties": [
@@ -1713,7 +1751,8 @@
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
-                "Integrity"
+                "Integrity",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -1755,7 +1794,8 @@
             "description": "Cryptographic tokens parsed by vehicle gateways or zonal hubs to selectively unlock optional, paid vehicle capabilities (e.g., heated seats, advanced autopilot, increased acceleration).",
             "metadata": [
                 "HPC / Zonal Controller",
-                "Tokens / API Keys"
+                "Tokens / API Keys",
+                "gRPC / REST"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -1810,7 +1850,8 @@
             "domain": "External",
             "cybersecurityProperties": [
                 "Integrity",
-                "Authenticity"
+                "Authenticity",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -1855,8 +1896,8 @@
                 "HPC / Zonal Controller",
                 "GPU / NPU",
                 "Transceiver / PHY",
-                "Symmetric Keys",
-                "Asymmetric Keys"
+                "PCIe",
+                "Automotive Ethernet"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -1901,8 +1942,10 @@
             "name": "ADAS / Automated Driving Compute Node",
             "description": "High-throughput safety hardware platform hosting perception hardware acceleration matrices, GPUs, and decision-making ASIL-D modules.",
             "metadata": [
-                "MCU",
-                "GPU / NPU"
+                "GPU / NPU",
+                "SoC",
+                "HPC / Zonal Controller",
+                "PCIe"
             ],
             "domain": "ADAS",
             "cybersecurityProperties": [
@@ -1948,14 +1991,16 @@
             "description": "The primary hardware unit driving high-level rich operating systems, passenger displays, connectivity radios, and third-party application spaces.",
             "metadata": [
                 "HDMI / DisplayPort",
-                "MCU",
                 "HPC / Zonal Controller",
                 "App / Service",
-                "OTA"
+                "SoC",
+                "HLOS"
             ],
             "domain": "Infotainment",
             "cybersecurityProperties": [
-                "Availability"
+                "Availability",
+                "Confidentiality",
+                "Integrity"
             ],
             "impact": {
                 "oem": {
@@ -1997,7 +2042,10 @@
                 "UDS",
                 "MCU",
                 "Transceiver / PHY",
-                "Middleware"
+                "Middleware",
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "DoIP"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2042,6 +2090,10 @@
             "name": "High-Voltage Battery Management System (BMS) Logic",
             "description": "Algorithms governing cell balancing, thermal management bounds, and high-voltage contactor isolation for the primary propulsion battery pack.",
             "metadata": [
+                "MCU",
+                "CAN / CAN-FD / CAN-XL",
+                "Sensor / Actuator",
+                "NVRAM",
                 "App / Service"
             ],
             "domain": "Powertrain",
@@ -2090,7 +2142,8 @@
             "metadata": [
                 "Sensor / Actuator",
                 "Transceiver / PHY",
-                "TEE"
+                "CAN / CAN-FD / CAN-XL",
+                "SecOC"
             ],
             "domain": "Chassis",
             "cybersecurityProperties": [
@@ -2136,10 +2189,11 @@
             "name": "Diagnostic Trouble Code (DTC) & OBD State Data",
             "description": "Data records representing vehicle component health, emissions faults, and active safety system errors, readable via physical tools or remote telemetry.",
             "metadata": [
-                "SENT / PSI5",
                 "UDS",
                 "Transceiver / PHY",
-                "Config / Calibration File"
+                "Config / Calibration File",
+                "OBD-II",
+                "DoIP"
             ],
             "domain": "External",
             "cybersecurityProperties": [
@@ -2189,7 +2243,8 @@
                 "MCU",
                 "HPC / Zonal Controller",
                 "Sensor / Actuator",
-                "Transceiver / PHY"
+                "Transceiver / PHY",
+                "LIN"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2235,8 +2290,9 @@
             "description": "Physical dedicated single-function microcontroller handling low-latency loops (characteristic of distributed Classic architectures or physical end-nodes in Zonal layouts).",
             "metadata": [
                 "MCU",
-                "HPC / Zonal Controller",
-                "Transceiver / PHY"
+                "Transceiver / PHY",
+                "RTOS",
+                "CAN / CAN-FD / CAN-XL"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2282,7 +2338,8 @@
             "description": "Precision clock synchronization traffic (gPTP / IEEE 802.1AS) distributed across Ethernet backbones to ensure time-deterministic task scheduling.",
             "metadata": [
                 "Automotive Ethernet",
-                "Middleware"
+                "Middleware",
+                "MAC / HMAC / CMAC"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2307,8 +2364,8 @@
                 },
                 "roadUser": {
                     "safety": {
-                        "level": "Severe",
-                        "rationale": "Manipulating or delaying time synchronization messages causes sensor fusion errors and disables time-sensitive ADAS functionality."
+                        "level": "Major",
+                        "rationale": "Corrupted gPTP timestamps can cause SecOC authentication failures across the CAN network, disabling active safety system message authentication."
                     },
                     "financial": {
                         "level": "None"
@@ -2385,7 +2442,8 @@
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
-                "Integrity"
+                "Integrity",
+                "Availability"
             ],
             "impact": {
                 "oem": {
@@ -2430,12 +2488,13 @@
                 "Transceiver / PHY",
                 "HSM / SHE",
                 "Tokens / API Keys",
-                "Backend"
+                "SWD"
             ],
             "domain": "External",
             "cybersecurityProperties": [
                 "Confidentiality",
-                "Authenticity"
+                "Authenticity",
+                "Integrity"
             ],
             "impact": {
                 "oem": {
@@ -2534,7 +2593,8 @@
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
-                "Integrity"
+                "Integrity",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -2542,7 +2602,8 @@
                         "level": "None"
                     },
                     "financial": {
-                        "level": "Major"
+                        "level": "Severe",
+                        "rationale": "Rogue CA injection enables fleet-wide MITM attacks on TLS connections, allowing interception of OTA, V2C, and diagnostic sessions with massive financial and safety consequences."
                     },
                     "operational": {
                         "level": "Severe"
@@ -2575,7 +2636,10 @@
             "description": "Core software application binaries managing propulsion energy distribution, torque vectoring, transmission shifting, and motor/engine orchestration.",
             "metadata": [
                 "Sensor / Actuator",
-                "App / Service"
+                "App / Service",
+                "RTOS",
+                "MCU",
+                "CAN / CAN-FD / CAN-XL"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2622,7 +2686,9 @@
             "metadata": [
                 "Sensor / Actuator",
                 "App / Service",
-                "TEE"
+                "RTOS",
+                "MCU",
+                "CAN / CAN-FD / CAN-XL"
             ],
             "domain": "Chassis",
             "cybersecurityProperties": [
@@ -2670,8 +2736,7 @@
                 "Cellular",
                 "gRPC / REST",
                 "App / Service",
-                "Backend",
-                "MQTT"
+                "MQTT / AMQP"
             ],
             "domain": "Telematics",
             "cybersecurityProperties": [
@@ -2718,7 +2783,8 @@
             "metadata": [
                 "CAN / CAN-FD / CAN-XL",
                 "UDS",
-                "Middleware"
+                "Middleware",
+                "SecOC"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2766,7 +2832,9 @@
             "metadata": [
                 "Automotive Ethernet",
                 "HPC / Zonal Controller",
-                "Sensor / Actuator"
+                "Sensor / Actuator",
+                "SOME/IP",
+                "MACsec / IPsec"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2812,22 +2880,20 @@
             "name": "Cloud Backend & API Gateway Configuration",
             "description": "Infrastructure definitions, API rate limits, load balancer routing rules, and cloud firewall configurations governing the OEM telematics and connected services backend environments.",
             "metadata": [
-                "Cellular",
                 "gRPC / REST",
                 "App / Service",
-                "Config / Calibration File",
-                "Backend"
+                "Config / Calibration File"
             ],
             "domain": "Backend",
             "cybersecurityProperties": [
                 "Integrity",
-                "Availability"
+                "Availability",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "None",
-                        "rationale": "Cloud configurations cannot directly bypass physical vehicle safety gateways."
+                        "level": "None"
                     },
                     "financial": {
                         "level": "Severe",
@@ -2864,7 +2930,10 @@
             "description": "Physical perception sensors capturing the external vehicle environment to feed machine learning algorithms and active safety functions.",
             "metadata": [
                 "Sensor / Actuator",
-                "Transceiver / PHY"
+                "Transceiver / PHY",
+                "SerDes",
+                "mmWave",
+                "PCIe"
             ],
             "domain": "ADAS",
             "cybersecurityProperties": [
@@ -2878,8 +2947,8 @@
                         "level": "None"
                     },
                     "financial": {
-                        "level": "Major",
-                        "rationale": "Hardware recalls or loss of autonomous driving feature subscriptions."
+                        "level": "Severe",
+                        "rationale": "Sensor array compromise requires fleet-wide sensor firmware updates or hardware replacement with significant warranty and recall cost exposure."
                     },
                     "operational": {
                         "level": "Moderate"
@@ -2913,8 +2982,8 @@
             "metadata": [
                 "Sensor / Actuator",
                 "Transceiver / PHY",
-                "TEE",
-                "Seeds / RoT Data"
+                "CAN / CAN-FD / CAN-XL",
+                "MCU"
             ],
             "domain": "Powertrain",
             "cybersecurityProperties": [
@@ -2968,7 +3037,8 @@
             "domain": "Infotainment",
             "cybersecurityProperties": [
                 "Confidentiality",
-                "Availability"
+                "Availability",
+                "Integrity"
             ],
             "impact": {
                 "oem": {
@@ -3003,6 +3073,237 @@
                 }
             },
             "class": "Peripheral"
+        },
+        {
+            "id": "A.063",
+            "name": "Telematics Control Unit (TCU) Hardware Platform",
+            "description": "Physical compute hardware hosting the cellular modem, GNSS receiver, and telematics software stack. Acts as the primary vehicle-to-cloud communication gateway and the physical entry point for all wireless back-channel attacks.",
+            "class": "Compute",
+            "domain": "Telematics",
+            "metadata": [
+                "MCU",
+                "SoC",
+                "Cellular",
+                "GNSS",
+                "Transceiver / PHY",
+                "NVRAM",
+                "Bootloader",
+                "RTOS"
+            ],
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Confidentiality"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe",
+                        "rationale": "TCU is the primary remote-access vector; its compromise enables large-scale fleet attacks with massive remediation cost."
+                    },
+                    "operational": {
+                        "level": "Severe",
+                        "rationale": "Loss of TCU disables all V2C connectivity, OTA updates, eCall, and fleet management functions."
+                    },
+                    "privacy": {
+                        "level": "Major",
+                        "rationale": "TCU handles raw GNSS location data and user traffic, exposing location history and communication metadata."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate",
+                        "rationale": "TCU is not directly in the control path but provides a remote attack surface that, when chained with CGW vulnerabilities, can reach safety ECUs."
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Loss of eCall, navigation, and remote assistance degrades road safety services."
+                    },
+                    "privacy": {
+                        "level": "Major",
+                        "rationale": "Vehicle location and trip data are continuously processed by the TCU."
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.064",
+            "name": "Physical Diagnostic Access Interface (OBD-II Port / JTAG / Debug Pads)",
+            "description": "Physical connectors and test pads providing direct wired access to vehicle networks and ECU debug interfaces. Includes the standardized OBD-II Data Link Connector (DLC), JTAG/SWD boundary-scan pads, and UART console interfaces exposed on PCBs. Primary vector for physical-proximity attacks.",
+            "class": "Interface",
+            "domain": "External",
+            "metadata": [
+                "OBD-II",
+                "JTAG / cJTAG",
+                "SWD",
+                "UART / USART",
+                "Diagnostic Pads",
+                "UDS",
+                "DoIP",
+                "CAN / CAN-FD / CAN-XL"
+            ],
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe",
+                        "rationale": "Physical diagnostic access is the root vector for in-depth reverse engineering, IP theft, and aftermarket tuning that undermines OEM revenue and warranty control."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Attackers with physical access can brick ECUs, corrupt calibration data, or install persistent backdoors requiring costly dealer interventions."
+                    },
+                    "privacy": {
+                        "level": "Moderate",
+                        "rationale": "Diagnostic sessions expose stored PII, trip logs, and paired device credentials accessible from the DLC."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major",
+                        "rationale": "Vehicle theft, ECU manipulation, or disabling safety systems via the OBD port directly endangers the driver and road users."
+                    },
+                    "financial": {
+                        "level": "Severe",
+                        "rationale": "OBD-based relay attacks and immobilizer bypasses are a primary vehicle theft vector."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Malicious calibration or firmware flashing via the diagnostic port can leave the vehicle inoperable or unsafe."
+                    },
+                    "privacy": {
+                        "level": "Moderate",
+                        "rationale": "Trip data, linked account tokens, and PII may be extractable via the DLC without authentication."
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.065",
+            "name": "In-Vehicle Network Intrusion Detection & Prevention System (IDS/IPS)",
+            "description": "Software or hardware-assisted monitoring agent analyzing in-vehicle network traffic (CAN, Automotive Ethernet) for anomalous message patterns, unauthorized frame injection, or statistical deviations indicative of an ongoing cyber attack. Mandated by UNECE WP.29 R155 for type-approved vehicles.",
+            "class": "Executable",
+            "domain": "Powertrain",
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "IDS / IPS",
+                "Middleware",
+                "App / Service",
+                "RTOS",
+                "HLOS"
+            ],
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Confidentiality"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "IDS compromise undermines UNECE R155 compliance posture and removes forensic evidence needed for incident response, increasing regulatory and litigation exposure."
+                    },
+                    "operational": {
+                        "level": "Severe",
+                        "rationale": "An IDS taken offline loses all alerting and telemetry, disabling the security operations capability and leaving the vehicle exposed."
+                    },
+                    "privacy": {
+                        "level": "Moderate",
+                        "rationale": "IDS processes raw network traffic which may contain sensitive signals or PII fragments; its data store must be protected."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate",
+                        "rationale": "IDS failure is not immediately safety-impacting but removes detection of in-progress attacks that may escalate to safety-critical systems."
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate",
+                        "rationale": "Indirect impact through reduced security posture; direct operational impact on the driver is minimal."
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            }
+        },
+        {
+            "id": "A.066",
+            "name": "Driver Monitoring System (DMS) Biometric Sensor & Data",
+            "description": "In-cabin near-infrared camera and associated inference engine monitoring driver gaze direction, eyelid closure, head pose, and physiological state to detect drowsiness, distraction, or medical impairment. Processes biometric data and feeds active safety interventions. Mandated by Euro NCAP 2026 and EU GSR2 for L2+ vehicles.",
+            "class": "Peripheral",
+            "domain": "ADAS",
+            "metadata": [
+                "Sensor / Actuator",
+                "Transceiver / PHY",
+                "SerDes",
+                "ML Model / Weights",
+                "Kernel / Driver",
+                "RTOS",
+                "CAN / CAN-FD / CAN-XL"
+            ],
+            "partOf": "A.040",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "DMS data breach exposes highly sensitive biometric data triggering GDPR and biometric privacy regulations with significant regulatory fines."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "DMS failure disables L2+ hands-off functionality and regulatory compliance triggers service lockout of conditional automation features."
+                    },
+                    "privacy": {
+                        "level": "Severe",
+                        "rationale": "DMS continuously captures facial biometrics and physiological indicators are among the most sensitive PII categories under GDPR and equivalent regulations."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major"
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Moderate",
+                        "rationale": "DMS failure may disable automated driving features the driver relies upon."
+                    },
+                    "privacy": {
+                        "level": "Severe",
+                        "rationale": "Unauthorized access to continuous biometric face and eye-tracking data constitutes a severe personal privacy violation."
+                    }
+                }
+            }
         }
     ]
 }

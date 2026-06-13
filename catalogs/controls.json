@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "controls": [
         {
             "id": "C.01",
@@ -44,7 +44,7 @@
                 },
                 {
                     "action": "Extract",
-                    "assetClass": "Memory",
+                    "assetClass": "Data",
                     "domain": "Powertrain"
                 }
             ],
@@ -115,7 +115,7 @@
                 },
                 {
                     "action": "Extract",
-                    "assetClass": "Memory",
+                    "assetClass": "Data",
                     "domain": "Powertrain"
                 }
             ],
@@ -228,7 +228,7 @@
                 "Symmetric Keys",
                 "Asymmetric Keys",
                 "Digital Signatures",
-                "OTA"
+                "LWM2M / OMA-DM"
             ],
             "attackFeasibilityReduction": {
                 "attackPotentialReduction": {
@@ -510,8 +510,7 @@
                 "Cellular",
                 "gRPC / REST",
                 "TLS / DTLS",
-                "Seeds / RoT Data",
-                "OTA"
+                "Seeds / RoT Data"
             ],
             "refines": "C.03",
             "attackFeasibilityReduction": {
@@ -541,12 +540,12 @@
             "denies": [
                 {
                     "action": "Intercept",
-                    "assetClass": "Interface",
+                    "assetClass": "Network",
                     "domain": "Backend"
                 },
                 {
                     "action": "Intercept",
-                    "assetClass": "Interface",
+                    "assetClass": "Network",
                     "domain": "External"
                 },
                 {
@@ -638,7 +637,6 @@
             "name": "Autoscaling",
             "description": "Autoscaling automatically adjusts the number of active resources in cloud environments based on demand, ensuring resilience against traffic spikes and DoS attacks.",
             "metadata": [
-                "SPI / I2C / I3C",
                 "gRPC / REST"
             ],
             "refines": "C.03",
@@ -691,7 +689,9 @@
             "name": "Network Segmentation",
             "description": "Divides automotive networks into isolated segments (e.g., VLANs, physical separate buses), limiting the spread of attacks and restricting lateral movement.",
             "metadata": [
-                "gRPC / REST"
+                "gRPC / REST",
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet"
             ],
             "refines": "C.03",
             "attackFeasibilityReduction": {
@@ -752,7 +752,7 @@
             "metadata": [
                 "V2X",
                 "PKI / Certificates",
-                "OTA"
+                "LWM2M / OMA-DM"
             ],
             "refines": "C.03",
             "attackFeasibilityReduction": {
@@ -883,7 +883,9 @@
             "name": "Secure Key Encapsulation / Exchange",
             "description": "Secure key encapsulation and exchange mechanisms provide the foundation for establishing cryptographic session keys over insecure automotive networks, reinforcing network security by protecting key material during transport and session setup.",
             "metadata": [
-                "Seeds / RoT Data"
+                "Seeds / RoT Data",
+                "Asymmetric Keys",
+                "TLS / DTLS"
             ],
             "refines": "C.03",
             "attackFeasibilityReduction": {
@@ -1045,7 +1047,9 @@
             "name": "Firewall",
             "description": "A firewall monitors and controls incoming and outgoing network traffic based on predetermined rules. In automotive systems, firewalls (often running on the central gateway) segment networks and block unauthorized access.",
             "metadata": [
-                "gRPC / REST"
+                "gRPC / REST",
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet"
             ],
             "refines": "C.03",
             "attackFeasibilityReduction": {
@@ -1086,13 +1090,13 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Inject",
-                        "assetClass": "Network",
+                        "action": "Elevate",
+                        "assetClass": "Executable",
                         "domain": "Telematics"
                     },
                     {
-                        "action": "Elevate",
-                        "assetClass": "Executable",
+                        "action": "Modify",
+                        "assetClass": "Data",
                         "domain": "Telematics"
                     }
                 ]
@@ -1178,9 +1182,21 @@
             "protects": [
                 "Confidentiality",
                 "Integrity",
-                "Non Repudiation"
+                "Non Repudiation",
+                "Availability"
             ],
-            "denies": [],
+            "denies": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Telematics"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "Telematics"
+                }
+            ],
             "overriddenBy": {
                 "OR": [
                     {
@@ -1252,6 +1268,73 @@
             }
         },
         {
+            "id": "C.03.12",
+            "name": "Automotive IVN Intrusion Detection (CAN / Ethernet IDPS)",
+            "description": "Bus-level anomaly detection for in-vehicle networks, monitoring CAN message frequency, timing patterns, unexpected transmitter IDs, and Ethernet payload anomalies against the vehicle's expected communication matrix. Distinct from IP-layer IDS (C.03.10) which targets backend connectivity — this control targets automotive-specific protocol anomalies as required by UN R155 mitigation categories M6 and M8.",
+            "refines": "C.03",
+            "metadata": [
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "IDS / IPS",
+                "J1939 / FMS"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Attacker must craft messages that blend into the normal traffic baseline, requiring deep knowledge of the vehicle's communication matrix (DBC/ARXML)."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2"
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "protects": [
+                "Integrity",
+                "Availability"
+            ],
+            "denies": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Disrupt",
+                    "assetClass": "Network",
+                    "domain": "Powertrain"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Modify",
+                        "assetClass": "Data",
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Telematics"
+                    }
+                ]
+            }
+        },
+        {
             "id": "C.04",
             "name": "Hashing",
             "description": "Hashing is the process of transforming data into a fixed-size string of characters. Used for verifying firmware integrity, authenticating diagnostic messages, protecting secure boot processes, and ensuring data has not been tampered with.",
@@ -1297,8 +1380,8 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
-                        "assetClass": "Crypto",
+                        "action": "Modify",
+                        "assetClass": "Data",
                         "domain": "Powertrain"
                     }
                 ]
@@ -1307,7 +1390,7 @@
         {
             "id": "C.04.1",
             "name": "SHA-2 Family",
-            "description": "The SHA-2 family consists of cryptographic hash functions including SHA-224, SHA-256, SHA-384, and SHA-512, which are based on the Merkle-Damg\u00e5rd construction.",
+            "description": "The SHA-2 family consists of cryptographic hash functions including SHA-224, SHA-256, SHA-384, and SHA-512, which are based on the Merkle-Damgård construction.",
             "metadata": [
                 "Hashes"
             ],
@@ -1349,8 +1432,8 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
-                        "assetClass": "Crypto",
+                        "action": "Modify",
+                        "assetClass": "Data",
                         "domain": "Powertrain"
                     }
                 ]
@@ -1401,8 +1484,8 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
-                        "assetClass": "Crypto",
+                        "action": "Modify",
+                        "assetClass": "Data",
                         "domain": "ADAS"
                     }
                 ]
@@ -1449,12 +1532,13 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
-                        "assetClass": "Crypto",
+                        "action": "Modify",
+                        "assetClass": "Data",
                         "domain": "Body"
                     }
                 ]
-            }
+            },
+            "notes": "DEPRECATED. MD5 is cryptographically broken: practical chosen-prefix collision attacks are achievable in seconds on commodity hardware (~2^18 operations). This entry exists solely to model legacy system residual risk. Any new design using MD5 for integrity protection violates UN R155 security principles. Migrate immediately to SHA-256 or SHA-3."
         },
         {
             "id": "C.05",
@@ -1464,7 +1548,8 @@
                 "UDS",
                 "Secure Boot",
                 "Digital Signatures",
-                "OTA"
+                "Bootloader",
+                "PKI / Certificates"
             ],
             "attackFeasibilityReduction": {
                 "attackPotentialReduction": {
@@ -1603,8 +1688,7 @@
             "metadata": [
                 "V2X",
                 "UDS",
-                "Digital Signatures",
-                "OTA"
+                "Digital Signatures"
             ],
             "refines": "C.05",
             "attackFeasibilityReduction": {
@@ -1744,7 +1828,7 @@
             "metadata": [
                 "V2X",
                 "Digital Signatures",
-                "OTA"
+                "LWM2M / OMA-DM"
             ],
             "attackFeasibilityReduction": {
                 "attackPotentialReduction": {
@@ -1816,7 +1900,9 @@
             "name": "Message Authentication Codes",
             "description": "A Message Authentication Code (MAC) is a short piece of information used to authenticate a message and ensure its integrity and authenticity using a shared secret key.",
             "metadata": [
-                "MAC / HMAC / CMAC"
+                "MAC / HMAC / CMAC",
+                "SecOC",
+                "CAN / CAN-FD / CAN-XL"
             ],
             "attackFeasibilityReduction": {
                 "attackPotentialReduction": {
@@ -1873,7 +1959,8 @@
             "name": "HMAC (Hash-Based Message Authentication Code)",
             "description": "HMAC verifies the integrity and authenticity of messages exchanged between ECUs using a cryptographic hash function and a secret key.",
             "metadata": [
-                "MAC / HMAC / CMAC"
+                "MAC / HMAC / CMAC",
+                "SecOC"
             ],
             "refines": "C.06",
             "attackFeasibilityReduction": {
@@ -1914,7 +2001,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Elevate",
+                        "action": "Extract",
                         "assetClass": "Crypto",
                         "domain": "Powertrain"
                     },
@@ -1931,7 +2018,9 @@
             "name": "CMAC (Cipher-based Message Authentication Code)",
             "description": "CMAC is a symmetric-key algorithm based on block ciphers like AES, used for message authentication and integrity verification in automotive networks. It is susceptible to block-cipher side-channel attacks if implemented purely in generic hardware.",
             "metadata": [
-                "MAC / HMAC / CMAC"
+                "MAC / HMAC / CMAC",
+                "SecOC",
+                "CAN / CAN-FD / CAN-XL"
             ],
             "refines": "C.06",
             "attackFeasibilityReduction": {
@@ -1990,6 +2079,85 @@
             }
         },
         {
+            "id": "C.06.3",
+            "name": "Secure Onboard Communication (SecOC)",
+            "description": "AUTOSAR SecOC provides MAC-based message authentication for CAN and SOME/IP frames, ensuring every PDU originates from a trusted sender. It is the primary IVN-level control against replay and injection attacks on the CAN bus. This is a foundational refinement of C.06 applied to the automotive network layer.",
+            "refines": "C.06",
+            "metadata": [
+                "SecOC",
+                "CAN / CAN-FD / CAN-XL",
+                "MAC / HMAC / CMAC",
+                "SOME/IP"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Attacker must first obtain the shared SecOC symmetric key before forging any authenticated frame."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Requires knowledge of AUTOSAR SecOC PDU layout, counter management, and CAN bus tooling."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "CAN interface required for injection attempts; key extraction additionally requires SCA or debug equipment."
+                    }
+                }
+            },
+            "protects": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "denies": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Body"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "Powertrain"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Extract",
+                        "assetClass": "Crypto",
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Modify",
+                        "assetClass": "Memory",
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Fault",
+                        "assetClass": "Compute",
+                        "domain": "Powertrain"
+                    }
+                ]
+            }
+        },
+        {
             "id": "C.07",
             "name": "Trusted Execution Environment",
             "description": "A Trusted Execution Environment (TEE) is a secure area of a processor that ensures sensitive code and data are isolated from the main operating system. In automotive systems, TEEs protect cryptographic operations, key storage, and security-critical applications from compromise, even if the main OS is attacked.",
@@ -2034,17 +2202,12 @@
                 },
                 {
                     "action": "Elevate",
-                    "assetClass": "Compute",
+                    "assetClass": "Executable",
                     "domain": "Infotainment"
                 }
             ],
             "overriddenBy": {
                 "OR": [
-                    {
-                        "action": "Elevate",
-                        "assetClass": "Compute",
-                        "domain": "Infotainment"
-                    },
                     {
                         "action": "Fault",
                         "assetClass": "Compute",
@@ -2091,7 +2254,7 @@
             "denies": [
                 {
                     "action": "Execute",
-                    "assetClass": "Compute",
+                    "assetClass": "Executable",
                     "domain": "Infotainment"
                 },
                 {
@@ -2103,7 +2266,7 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
+                        "action": "Fault",
                         "assetClass": "Compute",
                         "domain": "Infotainment"
                     }
@@ -2208,14 +2371,135 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Memory",
+                        "action": "Fault",
+                        "assetClass": "Compute",
                         "domain": "Powertrain"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "C.07.4",
+            "name": "Hardware Memory Protection (MPU / MMU)",
+            "description": "A Memory Protection Unit (MPU) or Memory Management Unit (MMU) enforces hardware-level access policies on memory regions (e.g., W^X, read-only, no-execute). Prevents shellcode injection and stack-based exploitation by ensuring code cannot be written to executable regions and data regions cannot be treated as executable. Critical W^X enforcement for RTOS and bare-metal ECUs where no OS-level ASLR exists.",
+            "refines": "C.07",
+            "metadata": [
+                "MPU",
+                "MCU",
+                "SoC",
+                "RTOS"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
                     },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Bypassing MPU requires a kernel/hypervisor exploit to reconfigure protection regions, or physical fault injection to corrupt the MPU register state."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Physical bypass requires voltage/clock glitch equipment; logical bypass uses only standard IT tools."
+                    }
+                }
+            },
+            "protects": [
+                "Integrity",
+                "Availability"
+            ],
+            "denies": [
+                {
+                    "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Modify",
+                    "assetClass": "Memory",
+                    "domain": "Powertrain"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
                     {
                         "action": "Fault",
                         "assetClass": "Compute",
                         "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Powertrain"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "C.07.5",
+            "name": "Hypervisor and Container Isolation",
+            "description": "A Type-1 hypervisor or OCI-compliant container runtime enforces hardware-backed execution isolation between VMs and containers running on HPCs, preventing a compromised Infotainment VM from accessing ADAS or safety-critical partitions. This is the primary lateral-movement barrier in modern zonal E/E architectures (e.g., on NVIDIA DRIVE, Qualcomm SA8xxx).",
+            "refines": "C.07",
+            "metadata": [
+                "Hypervisor",
+                "Container",
+                "HPC / Zonal Controller",
+                "HLOS"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Hypervisor escapes require a zero-day in the VMM itself or hardware-assisted fault injection — both demand elite expertise not commonly available."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "protects": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "denies": [
+                {
+                    "action": "Elevate",
+                    "assetClass": "Executable",
+                    "domain": "Infotainment"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "ADAS"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Execute",
+                        "assetClass": "Executable",
+                        "domain": "Infotainment"
+                    },
+                    {
+                        "action": "Fault",
+                        "assetClass": "Compute",
+                        "domain": "Infotainment"
                     }
                 ]
             }
@@ -2271,7 +2555,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Elevate",
+                        "action": "Fault",
                         "assetClass": "Compute",
                         "domain": "Powertrain"
                     }
@@ -2322,11 +2606,6 @@
                         "action": "Elevate",
                         "assetClass": "Executable",
                         "domain": "Powertrain"
-                    },
-                    {
-                        "action": "Extract",
-                        "assetClass": "Crypto",
-                        "domain": "Powertrain"
                     }
                 ]
             }
@@ -2361,7 +2640,8 @@
             },
             "protects": [
                 "Confidentiality",
-                "Integrity"
+                "Integrity",
+                "Authenticity"
             ],
             "denies": [
                 {
@@ -2370,18 +2650,13 @@
                     "domain": "Powertrain"
                 },
                 {
-                    "action": "Execute",
-                    "assetClass": "Executable",
+                    "action": "Modify",
+                    "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
             ],
             "overriddenBy": {
                 "OR": [
-                    {
-                        "action": "Elevate",
-                        "assetClass": "Compute",
-                        "domain": "Powertrain"
-                    },
                     {
                         "action": "Extract",
                         "assetClass": "Memory",
@@ -2427,12 +2702,13 @@
             },
             "protects": [
                 "Integrity",
-                "Authenticity"
+                "Authenticity",
+                "Confidentiality"
             ],
             "denies": [
                 {
                     "action": "Modify",
-                    "assetClass": "Data",
+                    "assetClass": "Executable",
                     "domain": "Telematics"
                 },
                 {
@@ -2444,7 +2720,7 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
+                        "action": "Fault",
                         "assetClass": "Compute",
                         "domain": "Telematics"
                     },
@@ -2504,11 +2780,6 @@
             ],
             "overriddenBy": {
                 "OR": [
-                    {
-                        "action": "Extract",
-                        "assetClass": "Crypto",
-                        "domain": "Body"
-                    },
                     {
                         "action": "Extract",
                         "assetClass": "Memory",
@@ -2618,6 +2889,65 @@
                 {
                     "action": "Modify",
                     "assetClass": "Memory",
+                    "domain": "Powertrain"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Fault",
+                        "assetClass": "Compute",
+                        "domain": "Powertrain"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "C.08.6",
+            "name": "Physical Unclonable Function (PUF)",
+            "description": "A PUF exploits microscopic manufacturing variations in silicon to derive a unique, unclonable device fingerprint used as a hardware root-of-trust for key derivation, without storing static key material in NVM. Eliminates the primary attack surface of key extraction from flash/EEPROM. Particularly valuable for device identity and secure provisioning.",
+            "refines": "C.08",
+            "metadata": [
+                "PUF",
+                "MCU",
+                "SoC",
+                "Seeds / RoT Data"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET4",
+                        "rationale": "Cloning a PUF response requires chip decapsulation and advanced physical characterization — infeasible within operational attack windows."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Requires semiconductor-level expertise to characterize and model silicon process variation patterns."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq3",
+                        "rationale": "Requires FIB/SEM-class laboratory equipment for silicon physical characterization; not accessible to most attackers."
+                    }
+                }
+            },
+            "protects": [
+                "Confidentiality",
+                "Authenticity"
+            ],
+            "denies": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Modify",
+                    "assetClass": "Crypto",
                     "domain": "Powertrain"
                 }
             ],
@@ -2850,7 +3180,7 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
+                        "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "Telematics"
                     }
@@ -3124,8 +3454,8 @@
                         "domain": "Infotainment"
                     },
                     {
-                        "action": "Elevate",
-                        "assetClass": "Executable",
+                        "action": "Fault",
+                        "assetClass": "Compute",
                         "domain": "Infotainment"
                     }
                 ]
@@ -3305,7 +3635,9 @@
             "name": "Authenticated Diagnostics",
             "description": "Requires cryptographic authentication (e.g., UDS 0x27 SecurityAccess or 0x29 Authentication) before allowing critical diagnostic functions, preventing unauthorized reprogramming, actuator control, or data extraction.",
             "metadata": [
-                "UDS"
+                "UDS",
+                "OBD-II",
+                "DoIP"
             ],
             "attackFeasibilityReduction": {
                 "attackPotentialReduction": {
@@ -3353,6 +3685,11 @@
                         "action": "Extract",
                         "assetClass": "Crypto",
                         "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Modify",
+                        "assetClass": "Executable",
+                        "domain": "Powertrain"
                     }
                 ]
             }
@@ -3364,7 +3701,8 @@
             "metadata": [
                 "JTAG / cJTAG",
                 "SWD",
-                "Memory"
+                "Memory",
+                "Diagnostic Pads"
             ],
             "attackFeasibilityReduction": {
                 "attackPotentialReduction": {
@@ -3395,6 +3733,16 @@
                 {
                     "action": "Inject",
                     "assetClass": "Interface",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Extract",
+                    "assetClass": "Memory",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Modify",
+                    "assetClass": "Memory",
                     "domain": "Powertrain"
                 }
             ],
@@ -3446,7 +3794,8 @@
             },
             "protects": [
                 "Integrity",
-                "Non Repudiation"
+                "Non Repudiation",
+                "Availability"
             ],
             "denies": [
                 {
@@ -3463,8 +3812,8 @@
                         "domain": "Telematics"
                     },
                     {
-                        "action": "Extract",
-                        "assetClass": "Crypto",
+                        "action": "Modify",
+                        "assetClass": "Data",
                         "domain": "Telematics"
                     }
                 ]
@@ -3512,7 +3861,7 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
+                        "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "ADAS"
                     }
@@ -3563,7 +3912,7 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
+                        "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "Telematics"
                     }
@@ -3613,7 +3962,7 @@
             "overriddenBy": {
                 "OR": [
                     {
-                        "action": "Elevate",
+                        "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "Infotainment"
                     }
@@ -3625,7 +3974,8 @@
             "name": "Secure Firmware Update",
             "description": "Mechanisms (like cryptographically authenticated OTA client daemons) ensuring only integrity-checked firmware from the OEM is installed. Defends against malicious flashing over logical channels.",
             "metadata": [
-                "OTA"
+                "LWM2M / OMA-DM",
+                "Bootloader"
             ],
             "refines": "C.16",
             "attackFeasibilityReduction": {
@@ -3677,7 +4027,7 @@
                     },
                     {
                         "action": "Elevate",
-                        "assetClass": "Compute",
+                        "assetClass": "Executable",
                         "domain": "Telematics"
                     }
                 ]
@@ -3784,7 +4134,7 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Elevate",
+                        "action": "Modify",
                         "assetClass": "Crypto",
                         "domain": "Powertrain"
                     },
@@ -4174,11 +4524,6 @@
                         "domain": "Powertrain"
                     },
                     {
-                        "action": "Elevate",
-                        "assetClass": "Crypto",
-                        "domain": "Powertrain"
-                    },
-                    {
                         "action": "Fault",
                         "assetClass": "Compute",
                         "domain": "Powertrain"
@@ -4286,6 +4631,72 @@
                         "action": "Elevate",
                         "assetClass": "Executable",
                         "domain": "Powertrain"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "C.21",
+            "name": "V2X Security (IEEE 1609.2 / ETSI TS 103 097)",
+            "description": "Provides cryptographic authentication and pseudonymity for Vehicle-to-Everything (V2X) messages using ECDSA / ECIES over pseudonym certificates managed by a PKI. Prevents spoofed V2I or V2V messages (e.g., fake hazard warnings, ghost vehicles) from being accepted by ADAS or traffic management systems. Aligned with SCMS (US) and CCMS (EU) architectures.",
+            "metadata": [
+                "V2X",
+                "PKI / Certificates",
+                "Digital Signatures",
+                "Asymmetric Keys"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Requires knowledge of IEEE 1609.2 certificate structures and ECDSA to forge valid signed V2X messages."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2"
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1"
+                    }
+                }
+            },
+            "protects": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "denies": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "External"
+                },
+                {
+                    "action": "Modify",
+                    "assetClass": "Data",
+                    "domain": "ADAS"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Extract",
+                        "assetClass": "Crypto",
+                        "domain": "External"
+                    },
+                    {
+                        "action": "Modify",
+                        "assetClass": "Crypto",
+                        "domain": "Backend"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Telematics"
                     }
                 ]
             }
