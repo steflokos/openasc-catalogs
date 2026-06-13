@@ -23,20 +23,21 @@ Your contributions help improve the quality and coverage of our catalogs.
    ```sh
    git checkout -b feature/add-new-threat-xyz
    ```
-4. **Add or Update Entries**: Make your changes directly to either `threats/threats.json` or `controls/controls.json`, depending on whether you are contributing a threat or a control. Please ensure you are following [best practices](#best-practices) as explained below.
+4. **Add or Update Entries**: Make your changes directly to catalogs `catalogs/threats.json`, `catalogs/controls.json`, `assets.json` depending on where you are contributing. Please ensure you are following [best practices](#best-practices) as explained below.
 5. **Validate Your Changes**: Before submitting, validate your JSON files to ensure they conform to the schemas. You can use built-in scripts, online tools such as [JSON Schema Validator](https://www.jsonschemavalidator.net/iurl), or take advantage of automatic schema validation features available in editors like VS Code.
    - Using built-in scripts:
      ```sh
      npm install
      npm run validate:threats
      npm run validate:controls
+     npm run validate:assets
      npm run validate:all
      ```
 6. **Commit and Push**:
    ```sh
-   git add threats/threats.json controls/controls.json
-   git commit -m "Add new threat or control: XYZ description"
-   git push origin feature/add-new-threat-xyz
+   git add catalogs/threats.json catalogs/controls.json catalogs/assets.json
+   git commit -m "Add new threat or control or asset: XYZ description"
+   git push origin feature/add-new-xyz
    ```
 7. **Create a Pull Request**: Go to your fork on GitHub and click "Compare & pull request". Provide a meaningful title and description, and link to any related issues if applicable.
 8. **Review Process**: The maintainers will review your PR. Please respond to any feedback or requested changes.
@@ -64,4 +65,4 @@ Your contributions help improve the quality and coverage of our catalogs.
 If you have questions or need guidance, open an issue on GitHub or contact us via email at [mail@openasc.org](mailto:mail@openasc.org).
 
 ---
-Thank you for helping us build a comprehensive and open TARA threat/control catalog!
+Thank you for helping us build a comprehensive and open TARA catalogs!
