@@ -213,7 +213,7 @@
             "metadata": [
                 "gRPC / REST",
                 "App / Service",
-                "NVRAM",
+                "Memory",
                 "HLOS"
             ],
             "domain": "Infotainment",
@@ -361,7 +361,7 @@
             "name": "OTA Update Orchestration Middleware",
             "description": "Software lifecycle middleware coordinating package download, security verification, signature verification, and flashing choreography across targeting sub-buses.",
             "metadata": [
-                "NVRAM",
+                "Memory",
                 "Middleware",
                 "App / Service",
                 "Digital Signatures",
@@ -612,7 +612,7 @@
             "name": "Secure Non-Volatile Storage / Hardware Protected Partition",
             "description": "Protected physical non-volatile system structures hosting core system binaries, persistent operational parameters, and localized encryption manifests.",
             "metadata": [
-                "NVRAM",
+                "Memory",
                 "Seeds / RoT Data",
                 "eFuse / OTP",
                 "HSM / SHE"
@@ -2093,7 +2093,7 @@
                 "MCU",
                 "CAN / CAN-FD / CAN-XL",
                 "Sensor / Actuator",
-                "NVRAM",
+                "Memory",
                 "App / Service"
             ],
             "domain": "Powertrain",
@@ -2436,7 +2436,7 @@
                 "XCP / CCP",
                 "Sensor / Actuator",
                 "Transceiver / PHY",
-                "NVRAM",
+                "Memory",
                 "Config / Calibration File",
                 "HSM / SHE"
             ],
@@ -3086,7 +3086,7 @@
                 "Cellular",
                 "GNSS",
                 "Transceiver / PHY",
-                "NVRAM",
+                "Memory",
                 "Bootloader",
                 "RTOS"
             ],
@@ -3304,6 +3304,58 @@
                     }
                 }
             }
+        },
+        {
+            "id": "A.067",
+            "name": "FPGA Configuration Bitstream",
+            "description": "Proprietary hardware configuration bitstream defining the FPGA fabric logic used for radar signal processing, sensor fusion preprocessing, or custom automotive protocol bridging. Contains synthesized IP core definitions that deterministically program the device gate-level logic at power-on. Stored in external SPI flash or on-die configuration memory.",
+            "metadata": [
+                "FPGA",
+                "Config / Calibration File",
+                "SPI / I2C / I3C",
+                "HSM / SHE",
+                "Memory"
+            ],
+            "domain": "ADAS",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Confidentiality",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None"
+                    },
+                    "financial": {
+                        "level": "Severe",
+                        "rationale": "Extraction of the bitstream constitutes direct IP theft of proprietary hardware logic — the synthesized netlist cannot be re-derived without the original RTL source."
+                    },
+                    "operational": {
+                        "level": "Severe",
+                        "rationale": "Cloning of the bitstream enables counterfeit hardware production that bypasses OEM supply chain controls."
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major",
+                        "rationale": "Modification of the radar or LiDAR preprocessing bitstream corrupts sensor pipeline outputs at the gate level, ahead of any software-layer sanity checks or redundancy mechanisms."
+                    },
+                    "financial": {
+                        "level": "None"
+                    },
+                    "operational": {
+                        "level": "Severe"
+                    },
+                    "privacy": {
+                        "level": "None"
+                    }
+                }
+            },
+            "class": "Data"
         }
     ]
 }

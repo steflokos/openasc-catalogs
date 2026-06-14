@@ -915,7 +915,7 @@
                 }
             ],
             "metadata": [
-                "NVRAM",
+                "Memory",
                 "Config / Calibration File",
                 "Memory",
                 "XCP / CCP"
@@ -1428,7 +1428,7 @@
                 }
             ],
             "metadata": [
-                "NVRAM",
+                "Memory",
                 "Memory",
                 "UDS"
             ]
@@ -1727,8 +1727,8 @@
         },
         {
             "id": "T.04.4",
-            "name": "Side Channel Attacks (SCA)",
-            "description": "Exploiting indirect physical leakage (timing variations, power consumption, electromagnetic emissions) during cryptographic processing to extract sensitive data or private keys without bypassing logical controls.",
+            "name": "Side Channel Analysis (SCA)",
+            "description": "Passively exploiting indirect physical leakage — timing variations, power consumption patterns, or electromagnetic emissions — observed during normal cryptographic processing to statistically recover secret key material without physical intervention in circuit operation.",
             "classificationModel": "STRIDE",
             "refines": "T.04",
             "attackFeasibility": {
@@ -1738,17 +1738,18 @@
                     },
                     "specialistExpertise": {
                         "feasibility": "SE3",
-                        "rationale": "Requires advanced statistical analysis (DPA/CPA) to isolate key bits from noise."
+                        "rationale": "Requires advanced statistical signal processing (DPA/CPA/TVLA) to isolate key-correlated leakage from measurement noise across thousands of traces."
                     },
                     "knowledgeOfTheItemOrComponent": {
-                        "feasibility": "KoIC2"
+                        "feasibility": "KoIC2",
+                        "rationale": "Knowledge of the cryptographic algorithm and approximate hardware layout is sufficient; exact gate-level implementation not required."
                     },
                     "windowOfOpportunity": {
                         "feasibility": "WoO2"
                     },
                     "equipment": {
                         "feasibility": "Eq2",
-                        "rationale": "Requires high-frequency oscilloscopes and EM probes."
+                        "rationale": "Requires high-frequency oscilloscopes (≥1 GSa/s), EM near-field probes, and low-noise amplifiers. Commercially available."
                     }
                 }
             },
@@ -1782,6 +1783,62 @@
         },
         {
             "id": "T.04.5",
+            "name": "Differential Fault Analysis (DFA)",
+            "description": "Actively inducing precise computational faults in a cryptographic operation — via voltage glitching, clock manipulation, electromagnetic fault injection (EMFI), or laser irradiation — then statistically analyzing the differential between correct and faulty ciphertext outputs to derive the secret key. Unlike SCA, DFA actively disturbs circuit operation rather than passively observing it.",
+            "classificationModel": "STRIDE",
+            "refines": "T.04",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3"
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Requires simultaneous expertise in fault injection hardware, cryptographic differential analysis, and precise timing of fault windows within the cryptographic round schedule."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC3",
+                        "rationale": "Exact knowledge of the cryptographic implementation's round timing and target register layout is required to position the fault within the exploitable window."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2"
+                    },
+                    "equipment": {
+                        "feasibility": "Eq3",
+                        "rationale": "Requires precision fault injection platforms (laser FI workstation, EMFI pulse generators, sub-nanosecond timing controllers). Significantly more specialized than SCA equipment."
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality"
+            ],
+            "requires": {
+                "OR": [
+                    {
+                        "action": "Intercept",
+                        "assetClass": "Compute",
+                        "domain": "Powertrain"
+                    }
+                ]
+            },
+            "grants": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "Powertrain"
+                }
+            ],
+            "metadata": [
+                "SoC",
+                "MCU",
+                "HSM / SHE",
+                "Symmetric Keys",
+                "Asymmetric Keys",
+                "FPGA"
+            ]
+        },
+        {
+            "id": "T.04.6",
             "name": "Advanced Physical Data Extraction (Hidden Pads)",
             "description": "Directly reading data from storage devices or memory chips utilizing hidden-pad architectures (BGA, LGA, WSON) using physical access techniques like X-ray alignment, chip-off, or decapsulation to extract firmware and keys.",
             "classificationModel": "STRIDE",
@@ -1836,7 +1893,7 @@
             ]
         },
         {
-            "id": "T.04.6",
+            "id": "T.04.7",
             "name": "Basic Physical Data Extraction (Exposed Pins)",
             "description": "Directly reading data from memory chips utilizing exposed-pin architectures (TSOP, QFP, DIP) using standard in-circuit clips or basic desoldering to extract firmware. Requires significantly less effort than BGA extraction.",
             "classificationModel": "STRIDE",
@@ -1891,7 +1948,7 @@
             ]
         },
         {
-            "id": "T.04.7",
+            "id": "T.04.8",
             "name": "OEM Backend Credential / Key Extraction",
             "description": "An attacker compromises the OEM's cloud backend through web-application vulnerabilities (SQL injection, insecure object references, credential stuffing against the DevOps pipeline) or insider access to extract cryptographic signing keys, OTA authorization tokens, or fleet-wide symmetric secrets from the backend key management service.",
             "classificationModel": "STRIDE",
@@ -2260,7 +2317,7 @@
                 }
             ],
             "metadata": [
-                "NVRAM",
+                "Memory",
                 "Bootloader",
                 "Memory",
                 "Config / Calibration File"
@@ -6094,7 +6151,7 @@
             ],
             "metadata": [
                 "Memory",
-                "NVRAM",
+                "Memory",
                 "Passwords / PINs",
                 "Hashes"
             ]

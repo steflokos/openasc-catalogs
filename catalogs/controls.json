@@ -4038,7 +4038,7 @@
             "name": "Anti-Rollback Protection",
             "description": "Prevents the installation of older, vulnerable firmware versions. Utilizes hardware monotonic counters (e.g., in TPMs/HSMs) or blown eFuses to enforce version minimums.",
             "metadata": [
-                "NVRAM",
+                "Memory",
                 "eFuse / OTP",
                 "HSM / SHE",
                 "TPM / SE"
