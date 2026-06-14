@@ -2509,7 +2509,7 @@
             "name": "Trusted Key Management",
             "description": "Trusted Key Management encompasses the secure generation, distribution, storage, rotation, and destruction of cryptographic keys in automotive systems. This is a foundational control refined by specific storage implementations.",
             "metadata": [
-                "NVRAM"
+                "Memory"
             ],
             "attackFeasibilityReduction": {
                 "attackPotentialReduction": {
@@ -2567,7 +2567,7 @@
             "name": "Encrypted Key Storage",
             "description": "Ensures that cryptographic keys are encrypted or cryptographically wrapped when stored on non-volatile storage mediums. This prevents plaintext key extraction via direct logical or physical access to the storage component.",
             "metadata": [
-                "NVRAM"
+                "Memory"
             ],
             "refines": "C.08",
             "attackFeasibilityReduction": {
