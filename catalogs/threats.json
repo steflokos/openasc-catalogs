@@ -692,7 +692,7 @@
         },
         {
             "id": "T.01.12",
-            "name": "EV Charging Session Spoofing (ISO 15118 / OCPP)",
+            "name": "EV Charging Session Spoofing",
             "description": "An attacker deploys a rogue or tampered EVSE that presents a forged TLS certificate during the ISO 15118 Vehicle-to-Grid (V2G) handshake. Upon a successful TLS downgrade or certificate validation bypass, the attacker can extract the vehicle's contract certificate, manipulate AC/DC charging parameters, or deliver a malicious firmware payload via the update channel.",
             "classificationModel": "STRIDE",
             "refines": "T.01",
