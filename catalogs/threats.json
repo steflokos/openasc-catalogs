@@ -1993,6 +1993,82 @@
             ]
         },
         {
+            "id": "T.04.9",
+            "name": "Harvest Now, Decrypt Later (HNDL)",
+            "description": "A long-horizon quantum threat strategy in which an attacker passively intercepts and stores encrypted vehicle communications today — over V2X, TLS/DTLS-protected telematics channels, or OEM backend links — with the intent of retroactively decrypting them once a Cryptographically Relevant Quantum Computer (CRQC) becomes available. Shor's algorithm enables a CRQC to break classical asymmetric key exchange (RSA, ECDH, ECDSA), rendering all previously captured ciphertext retroactively readable. Beyond confidentiality, HNDL enables 'harvest now, spoof later': stored public-key material allows a quantum-capable adversary to derive corresponding private signing keys, subsequently forging digital signatures on OTA packages, V2X messages, or backend API tokens — enabling injection of malicious commands or unauthorized firmware execution.",
+            "classificationModel": "STRIDE",
+            "refines": "T.04",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "The 'harvest' phase is immediate and passive; the 'decrypt later' phase requires years of CRQC development. Nation-state adversaries are already executing collection operations against automotive and V2X traffic with long-term decryption intent."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Passive traffic interception is trivial; retroactive decryption and private-key derivation via Shor's algorithm requires advanced quantum computing expertise and CRQC access."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Classical asymmetric protocols (RSA, ECDH, ECDSA) used in TLS/DTLS, V2X (IEEE 1609.2), and OTA are publicly standardized; their vulnerability to Shor's algorithm is well-documented."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Passive interception requires only brief or opportunistic positioning on a communication path; the decryption phase is performed offline at a future time."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq3",
+                        "rationale": "Requires a Cryptographically Relevant Quantum Computer (CRQC). Not yet commercially available, but nation-state actors are actively investing in CRQC development and the risk window is within automotive vehicle lifetime horizons (10–15 years)."
+                    }
+                }
+            },
+            "compromises": [
+                "Confidentiality",
+                "Authenticity",
+                "Integrity"
+            ],
+            "requires": {
+                "OR": [
+                    {
+                        "action": "Intercept",
+                        "assetClass": "Network",
+                        "domain": "External"
+                    },
+                    {
+                        "action": "Intercept",
+                        "assetClass": "Network",
+                        "domain": "Telematics"
+                    }
+                ]
+            },
+            "grants": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "Telematics"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "Telematics"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Executable",
+                    "domain": "ADAS"
+                }
+            ],
+            "metadata": [
+                "TLS / DTLS",
+                "V2X",
+                "Asymmetric Keys",
+                "PKI / Certificates",
+                "Digital Signatures",
+                "Cellular",
+                "Tokens / API Keys"
+            ]
+        },
+        {
             "id": "T.05",
             "name": "Denial of Service (DoS)",
             "description": "Disrupting the normal operation of vehicle systems by overwhelming resources, blocking communications, or causing system crashes. This is the abstract base class for all availability threats.",
