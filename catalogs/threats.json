@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "threats": [
         {
             "id": "T.01",
@@ -122,12 +122,21 @@
                     {
                         "action": "Intercept",
                         "assetClass": "Network",
-                        "domain": "External"
+                        "domain": "*"
                     },
                     {
-                        "action": "Extract",
-                        "assetClass": "Crypto",
-                        "domain": "External"
+                        "OR": [
+                            {
+                                "action": "Extract",
+                                "assetClass": "Crypto",
+                                "domain": "*"
+                            },
+                            {
+                                "action": "Extract",
+                                "assetClass": "Crypto",
+                                "domain": "External"
+                            }
+                        ]
                     }
                 ]
             },
@@ -135,7 +144,7 @@
                 {
                     "action": "Modify",
                     "assetClass": "Data",
-                    "domain": "Telematics"
+                    "domain": "*"
                 }
             ],
             "metadata": [
@@ -962,7 +971,7 @@
                     {
                         "action": "Intercept",
                         "assetClass": "Network",
-                        "domain": "External"
+                        "domain": "*"
                     }
                 ]
             },
@@ -970,7 +979,7 @@
                 {
                     "action": "Extract",
                     "assetClass": "Crypto",
-                    "domain": "External"
+                    "domain": "*"
                 },
                 {
                     "action": "Modify",
@@ -1038,6 +1047,20 @@
                         "action": "Inject",
                         "assetClass": "Network",
                         "domain": "External"
+                    },
+                    {
+                        "AND": [
+                            {
+                                "action": "Inject",
+                                "assetClass": "Interface",
+                                "domain": "External"
+                            },
+                            {
+                                "action": "Intercept",
+                                "assetClass": "Interface",
+                                "domain": "External"
+                            }
+                        ]
                     }
                 ]
             },
@@ -1901,6 +1924,75 @@
             ]
         },
         {
+            "id": "T.02.11",
+            "name": "Certificate and Trust Store Tampering",
+            "description": "Unauthorized change of the certificates, trusted root keys, or key allow-lists that a component checks against, stored in writable memory. Examples are adding an attacker root certificate to a TLS trust store, replacing the public key used to verify firmware signatures, or adding a key to the list accepted for diagnostic access. The cryptography itself is not broken. The attacker makes the component trust their keys and certificates instead.",
+            "classificationModel": "STRIDE",
+            "scalability": "Limited Batch",
+            "threatActors": [
+                "Organized Cybercrime",
+                "Nation-State / State-Sponsored"
+            ],
+            "refines": "T.02",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Adding or swapping a certificate or key is quick once write access to the store exists."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Needs to know how the target validates certificates and where it keeps them, which is more than editing a plain configuration file."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Requires knowing the trust store format and location, which differs per platform."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The store can be changed whenever privileged or remote-management access exists, with no narrow timing requirement."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq0",
+                        "rationale": "Standard tools are enough; no specialized equipment is required."
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Authenticity"
+            ],
+            "requires": {
+                "OR": [
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "*"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Network",
+                        "domain": "*"
+                    }
+                ]
+            },
+            "grants": [
+                {
+                    "action": "Modify",
+                    "assetClass": "Crypto",
+                    "domain": "*"
+                }
+            ],
+            "metadata": [
+                "PKI / Certificates",
+                "Digital Signatures",
+                "Flash / RAM / EEPROM"
+            ],
+            "unitedNationsRegulation155": [
+                "5.2"
+            ]
+        },
+        {
             "id": "T.03",
             "name": "Repudiation",
             "description": "An entity performs a malicious or unauthorized action and successfully denies having performed it. In an automotive context, this typically involves an attacker masking their tracks by deleting diagnostic logs, or a compromised node successfully denying the origin of a spoofed V2X/backend message. This is the abstract base class for Repudiation.",
@@ -2298,7 +2390,7 @@
                     },
                     {
                         "action": "Intercept",
-                        "assetClass": "Network",
+                        "assetClass": "Interface",
                         "domain": "External"
                     }
                 ]
@@ -2308,6 +2400,16 @@
                     "action": "Intercept",
                     "assetClass": "Network",
                     "domain": "External"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "Telematics"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "Backend"
                 },
                 {
                     "action": "Intercept",
@@ -2392,7 +2494,7 @@
                 {
                     "action": "Extract",
                     "assetClass": "Data",
-                    "domain": "External"
+                    "domain": "*"
                 }
             ],
             "metadata": [
@@ -2708,7 +2810,8 @@
                 "PKI / Certificates",
                 "Tokens / API Keys",
                 "App / Service",
-                "Symmetric Keys"
+                "Symmetric Keys",
+                "OTA / SOTA / FOTA"
             ],
             "unitedNationsRegulation155": [
                 "3.1",
@@ -2765,6 +2868,11 @@
                         "action": "Intercept",
                         "assetClass": "Network",
                         "domain": "Telematics"
+                    },
+                    {
+                        "action": "Intercept",
+                        "assetClass": "Network",
+                        "domain": "Backend"
                     }
                 ]
             },
@@ -2773,6 +2881,11 @@
                     "action": "Extract",
                     "assetClass": "Crypto",
                     "domain": "Telematics"
+                },
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "Backend"
                 },
                 {
                     "action": "Inject",
@@ -3059,7 +3172,8 @@
                 "Cellular",
                 "Wi-Fi",
                 "Bluetooth / BLE",
-                "V2X"
+                "V2X",
+                "RKE / PEPS (Keyless Entry)"
             ],
             "unitedNationsRegulation155": [
                 "8.1"
@@ -3340,7 +3454,7 @@
                 {
                     "action": "Modify",
                     "assetClass": "Data",
-                    "domain": "*"
+                    "domain": "Backend"
                 },
                 {
                     "action": "Extract",
@@ -4593,7 +4707,8 @@
                 "Wi-Fi",
                 "GNSS",
                 "Bluetooth / BLE",
-                "LF / RF"
+                "LF / RF",
+                "RKE / PEPS (Keyless Entry)"
             ],
             "unitedNationsRegulation155": [
                 "8.1"
@@ -5077,16 +5192,16 @@
                 "Authenticity"
             ],
             "requires": {
-                "OR": [
+                "AND": [
                     {
                         "action": "Inject",
                         "assetClass": "Interface",
-                        "domain": "Telematics"
+                        "domain": "External"
                     },
                     {
-                        "action": "Inject",
+                        "action": "Intercept",
                         "assetClass": "Interface",
-                        "domain": "Infotainment"
+                        "domain": "External"
                     }
                 ]
             },
@@ -5382,7 +5497,7 @@
                 {
                     "action": "Extract",
                     "assetClass": "Crypto",
-                    "domain": "*"
+                    "domain": "External"
                 }
             ],
             "metadata": [
@@ -6514,8 +6629,8 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Inject",
-                        "assetClass": "Interface",
+                        "action": "Execute",
+                        "assetClass": "Compute",
                         "domain": "*"
                     }
                 ]
@@ -7195,11 +7310,36 @@
                 "Confidentiality"
             ],
             "requires": {
-                "AND": [
+                "OR": [
                     {
                         "action": "Elevate",
                         "assetClass": "Executable",
-                        "domain": "*"
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Chassis"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Body"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Infotainment"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "ADAS"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Telematics"
                     }
                 ]
             },
@@ -7207,12 +7347,62 @@
                 {
                     "action": "Intercept",
                     "assetClass": "Network",
-                    "domain": "*"
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "Body"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "Infotainment"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "ADAS"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Network",
+                    "domain": "Telematics"
                 },
                 {
                     "action": "Inject",
                     "assetClass": "Network",
-                    "domain": "*"
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Body"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Infotainment"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "ADAS"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Telematics"
                 }
             ],
             "metadata": [
@@ -8371,11 +8561,6 @@
                         "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "*"
-                    },
-                    {
-                        "action": "Inject",
-                        "assetClass": "Interface",
-                        "domain": "External"
                     }
                 ]
             },
@@ -8775,7 +8960,32 @@
                     {
                         "action": "Inject",
                         "assetClass": "Network",
-                        "domain": "*"
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Network",
+                        "domain": "Chassis"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Network",
+                        "domain": "Body"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Network",
+                        "domain": "Infotainment"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Network",
+                        "domain": "ADAS"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Network",
+                        "domain": "Telematics"
                     }
                 ]
             },
@@ -8783,7 +8993,32 @@
                 {
                     "action": "Execute",
                     "assetClass": "Compute",
-                    "domain": "*"
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Compute",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Compute",
+                    "domain": "Body"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Compute",
+                    "domain": "Infotainment"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Compute",
+                    "domain": "ADAS"
+                },
+                {
+                    "action": "Execute",
+                    "assetClass": "Compute",
+                    "domain": "Telematics"
                 }
             ],
             "metadata": [
@@ -8916,11 +9151,36 @@
                 "Integrity"
             ],
             "requires": {
-                "AND": [
+                "OR": [
                     {
                         "action": "Elevate",
                         "assetClass": "Executable",
-                        "domain": "*"
+                        "domain": "Powertrain"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Chassis"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Body"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Infotainment"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "ADAS"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Telematics"
                     }
                 ]
             },
@@ -8928,7 +9188,32 @@
                 {
                     "action": "Inject",
                     "assetClass": "Network",
-                    "domain": "*"
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Body"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Infotainment"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "ADAS"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "Telematics"
                 }
             ],
             "metadata": [
@@ -9895,8 +10180,8 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Inject",
-                        "assetClass": "Interface",
+                        "action": "Execute",
+                        "assetClass": "Executable",
                         "domain": "*"
                     }
                 ]
@@ -10109,11 +10394,6 @@
                     {
                         "action": "Execute",
                         "assetClass": "Executable",
-                        "domain": "External"
-                    },
-                    {
-                        "action": "Inject",
-                        "assetClass": "Interface",
                         "domain": "External"
                     }
                 ]
