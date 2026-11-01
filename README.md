@@ -2,21 +2,22 @@
 
 # OpenASC-Catalogs
 
-OpenASC is an open-source repository of structured threat, control, and asset catalogs. It provides a foundational resource for systematically identifying, assessing, and mitigating security threats in the automotive domain utilizing classification models like STRIDE and MITRE ATT&CK®. OpenASC is designed to actively support the Risk Assessment and TARA processes outlined in Clause 15 of **ISO/SAE 21434** and the threat/mitigation requirements of **UN Regulation No. 155**. Select controls (Secure Firmware Update, Anti-Rollback Protection, Crypto-Agility) also support the software update management practices required by **UN Regulation No. 156**, though full R156 compliance requires a broader software update management system (SUMS) this catalog does not itself provide.
+OpenASC is an open-source set of threat, control and asset catalogs for automotive cybersecurity. It assists on finding, assessing and reducing security threats, and it uses classifications such as STRIDE and MITRE ATT&CK®. It supports the risk assessment and TARA work in Clause 15 of **ISO/SAE 21434** and the threat and mitigation requirements of **UN Regulation No. 155**, while some controls also help with the software update practices in **UN Regulation No. 156**. 
 
 ## Features
-- **Threat Catalog**: A comprehensive, interconnected list of automotive-specific threats, classified via STRIDE/MITRE ATT&CK® and mapped to UN R155 Annex 5 threat categories.
-- **Control Catalog**: Standardized security controls (cryptographic, hardware, process) mathematically designed to reduce attack feasibility, mapped to UN R155 mitigations.
-- **Asset Catalog**: A detailed physical and logical inventory of the vehicle ecosystem, following different E/E architectures.
-- **Graph-Ready Capability Taxonomy**: Utilizes a strict, Mutually Exclusive and Collectively Exhaustive (MECE) capability syntax (`Action:Class:Domain`) to map dynamic attack paths using `requires`, `grants` (Threats) and `denies`, `overriddenBy` (Controls) for logic gates.
-- **AI Vector Integration**: Schema is designed for seamless integration with locally-executed LLM embedding engines for NLP-powered threat relevance scoring.
-- **JSON Schema Validation**: All catalogs are validated against strict JSON Schemas to ensure logical consistency and programmatic interoperability.
+- **Threat Catalog**: A list of interconnected automotive threats. They are classified with STRIDE and MITRE ATT&CK® and mapped to the UN R155 Annex 5 threat categories.
+- **Control Catalog**: Standard security controls (cryptographic, hardware, process) that lower how feasible an attack is. They are mapped to the UN R155 mitigations.
+- **Asset Catalog**: A list of the physical and logical parts of the vehicle, covering different E/E architectures.
+- **Capability Taxonomy for Graphs**: One strict syntax (`Action:Class:Domain`) with no overlaps and no gaps (MECE). Tools use it to build attack paths. Threats use `requires` and `grants`. Controls use `denies` and `overriddenBy`, which act as gates.
+- **AI Vector Integration**: The schema can feed embedding models that run on your own machine, for example to rank threats by relevance.
+- **JSON Schema Validation**: Every catalog is checked against strict JSON Schemas, so the data stays consistent and easy for programs to read.
 
 ## Project Structure
 ```text
-catalogs/         # The main catalogs for assets, threats, and controls
+catalogs/         # The main catalogs for assets, threats, and controls, plus property-rubric.json
 schemas/          # JSON Schemas for assets, threats, and controls
 scripts/          # Validation scripts (Node.js)
+tools/            # Maintainer tools: the semantic lint (npm run lint:semantics)
 LICENSE.md        # MIT License
 package.json      # Project metadata and scripts
 README.md         # Project documentation
@@ -59,46 +60,38 @@ npm run validate:all
 
 ---
 
-## The OpenASC Asset & Impact Methodology
+## Automotive Threat Modeling Taxonomy
 
-To align with ISO/SAE 21434, OpenASC natively separates damage impacts into two distinct stakeholder perspectives: `oem` and `roadUser`, with the capability of adding `supplier`.
+To let tools build attack paths in a structured way, OpenASC writes every capability in one short, strict form: **`Action:Class:Domain`**.
 
-**`oem.safety` is structurally almost always `None`.** ISO/SAE 21434's TARA is road-user-centric - an OEM as a corporate entity has no direct physical safety state that a compromise can affect. Whatever safety-adjacent exposure an OEM carries from a safety-relevant compromise is a *consequence* of road-user harm, expressed monetarily (recall costs, liability judgments, regulatory fines) - that belongs in `oem.financial`/`oem.operational`, not a parallel `oem.safety` scale. Rate `oem.safety` as `None` with a one-line rationale pointing to where the real exposure lives, and reserve any non-`None` value for the rare case where the OEM genuinely bears a direct (not consequential) physical safety exposure.
+The taxonomy groups very specific technologies into 8 classes. This lets you model older E/E architectures, modern software-defined vehicles (SDVs), hardware fault injection and post-quantum cryptography (PQC) threats with the same rules.
 
----
+This is a **$8 \times 8 \times 8 \times 88$ Matrix**: 8 actions, 8 classes, 8 domains and a curated list of 88 tags (see §4).
 
-## Automotive Threat Modeling Taxonomy (Structure vs. Payload)
-
-To support automated threat modeling and graph-based attack path analysis without combinatorial explosion, OpenASC utilizes a strict, highly condensed capability syntax formatted as: **`Action:Class:Domain`**.
-
-This taxonomy abstracts away hyper-specific technologies into 8 core functional classes, allowing engineers to model legacy E/E architectures, modern Software-Defined Vehicles (SDVs), Advanced Hardware Fault Injection, and Post-Quantum Cryptography (PQC) threats using a single, unified mathematical logic.
-
-This is known internally as the **$8 \times 8 \times 8 \times 88$ Matrix** - the metadata dictionary is a curated 88-tag payload (see §4).
-
-* **The Structure ($8 \times 8 \times 8$):** A strictly controlled syntax formatted as **`Action:Class:Domain`**. This mathematically guarantees that graph routing algorithms resolve without infinite loops, allowing legacy ICE architectures and modern SDVs to be modeled with the exact same math. `Domain` additionally accepts a reserved wildcard (`*`) for platform-level capabilities that are not bound to a single domain - see §3 below for matching semantics.
-* **The Payload (88 Tags):** An array of curated Engineering Metadata Tags (`metadata: string[]`). This brings the graph back to engineering reality by specifying the exact protocol, hardware, or mechanism involved (e.g., separating a generic "Network Inject" into specific `[CAN-FD]` vs `[Automotive Ethernet]` vectors).
+* **The Structure ($8 \times 8 \times 8$):** The strict syntax **`Action:Class:Domain`**. The set of possible capabilities is small and fixed, so a path search always finishes and cannot loop forever. Older combustion-engine architectures and modern SDVs are modeled with the same rules. `Domain` also accepts a reserved wildcard (`*`) for platform-level capabilities that do not belong to one domain. See §3 below for how it matches.
+* **The Tags (88):** A list of engineering tags (`metadata: string[]`). They name the exact protocol, hardware or mechanism involved. For example, they split a general "network inject" into `CAN / CAN-FD / CAN-XL` and `Automotive Ethernet`.
 
 ### 1. ALLOWED ACTIONS (The Verbs)
 
-The action list relies on exactly 8 mutually exclusive attacker operations. This forces threat models to describe the *mechanism* of the attack.
+There are exactly 8 actions, and each one is different from the others. This makes a threat model say *how* the attack works.
 
 * **`Extract`**: Read data or code at rest (e.g., memory dumping, extracting a key, SCA).
 * **`Intercept`**: Read data or code in transit (e.g., passively sniffing a bus, wiretapping).
 * **`Modify`**: Alter data or code at rest (e.g., patching a binary, changing a config).
-* **`Inject`**: Introduce malicious data or commands in transit (e.g., spoofing messages, API injection).
-* **`Disrupt`**: Exhaust resources or deny service (e.g., flooding a network, cutting a physical wire).
-* **`Execute`**: Run arbitrary code or commands (e.g., remote code execution).
-* **`Elevate`**: Escalate privileges or logical state (e.g., bypassing a secure boot check, User to Root).
-* **`Fault`**: Physically manipulate hardware state (e.g., voltage glitching, electromagnetic fault injection, DFA).
+* **`Inject`**: Put malicious data or commands into traffic (e.g., spoofing messages, API injection).
+* **`Disrupt`**: Use up resources or deny service (e.g., flooding a network, cutting a physical wire).
+* **`Execute`**: Run any code or commands (e.g., remote code execution).
+* **`Elevate`**: Gain more privileges or change the logical state (e.g., bypassing a secure boot check, User to Root).
+* **`Fault`**: Physically change the state of the hardware (e.g., voltage glitching, electromagnetic fault injection, DFA). As a capability the attacker holds (`Fault:Compute`) it means a fault injection has worked, along with whatever a successful injection can bring: corrupted or skipped computation, a bypassed authentication or secure-boot check, a key leaked through DFA, a crash or reset. A crash or reset is an effect here, not the action. An attack whose only goal is to deny service uses `Disrupt`.
 
 ### 2. ALLOWED ASSET CLASSES (The Nouns)
 
 * **`Compute`**: Physical processing units (e.g., MCU, SoC, HSM, GPU, FPGA).
 * **`Memory`**: Physical storage hardware (e.g., Flash, RAM, EEPROM, eFuse).
 * **`Peripheral`**: Edge hardware components (e.g., Sensors, Actuators, Transceivers).
-* **`Network`**: Logical communication channels and protocol stacks, regardless of whether they operate within the vehicle or across external trust boundaries (e.g., CAN, Automotive Ethernet, Cellular link, TLS session, REST API, V2X channel).
-* **`Interface`**: Physical hardware access points - the connector, port, pad, or antenna feed where a channel is established or directly probed (e.g., OBD-II port, USB connector, JTAG pads, EVSE plug).
-* **`Executable`**: Compiled software, logic, or active instructions (e.g., Bootloader, OS, Firmware, App).
+* **`Network`**: Communication channels and protocol stacks, inside the vehicle or across outside trust boundaries (e.g., CAN, Automotive Ethernet, Cellular link, TLS session, REST API, V2X channel).
+* **`Interface`**: Physical access points: the connector, port, pad or antenna feed where a channel starts or is probed directly (e.g., OBD-II port, USB connector, JTAG pads, EVSE plug).
+* **`Executable`**: Compiled software, logic or running instructions (e.g., Bootloader, OS, Firmware, App).
 * **`Data`**: Passive information at rest (e.g., Configurations, Logs, PII, Calibration data, ML model weights, FPGA bitstreams).
 * **`Crypto`**: Cryptographic security material (e.g., Keys, Certificates, Seeds, Entropy).
 
@@ -112,15 +105,23 @@ The action list relies on exactly 8 mutually exclusive attacker operations. This
 * **`Telematics`**: External connectivity and gateway routing.
 * **`Backend`**: OEM or third-party cloud infrastructure and services.
 * **`External`**: Off-board entities (e.g., Mobile Apps, EVSE, Diagnostic Tools, Key Fobs).
-* **`*` (wildcard)**: Reserved for capabilities and assets that are not bound to a single domain - platform-level primitives such as a root of trust, a hypervisor, or a shared secure element that underpin every domain rather than one. This brings the `domain` enum to 9 values in total; 8 are named vehicle domains, and the wildcard is a routing sentinel, not a 9th domain - the "8×8×8" structure is unchanged.
+* **`*` (wildcard)**: Used for capabilities and assets that do not belong to one domain. These are platform-level parts such as a root of trust, a hypervisor or a shared secure element, which every domain relies on. The `domain` enum therefore has 9 values, but only 8 are vehicle domains. The wildcard is a placeholder for matching, not a 9th domain.
 
-**Wildcard matching in the capability graph:** when the graph engine checks whether a held capability (from a threat's `grants`) satisfies a required capability (in another threat's `requires`, or a control's `denies`/`overriddenBy`), the `domain` field matches if either side is `*`, in addition to an exact match. `action` and `assetClass` never wildcard - they always require an exact match. This keeps the matcher O(1) per comparison and prevents a single capability from silently satisfying every action/class combination in a domain. Where a threat or control genuinely spans several specific actions or classes, use an explicit `OR` condition (`requires`/`overriddenBy`) or list multiple entries (`grants`/`denies`) instead of relying on a wildcard.
+**How wildcards match:** when a tool checks whether a capability an attacker holds (from a threat's `grants`) meets a capability that is required (in another threat's `requires`, or in a control's `denies` or `overriddenBy`), it first replaces every `*` with the one domain being analysed (see "Scoped resolution" below). Only then does it compare the `domain` fields. A `*` on either side becomes that domain. So in an Infotainment analysis, a held `Modify:Memory:*` is `Modify:Memory:Infotainment` and meets exactly that. A named domain only ever matches itself. `action` and `assetClass` are never wildcards: they must match exactly. This keeps each comparison cheap and stops one capability from quietly meeting every action and class in a domain. If a threat or control really covers several actions or classes, write an explicit `OR` (in `requires` or `overriddenBy`) or list several entries (in `grants` or `denies`) instead of using a wildcard.
 
-**Scoped resolution - `*` is a template parameter, not a global joker.** A large share of the catalog's threats are generic technique templates (e.g. runtime memory tampering, privilege escalation via a compromised executable) whose mechanism genuinely doesn't depend on which vehicle domain hosts it - that's why their `requires`/`grants` use `*`. This does **not** mean a capability granted in one real domain should satisfy a prerequisite in an unrelated one. A consuming engine must resolve `*` **per analysis, scoped to the target domain being studied** - when building an attack tree or feasibility path that terminates in, say, Infotainment, every `*` node touched by that traversal (on both the `requires` and `grants` side) binds to `Infotainment` for the duration of that analysis, not to whichever domain happened to appear elsewhere in the graph. Concretely: a threat with `grants: [{action:"Modify", assetClass:"Memory", domain:"*"}]`, instantiated against an Infotainment-scoped analysis, grants `Modify:Memory:Infotainment` - never `Modify:Memory:Backend` or any other domain, even though the catalog entry itself is written generically. This is what keeps the same technique definition reusable across every domain without duplicating it 8 times, while preserving real domain-boundary behavior in the resulting attack graph.
+**Scoped resolution: `*` is a placeholder for one domain** Many threats in the catalog are generic technique templates, such as runtime memory tampering or privilege escalation through a compromised executable. How they work does not depend on which vehicle domain hosts them, so their `requires` and `grants` use `*`. This does **not** mean a capability granted in one domain can meet a requirement in an unrelated one. A tool must resolve `*` **once per analysis, for the domain being studied**. Say you build an attack tree that ends in Infotainment. Every `*` the search touches, on the `requires` side and the `grants` side, becomes `Infotainment` for that analysis. It does not become whatever domain appears somewhere else in the graph. For example, a threat with `grants: [{action:"Modify", assetClass:"Memory", domain:"*"}]`, used in an Infotainment analysis, grants `Modify:Memory:Infotainment`. It never grants `Modify:Memory:Backend` or any other domain, even though the entry itself is written in a generic way. This lets one technique definition work in every domain without copying it 8 times, and the attack graph still respects domain boundaries.
 
-### 4. ALLOWED METADATA (The Engineering Payload)
+**Do not use `domain: "*"` on both `requires` and `grants` for a threat that moves the attacker from one domain to another.** Scoped resolution turns every wildcard into the one domain being analysed. A threat with `*` on both sides can therefore only mean "same domain in, same domain out". It cannot describe a move between domains, whatever its `description` says. If the move is one specific case (for example, code execution in Telematics that lets the attacker inject messages in Powertrain through a gateway), use named domains on the sides that need them. If the threat is a generic template for a mechanism that can bridge several domains (for example, a Central Gateway that relays between the segments it connects), list every domain it could reach as separate named entries: an `OR` of named domains in `requires`, or several named entries in `grants`. Do not rely on `*`. A project catalog that uses such a template for one real vehicle should shorten the list to the domains its gateway really connects, instead of keeping the full list from the template.
 
-When defining an Asset, Threat, or Control in the JSON catalogs, engineers must apply the relevant metadata from this 88-item curated dictionary to ensure AI and UI filters resolve accurately.
+**Links between domains.** A link, such as the connection between the vehicle and the cloud, has an end in each domain it joins and a path in between (`External`). A threat that attacks the link itself, by intercepting or altering what travels over it, lists the capability for every end it touches. For the vehicle-to-cloud link that means `Telematics` and `Backend`, next to `External` for the path. This is the same wide approach as for the gateway above: a project catalog can shorten the list. The same information also passes through the vehicle's own networks. The generic sniffing threats (written with `*`) cover that, one analysis domain at a time.
+
+**Domains on controls.** Use `*` in a control's `denies` and `overriddenBy` unless the control itself is tied to one domain, or to the border between two. A control describes a mechanism (a scheduler, a file system check, an allowlist), and the mechanism works the same in every domain. Keep a named domain only when the control's own text ties it there. A project catalog can narrow a control to the domains it really has, in the same way as for a template threat. 
+
+**Bypassing a control.** A control falls when what it rests on can be changed: rules and policy fall to `Modify:Data`, certificates and trust stores to `Modify:Crypto`, and the chain ends at hardware that cannot be changed (HSM, TPM, OTP, eFuses), which denies `Modify:Crypto` and falls only to `Fault:Compute`. A bypass must not need something the control itself denies.
+
+### 4. ALLOWED METADATA (The Engineering Tags)
+
+When you write an Asset, Threat or Control in the JSON catalogs, pick the tags that apply from this curated list of 88. This keeps AI and UI filters accurate.
 
 * **1. In-Vehicle Networking (IVN)**: `CAN / CAN-FD / CAN-XL`, `Automotive Ethernet`, `LIN`, `FlexRay`, `SerDes`, `PCIe`, `SPI / I2C / I3C`, `UART / USART`, `CXPI`, `SENT / PSI5`, `TSN / AVB (Time-Sensitive Networking)`
 * **2. Wireless & External RF**: `Cellular`, `Wi-Fi`, `Bluetooth / BLE`, `UWB`, `NFC / RFID`, `GNSS`, `LF / RF`, `V2X`, `Satellite`, `mmWave`, `RKE / PEPS (Keyless Entry)`
@@ -131,63 +132,87 @@ When defining an Asset, Threat, or Control in the JSON catalogs, engineers must 
 * **7. Security Mechanisms**: `HSM / SHE`, `TEE`, `TPM / SE`, `SecOC`, `MACsec / IPsec`, `TLS / DTLS`, `Secure Boot`, `TRNG / PRNG`, `PUF`, `IDS / IPS`, `OAuth / OIDC / SAML`
 * **8. Cryptographic Assets**: `PKI / Certificates`, `Symmetric Keys`, `Asymmetric Keys`, `Hashes`, `MAC / HMAC / CMAC`, `Digital Signatures`, `Nonces / IVs`, `Passwords / PINs`, `Tokens / API Keys`, `Seeds / RoT Data`, `Session Keys / Ephemeral Secrets`
 
-**A curation tradeoff, stated plainly:** roughly half of these 88 tags bundle 2-3 related technologies into one string (`CAN / CAN-FD / CAN-XL`, `TLS / DTLS`, `MAC / HMAC / CMAC`, `EVSE Plug / Wireless Charging`, etc.) rather than splitting each into its own selectable tag. This keeps the dictionary a curated 88 items instead of exploding past 150, but it means filtering/tagging precision stops at the bundle, not the individual protocol variant - an entry tagged `CAN / CAN-FD / CAN-XL` can't be narrowed to "CAN-FD only" without reading its `description`. If your use case needs finer-grained filtering than a bundle provides, that detail belongs in the entry's `description`, not a new tag. Group 6 (Software Environments) holds 12 tags and Group 4 (Interfaces & Diagnostics) holds 10, rather than 11 each - `LLM / Conversational AI` was appended to Group 6 and `Wireless Charging Interface` was folded into `EVSE Plug` in Group 4, both on their individual merits rather than to preserve an "8 groups of 11" symmetry that was never a load-bearing constraint.
-
 ---
 
 ## Graph-Ready Schema & Capability Model
 
-The OpenASC catalog schema is designed to be consumed by the attack graph engines present in [openasc.org](https://openasc.org). The fields below define logical capability dependencies across catalog entries - understanding their semantics is essential for contributing accurate entries.
+Tools such as the [openasc.org](https://openasc.org) Playground read the catalog schema to build attack paths. The fields below say how catalog entries depend on each other. You need to understand them to contribute correct entries.
 
 ### Capability Fields
 
 **On Threat entries:**
 
-* **`requires`**: A logical condition (`AND` / `OR` tree of `Action:Class:Domain` nodes) expressing what attacker capability must already be present before this threat can be executed. `AND` means the attacker needs all listed capabilities; `OR` means any one is sufficient. Single-node conditions may be expressed directly without a wrapper.
-* **`grants`**: The `Action:Class:Domain` capabilities the attacker gains upon successful execution. These are what graph engines use to chain threats into multi-step attack paths - a threat's `grants` resolves another threat's `requires`.
+* **`requires`**: A condition (an `AND` / `OR` tree of `Action:Class:Domain` nodes) that says what the attacker must already be able to do before this threat can run. `AND` means all listed capabilities are needed. `OR` means any one is enough. A single capability can be written directly, without a wrapper.
+* **`grants`**: The `Action:Class:Domain` capabilities the attacker gains when the threat succeeds. Tools use these to chain threats into multi-step attack paths: what one threat `grants` can satisfy another threat's `requires`. 
 
 **On Control entries:**
 
-* **`denies`**: The `Action:Class:Domain` capabilities this control prevents the attacker from gaining. A control that denies a capability blocks every attack path downstream of it.
-* **`overriddenBy`**: A logical condition expressing what attacker capability would bypass this control entirely. Used to model conditional control effectiveness and defence weaknesses.
+* **`denies`**: The `Action:Class:Domain` capabilities this control stops the attacker from gaining. A control that denies a capability blocks every attack path that comes after it.
+* **`overriddenBy`**: A condition that says what the attacker would need to get around this control completely. It models controls that work only under certain conditions, and their weak points. A control that declares no `overriddenBy` is a deliberate hard block: nothing in the catalog can defeat it, and tools show it that way (every control in the current catalog declares one). A declared bypass must not need a capability that the control itself denies, because such a bypass can never be met.
 
-### The CIANA Triad - `compromises` / `protects` / `cybersecurityProperties`
+**On any entry (structure fields):**
 
-Threats, controls, and assets each carry an array drawn from the same 5-value CIAAN enum (`Confidentiality`, `Integrity`, `Availability`, `Authenticity`, `Non Repudiation`) - but under a different field name per entity type, because the *relationship* to the property differs:
+* **`refines`** (threats and controls): the id of the parent entry. It is always the entry's own id without its last `.n` part (`C.05.2` refines `C.05`). An entry that others refine is an *umbrella*: a category or tactic heading (`T.16` Lateral Movement, `C.05` Digital Signature), not a concrete mechanism. Chain the concrete entries below it. The openasc.org tool never suggests an umbrella as a step in an attack path, and the semantic lint (`npm run lint:semantics`) does the same.
+* **`partOf`** (assets): the id of the asset that contains this one (`A.022` is part of `A.040`). It is only a cross-reference for organisation and plays no part in capability matching.
 
-* **Threat `compromises`**: which properties this threat's mechanism actually violates upon success (should agree with what its `grants` capability implies - e.g. a threat granting `Extract:Crypto` should list `Confidentiality`).
-* **Control `protects`**: which properties this control's mechanism actually defends (should agree with its `denies`/`overriddenBy` - a purely detective control like an IDS protects different properties than a purely preventive one).
-* **Asset `cybersecurityProperties`**: which properties this asset inherently *requires* to remain trustworthy, independent of any specific threat or control - the asset's own baseline security requirement.
+### The CIANA Properties - `compromises` / `protects` / `cybersecurityProperties`
 
-The enum is shared because the concept (confidentiality, integrity, etc.) is the same; the field name is different because "what a threat breaks," "what a control defends," and "what an asset needs" are three distinct claims, not the same fact restated three times.
+Threats, controls and assets each carry a list of properties from the same 5 values: `Confidentiality`, `Integrity`, `Availability`, `Authenticity` and `Non Repudiation`. The field name is different for each type, because each one relates to the property in a different way:
+
+* **Threat `compromises`**: the properties this threat breaks when it succeeds. It should agree with what its `grants` mean (for example, a threat that grants `Extract:Crypto` should list `Confidentiality`).
+* **Control `protects`**: the properties this control defends. It should agree with its `denies` and `overriddenBy`. A purely detective control such as an IDS protects different properties than a purely preventive one.
+* **Asset `cybersecurityProperties`**: the properties the asset needs to stay trustworthy, whatever the threat or control. This is the asset's own baseline security need.
+
+The values are shared because the idea (confidentiality, integrity and so on) is the same. 
+
+### Capabilities and Compromised Properties
+
+A tool can let an engineer set a goal such as "lose Integrity on Executable in Powertrain". To do that it must know which capabilities count as that loss. The capability alone decides this, using the table in [`catalogs/property-rubric.json`](catalogs/property-rubric.json). A granted `Action:Class` counts as losing the properties listed in its row. `compromises` is not used for this. `compromises` stays the threat's damage list for the TARA. It should include what the threat's own grants directly break, and it may add what later steps lead to. For example, a code-execution threat may list Confidentiality, because the attacker can then read what the host holds.
+
+| Granted capability | Counts as compromising |
+|---|---|
+| `Extract`, `Intercept` (any class) | Confidentiality |
+| `Modify` (any class) | Integrity |
+| `Modify:Executable`, `Modify:Crypto` | Integrity, Authenticity (tampered code or keys are no longer authentic) |
+| `Modify:Data` | Integrity, Non Repudiation (`Data` includes records and logs) |
+| `Inject` (any class) | Integrity, Authenticity (spoofed origin) |
+| `Disrupt` (any class) | Availability |
+| `Disrupt:Data` | Availability, Non Repudiation |
+| `Execute`, `Elevate` (any class except Crypto) | Integrity of the asset it acts on (code or privilege controlled by the attacker is already a loss of integrity) |
+| `Elevate:Crypto` | Authenticity, Non Repudiation (acting under another's authority) |
+| `Fault` | Integrity, Availability, Authenticity, Confidentiality (a successful fault injection and what it can bring: corrupted or skipped computation, a bypassed check, a crash or reset, key leakage through DFA) |
+
+The table is a default, not a fixed rule. A project whose TARA counts attacker code execution as a loss of every property can ship its own `property-rubric.json`. The openasc.org Playground also lets a user change single rows for one analysis. Only the changed rows are stored, and the goal is marked as using custom rules.
+
 
 ### Attack Potential Scoring
 
-The `attackFeasibility.attackPotential` block on each threat entry (and the mirrored `attackFeasibilityReduction.attackPotentialReduction` block on each control entry) follows **ISO/SAE 21434 Annex I Table I.1**. Each of the five components must be assigned one of the following rating keys - the prefix names the dimension, the number names the tier within it: `ET0`-`ET4` (Elapsed Time, 5 tiers), `SE0`-`SE3` (Specialist Expertise, 4 tiers), `KoIC0`-`KoIC3` (Knowledge of the Item or Component, 4 tiers), `WoO0`-`WoO3` (Window of Opportunity, 4 tiers), `Eq0`-`Eq3` (Equipment, 4 tiers) - lower numbers mean easier-for-the-attacker on threats, and weaker-reduction on controls.
+The `attackFeasibility.attackPotential` block on each threat (and the matching `attackFeasibilityReduction.attackPotentialReduction` block on each control) follows **ISO/SAE 21434 Annex I Table I.1**. Each of the five parts gets one rating key. The letters name the part and the number names the level within it: `ET0`-`ET4` (Elapsed Time, 5 levels), `SE0`-`SE3` (Specialist Expertise, 4 levels), `KoIC0`-`KoIC3` (Knowledge of the Item or Component, 4 levels), `WoO0`-`WoO3` (Window of Opportunity, 4 levels), `Eq0`-`Eq3` (Equipment, 4 levels). On a threat, a lower number means the attack is easier. On a control, a lower number means a smaller reduction.
 
-Catalog entries should be rated for the **complete attack scenario** they describe, using the highest plausible value for each component dimension. The platform that consumes these catalogs aggregates component scores, maps them to the ISO 21434 Annex I feasibility level (High / Medium / Low / Very Low), and cross-references with worst-case asset impact through ISO 21434 Table H.8 to produce a final risk rating. The on-device platform processes all data locally - no catalog or asset information is transmitted externally.
+### Impact Scoring
+
+To align with ISO/SAE 21434, OpenASC rates damage in **Assets** from two points of view: `oem` and `roadUser`. A `supplier` view can be added.
 
 ### Scalability
 
-Every threat also carries a required `scalability` field - `Single Vehicle` | `Limited Batch` | `Fleet-Wide` - capturing the realistic breadth of exploitation the threat's *mechanism* supports, independent of any single company's actual fleet size. This is a different axis from `attackFeasibility`, which rates attacker effort *per instance*; `scalability` rates how many vehicles one successful exploit chain reaches without being independently repeated.
+Every threat has a required `scalability` field with one of three values: `Single Vehicle`, `Limited Batch` or `Fleet-Wide`. It says how many vehicles the threat's *mechanism* can realistically reach, whatever the size of any one company's fleet. It is not the same as `attackFeasibility`, which rates the attacker's effort *for one attack*. `scalability` rates how many vehicles one successful exploit reaches without the attacker repeating the work.
 
-* **`Single Vehicle`**: requires unique, per-target physical possession or proximity that must be individually repeated for each additional victim (hardware fault injection, JTAG probing, chip decapsulation). Attacker effort scales linearly with victim count.
-* **`Limited Batch`**: bounded by something narrower than the full fleet but broader than one vehicle - a specific production run, hardware revision, regional configuration, backend tenant/campaign, or an RF-proximity attack (jamming, relay, V2X spoofing) that only reaches whoever is physically in range at the moment of attack. Most MITRE-style follow-on techniques (persistence, discovery, defense evasion, lateral movement) fall here by default, since they operate within an already-compromised vehicle's boundary and inherit their real reach from whichever initial-access threat established that foothold, rather than being an initial-access vector themselves.
-* **`Fleet-Wide`**: remotely or systemically replicable with no proximity or possession requirement - a backend/cloud API flaw, a vulnerability in shared firmware identical across every unit running it, an OTA/update-channel compromise, or a cryptographic weakness in a protocol used fleet-wide.
+* **`Single Vehicle`**: needs physical possession of, or closeness to, each target, and the work must be repeated for every extra victim (hardware fault injection, JTAG probing, chip decapsulation). The attacker's effort grows in step with the number of victims.
+* **`Limited Batch`**: limited by something smaller than the whole fleet but bigger than one vehicle: one production run, hardware revision, region, backend tenant or campaign, or an RF-range attack (jamming, relay, V2X spoofing) that only reaches vehicles in range at that moment. Most MITRE-style follow-on techniques (persistence, discovery, defense evasion, lateral movement) are rated here by default. They work inside a vehicle that is already compromised, and they get their real reach from the initial-access threat that gave the foothold. They are not initial-access vectors themselves.
+* **`Fleet-Wide`**: can be repeated remotely or across the whole system, with no need to be near a vehicle or hold it: a backend or cloud API flaw, a flaw in shared firmware that is identical on every unit, a compromise of the OTA or update channel, or a cryptographic weakness in a protocol used across the fleet.
 
-This field lives only on threats. A control's relevance to fleet-wide risk and an asset's realistic exposure both inherit scalability transitively via the capability graph - which threats can reach a given control or asset through matching `action:assetClass:domain` triples - rather than needing their own independent copy of this dimension.
 
 ### Threat Actors
 
-Every threat also carries a required `threatActors` array (one or more values) capturing *who* would realistically want to execute the threat and *why* - a different axis again from `attackFeasibility` (how hard) and `scalability` (how far it reaches). Deliberately excludes skill-tier labels like "script kiddie": attacker sophistication is already captured by `attackFeasibility`'s `specialistExpertise`/`equipment` components, so this field is about motivation and access relationship, not capability.
+Every threat also has a required `threatActors` list with one or more values. It says *who* would realistically carry out the threat and *why*. This is a third question, apart from `attackFeasibility` (how hard) and `scalability` (how far it reaches). The list leaves out skill labels such as "script kiddie". `attackFeasibility` already covers skill through its `specialistExpertise` and `equipment` parts, so this field is about motive and how the actor gets access, not ability.
 
-* **`Nation-State / State-Sponsored`**: well-resourced, government-directed actors motivated by espionage, strategic disruption, or sabotage. Reserved for genuinely high-sophistication or high-value-target threats (root-of-trust material, supply-chain implants, backend infrastructure at scale) - not applied reflexively to every serious-sounding threat.
-* **`Organized Cybercrime`**: financially motivated - vehicle theft rings, data-for-resale, fraud, extortion. The single most broadly-applicable category, since most threats have some plausible monetization path.
-* **`Hacktivist`**: ideologically/politically motivated, favoring disruptive or visible outcomes over quiet financial gain.
-* **`Insider (Employee / Dealer / Supplier)`**: someone abusing access obtained through an employment, dealership, or supply-chain *relationship* - not simply "an attacker who already has code execution from an earlier step in the chain," which applies equally to external attackers and isn't itself a relationship-based signal.
-* **`Vehicle Owner / Authorized User`**: the vehicle's own legitimate possessor acting against the OEM's (or a regulator's/insurer's) interest - feature-unlock/DRM circumvention, odometer/emissions tampering, insurance/warranty fraud, disabling telemetry, or rolling back firmware to regain a removed feature.
+* **`Nation-State / State-Sponsored`**: well-funded actors directed by a government, motivated by espionage, strategic disruption or sabotage. Use it only for threats that need a lot of skill or aim at high-value targets (root-of-trust material, supply-chain implants, backend infrastructure at scale), and not for every serious-sounding threat.
+* **`Organized Cybercrime`**: motivated by money: vehicle theft rings, selling data, fraud, extortion. This is the most widely used value, because most threats have some way to make money.
+* **`Hacktivist`**: motivated by beliefs or politics. Prefers disruptive or visible results to quiet financial gain.
+* **`Insider (Employee / Dealer / Supplier)`**: someone who misuses access they got through a job, a dealership or a supplier *relationship*. It does not mean "an attacker who already has code execution from an earlier step", because that applies to outside attackers too and says nothing about a relationship.
+* **`Vehicle Owner / Authorized User`**: the vehicle's own legitimate holder acting against the interest of the OEM (or of a regulator or insurer): unlocking paid features or getting around DRM, odometer or emissions tampering, insurance or warranty fraud, switching off telemetry, or rolling back firmware to get a removed feature back.
 
-These values converge from ENISA's Threat Landscape and industry threat-intelligence taxonomies (Nation-State, Organized Cybercrime, Hacktivist, Insider), extended with Vehicle Owner/Authorized User - the automotive-domain instantiation of NIST SP 800-30's "customer" adversarial threat-source category. Note that neither ISO/SAE 21434 nor SAE J3061 defines a threat-actor taxonomy of their own - 21434 explicitly routes around this by scoring attack feasibility instead, which this catalog already does; `threatActors` is a deliberate addition beyond the standard's own methodology, not a value drawn from it.
+These values come from the ENISA Threat Landscape and from industry threat-intelligence lists (Nation-State, Organized Cybercrime, Hacktivist, Insider). We added Vehicle Owner / Authorized User, which is the automotive version of the "customer" threat source in NIST SP 800-30. Neither ISO/SAE 21434 nor SAE J3061 defines threat actors. ISO/SAE 21434 avoids the question by rating attack feasibility instead, and this catalog does that too. `threatActors` is our own addition on top of the standard, not a value taken from it.
 
 ---
 
@@ -195,17 +220,17 @@ These values converge from ENISA's Threat Landscape and industry threat-intellig
 
 ### AI-Assisted Development
 
-Portions of the threat, control, and asset catalog entries were developed with the assistance of Large Language Models (LLMs). All catalog content has been subject to expert human review against ISO/SAE 21434 requirements, automotive E/E architecture conventions, and established cybersecurity engineering practice.
+Large Language Models (LLMs) helped write parts of the threat, control and asset entries. An expert has reviewed all catalog content against ISO/SAE 21434, common E/E architecture practice and established cybersecurity engineering practice.
 
-Despite this review, given the scope and technical depth of the catalogs, **errors, inaccuracies, or omissions may be present**. Catalog entries should be validated against your specific vehicle architecture, threat landscape, and applicable regulatory requirements before use in a formal TARA. OpenASC is a reference foundation, not a substitute for qualified cybersecurity engineering judgement.
+Even so, the catalogs are large and technical, so **there may be errors, inaccuracies or missing items**. Check the entries against your own vehicle architecture, threat landscape and regulatory requirements before you use them in a formal TARA. OpenASC is a reference to start from. It does not replace the judgement of a qualified cybersecurity engineer.
 
-Corrections, improvements, and new catalog entries submitted via pull request are strongly encouraged and actively reviewed.
+We welcome and review corrections, improvements and new entries sent as pull requests.
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the guidelines.
 
 ## License
 

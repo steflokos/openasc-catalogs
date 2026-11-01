@@ -33,6 +33,11 @@ Your contributions help improve the quality and coverage of our catalogs.
      npm run validate:assets
      npm run validate:all
      ```
+   - The semantic lint checks what the schemas cannot (control bypass logic, threat reachability, `compromises` against `grants`, metadata against text). It reports findings and exits 0 unless you pass `--strict`:
+     ```sh
+     npm run lint:semantics
+     node tools/lint/lint.mjs threats --limit all   # one catalog, every finding
+     ```
 6. **Commit and Push**:
    ```sh
    git add catalogs/threats.json catalogs/controls.json catalogs/assets.json
@@ -56,6 +61,8 @@ Your contributions help improve the quality and coverage of our catalogs.
 - **Atomic Commits**: Each pull request should address a single change (e.g., add or update one threat or control).
 - **Descriptive Commit Messages**: Write clear, concise commit messages describing your change.
 - **Document Complex Entries**: If your entry is complex, add documentation or comments.
+- **Writing Controls**: Use `*` as the domain in `denies` and `overriddenBy` unless the control's own text ties it to one domain, such as a cloud service for Backend; the lint (rule S2) lists the exceptions, and the reason for each goes in `tools/lint/lint-allow.json`. A control is bypassed by changing what it rests on: `Modify:Data` for rules and policy, `Modify:Crypto` for certificates and trust stores, `Elevate:Executable` for the code that enforces it. Hardware that cannot be changed (HSM, TPM, OTP, eFuses) denies `Modify:Crypto` and falls only to `Fault:Compute`. A bypass must never need something the control itself denies.
+- **Writing Threats and Assets**: A threat whose name states a domain should not use `*` (S20), and an asset's name should match its domain; if a name lists two domains, make one asset for each (S19).
 - **Check for Existing Issues/PRs**: Before submitting new ones, check if your idea or fix already exists.
 - **Reference Issues**: In your PR description, reference issues your change addresses or closes (e.g., `Closes #123`).
 - **Respectful Communication**: Keep discussions respectful and constructive.
