@@ -5157,7 +5157,8 @@
             },
             "compromises": [
                 "Authenticity",
-                "Confidentiality"
+                "Confidentiality",
+                "Integrity"
             ],
             "grants": [
                 {
@@ -5658,7 +5659,8 @@
             "compromises": [
                 "Confidentiality",
                 "Integrity",
-                "Authenticity"
+                "Authenticity",
+                "Availability"
             ],
             "grants": [
                 {
@@ -7224,7 +7226,8 @@
             "compromises": [
                 "Confidentiality",
                 "Integrity",
-                "Availability"
+                "Availability",
+                "Authenticity"
             ],
             "requires": {
                 "AND": [
@@ -10840,7 +10843,8 @@
             "compromises": [
                 "Authenticity",
                 "Confidentiality",
-                "Integrity"
+                "Integrity",
+                "Availability"
             ],
             "requires": {
                 "AND": [
@@ -11411,7 +11415,8 @@
             },
             "refines": "T.19",
             "compromises": [
-                "Confidentiality"
+                "Confidentiality",
+                "Integrity"
             ],
             "requires": {
                 "AND": [
