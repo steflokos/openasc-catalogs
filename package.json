@@ -8,7 +8,8 @@
         "validate:threats": "node scripts/validate.js threats",
         "validate:controls": "node scripts/validate.js controls",
         "validate:assets": "node scripts/validate.js assets",
-        "validate:all": "node scripts/validate.js all"
+        "validate:all": "node scripts/validate.js all",
+        "lint:semantics": "node tools/lint/lint.mjs all"
     },
     "keywords": [
         "automotive",

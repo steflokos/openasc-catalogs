@@ -1,0 +1,23 @@
+{
+    "S2": {
+        "C.03.3": "Autoscaling is a cloud feature; its own text says cloud environments, so Backend is the right domain.",
+        "C.03.9": "A load balancer protects backend infrastructure; its own text says so.",
+        "C.03.14": "Scans cloud backend infrastructure; its own text says so.",
+        "C.09.6": "Watches outbound data flows from back-end systems; its own text says so.",
+        "C.07.5": "Keeps an Infotainment VM away from ADAS. The text names both domains on purpose, so it stays a named, cross-domain entry.",
+        "C.08.7": "Secures the production line, which is off-board; the catalog models the OEM and supplier side as Backend.",
+        "C.21": "V2X messages enter from the off-board V2X channel (External) into ADAS; the text names both, so it stays a named, cross-domain entry.",
+        "C.21.1": "Checks V2X messages against onboard perception (radar, camera, LiDAR) and answers T.01.15; the text ties it to ADAS."
+    },
+    "S3": {
+        "C.03.3": "Narrower than its parent on purpose: Autoscaling is a cloud feature; its own text says cloud environments, so Backend is the right domain.",
+        "C.03.9": "Narrower than its parent on purpose: A load balancer protects backend infrastructure; its own text says so.",
+        "C.03.14": "Narrower than its parent on purpose: Scans cloud backend infrastructure; its own text says so.",
+        "C.09.6": "Narrower than its parent on purpose: Watches outbound data flows from back-end systems; its own text says so.",
+        "C.07.5": "Narrower than its parent on purpose: Keeps an Infotainment VM away from ADAS. The text names both domains on purpose, so it stays a named, cross-domain entry."
+    },
+    "S7c": {
+        "T.01.1": "Deliberate: the keys of the channel can be held in the analysis domain or outside the vehicle (External), so both are listed. In an External analysis they coincide, in every other domain they differ.",
+        "T.04.3": "Deliberate: the disclosed data is the analysis domain's own data and is then also outside the vehicle (External). Both are listed on purpose."
+    }
+}
