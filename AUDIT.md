@@ -64,41 +64,72 @@ Modify:Executable in round 2; 538/538 control instances could be bypassed. Attac
 After (2.0.0):
 
 ```
-164 threats (816 instances), 88 controls (538 instances)
+166 threats (818 instances), 93 controls (564 instances)
 Round in which a capability is first held (1 = a starting point gives it; - = never)
-## Starting points: Any  - 792 threat instances fire, 527/538 control instances can be bypassed
+## Starting points: Any  - 791 threat instances fire, 553/564 control instances can be bypassed
 Domain       Execute:Executable Elevate:Executable Modify:Executable  Modify:Data        Execute:Peripheral Inject:Network     
-Powertrain   2                  2                  2                  1                  3                  2                  
-Chassis      2                  2                  2                  3                  3                  3                  
-Body         2                  2                  2                  3                  2                  3                  
+Powertrain   2                  2                  3                  1                  1                  2                  
+Chassis      2                  2                  3                  3                  3                  3                  
+Body         2                  2                  3                  3                  1                  3                  
 Infotainment 1                  2                  2                  2                  3                  3                  
-ADAS         2                  2                  2                  3                  3                  3                  
-Telematics   1                  2                  2                  2                  3                  2                  
-Backend      2                  3                  4                  3                  4                  3                  
-External     2                  2                  2                  3                  3                  2                  
-
-## Starting points: Network  - 704 threat instances fire, 491/538 control instances can be bypassed
-Domain       Execute:Executable Elevate:Executable Modify:Executable  Modify:Data        Execute:Peripheral Inject:Network     
-Powertrain   4                  4                  4                  4                  5                  3                  
-Chassis      4                  4                  4                  4                  5                  3                  
-Body         4                  4                  4                  4                  3                  3                  
-Infotainment 1                  2                  2                  2                  4                  3                  
-ADAS         4                  3                  4                  4                  4                  3                  
+ADAS         2                  2                  3                  3                  3                  3                  
 Telematics   1                  2                  3                  2                  3                  2                  
 Backend      2                  3                  4                  3                  4                  3                  
-External     2                  2                  3                  3                  3                  2                  
+External     2                  3                  3                  3                  3                  2                  
+
+## Starting points: Network  - 686 threat instances fire, 517/564 control instances can be bypassed
+Domain       Execute:Executable Elevate:Executable Modify:Executable  Modify:Data        Execute:Peripheral Inject:Network     
+Powertrain   4                  5                  4                  4                  5                  3                  
+Chassis      4                  5                  4                  4                  5                  3                  
+Body         4                  5                  4                  4                  3                  3                  
+Infotainment 1                  2                  2                  2                  4                  3                  
+ADAS         4                  5                  4                  4                  5                  3                  
+Telematics   1                  2                  3                  2                  3                  2                  
+Backend      2                  3                  4                  3                  5                  5                  
+External     2                  3                  4                  3                  5                  5                  
 ```
 
 A remote attacker now needs four steps to change code in Powertrain, Chassis, Body or ADAS, e.g. phishing →
 backend access → backend root → malicious OTA update, or TCU exploit → TCU root → gateway → ECU exploit. Physical
 board attacks no longer apply to the Backend or External.
 
+## Second pass: controls, starting points, assets
+
+Auto-ISAC ATM entries (T.07–T.20) follow the official matrix: their names, descriptions and structure (including the
+same technique listed under several tactics) are kept. Only our own fields change on them: `requires`, `grants`,
+`attackVector`, `metadata` and the UN R155 mapping. New entries go into our own STRIDE families.
+
+| Entry | Change |
+| --- | --- |
+| C.03.15 Central Gateway Firewall and Domain Separation (new) | denies `Inject:Network` per domain; bypassed by being wired to the segment (`Inject:Interface`) or by root on the gateway AND rewriting its rules |
+| C.08.8 HSM-Backed Code Signing (new) | denies stealing the backend signing key; bypassed by root on the signing service AND changing its approval policy |
+| C.09.7 Phishing-Resistant MFA (new) | denies the use of phished credentials (`Extract:Crypto:External`); bypassed by an attacker-in-the-middle proxy or malware on the user's device |
+| C.12.2 Firmware Image Encryption (new) | denies reading firmware (`Extract:Executable`); bypassed by the image key or a fault during decryption |
+| C.23 Fault-Injection and Side-Channel Countermeasures (new) | denies `Fault:Compute`; software countermeasures fall once the firmware can be replaced |
+| T.01.16 Rogue V2X / Short-Range Radio Transmitter (new) | Adjacent starting point: the radio channel to the vehicle and the V2X / telematics parsers |
+| T.06.9 Compromised Aftermarket OBD-II Dongle (new) | Adjacent starting point: the diagnostic connector over the dongle's radio |
+| A.076–A.081 (new) | OTA distribution backend, code-signing keys, HSM core, EV charging inlet, body control module, fleet telemetry and customer data store |
+| T.08.6 Relay Communications | unlock and start (`Execute:Peripheral` Body, Powertrain) instead of privileged compute in Powertrain and the external radio link |
+| T.09.1, T.18.1 Aftermarket / dealer equipment | the equipment has to be connected to the vehicle (`Inject:Interface` in that domain), not just compromised |
+| T.01.10 Diagnostic credential spoofing | the credentials AND a diagnostic connection |
+| T.13.3 Bypass UDS Security Access | an unlocked diagnostic session (`Elevate:Crypto`), not root |
+| T.06.5 Misconfiguration EoP | needs code running, not just a key |
+| T.11.5, T.12.8, T.13.5, T.16.6 Compromise Cryptographic Security | need code running as well as the data or firmware; give keys, not root (the four copies now agree) |
+| T.09.8 Supply Chain Compromise | needs changed release artefacts on the backend, not just backend data |
+| T.11.3 Modify OS kernel / boot partition | needs root (no longer interface access alone) |
+| Lint S4b | info, not warn: since 2.0 physical and named-domain threats are meant not to run in every domain |
+
+Defence in depth now holds (site test `proposals.test.ts`): with secure boot (C.10), the gateway firewall (C.03.15),
+SecOC (C.06.3), HSM-backed signing (C.08.8), authenticated diagnostics (C.13), phishing-resistant MFA (C.09.7) and
+fault-injection countermeasures (C.23), a Network attacker has **no** path to code changes in Powertrain; without
+them the best path is phishing → backend access → backend root → stolen signing credentials → malicious OTA update.
+With every control active, 16 Powertrain control instances can still be bypassed (51 before).
+
 ## Left for a later release
 
-- Gateway firewall, UWB distance bounding, fault-injection countermeasures, firmware encryption and backend MFA are
-  still missing as controls; most control instances (491/538 for Network attackers) can still be bypassed somewhere,
-  because the bypasses are broad (`Elevate:Executable:*`). Detective and organizational controls keep their `denies`.
-- New starting points (OBD-II dongle, V2X transmitter, attacker-owned app account) and missing assets (brake ECU,
-  key fob, EV inlet, OTA backend, PKI, HSM).
-- Same-name technique copies under several ATM tactics (S9), `classificationModel` value for Auto-ISAC ATM, UN R155
-  gaps (T.01.14, T.07.1), and the asset overlaps (A.028/A.038/A.051, A.031/A.053, A.034/A.048).
+- UWB distance bounding against relay attacks: the capability model has no capability that only a relayed key
+  gives, so a control denying it would also block unrelated attacks. Needs a taxonomy decision.
+- An attacker-owned companion-app account as a Network starting point: nothing in the catalog consumes access to the
+  OEM's public API yet (no API-abuse / IDOR threat in our families).
+- UN R155 mappings for T.01.14 and T.07.1, to be taken from the regulation text rather than guessed.
+- Asset overlaps (A.028/A.038/A.051, A.031/A.053, A.034/A.048).

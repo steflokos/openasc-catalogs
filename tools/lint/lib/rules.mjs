@@ -176,8 +176,8 @@ export const RULES = [
         },
     },
     {
-        id: 'S4b', severity: 'warn', scope: ['threats'],
-        title: 'concrete threat that fires in some analysis domains but not all 8',
+        id: 'S4b', severity: 'info', scope: ['threats'],
+        title: 'concrete threat that fires in some analysis domains but not all 8 (expected since catalog 2.0 for physical attacks, which need hands on an in-vehicle board, and for named-domain bridges)',
         run(ctx) {
             const findings = ctx.concrete
                 .filter((t) => ctx.reach.get(t.id).length > 0 && ctx.reach.get(t.id).length < DOMAINS.length)

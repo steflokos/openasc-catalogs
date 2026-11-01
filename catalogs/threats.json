@@ -772,9 +772,18 @@
                 "Authenticity"
             ],
             "requires": {
-                "action": "Extract",
-                "assetClass": "Crypto",
-                "domain": "*"
+                "AND": [
+                    {
+                        "action": "Extract",
+                        "assetClass": "Crypto",
+                        "domain": "*"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Interface",
+                        "domain": "*"
+                    }
+                ]
             },
             "grants": [
                 {
@@ -1173,6 +1182,77 @@
             "unitedNationsRegulation155": [
                 "4.2"
             ]
+        },
+        {
+            "id": "T.01.16",
+            "name": "Rogue V2X / Short-Range Radio Transmitter",
+            "description": "An attacker operates a software-defined radio or a modified V2X on-board unit within radio range of the vehicle and transmits crafted V2X, Wi-Fi or Bluetooth frames. This gives the attacker a two-way radio channel to the vehicle's external interfaces and lets malformed frames reach the parsers of the V2X / telematics module.",
+            "classificationModel": "STRIDE",
+            "scalability": "Limited Batch",
+            "threatActors": [
+                "Hacktivist",
+                "Organized Cybercrime",
+                "Nation-State / State-Sponsored"
+            ],
+            "refines": "T.01",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Building and tuning an SDR transmitter for V2X or short-range radio takes days to a week."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Open-source SDR tooling and published V2X stacks require proficient, not expert, skills."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "V2X, Wi-Fi and Bluetooth formats are public standards."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The attacker must stay within radio range (tens to hundreds of metres) while the vehicle passes or is parked."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "A commodity SDR or a second-hand V2X unit is enough."
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Authenticity",
+                "Confidentiality"
+            ],
+            "grants": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "External"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Interface",
+                    "domain": "External"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "Telematics"
+                }
+            ],
+            "metadata": [
+                "V2X",
+                "LF / RF",
+                "Wi-Fi",
+                "Bluetooth / BLE"
+            ],
+            "unitedNationsRegulation155": [
+                "4.1",
+                "4.2",
+                "11.2"
+            ],
+            "attackVector": "Adjacent"
         },
         {
             "id": "T.02",
@@ -3997,11 +4077,6 @@
             "requires": {
                 "OR": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Crypto",
-                        "domain": "*"
-                    },
-                    {
                         "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "*"
@@ -4314,6 +4389,120 @@
                 "1.2",
                 "19.2"
             ]
+        },
+        {
+            "id": "T.06.9",
+            "name": "Compromised Aftermarket OBD-II Dongle",
+            "description": "An insurance, fleet-tracking or diagnostic dongle stays plugged into the OBD-II port and exposes it over Bluetooth, Wi-Fi or cellular. An attacker who exploits or impersonates the dongle's radio link sends diagnostic and bus messages through the OBD-II port without touching the vehicle.",
+            "classificationModel": "STRIDE",
+            "scalability": "Fleet-Wide",
+            "threatActors": [
+                "Organized Cybercrime",
+                "Hacktivist"
+            ],
+            "refines": "T.06",
+            "attackFeasibility": {
+                "attackPotential": {
+                    "elapsedTime": {
+                        "feasibility": "ET1",
+                        "rationale": "Weak pairing or unauthenticated firmware updates on popular dongles have been found and exploited within days."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE1",
+                        "rationale": "Requires proficient knowledge of Bluetooth / Wi-Fi pairing and OBD-II messaging."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Dongle models and their protocols are commercially available and documented by researchers."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "The dongle must be installed by the owner or fleet operator; the attacker needs radio range (Bluetooth / Wi-Fi) for the duration of the attack."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "A laptop or phone with a Bluetooth / Wi-Fi adapter."
+                    }
+                }
+            },
+            "compromises": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "grants": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "Body"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "Infotainment"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "ADAS"
+                },
+                {
+                    "action": "Inject",
+                    "assetClass": "Interface",
+                    "domain": "Telematics"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Interface",
+                    "domain": "Powertrain"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Interface",
+                    "domain": "Chassis"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Interface",
+                    "domain": "Body"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Interface",
+                    "domain": "Infotainment"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Interface",
+                    "domain": "ADAS"
+                },
+                {
+                    "action": "Intercept",
+                    "assetClass": "Interface",
+                    "domain": "Telematics"
+                }
+            ],
+            "metadata": [
+                "OBD-II",
+                "Bluetooth / BLE",
+                "Wi-Fi",
+                "Cellular",
+                "UDS"
+            ],
+            "unitedNationsRegulation155": [
+                "32.1"
+            ],
+            "attackVector": "Adjacent"
         },
         {
             "id": "T.07",
@@ -4972,13 +5161,13 @@
             ],
             "grants": [
                 {
-                    "action": "Inject",
-                    "assetClass": "Interface",
-                    "domain": "External"
+                    "action": "Execute",
+                    "assetClass": "Peripheral",
+                    "domain": "Body"
                 },
                 {
-                    "action": "Elevate",
-                    "assetClass": "Compute",
+                    "action": "Execute",
+                    "assetClass": "Peripheral",
                     "domain": "Powertrain"
                 }
             ],
@@ -5252,11 +5441,16 @@
                 "Authenticity"
             ],
             "requires": {
-                "OR": [
+                "AND": [
                     {
                         "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "External"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Interface",
+                        "domain": "*"
                     }
                 ]
             },
@@ -5755,11 +5949,6 @@
             ],
             "requires": {
                 "OR": [
-                    {
-                        "action": "Extract",
-                        "assetClass": "Data",
-                        "domain": "Backend"
-                    },
                     {
                         "action": "Modify",
                         "assetClass": "Executable",
@@ -6367,11 +6556,6 @@
                         "action": "Elevate",
                         "assetClass": "Executable",
                         "domain": "*"
-                    },
-                    {
-                        "action": "Inject",
-                        "assetClass": "Interface",
-                        "domain": "*"
                     }
                 ]
             },
@@ -6518,25 +6702,29 @@
                 "Availability"
             ],
             "requires": {
-                "OR": [
+                "AND": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Executable",
-                        "domain": "*"
+                        "OR": [
+                            {
+                                "action": "Extract",
+                                "assetClass": "Executable",
+                                "domain": "*"
+                            },
+                            {
+                                "action": "Extract",
+                                "assetClass": "Data",
+                                "domain": "*"
+                            }
+                        ]
                     },
                     {
-                        "action": "Extract",
-                        "assetClass": "Data",
+                        "action": "Execute",
+                        "assetClass": "Executable",
                         "domain": "*"
                     }
                 ]
             },
             "grants": [
-                {
-                    "action": "Elevate",
-                    "assetClass": "Executable",
-                    "domain": "*"
-                },
                 {
                     "action": "Extract",
                     "assetClass": "Crypto",
@@ -7189,15 +7377,24 @@
                 "Availability"
             ],
             "requires": {
-                "OR": [
+                "AND": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Executable",
-                        "domain": "*"
+                        "OR": [
+                            {
+                                "action": "Extract",
+                                "assetClass": "Executable",
+                                "domain": "*"
+                            },
+                            {
+                                "action": "Extract",
+                                "assetClass": "Data",
+                                "domain": "*"
+                            }
+                        ]
                     },
                     {
-                        "action": "Extract",
-                        "assetClass": "Data",
+                        "action": "Execute",
+                        "assetClass": "Executable",
                         "domain": "*"
                     }
                 ]
@@ -7205,11 +7402,6 @@
             "grants": [
                 {
                     "action": "Extract",
-                    "assetClass": "Crypto",
-                    "domain": "*"
-                },
-                {
-                    "action": "Elevate",
                     "assetClass": "Crypto",
                     "domain": "*"
                 }
@@ -7534,11 +7726,6 @@
             "grants": [
                 {
                     "action": "Elevate",
-                    "assetClass": "Executable",
-                    "domain": "*"
-                },
-                {
-                    "action": "Elevate",
                     "assetClass": "Crypto",
                     "domain": "*"
                 }
@@ -7672,25 +7859,29 @@
                 "Availability"
             ],
             "requires": {
-                "OR": [
+                "AND": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Executable",
-                        "domain": "*"
+                        "OR": [
+                            {
+                                "action": "Extract",
+                                "assetClass": "Executable",
+                                "domain": "*"
+                            },
+                            {
+                                "action": "Extract",
+                                "assetClass": "Data",
+                                "domain": "*"
+                            }
+                        ]
                     },
                     {
-                        "action": "Extract",
-                        "assetClass": "Data",
+                        "action": "Execute",
+                        "assetClass": "Executable",
                         "domain": "*"
                     }
                 ]
             },
             "grants": [
-                {
-                    "action": "Elevate",
-                    "assetClass": "Executable",
-                    "domain": "*"
-                },
                 {
                     "action": "Extract",
                     "assetClass": "Crypto",
@@ -9550,25 +9741,29 @@
                 "Availability"
             ],
             "requires": {
-                "OR": [
+                "AND": [
                     {
-                        "action": "Extract",
-                        "assetClass": "Executable",
-                        "domain": "*"
+                        "OR": [
+                            {
+                                "action": "Extract",
+                                "assetClass": "Executable",
+                                "domain": "*"
+                            },
+                            {
+                                "action": "Extract",
+                                "assetClass": "Data",
+                                "domain": "*"
+                            }
+                        ]
                     },
                     {
-                        "action": "Extract",
-                        "assetClass": "Data",
+                        "action": "Execute",
+                        "assetClass": "Executable",
                         "domain": "*"
                     }
                 ]
             },
             "grants": [
-                {
-                    "action": "Elevate",
-                    "assetClass": "Executable",
-                    "domain": "*"
-                },
                 {
                     "action": "Extract",
                     "assetClass": "Crypto",
@@ -10424,11 +10619,16 @@
                 "Authenticity"
             ],
             "requires": {
-                "OR": [
+                "AND": [
                     {
                         "action": "Execute",
                         "assetClass": "Executable",
                         "domain": "External"
+                    },
+                    {
+                        "action": "Inject",
+                        "assetClass": "Interface",
+                        "domain": "*"
                     }
                 ]
             },

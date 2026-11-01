@@ -73,3 +73,11 @@ If you have questions or need guidance, open an issue on GitHub or contact us vi
 
 ---
 Thank you for helping us build a comprehensive and open TARA catalogs!
+
+### Auto-ISAC ATM entries (T.07–T.20)
+
+These follow the official Auto-ISAC Automotive Threat Matrix. Do not rename them, rewrite their descriptions, merge
+the copies of a technique that ATM lists under several tactics, or add new entries to these families. Only the
+fields the catalog adds on top may change: `requires`, `grants`, `attackVector`, `metadata` and
+`unitedNationsRegulation155`. Copies of the same technique should carry the same `requires` and `grants` unless the
+tactic really changes what the step needs or gives. New threats go into the STRIDE families (T.01–T.06).

@@ -3585,6 +3585,72 @@
             "controlType": "Preventive"
         },
         {
+            "id": "C.08.8",
+            "name": "HSM-Backed Code Signing (Non-Exportable Signing Keys)",
+            "description": "Firmware and update signing keys are generated and kept inside a backend HSM and can never be exported; every signing request is authorised by a separate release workflow (multi-person approval). Stealing the key is not possible; an attacker has to take over the signing service and its approval policy to get malicious firmware signed.",
+            "refines": "C.08",
+            "metadata": [
+                "HSM / SHE",
+                "Digital Signatures",
+                "Asymmetric Keys",
+                "OTA / SOTA / FOTA"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Compromising a signing service with multi-person approval takes months."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Requires expertise in backend intrusion and HSM / PKI operations."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Signing workflows are internal and restricted."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Signing requests are rare and monitored."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Standard intrusion tooling."
+                    }
+                }
+            },
+            "protects": [
+                "Confidentiality",
+                "Integrity",
+                "Authenticity"
+            ],
+            "denies": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "Backend"
+                }
+            ],
+            "overriddenBy": {
+                "AND": [
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "Backend"
+                    },
+                    {
+                        "action": "Modify",
+                        "assetClass": "Data",
+                        "domain": "Backend"
+                    }
+                ]
+            },
+            "unitedNationsRegulation155": [
+                "M11"
+            ],
+            "controlType": "Preventive"
+        },
+        {
             "id": "C.09",
             "name": "Access Control",
             "description": "Base mechanism restricting access to resources and operations based on policies or system attributes. Protects against unauthorized logical access and privilege escalation from within the software environment.",
@@ -4373,6 +4439,70 @@
                     {
                         "action": "Elevate",
                         "assetClass": "Executable",
+                        "domain": "*"
+                    }
+                ]
+            },
+            "unitedNationsRegulation155": [
+                "M24"
+            ],
+            "controlType": "Preventive"
+        },
+        {
+            "id": "C.12.2",
+            "name": "Firmware Image Encryption",
+            "description": "Firmware images are encrypted at rest in flash and in update packages, and decrypted only inside the ECU with a key held in its HSM. Dumping the flash or downloading an update no longer yields readable code to reverse engineer; the attacker needs the decryption key or a fault during decryption.",
+            "refines": "C.12",
+            "metadata": [
+                "Flash / RAM / EEPROM",
+                "Symmetric Keys",
+                "HSM / SHE",
+                "OTA / SOTA / FOTA"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Extracting the image key or glitching the decryption takes weeks."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Requires hardware-security expertise."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Key storage and boot flow of the ECU must be known."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Physical access to the ECU for a long time."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq2",
+                        "rationale": "Fault-injection or side-channel equipment."
+                    }
+                }
+            },
+            "protects": [
+                "Confidentiality"
+            ],
+            "denies": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Executable",
+                    "domain": "*"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Extract",
+                        "assetClass": "Crypto",
+                        "domain": "*"
+                    },
+                    {
+                        "action": "Fault",
+                        "assetClass": "Compute",
                         "domain": "*"
                     }
                 ]
@@ -6056,6 +6186,81 @@
             "controlType": "Organizational"
         },
         {
+            "id": "C.03.15",
+            "name": "Central Gateway Firewall and Domain Separation",
+            "description": "The central gateway only routes the messages and services its routing table allows between domains (allow-list per source, ID and service) and drops everything else. A compromised ECU in one domain cannot reach the network of another domain unless the gateway itself is compromised and its filter rules are changed, or the attacker is wired directly to the target segment behind the gateway.",
+            "refines": "C.03",
+            "metadata": [
+                "HPC / Zonal Controller",
+                "CAN / CAN-FD / CAN-XL",
+                "Automotive Ethernet",
+                "IDS / IPS"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "The attacker must take over the gateway and rewrite its rules, or reach the segment physically: weeks of work."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Gateway firmware and its rule format must be reverse engineered."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Routing tables are OEM-specific and confidential."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO1",
+                        "rationale": "Remote once the gateway is compromised; physical otherwise."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Standard bus tools."
+                    }
+                }
+            },
+            "protects": [
+                "Integrity",
+                "Availability"
+            ],
+            "denies": [
+                {
+                    "action": "Inject",
+                    "assetClass": "Network",
+                    "domain": "*"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Inject",
+                        "assetClass": "Interface",
+                        "domain": "*"
+                    },
+                    {
+                        "AND": [
+                            {
+                                "action": "Elevate",
+                                "assetClass": "Executable",
+                                "domain": "Telematics"
+                            },
+                            {
+                                "action": "Modify",
+                                "assetClass": "Data",
+                                "domain": "Telematics"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unitedNationsRegulation155": [
+                "M10",
+                "M13"
+            ],
+            "controlType": "Preventive"
+        },
+        {
             "id": "C.09.6",
             "name": "Data Loss Prevention (DLP)",
             "description": "Automated scanning of outbound data flows and bulk-export operations from back-end systems for sensitive data patterns (PII, cryptographic material, location history), combined with mandatory approval gates on data-sharing configuration changes and default redaction of sensitive fields in logs and exports. Prevents accidental over-exposure of vehicle or owner data caused by an already-authorized user's own configuration mistake - distinct from RBAC (C.09.1), which restricts who holds access, not what an authorized holder can inadvertently expose.",
@@ -6121,6 +6326,126 @@
             "unitedNationsRegulation155": [
                 "M5"
             ],
+            "controlType": "Preventive"
+        },
+        {
+            "id": "C.09.7",
+            "name": "Phishing-Resistant Multi-Factor Authentication",
+            "description": "Access to OEM backend, developer and diagnostic accounts requires a phishing-resistant second factor (FIDO2 / WebAuthn hardware key bound to the origin). A phished or leaked password alone no longer gives access; the attacker has to steal a live session from a device the user is logged in on, or relay the session through an attacker-in-the-middle proxy.",
+            "refines": "C.09",
+            "metadata": [
+                "OAuth / OIDC / SAML",
+                "Passwords / PINs",
+                "Tokens / API Keys"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET2",
+                        "rationale": "Stealing a live session needs malware on the user's device or an AiTM proxy: weeks."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE2",
+                        "rationale": "Session hijacking against origin-bound keys requires expertise."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC1",
+                        "rationale": "Identity-provider behaviour is public."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Needs a logged-in session at the moment of attack."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq1",
+                        "rationale": "Standard phishing / malware kits."
+                    }
+                }
+            },
+            "protects": [
+                "Confidentiality",
+                "Authenticity"
+            ],
+            "denies": [
+                {
+                    "action": "Extract",
+                    "assetClass": "Crypto",
+                    "domain": "External"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Intercept",
+                        "assetClass": "Network",
+                        "domain": "External"
+                    },
+                    {
+                        "action": "Elevate",
+                        "assetClass": "Executable",
+                        "domain": "External"
+                    }
+                ]
+            },
+            "unitedNationsRegulation155": [
+                "M9"
+            ],
+            "controlType": "Preventive"
+        },
+        {
+            "id": "C.23",
+            "name": "Fault-Injection and Side-Channel Countermeasures",
+            "description": "Hardware glitch, voltage and clock monitors on the microcontroller plus software countermeasures (redundant checks, random delays, control-flow integrity on secure boot and key handling) make a single voltage, clock or EM fault fail safe instead of skipping a check. Software countermeasures stop protecting once the attacker can replace the firmware that implements them.",
+            "metadata": [
+                "MCU",
+                "SoC",
+                "HSM / SHE",
+                "Secure Boot"
+            ],
+            "attackFeasibilityReduction": {
+                "attackPotentialReduction": {
+                    "elapsedTime": {
+                        "feasibility": "ET3",
+                        "rationale": "Characterising a protected target for multi-glitch or laser attacks takes months."
+                    },
+                    "specialistExpertise": {
+                        "feasibility": "SE3",
+                        "rationale": "Requires multiple hardware-security experts."
+                    },
+                    "knowledgeOfTheItemOrComponent": {
+                        "feasibility": "KoIC2",
+                        "rationale": "Countermeasure placement is undocumented."
+                    },
+                    "windowOfOpportunity": {
+                        "feasibility": "WoO2",
+                        "rationale": "Long physical access to the board."
+                    },
+                    "equipment": {
+                        "feasibility": "Eq3",
+                        "rationale": "Laser or precise multi-glitch rigs."
+                    }
+                }
+            },
+            "protects": [
+                "Integrity",
+                "Confidentiality"
+            ],
+            "denies": [
+                {
+                    "action": "Fault",
+                    "assetClass": "Compute",
+                    "domain": "*"
+                }
+            ],
+            "overriddenBy": {
+                "OR": [
+                    {
+                        "action": "Modify",
+                        "assetClass": "Executable",
+                        "domain": "*"
+                    }
+                ]
+            },
             "controlType": "Preventive"
         }
     ]

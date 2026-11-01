@@ -4250,6 +4250,334 @@
                 }
             },
             "class": "Peripheral"
+        },
+        {
+            "id": "A.076",
+            "name": "OTA Update Distribution Backend Service",
+            "description": "Backend service that packages signed firmware and software updates, decides which vehicles receive which campaign, and delivers them to the vehicles' OTA clients.",
+            "metadata": [
+                "OTA / SOTA / FOTA",
+                "App / Service",
+                "gRPC / REST"
+            ],
+            "domain": "Backend",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "An OEM has no direct physical-safety state; harm to road users is reflected in financial and operational impact."
+                    },
+                    "financial": {
+                        "level": "Severe",
+                        "rationale": "A compromised distribution service can push malicious or bricking updates to the whole fleet: recalls and liability."
+                    },
+                    "operational": {
+                        "level": "Severe",
+                        "rationale": "Update campaigns stop fleet-wide until the service is rebuilt and trusted again."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major",
+                        "rationale": "A malicious campaign can disable or degrade vehicle functions on the road."
+                    },
+                    "financial": {
+                        "level": "Moderate",
+                        "rationale": "Owners may face repair costs and loss of use."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Vehicles can be left inoperable after a bad campaign."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                }
+            },
+            "class": "Executable"
+        },
+        {
+            "id": "A.077",
+            "name": "Firmware Code-Signing Private Keys",
+            "description": "The OEM's private keys that sign ECU firmware and update packages; every ECU's secure boot and update verification trusts them.",
+            "metadata": [
+                "Digital Signatures",
+                "Asymmetric Keys",
+                "HSM / SHE",
+                "PKI / Certificates"
+            ],
+            "domain": "Backend",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "An OEM has no direct physical-safety state; harm to road users is reflected in financial and operational impact."
+                    },
+                    "financial": {
+                        "level": "Severe",
+                        "rationale": "Whoever holds the keys can sign firmware every vehicle accepts; re-keying the fleet is extremely costly."
+                    },
+                    "operational": {
+                        "level": "Severe",
+                        "rationale": "Releases stop until new keys are rolled out to every ECU."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe",
+                        "rationale": "Validly signed malicious firmware can take over safety-relevant ECUs."
+                    },
+                    "financial": {
+                        "level": "Negligible",
+                        "rationale": "No direct cost to the road user."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Affected functions may be disabled by the OEM as a precaution."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                }
+            },
+            "class": "Crypto"
+        },
+        {
+            "id": "A.078",
+            "name": "Hardware Security Module (HSM / SHE) Core",
+            "description": "The on-chip HSM or SHE of an ECU: an isolated core with its own memory that stores keys, verifies secure boot and performs cryptographic operations for the host.",
+            "metadata": [
+                "HSM / SHE",
+                "MCU",
+                "Secure Boot",
+                "Symmetric Keys"
+            ],
+            "domain": "*",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "An OEM has no direct physical-safety state; harm to road users is reflected in financial and operational impact."
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "A broken HSM design exposes keys of every ECU that uses it."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "ECUs relying on it lose secure boot and secure communication."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Major",
+                        "rationale": "Loss of secure boot and message authentication enables manipulation of safety functions."
+                    },
+                    "financial": {
+                        "level": "Negligible",
+                        "rationale": "No direct cost to the road user."
+                    },
+                    "operational": {
+                        "level": "Moderate",
+                        "rationale": "Dependent functions may degrade."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                }
+            },
+            "class": "Compute"
+        },
+        {
+            "id": "A.079",
+            "name": "EV Charging Inlet & Charging Communication Interface",
+            "description": "The vehicle's charging inlet and the communication on its pilot / PLC lines (ISO 15118, DIN 70121) that a charging station talks to.",
+            "metadata": [
+                "EVSE Plug / Wireless Charging",
+                "ISO 15118 / OCPP"
+            ],
+            "domain": "Powertrain",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "An OEM has no direct physical-safety state; harm to road users is reflected in financial and operational impact."
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "Charging failures or fraud across many vehicles cause warranty and billing costs."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Charging-related support and field fixes."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate",
+                        "rationale": "Manipulated charging parameters may stress the battery."
+                    },
+                    "financial": {
+                        "level": "Moderate",
+                        "rationale": "Charging fraud or failed charging sessions."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "The vehicle cannot be charged."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                }
+            },
+            "class": "Interface"
+        },
+        {
+            "id": "A.080",
+            "name": "Body Control Module (BCM) Application",
+            "description": "Software on the body control module that drives locks, lights, wipers, windows and the immobiliser handshake with the key.",
+            "metadata": [
+                "App / Service",
+                "MCU",
+                "LIN",
+                "CAN / CAN-FD / CAN-XL"
+            ],
+            "domain": "Body",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "An OEM has no direct physical-safety state; harm to road users is reflected in financial and operational impact."
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "Remote unlock or theft scenarios damage reputation and cause liability."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Fixes require field updates of the BCM."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Moderate",
+                        "rationale": "Lights or wipers failing while driving."
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "Vehicle theft."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Locked out of the vehicle or unable to start it."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "The asset holds no personal data."
+                    }
+                }
+            },
+            "class": "Executable"
+        },
+        {
+            "id": "A.081",
+            "name": "Fleet Telemetry & Customer Data Store",
+            "description": "Backend databases that store vehicle telemetry, location history and customer account data collected from the fleet.",
+            "metadata": [
+                "App / Service",
+                "gRPC / REST"
+            ],
+            "domain": "Backend",
+            "cybersecurityProperties": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "An OEM has no direct physical-safety state; harm to road users is reflected in financial and operational impact."
+                    },
+                    "financial": {
+                        "level": "Severe",
+                        "rationale": "A breach of fleet-wide personal data brings regulatory fines."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Incident handling and notification of customers."
+                    },
+                    "privacy": {
+                        "level": "Severe",
+                        "rationale": "Location histories and identities of all customers."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Negligible",
+                        "rationale": "No direct safety impact."
+                    },
+                    "financial": {
+                        "level": "Moderate",
+                        "rationale": "Fraud using leaked account data."
+                    },
+                    "operational": {
+                        "level": "Negligible",
+                        "rationale": "Vehicle functions are not affected."
+                    },
+                    "privacy": {
+                        "level": "Severe",
+                        "rationale": "Location history reveals homes, routines and identities."
+                    }
+                }
+            },
+            "class": "Data"
         }
     ]
 }
