@@ -324,7 +324,7 @@
                 "Local",
                 "Physical"
             ],
-            "description": "Starting points only (no requires): how the attacker reaches the item, per ISO/SAE 21434 Annex G (attack-vector based approach). Network = remote, over a public or cellular network; Adjacent = in radio or sensor range (Bluetooth, Wi-Fi, V2X, RF, the road environment); Local = through a local interface or media in the cabin (USB, removable media); Physical = hands on the vehicle or the hardware (connectors, boards, the charging inlet)."
+            "description": "Starting points only (no requires): how the attacker reaches the item, per ISO/SAE 21434 Annex I (attack-vector based approach). Network = remote, over a public or cellular network; Adjacent = in radio or sensor range (Bluetooth, Wi-Fi, V2X, RF, the road environment); Local = through a local interface or media in the cabin (USB, removable media); Physical = hands on the vehicle or the hardware (connectors, boards, the charging inlet)."
         }
     },
     "required": [
