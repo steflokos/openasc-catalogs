@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "2.0.0",
     "assets": [
         {
             "id": "A.001",
@@ -1760,7 +1760,7 @@
                 "ISO 15118 / OCPP",
                 "EVSE Plug / Wireless Charging"
             ],
-            "domain": "External",
+            "domain": "Powertrain",
             "cybersecurityProperties": [
                 "Confidentiality",
                 "Integrity",
@@ -1816,7 +1816,7 @@
                 "Seeds / RoT Data",
                 "Digital Signatures"
             ],
-            "domain": "External",
+            "domain": "Telematics",
             "cybersecurityProperties": [
                 "Confidentiality",
                 "Integrity",
@@ -2490,7 +2490,7 @@
                 "OBD-II",
                 "DoIP"
             ],
-            "domain": "External",
+            "domain": "*",
             "cybersecurityProperties": [
                 "Integrity",
                 "Availability"
@@ -3557,7 +3557,7 @@
             "name": "Physical Diagnostic Access Interface",
             "description": "Physical connectors and test pads providing direct wired access to vehicle networks and ECU debug interfaces. Includes the standardized OBD-II Data Link Connector (DLC), JTAG/SWD boundary-scan pads, and UART console interfaces exposed on PCBs. Primary vector for physical-proximity attacks.",
             "class": "Interface",
-            "domain": "External",
+            "domain": "*",
             "metadata": [
                 "OBD-II",
                 "JTAG / cJTAG",

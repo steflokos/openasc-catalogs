@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "2.0.0",
     "description": "Maps the security properties that a granted capability compromises.",
     "byAction": {
         "Extract": ["Confidentiality"],

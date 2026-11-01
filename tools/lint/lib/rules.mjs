@@ -8,7 +8,7 @@
 //   warn  = what an entry declares and what it does disagree: the owner fixes it or accepts it (lint-allow.json)
 //   info  = a fact or a measurement, never a verdict
 
-import { DOMAINS, bind, boundKey, keyOf, leavesOf, rawClosure, waysOf } from './closure.mjs';
+import { DOMAINS, bind, boundKey, instanceClosure, keyOf, leavesOf, rawClosure, waysOf } from './closure.mjs';
 import { CONVENTION, PROPERTIES, implied, rubricProblems, supports } from './rubric.mjs';
 import { TAG_PATTERNS } from './tagPatterns.mjs';
 
@@ -81,8 +81,8 @@ export const RULES = [
         },
     },
     {
-        id: 'S1c', severity: 'info', scope: ['controls'],
-        title: 'control whose overriddenBy shares a capability with its denies (one bypass way is self-defeating, others remain)',
+        id: 'S1c', severity: 'error', scope: ['controls'],
+        title: 'control whose overriddenBy shares a capability with its denies (a bypass that needs what the control stops can never be taken)',
         run(ctx) {
             const findings = [];
             const alwaysDead = new Set(RULES.find((r) => r.id === 'S1a').run(ctx).findings.map((f) => f.ids[0]));
@@ -590,6 +590,39 @@ export const RULES = [
                 findings: wild.length ? [{ ids: wild.map((a) => a.id), message: `${wild.length} of ${ctx.assets.length} assets have domain *` }] : [],
                 metrics: { assets: ctx.assets.length, wildcard: wild.length },
             };
+        },
+    },
+    {
+        id: 'F1', severity: 'error', scope: ['threats'],
+        title: 'starting point (no requires) without an attackVector, or an attackVector on a threat that is not a starting point',
+        run(ctx) {
+            const findings = [];
+            const umbrellas = new Set(ctx.threats.filter((t) => t.refines).map((t) => t.refines));
+            for (const t of ctx.threats) {
+                if (!t.requires && !t.attackVector && !umbrellas.has(t.id)) findings.push({ ids: [t.id], message: `${t.name}: starting point with no attackVector` });
+                if (t.requires && t.attackVector) findings.push({ ids: [t.id], message: `${t.name}: attackVector on a threat that needs something first` });
+            }
+            return { findings };
+        },
+    },
+    {
+        id: 'F2', severity: 'warn', scope: ['threats'],
+        title: 'attack path too shallow: from remote (Network) starting points, code changes in an in-vehicle domain take fewer than 3 steps; from Physical ones, fewer than 2 (README "Layers of an attack path")',
+        run(ctx) {
+            const findings = [];
+            const limits = { Network: 3, Physical: 2 };
+            const metrics = {};
+            for (const [vector, min] of Object.entries(limits)) {
+                const held = instanceClosure(ctx.threats, vector);
+                for (const d of ['Powertrain', 'Chassis', 'Body', 'ADAS']) {
+                    for (const k of ['Modify:Executable', 'Elevate:Executable']) {
+                        const round = held.get(`${k}:${d}`);
+                        metrics[`${vector}.${k}:${d}`] = round ?? null;
+                        if (round !== undefined && round < min) findings.push({ ids: [`${k}:${d}`], message: `${vector}: ${k}:${d} in ${round} step(s)` });
+                    }
+                }
+            }
+            return { findings, metrics };
         },
     },
 ];

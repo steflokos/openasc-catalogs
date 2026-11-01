@@ -235,6 +235,16 @@
                     "$ref": "#/$defs/CapabilityNode"
                 }
             ]
+        },
+        "controlType": {
+            "type": "string",
+            "enum": [
+                "Preventive",
+                "Detective",
+                "Corrective",
+                "Organizational"
+            ],
+            "description": "What kind of control this is. Preventive controls stop the capabilities they deny. Detective controls notice an attack (and may trigger a response); Organizational controls are processes and governance. Detective and Organizational controls mainly raise the attack potential; tools may show their denies as weaker than a preventive barrier."
         }
     },
     "required": [

@@ -83,3 +83,37 @@ export function rawClosure(pool, domain) {
     }
     return { fired, held, rounds: round };
 }
+
+/** Whether an entry is a template (a `*` anywhere in its capabilities): tools instantiate it once per domain. */
+export const isTemplate = (e) => JSON.stringify([e.requires ?? null, e.grants ?? [], e.denies ?? [], e.overriddenBy ?? null]).includes('"domain":"*"');
+
+/**
+ * Per-domain instance closure (README "Domains"): every template threat runs once per domain with `*` bound to it,
+ * named entries once. Starting points of another attack vector than `vector` are left out (all when null).
+ * Returns the round in which each capability key is first held (1 = a starting point gives it).
+ */
+export function instanceClosure(threats, vector = null) {
+    const umbrellas = umbrellaIds(threats);
+    const pool = [];
+    for (const t of threats) {
+        if (umbrellas.has(t.id)) continue;
+        if (!t.requires && vector && t.attackVector !== vector) continue;
+        if (isTemplate(t)) for (const d of DOMAINS) pool.push({ t, d, id: `${t.id}@${d}` });
+        else pool.push({ t, d: 'Telematics', id: t.id });
+    }
+    const held = new Map();
+    const fired = new Set();
+    for (let round = 1, changed = true; changed; round++) {
+        changed = false;
+        const snap = new Set(held.keys());
+        const granted = [];
+        for (const p of pool) {
+            if (fired.has(p.id) || !satisfied(p.t.requires, snap, p.d)) continue;
+            fired.add(p.id);
+            changed = true;
+            for (const g of p.t.grants ?? []) granted.push(boundKey(g, p.d));
+        }
+        for (const k of granted) if (!held.has(k)) held.set(k, round);
+    }
+    return held;
+}

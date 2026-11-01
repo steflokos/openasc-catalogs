@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "2.0.0",
     "controls": [
         {
             "id": "C.01",
@@ -77,7 +77,8 @@
             "unitedNationsRegulation155": [
                 "M12",
                 "M24"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.01.1",
@@ -155,7 +156,8 @@
             "unitedNationsRegulation155": [
                 "M12",
                 "M24"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.01.2",
@@ -236,7 +238,8 @@
             "unitedNationsRegulation155": [
                 "M12",
                 "M24"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.02",
@@ -299,11 +302,6 @@
                     "action": "Execute",
                     "assetClass": "Executable",
                     "domain": "*"
-                },
-                {
-                    "action": "Extract",
-                    "assetClass": "Crypto",
-                    "domain": "*"
                 }
             ],
             "overriddenBy": {
@@ -333,7 +331,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.02.1",
@@ -385,11 +384,6 @@
                     "action": "Modify",
                     "assetClass": "Crypto",
                     "domain": "*"
-                },
-                {
-                    "action": "Extract",
-                    "assetClass": "Crypto",
-                    "domain": "*"
                 }
             ],
             "overriddenBy": {
@@ -419,7 +413,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.02.2",
@@ -470,11 +465,6 @@
                     "action": "Modify",
                     "assetClass": "Executable",
                     "domain": "*"
-                },
-                {
-                    "action": "Extract",
-                    "assetClass": "Crypto",
-                    "domain": "*"
                 }
             ],
             "overriddenBy": {
@@ -504,7 +494,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03",
@@ -577,7 +568,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.1",
@@ -625,16 +617,6 @@
                     "action": "Intercept",
                     "assetClass": "Network",
                     "domain": "*"
-                },
-                {
-                    "action": "Modify",
-                    "assetClass": "Executable",
-                    "domain": "*"
-                },
-                {
-                    "action": "Extract",
-                    "assetClass": "Crypto",
-                    "domain": "*"
                 }
             ],
             "overriddenBy": {
@@ -664,7 +646,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M12"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.2",
@@ -730,7 +713,8 @@
             },
             "unitedNationsRegulation155": [
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.3",
@@ -791,7 +775,8 @@
             "unitedNationsRegulation155": [
                 "M3",
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.4",
@@ -861,7 +846,8 @@
             "unitedNationsRegulation155": [
                 "M23",
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.5",
@@ -936,7 +922,8 @@
             "unitedNationsRegulation155": [
                 "M7",
                 "M10"
-            ]
+            ],
+            "controlType": "Organizational"
         },
         {
             "id": "C.03.6",
@@ -1017,7 +1004,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M12"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.7",
@@ -1077,7 +1065,8 @@
             "unitedNationsRegulation155": [
                 "M12",
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.7.1",
@@ -1142,7 +1131,8 @@
             "unitedNationsRegulation155": [
                 "M12",
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.7.2",
@@ -1205,7 +1195,8 @@
             "unitedNationsRegulation155": [
                 "M12",
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.8",
@@ -1274,7 +1265,8 @@
             "unitedNationsRegulation155": [
                 "M22",
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.9",
@@ -1335,7 +1327,8 @@
             "unitedNationsRegulation155": [
                 "M3",
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.10",
@@ -1398,7 +1391,8 @@
             "unitedNationsRegulation155": [
                 "M2",
                 "M9"
-            ]
+            ],
+            "controlType": "Detective"
         },
         {
             "id": "C.03.11",
@@ -1467,7 +1461,8 @@
             "unitedNationsRegulation155": [
                 "M2",
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.03.12",
@@ -1537,7 +1532,8 @@
             "unitedNationsRegulation155": [
                 "M6",
                 "M15"
-            ]
+            ],
+            "controlType": "Detective"
         },
         {
             "id": "C.03.13",
@@ -1581,16 +1577,6 @@
             ],
             "denies": [
                 {
-                    "action": "Extract",
-                    "assetClass": "Crypto",
-                    "domain": "*"
-                },
-                {
-                    "action": "Modify",
-                    "assetClass": "Data",
-                    "domain": "*"
-                },
-                {
                     "action": "Intercept",
                     "assetClass": "Network",
                     "domain": "*"
@@ -1619,7 +1605,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M23"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.04",
@@ -1685,7 +1672,8 @@
             },
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.04.1",
@@ -1750,7 +1738,8 @@
             },
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.04.2",
@@ -1815,7 +1804,8 @@
             },
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.04.3",
@@ -1871,7 +1861,8 @@
             "notes": "DEPRECATED. MD5 is cryptographically broken: practical chosen-prefix collision attacks are achievable in seconds on commodity hardware (~2^18 operations). This entry exists solely to model legacy system residual risk. Any new design using MD5 for integrity protection violates UN R155 security principles. Migrate immediately to SHA-256 or SHA-3.",
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.05",
@@ -1958,7 +1949,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.05.1",
@@ -2041,7 +2033,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.05.2",
@@ -2127,7 +2120,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.05.3",
@@ -2210,7 +2204,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.05.4",
@@ -2295,7 +2290,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.06",
@@ -2362,7 +2358,8 @@
             },
             "unitedNationsRegulation155": [
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.06.1",
@@ -2424,7 +2421,8 @@
             },
             "unitedNationsRegulation155": [
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.06.2",
@@ -2497,7 +2495,8 @@
             },
             "unitedNationsRegulation155": [
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.06.3",
@@ -2566,7 +2565,8 @@
             },
             "unitedNationsRegulation155": [
                 "M10"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.07",
@@ -2633,7 +2633,8 @@
             "unitedNationsRegulation155": [
                 "M11",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.07.1",
@@ -2697,7 +2698,8 @@
             },
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.07.2",
@@ -2754,7 +2756,8 @@
             "unitedNationsRegulation155": [
                 "M7",
                 "M9"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.07.3",
@@ -2817,7 +2820,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.07.4",
@@ -2887,7 +2891,8 @@
             "unitedNationsRegulation155": [
                 "M6",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.07.5",
@@ -2958,7 +2963,8 @@
             "unitedNationsRegulation155": [
                 "M23",
                 "M9"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08",
@@ -3024,7 +3030,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Organizational"
         },
         {
             "id": "C.08.1",
@@ -3080,7 +3087,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08.2",
@@ -3147,7 +3155,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08.3",
@@ -3221,7 +3230,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08.4",
@@ -3294,7 +3304,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08.5",
@@ -3362,7 +3373,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08.5.1",
@@ -3429,7 +3441,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08.6",
@@ -3494,7 +3507,8 @@
             },
             "unitedNationsRegulation155": [
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.08.7",
@@ -3567,7 +3581,8 @@
             "unitedNationsRegulation155": [
                 "M23",
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.09",
@@ -3633,7 +3648,8 @@
             },
             "unitedNationsRegulation155": [
                 "M9"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.09.1",
@@ -3708,7 +3724,8 @@
                 "M9",
                 "M18",
                 "M1"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.09.2",
@@ -3775,7 +3792,8 @@
             },
             "unitedNationsRegulation155": [
                 "M9"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.09.3",
@@ -3838,7 +3856,8 @@
             },
             "unitedNationsRegulation155": [
                 "M9"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.09.4",
@@ -3900,7 +3919,8 @@
             "unitedNationsRegulation155": [
                 "M7",
                 "M14"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.09.5",
@@ -3967,7 +3987,8 @@
             "unitedNationsRegulation155": [
                 "M7",
                 "M14"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.10",
@@ -4039,7 +4060,8 @@
             "unitedNationsRegulation155": [
                 "M6",
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.11",
@@ -4098,7 +4120,8 @@
             },
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.11.1",
@@ -4163,7 +4186,8 @@
             },
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.11.2",
@@ -4223,7 +4247,8 @@
             },
             "unitedNationsRegulation155": [
                 "M7"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.12",
@@ -4288,7 +4313,8 @@
             },
             "unitedNationsRegulation155": [
                 "M24"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.12.1",
@@ -4353,7 +4379,8 @@
             },
             "unitedNationsRegulation155": [
                 "M24"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.13",
@@ -4427,7 +4454,8 @@
             "unitedNationsRegulation155": [
                 "M7",
                 "M22"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.14",
@@ -4507,7 +4535,8 @@
             "unitedNationsRegulation155": [
                 "M8",
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.15",
@@ -4558,17 +4587,13 @@
                         "action": "Elevate",
                         "assetClass": "Executable",
                         "domain": "*"
-                    },
-                    {
-                        "action": "Modify",
-                        "assetClass": "Data",
-                        "domain": "*"
                     }
                 ]
             },
             "unitedNationsRegulation155": [
                 "M19"
-            ]
+            ],
+            "controlType": "Detective"
         },
         {
             "id": "C.16",
@@ -4624,7 +4649,8 @@
             },
             "unitedNationsRegulation155": [
                 "M23"
-            ]
+            ],
+            "controlType": "Organizational"
         },
         {
             "id": "C.16.1",
@@ -4681,7 +4707,8 @@
             },
             "unitedNationsRegulation155": [
                 "M23"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.16.2",
@@ -4740,7 +4767,8 @@
             "unitedNationsRegulation155": [
                 "M23",
                 "M21"
-            ]
+            ],
+            "controlType": "Organizational"
         },
         {
             "id": "C.16.3",
@@ -4813,7 +4841,8 @@
             },
             "unitedNationsRegulation155": [
                 "M16"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.16.4",
@@ -4876,7 +4905,8 @@
             },
             "unitedNationsRegulation155": [
                 "M16"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.16.5",
@@ -4953,7 +4983,8 @@
             "unitedNationsRegulation155": [
                 "M16",
                 "M23"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.16.6",
@@ -5022,7 +5053,8 @@
             "notes": "The automatic-rollback half of this control mirrors Android's documented A/B seamless-update behavior: 'If an OTA update is applied but fails to boot, the device will reboot back into the old partition and remains usable.' The staged/canary-wave half is standard SDV fleet-operations practice (cf. Uptane framework deployment guidance and ISO 24089 software update engineering lifecycle management), containing exactly the fleet-wide propagation mechanism modeled by T.01.3 (Malicious Firmware Update Deployment) and the bricking/DoS mechanism modeled by T.05.5/T.05.6. Source: https://source.android.com/docs/core/ota/ab.",
             "unitedNationsRegulation155": [
                 "M16"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.17",
@@ -5074,11 +5106,6 @@
                         "domain": "*"
                     },
                     {
-                        "action": "Modify",
-                        "assetClass": "Crypto",
-                        "domain": "*"
-                    },
-                    {
                         "action": "Elevate",
                         "assetClass": "Executable",
                         "domain": "*"
@@ -5087,7 +5114,8 @@
             },
             "unitedNationsRegulation155": [
                 "M23"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.17.1",
@@ -5149,7 +5177,8 @@
             },
             "unitedNationsRegulation155": [
                 "M23"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.17.2",
@@ -5215,7 +5244,8 @@
             },
             "unitedNationsRegulation155": [
                 "M23"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.18",
@@ -5279,7 +5309,8 @@
             },
             "unitedNationsRegulation155": [
                 "M13"
-            ]
+            ],
+            "controlType": "Organizational"
         },
         {
             "id": "C.18.1",
@@ -5339,7 +5370,8 @@
             },
             "unitedNationsRegulation155": [
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.18.2",
@@ -5405,7 +5437,8 @@
             },
             "unitedNationsRegulation155": [
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.19",
@@ -5473,7 +5506,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M20"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.19.1",
@@ -5540,7 +5574,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M16"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.20",
@@ -5600,7 +5635,8 @@
             },
             "unitedNationsRegulation155": [
                 "M13"
-            ]
+            ],
+            "controlType": "Detective"
         },
         {
             "id": "C.20.1",
@@ -5665,7 +5701,8 @@
             },
             "unitedNationsRegulation155": [
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.20.2",
@@ -5734,7 +5771,8 @@
             "notes": "Denies the mechanism exploited by T.05.6 (CAN Bus-Off / Error-State Forced Disconnection Attack), and reinforces mitigation of the flooding-based DoS threats T.05.1 and T.20.4.",
             "unitedNationsRegulation155": [
                 "M13"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.21",
@@ -5808,7 +5846,8 @@
             "unitedNationsRegulation155": [
                 "M10",
                 "M11"
-            ]
+            ],
+            "controlType": "Preventive"
         },
         {
             "id": "C.21.1",
@@ -5870,7 +5909,8 @@
             "notes": "First child control of C.21; C.21 itself previously had no refinements. Denies the same Inject:Peripheral:ADAS capability node T.01.11 and T.01.15 both grant, providing detection-layer coverage that neither C.21's own cryptographic authentication nor any other existing control addresses for the Sybil-specific case. Reference: ETSI TR 103 460 V2.1.1 (2020-10), \"Intelligent Transport Systems (ITS); Security; Pre-standardization study on Misbehaviour Detection\", https://www.etsi.org/deliver/etsi_tr/103400_103499/103460/02.01.01_60/tr_103460v020101p.pdf.",
             "unitedNationsRegulation155": [
                 "M10"
-            ]
+            ],
+            "controlType": "Detective"
         },
         {
             "id": "C.22",
@@ -5943,7 +5983,8 @@
             "unitedNationsRegulation155": [
                 "M9",
                 "M19"
-            ]
+            ],
+            "controlType": "Organizational"
         },
         {
             "id": "C.03.14",
@@ -6011,7 +6052,8 @@
             },
             "unitedNationsRegulation155": [
                 "M4"
-            ]
+            ],
+            "controlType": "Organizational"
         },
         {
             "id": "C.09.6",
@@ -6078,7 +6120,8 @@
             },
             "unitedNationsRegulation155": [
                 "M5"
-            ]
+            ],
+            "controlType": "Preventive"
         }
     ]
 }
