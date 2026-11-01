@@ -1,0 +1,21 @@
+{
+    "version": "1.0.1",
+    "description": "Maps the security properties that a granted capability compromises.",
+    "byAction": {
+        "Extract": ["Confidentiality"],
+        "Intercept": ["Confidentiality"],
+        "Modify": ["Integrity"],
+        "Inject": ["Integrity", "Authenticity"],
+        "Disrupt": ["Availability"],
+        "Execute": ["Integrity"],
+        "Elevate": ["Integrity"],
+        "Fault": ["Integrity", "Availability", "Authenticity", "Confidentiality"]
+    },
+    "byActionClass": {
+        "Modify:Data": ["Integrity", "Non Repudiation"],
+        "Modify:Executable": ["Integrity", "Authenticity"],
+        "Modify:Crypto": ["Integrity", "Authenticity"],
+        "Disrupt:Data": ["Availability", "Non Repudiation"],
+        "Elevate:Crypto": ["Authenticity", "Non Repudiation"]
+    }
+}
