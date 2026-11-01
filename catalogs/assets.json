@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "assets": [
         {
             "id": "A.001",
@@ -181,7 +181,8 @@
                 "Tokens / API Keys",
                 "NFC / RFID",
                 "Bluetooth / BLE",
-                "UWB"
+                "UWB",
+                "RKE / PEPS (Keyless Entry)"
             ],
             "domain": "Body",
             "cybersecurityProperties": [
@@ -409,7 +410,8 @@
                 "Digital Signatures",
                 "Cellular",
                 "LWM2M / OMA-DM",
-                "TLS / DTLS"
+                "TLS / DTLS",
+                "OTA / SOTA / FOTA"
             ],
             "domain": "*",
             "cybersecurityProperties": [
@@ -639,7 +641,8 @@
                 "Integrity",
                 "Availability",
                 "Authenticity",
-                "Non Repudiation"
+                "Non Repudiation",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -1304,7 +1307,8 @@
                 "App / Service",
                 "Tokens / API Keys",
                 "TLS / DTLS",
-                "PKI / Certificates"
+                "PKI / Certificates",
+                "OAuth / OIDC / SAML"
             ],
             "domain": "External",
             "cybersecurityProperties": [
@@ -1640,7 +1644,8 @@
             "metadata": [
                 "LF / RF",
                 "Transceiver / PHY",
-                "Seeds / RoT Data"
+                "Seeds / RoT Data",
+                "RKE / PEPS (Keyless Entry)"
             ],
             "domain": "External",
             "cybersecurityProperties": [
@@ -1869,7 +1874,8 @@
             "domain": "*",
             "cybersecurityProperties": [
                 "Integrity",
-                "Availability"
+                "Availability",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -2419,8 +2425,8 @@
         },
         {
             "id": "A.044",
-            "name": "Powertrain & Chassis Actuation Command Flow",
-            "description": "High-priority, deterministic network traffic carrying critical steering angle, braking force, and motor torque setpoints to physical control actuators.",
+            "name": "Chassis Actuation Command Flow",
+            "description": "High-priority, deterministic network traffic carrying critical steering angle and braking force setpoints to physical control actuators.",
             "metadata": [
                 "Sensor / Actuator",
                 "Transceiver / PHY",
@@ -2455,7 +2461,7 @@
                 "roadUser": {
                     "safety": {
                         "level": "Severe",
-                        "rationale": "Spoofing or delaying these signals causes unintended acceleration, phantom braking, or loss of steering control."
+                        "rationale": "Spoofing or delaying these signals causes phantom braking or loss of steering control."
                     },
                     "financial": {
                         "level": "None",
@@ -2463,7 +2469,7 @@
                     },
                     "operational": {
                         "level": "Severe",
-                        "rationale": "Disrupting this traffic directly interferes with normal steering, braking, or acceleration response."
+                        "rationale": "Disrupting this traffic directly interferes with normal steering or braking response."
                     },
                     "privacy": {
                         "level": "None",
@@ -2648,7 +2654,8 @@
             "metadata": [
                 "Automotive Ethernet",
                 "Middleware",
-                "MAC / HMAC / CMAC"
+                "MAC / HMAC / CMAC",
+                "TSN / AVB (Time-Sensitive Networking)"
             ],
             "domain": "*",
             "cybersecurityProperties": [
@@ -3375,8 +3382,8 @@
         },
         {
             "id": "A.061",
-            "name": "Powertrain & Chassis Electromechanical Actuators",
-            "description": "Physical edge hardware components (e.g., electronic throttle bodies, brake calipers, steering motors) responsible for actuating vehicle movement commands.",
+            "name": "Powertrain Electromechanical Actuators",
+            "description": "Physical edge hardware components (e.g., electronic throttle bodies) responsible for actuating drive torque commands.",
             "metadata": [
                 "Sensor / Actuator",
                 "Transceiver / PHY",
@@ -3411,7 +3418,7 @@
                 "roadUser": {
                     "safety": {
                         "level": "Severe",
-                        "rationale": "Unauthorized manipulation of acceleration, braking, or steering actuators directly results in fatal vehicle behavior."
+                        "rationale": "Unauthorized manipulation of acceleration actuators directly results in fatal vehicle behavior."
                     },
                     "financial": {
                         "level": "None",
@@ -3419,7 +3426,7 @@
                     },
                     "operational": {
                         "level": "Severe",
-                        "rationale": "Manipulated actuator behavior directly disrupts normal throttle, brake, or steering response."
+                        "rationale": "Manipulated actuator behavior directly disrupts normal throttle response."
                     },
                     "privacy": {
                         "level": "None",
@@ -3563,7 +3570,8 @@
             ],
             "cybersecurityProperties": [
                 "Integrity",
-                "Authenticity"
+                "Authenticity",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
@@ -3676,7 +3684,8 @@
                 "ML Model / Weights",
                 "Kernel / Driver",
                 "RTOS",
-                "CAN / CAN-FD / CAN-XL"
+                "CAN / CAN-FD / CAN-XL",
+                "LiDAR / Radar / Camera"
             ],
             "partOf": "A.040",
             "cybersecurityProperties": [
@@ -3802,8 +3811,8 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Negligible",
-                        "rationale": "The EDR is a passive recorder; its compromise does not directly enable an unsafe vehicle state, though falsified data can obscure recall-worthy failure patterns from the OEM's post-market surveillance."
+                        "level": "None",
+                        "rationale": "None: the EDR is a passive recorder and the OEM has no direct physical-safety state; the exposure from falsified or lost crash data (post-market surveillance, litigation) is carried in oem.financial."
                     },
                     "financial": {
                         "level": "Major",
@@ -3855,13 +3864,14 @@
             "cybersecurityProperties": [
                 "Integrity",
                 "Availability",
-                "Authenticity"
+                "Authenticity",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Moderate",
-                        "rationale": "A compromised EVCC that mis-relays negotiated charging parameters (voltage/current limits) to the BMS/VCU can drive an unsafe charging condition, for which the OEM bears liability."
+                        "level": "None",
+                        "rationale": "None: the OEM has no direct physical-safety state; liability for an unsafe charging condition caused by a compromised EVCC is expressed in oem.financial (recall, warranty and liability exposure)."
                     },
                     "financial": {
                         "level": "Major",
@@ -3917,8 +3927,8 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Negligible",
-                        "rationale": "Infotainment-domain compromise via USB does not directly reach safety-critical control loops, though a chained pivot through a compromised infotainment gateway is a theoretical secondary concern."
+                        "level": "None",
+                        "rationale": "None: infotainment USB compromise does not directly reach safety-critical control loops and the OEM has no direct physical-safety state; any exposure is expressed in oem.financial and oem.operational."
                     },
                     "financial": {
                         "level": "Moderate",
@@ -3970,13 +3980,14 @@
             "cybersecurityProperties": [
                 "Integrity",
                 "Availability",
-                "Authenticity"
+                "Authenticity",
+                "Confidentiality"
             ],
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Major",
-                        "rationale": "A compromised or spoofing-capable OBU can inject false collision/hazard warnings that trigger unwarranted automated braking or evasive maneuvers in any receiving vehicle, a direct safety liability for the transmitting OEM."
+                        "level": "None",
+                        "rationale": "None: the OEM has no direct physical-safety state; liability and recall exposure from false hazard warnings sent to receiving vehicles is carried in oem.financial."
                     },
                     "financial": {
                         "level": "Major",
@@ -4032,8 +4043,8 @@
             "impact": {
                 "oem": {
                     "safety": {
-                        "level": "Negligible",
-                        "rationale": "The ranging module gates convenience unlock/start, not a safety-critical control loop; its compromise primarily enables theft rather than an unsafe driving condition."
+                        "level": "None",
+                        "rationale": "None: the ranging module gates convenience unlock/start, not a safety-critical control loop, and the OEM has no direct physical-safety state; theft exposure is expressed in oem.financial."
                     },
                     "financial": {
                         "level": "Major",
@@ -4127,6 +4138,118 @@
                 }
             },
             "notes": "Hosted on A.041 (Cockpit / Infotainment Domain Controller). Relies on A.062 (In-Cabin Microphones) for voice input and A.029 (Third-Party API Keys & Service Credentials) for the outbound calls it makes to external services (web search, navigation POI lookups). Deliberately excludes the `ML Model / Weights` metadata tag to keep this asset distinct from A.040's perception/ADAS inference models - see T.01.14 (LLM/Conversational AI Prompt Injection) for the primary threat this asset introduces."
+        },
+        {
+            "id": "A.074",
+            "name": "Powertrain Actuation Command Flow",
+            "description": "High-priority, deterministic network traffic carrying motor torque setpoints to physical control actuators.",
+            "metadata": [
+                "Sensor / Actuator",
+                "Transceiver / PHY",
+                "CAN / CAN-FD / CAN-XL",
+                "SecOC"
+            ],
+            "domain": "Powertrain",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "Actuation-command compromise is reflected in OEM financial/operational liability exposure, not a direct physical safety effect on the OEM."
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "A demonstrated spoofing of actuation commands exposes the OEM to product-liability claims and a recall."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Triggers investigation and a possible stop-sale for the affected vehicles."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "This traffic carries control setpoints, not personal data."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe",
+                        "rationale": "Spoofing or delaying these signals causes unintended acceleration or loss of drive torque."
+                    },
+                    "financial": {
+                        "level": "None",
+                        "rationale": "No direct financial exposure to the individual road user."
+                    },
+                    "operational": {
+                        "level": "Severe",
+                        "rationale": "Disrupting this traffic directly interferes with normal acceleration response."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "This traffic carries control setpoints, not personal data."
+                    }
+                }
+            },
+            "class": "Network"
+        },
+        {
+            "id": "A.075",
+            "name": "Chassis Electromechanical Actuators",
+            "description": "Physical edge hardware components (e.g., brake calipers, steering motors) responsible for actuating braking and steering commands.",
+            "metadata": [
+                "Sensor / Actuator",
+                "Transceiver / PHY",
+                "CAN / CAN-FD / CAN-XL",
+                "MCU"
+            ],
+            "domain": "Chassis",
+            "cybersecurityProperties": [
+                "Integrity",
+                "Availability",
+                "Authenticity"
+            ],
+            "impact": {
+                "oem": {
+                    "safety": {
+                        "level": "None",
+                        "rationale": "Actuator compromise is reflected in OEM financial/operational liability exposure, not a direct physical safety effect on the OEM."
+                    },
+                    "financial": {
+                        "level": "Major",
+                        "rationale": "A demonstrated actuator-level compromise exposes the OEM to product-liability claims and a hardware recall."
+                    },
+                    "operational": {
+                        "level": "Major",
+                        "rationale": "Triggers investigation and a possible stop-sale for the affected vehicles."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "Electromechanical actuators do not process personal data."
+                    }
+                },
+                "roadUser": {
+                    "safety": {
+                        "level": "Severe",
+                        "rationale": "Unauthorized manipulation of braking or steering actuators directly results in fatal vehicle behavior."
+                    },
+                    "financial": {
+                        "level": "None",
+                        "rationale": "No direct financial exposure to the individual road user."
+                    },
+                    "operational": {
+                        "level": "Severe",
+                        "rationale": "Manipulated actuator behavior directly disrupts normal brake or steering response."
+                    },
+                    "privacy": {
+                        "level": "None",
+                        "rationale": "Electromechanical actuators do not process personal data."
+                    }
+                }
+            },
+            "class": "Peripheral"
         }
     ]
 }
