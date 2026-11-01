@@ -111,7 +111,9 @@
                     "Seeds / RoT Data",
                     "Session Keys / Ephemeral Secrets"
                 ]
-            }
+            },
+            "minItems": 1,
+            "uniqueItems": true
         },
         "source": {
             "type": "object",
@@ -292,7 +294,7 @@
                 },
                 "domain": {
                     "type": "string",
-                    "description": "The vehicle primary domain. Includes the reserved wildcard \"*\" for capabilities not bound to a single domain (e.g. platform-level compute, root of trust, hypervisor). When matching capability nodes, \"*\" matches any domain; action and assetClass always require an exact match.",
+                    "description": "The vehicle primary domain. Includes the reserved wildcard \"*\" for capabilities not bound to a single domain (e.g. platform-level compute, root of trust, hypervisor). When capability nodes are compared, every \"*\" is first bound to the single domain being analysed (scoped resolution, see the README); action and assetClass always require an exact match.",
                     "enum": [
                         "Powertrain",
                         "Chassis",

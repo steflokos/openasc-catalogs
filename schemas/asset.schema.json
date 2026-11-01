@@ -32,7 +32,7 @@
         },
         "domain": {
             "type": "string",
-            "description": "The primary vehicle architectural domain. Includes the reserved wildcard \"*\" for assets not bound to a single domain (e.g. platform-level compute, root of trust, hypervisor). When this asset is matched against a threat's or control's CapabilityNode during graph traversal, \"*\" matches any domain; the asset's class always requires an exact match against the node's assetClass.",
+            "description": "The primary vehicle architectural domain. Includes the reserved wildcard \"*\" for assets not bound to a single domain (e.g. platform-level compute, root of trust, hypervisor). When this asset is matched against a threat's or control's CapabilityNode during graph traversal, \"*\" stands for the single domain being analysed (scoped resolution, see the README); the asset's class always requires an exact match against the node's assetClass.",
             "enum": [
                 "Powertrain",
                 "Chassis",
@@ -140,7 +140,9 @@
                     "Seeds / RoT Data",
                     "Session Keys / Ephemeral Secrets"
                 ]
-            }
+            },
+            "minItems": 1,
+            "uniqueItems": true
         },
         "partOf": {
             "type": "string",
